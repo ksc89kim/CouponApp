@@ -1,0 +1,546 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		596303771F431411000E2701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303761F431411000E2701 /* AppDelegate.swift */; };
+		596303791F431411000E2701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303781F431411000E2701 /* ViewController.swift */; };
+		5963037C1F431411000E2701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037A1F431411000E2701 /* Main.storyboard */; };
+		5963037E1F431411000E2701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5963037D1F431411000E2701 /* Assets.xcassets */; };
+		596303811F431411000E2701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037F1F431411000E2701 /* LaunchScreen.storyboard */; };
+		5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963038B1F431412000E2701 /* CouponAppTests.swift */; };
+		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
+		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
+		596303A81F432031000E2701 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A71F432031000E2701 /* CouponView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		596303881F431412000E2701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5963036B1F431411000E2701 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 596303721F431411000E2701;
+			remoteInfo = CouponApp;
+		};
+		596303931F431412000E2701 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5963036B1F431411000E2701 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 596303721F431411000E2701;
+			remoteInfo = CouponApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		596303781F431411000E2701 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5963037B1F431411000E2701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5963037D1F431411000E2701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		596303801F431411000E2701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		596303821F431411000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596303871F431412000E2701 /* CouponAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouponAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5963038B1F431412000E2701 /* CouponAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppTests.swift; sourceTree = "<group>"; };
+		5963038D1F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596303921F431412000E2701 /* CouponAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouponAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		596303961F431412000E2701 /* CouponAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppUITests.swift; sourceTree = "<group>"; };
+		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
+		596303A71F432031000E2701 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		596303701F431411000E2701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596303841F431412000E2701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5963038F1F431412000E2701 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5963036A1F431411000E2701 = {
+			isa = PBXGroup;
+			children = (
+				596303751F431411000E2701 /* CouponApp */,
+				5963038A1F431412000E2701 /* CouponAppTests */,
+				596303951F431412000E2701 /* CouponAppUITests */,
+				596303741F431411000E2701 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		596303741F431411000E2701 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				596303731F431411000E2701 /* CouponApp.app */,
+				596303871F431412000E2701 /* CouponAppTests.xctest */,
+				596303921F431412000E2701 /* CouponAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		596303751F431411000E2701 /* CouponApp */ = {
+			isa = PBXGroup;
+			children = (
+				596303A61F432004000E2701 /* view */,
+				596303761F431411000E2701 /* AppDelegate.swift */,
+				596303781F431411000E2701 /* ViewController.swift */,
+				5963037A1F431411000E2701 /* Main.storyboard */,
+				5963037D1F431411000E2701 /* Assets.xcassets */,
+				5963037F1F431411000E2701 /* LaunchScreen.storyboard */,
+				596303821F431411000E2701 /* Info.plist */,
+				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
+			);
+			path = CouponApp;
+			sourceTree = "<group>";
+		};
+		5963038A1F431412000E2701 /* CouponAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				5963038B1F431412000E2701 /* CouponAppTests.swift */,
+				5963038D1F431412000E2701 /* Info.plist */,
+			);
+			path = CouponAppTests;
+			sourceTree = "<group>";
+		};
+		596303951F431412000E2701 /* CouponAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				596303961F431412000E2701 /* CouponAppUITests.swift */,
+				596303981F431412000E2701 /* Info.plist */,
+			);
+			path = CouponAppUITests;
+			sourceTree = "<group>";
+		};
+		596303A61F432004000E2701 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				596303A71F432031000E2701 /* CouponView.swift */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		596303721F431411000E2701 /* CouponApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5963039B1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponApp" */;
+			buildPhases = (
+				5963036F1F431411000E2701 /* Sources */,
+				596303701F431411000E2701 /* Frameworks */,
+				596303711F431411000E2701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CouponApp;
+			productName = CouponApp;
+			productReference = 596303731F431411000E2701 /* CouponApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		596303861F431412000E2701 /* CouponAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5963039E1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppTests" */;
+			buildPhases = (
+				596303831F431412000E2701 /* Sources */,
+				596303841F431412000E2701 /* Frameworks */,
+				596303851F431412000E2701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596303891F431412000E2701 /* PBXTargetDependency */,
+			);
+			name = CouponAppTests;
+			productName = CouponAppTests;
+			productReference = 596303871F431412000E2701 /* CouponAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		596303911F431412000E2701 /* CouponAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 596303A11F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppUITests" */;
+			buildPhases = (
+				5963038E1F431412000E2701 /* Sources */,
+				5963038F1F431412000E2701 /* Frameworks */,
+				596303901F431412000E2701 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				596303941F431412000E2701 /* PBXTargetDependency */,
+			);
+			name = CouponAppUITests;
+			productName = CouponAppUITests;
+			productReference = 596303921F431412000E2701 /* CouponAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5963036B1F431411000E2701 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "kim sunchul";
+				TargetAttributes = {
+					596303721F431411000E2701 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					596303861F431412000E2701 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 596303721F431411000E2701;
+					};
+					596303911F431412000E2701 = {
+						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 596303721F431411000E2701;
+					};
+				};
+			};
+			buildConfigurationList = 5963036E1F431411000E2701 /* Build configuration list for PBXProject "CouponApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5963036A1F431411000E2701;
+			productRefGroup = 596303741F431411000E2701 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				596303721F431411000E2701 /* CouponApp */,
+				596303861F431412000E2701 /* CouponAppTests */,
+				596303911F431412000E2701 /* CouponAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		596303711F431411000E2701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596303811F431411000E2701 /* LaunchScreen.storyboard in Resources */,
+				5963037E1F431411000E2701 /* Assets.xcassets in Resources */,
+				5963037C1F431411000E2701 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596303851F431412000E2701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596303901F431412000E2701 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5963036F1F431411000E2701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596303791F431411000E2701 /* ViewController.swift in Sources */,
+				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
+				596303A81F432031000E2701 /* CouponView.swift in Sources */,
+				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		596303831F431412000E2701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5963038E1F431412000E2701 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				596303971F431412000E2701 /* CouponAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		596303891F431412000E2701 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 596303721F431411000E2701 /* CouponApp */;
+			targetProxy = 596303881F431412000E2701 /* PBXContainerItemProxy */;
+		};
+		596303941F431412000E2701 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 596303721F431411000E2701 /* CouponApp */;
+			targetProxy = 596303931F431412000E2701 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5963037A1F431411000E2701 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5963037B1F431411000E2701 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5963037F1F431411000E2701 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596303801F431411000E2701 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		596303991F431412000E2701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5963039A1F431412000E2701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5963039C1F431412000E2701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CouponApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		5963039D1F431412000E2701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CouponApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		5963039F1F431412000E2701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CouponAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CouponApp.app/CouponApp";
+			};
+			name = Debug;
+		};
+		596303A01F431412000E2701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CouponAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CouponApp.app/CouponApp";
+			};
+			name = Release;
+		};
+		596303A21F431412000E2701 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = CouponAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CouponApp;
+			};
+			name = Debug;
+		};
+		596303A31F431412000E2701 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = CouponAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = CouponApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5963036E1F431411000E2701 /* Build configuration list for PBXProject "CouponApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596303991F431412000E2701 /* Debug */,
+				5963039A1F431412000E2701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5963039B1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5963039C1F431412000E2701 /* Debug */,
+				5963039D1F431412000E2701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5963039E1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5963039F1F431412000E2701 /* Debug */,
+				596303A01F431412000E2701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		596303A11F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				596303A21F431412000E2701 /* Debug */,
+				596303A31F431412000E2701 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5963036B1F431411000E2701 /* Project object */;
+}
