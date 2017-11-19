@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
+		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
 		596303771F431411000E2701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303761F431411000E2701 /* AppDelegate.swift */; };
 		596303791F431411000E2701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303781F431411000E2701 /* ViewController.swift */; };
 		5963037C1F431411000E2701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037A1F431411000E2701 /* Main.storyboard */; };
@@ -15,7 +17,8 @@
 		5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963038B1F431412000E2701 /* CouponAppTests.swift */; };
 		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
 		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
-		596303A81F432031000E2701 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A71F432031000E2701 /* CouponView.swift */; };
+		59C533291FC18B83003F2530 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C533281FC18B83003F2530 /* CouponView.swift */; };
+		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		596303781F431411000E2701 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +55,14 @@
 		596303961F431412000E2701 /* CouponAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppUITests.swift; sourceTree = "<group>"; };
 		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
-		596303A71F432031000E2701 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
+		59C533281FC18B83003F2530 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouponView.swift; path = CouponApp/view/CouponView.swift; sourceTree = SOURCE_ROOT; };
+		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
+		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +86,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33A44ABBBF1E814232951653 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CD378463054031048ADFA07 /* Pods_CouponApp.framework */,
+				B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */,
+				2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5963036A1F431411000E2701 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +110,8 @@
 				5963038A1F431412000E2701 /* CouponAppTests */,
 				596303951F431412000E2701 /* CouponAppUITests */,
 				596303741F431411000E2701 /* Products */,
+				F9E87BFC1C800E97B09616A5 /* Pods */,
+				33A44ABBBF1E814232951653 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,7 +128,7 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
-				596303A61F432004000E2701 /* view */,
+				59C533271FC18B77003F2530 /* view */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
 				596303781F431411000E2701 /* ViewController.swift */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
@@ -131,12 +158,26 @@
 			path = CouponAppUITests;
 			sourceTree = "<group>";
 		};
-		596303A61F432004000E2701 /* view */ = {
+		59C533271FC18B77003F2530 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				596303A71F432031000E2701 /* CouponView.swift */,
+				59C533281FC18B83003F2530 /* CouponView.swift */,
 			);
 			name = view;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		F9E87BFC1C800E97B09616A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */,
+				59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */,
+				A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */,
+				FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */,
+				D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */,
+				147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,9 +187,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5963039B1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponApp" */;
 			buildPhases = (
+				12689F67A374BBAD2B41BE1E /* [CP] Check Pods Manifest.lock */,
 				5963036F1F431411000E2701 /* Sources */,
 				596303701F431411000E2701 /* Frameworks */,
 				596303711F431411000E2701 /* Resources */,
+				A40B1F91B63B8F66DC6B2AF0 /* [CP] Embed Pods Frameworks */,
+				F5F33046233AA2D05EC9DF61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -163,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5963039E1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppTests" */;
 			buildPhases = (
+				192FFF75A27D3EDA75D8536F /* [CP] Check Pods Manifest.lock */,
 				596303831F431412000E2701 /* Sources */,
 				596303841F431412000E2701 /* Frameworks */,
 				596303851F431412000E2701 /* Resources */,
+				9145A2C01FADA2A3476F1DA5 /* [CP] Embed Pods Frameworks */,
+				F20EE737AAAA3E38ACBC0013 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,9 +228,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 596303A11F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppUITests" */;
 			buildPhases = (
+				1EFA6BAD1C5BB7FCCF30D4DC /* [CP] Check Pods Manifest.lock */,
 				5963038E1F431412000E2701 /* Sources */,
 				5963038F1F431412000E2701 /* Frameworks */,
 				596303901F431412000E2701 /* Resources */,
+				FF4E40DF04E5E9A33516D22D /* [CP] Embed Pods Frameworks */,
+				C03D89128112E9CB8CB097C5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -268,6 +318,158 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12689F67A374BBAD2B41BE1E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CouponApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		192FFF75A27D3EDA75D8536F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CouponAppTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1EFA6BAD1C5BB7FCCF30D4DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CouponAppUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9145A2C01FADA2A3476F1DA5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A40B1F91B63B8F66DC6B2AF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C03D89128112E9CB8CB097C5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F20EE737AAAA3E38ACBC0013 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5F33046233AA2D05EC9DF61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF4E40DF04E5E9A33516D22D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5963036F1F431411000E2701 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -275,7 +477,7 @@
 			files = (
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
-				596303A81F432031000E2701 /* CouponView.swift in Sources */,
+				59C533291FC18B83003F2530 /* CouponView.swift in Sources */,
 				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +630,7 @@
 		};
 		5963039C1F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CouponApp/Info.plist;
@@ -440,6 +643,7 @@
 		};
 		5963039D1F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CouponApp/Info.plist;
@@ -452,6 +656,7 @@
 		};
 		5963039F1F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,6 +671,7 @@
 		};
 		596303A01F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -480,6 +686,7 @@
 		};
 		596303A21F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CouponAppUITests/Info.plist;
@@ -493,6 +700,7 @@
 		};
 		596303A31F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CouponAppUITests/Info.plist;
@@ -523,6 +731,7 @@
 				5963039D1F431412000E2701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5963039E1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppTests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +740,7 @@
 				596303A01F431412000E2701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		596303A11F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +749,7 @@
 				596303A31F431412000E2701 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
