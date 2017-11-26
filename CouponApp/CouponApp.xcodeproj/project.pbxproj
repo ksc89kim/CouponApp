@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
 		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
+		592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponView.swift */; };
 		596303771F431411000E2701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303761F431411000E2701 /* AppDelegate.swift */; };
 		596303791F431411000E2701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303781F431411000E2701 /* ViewController.swift */; };
 		5963037C1F431411000E2701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037A1F431411000E2701 /* Main.storyboard */; };
@@ -17,7 +18,9 @@
 		5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963038B1F431412000E2701 /* CouponAppTests.swift */; };
 		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
 		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
-		59C533291FC18B83003F2530 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C533281FC18B83003F2530 /* CouponView.swift */; };
+		59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */; };
+		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
+		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +44,7 @@
 /* Begin PBXFileReference section */
 		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		592FE2151FCAD9FB00C07C84 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		596303781F431411000E2701 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +60,10 @@
 		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
 		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
-		59C533281FC18B83003F2530 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouponView.swift; path = CouponApp/view/CouponView.swift; sourceTree = SOURCE_ROOT; };
+		59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		59D9AB9D1FCAD79600A1F78E /* coupon.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = coupon.db; sourceTree = "<group>"; };
+		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLInterface.swift; sourceTree = "<group>"; };
 		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */,
 				C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -96,11 +104,20 @@
 		33A44ABBBF1E814232951653 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */,
 				5CD378463054031048ADFA07 /* Pods_CouponApp.framework */,
 				B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */,
 				2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		592FE2141FCAD9FB00C07C84 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				592FE2151FCAD9FB00C07C84 /* CouponView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		5963036A1F431411000E2701 = {
@@ -128,8 +145,8 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
-				59D9AB871FCAA40F00A1F78E /* Sqlite */,
-				59C533271FC18B77003F2530 /* view */,
+				592FE2141FCAD9FB00C07C84 /* view */,
+				59D9AB9C1FCAD79600A1F78E /* sqlite3 */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
 				596303781F431411000E2701 /* ViewController.swift */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
@@ -159,20 +176,14 @@
 			path = CouponAppUITests;
 			sourceTree = "<group>";
 		};
-		59C533271FC18B77003F2530 /* view */ = {
+		59D9AB9C1FCAD79600A1F78E /* sqlite3 */ = {
 			isa = PBXGroup;
 			children = (
-				59C533281FC18B83003F2530 /* CouponView.swift */,
+				59D9AB9D1FCAD79600A1F78E /* coupon.db */,
+				59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */,
+				59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */,
 			);
-			name = view;
-			path = "New Group";
-			sourceTree = "<group>";
-		};
-		59D9AB871FCAA40F00A1F78E /* Sqlite */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Sqlite;
+			path = sqlite3;
 			sourceTree = "<group>";
 		};
 		F9E87BFC1C800E97B09616A5 /* Pods */ = {
@@ -305,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				596303811F431411000E2701 /* LaunchScreen.storyboard in Resources */,
+				59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */,
 				5963037E1F431411000E2701 /* Assets.xcassets in Resources */,
 				5963037C1F431411000E2701 /* Main.storyboard in Resources */,
 			);
@@ -485,7 +497,8 @@
 			files = (
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
-				59C533291FC18B83003F2530 /* CouponView.swift in Sources */,
+				592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */,
+				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,8 +656,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CouponApp/sqlite3/CouponApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -656,8 +671,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CouponApp/sqlite3/CouponApp-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

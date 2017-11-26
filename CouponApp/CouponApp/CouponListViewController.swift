@@ -15,7 +15,6 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //iPhone 8 사이즈 기준 CGSize (100,100) Rate 가져오기
         let widthRate:CGFloat = (50/375)
         let heightRate:CGFloat = (50/667)
