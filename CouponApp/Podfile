@@ -7,8 +7,8 @@ target 'CouponApp' do
   # Pods for CouponApp
 
   # Network 
-   pod 'AFNetworking', '~> 3.1.0'
-
+   pod 'Alamofire'
+   
   # Progress
    pod 'SVProgressHUD', '~> 2.2.2' 
 

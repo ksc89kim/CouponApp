@@ -128,6 +128,7 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
+				59D9AB871FCAA40F00A1F78E /* Sqlite */,
 				59C533271FC18B77003F2530 /* view */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
 				596303781F431411000E2701 /* ViewController.swift */,
@@ -165,6 +166,13 @@
 			);
 			name = view;
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		59D9AB871FCAA40F00A1F78E /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sqlite;
 			sourceTree = "<group>";
 		};
 		F9E87BFC1C800E97B09616A5 /* Pods */ = {
@@ -395,12 +403,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

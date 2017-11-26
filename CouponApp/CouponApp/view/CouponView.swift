@@ -8,20 +8,28 @@
 
 import UIKit
 
+// 쿠폰 이미지
+
 @IBDesignable
 class CouponView: UIView {
     
-    @IBInspectable var circleColor: UIColor = UIColor.blue
-    @IBInspectable var ringColor: UIColor = UIColor.orange
-    @IBInspectable var ringThickness: CGFloat = 4
-    @IBInspectable var isRing: Bool = true
-    @IBInspectable var isUseCoupone: Bool = true
-    @IBInspectable var checkLineWidth: CGFloat = 4
-    @IBInspectable var checkLineColor: UIColor = UIColor.orange
+    @IBInspectable var circleColor: UIColor = UIColor.blue // 원 색상
+    @IBInspectable var ringColor: UIColor = UIColor.orange // 테두리 색상
+    @IBInspectable var ringThickness: CGFloat = 4 // 테두리 굵기
+    @IBInspectable var isRing: Bool = true // 테두리 여부
+    @IBInspectable var isUseCoupone: Bool = true // 쿠폰 체크박스 여부
+    @IBInspectable var checkLineWidth: CGFloat = 4 // 쿠폰 체크박스 굵기
+    @IBInspectable var checkLineColor: UIColor = UIColor.orange // 쿠폰 체크 박스 색상
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
+    
+    func setDrawRect(_ rect:CGRect) {
+        //self.draw()
+    }
+    
     override func draw(_ rect: CGRect) {
+        
         // Drawing code
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
@@ -29,10 +37,13 @@ class CouponView: UIView {
         shapeLayer.fillColor = circleColor.cgColor
         layer.addSublayer(shapeLayer)
         
+        print("draw \(rect)")
+        
         if (isRing) { drawRingFittingInsideView(rect) }
         if (isUseCoupone) { drawCheckFittingInsideView(rect) }
     }
     
+    // 링 그리기
     func drawRingFittingInsideView(_ rect: CGRect) {
         let hw:CGFloat = ringThickness/2
         let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: hw,dy: hw) )
@@ -45,6 +56,7 @@ class CouponView: UIView {
         layer.addSublayer(shapeLayer)
     }
     
+    // 체크박스 그리기
     func drawCheckFittingInsideView(_ rect:CGRect) {
         
         let radius = rect.maxX/2

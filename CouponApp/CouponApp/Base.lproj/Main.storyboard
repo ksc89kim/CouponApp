@@ -29,7 +29,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7ql-lu-KnR" secondAttribute="height" multiplier="343:487" id="Gs4-Jg-p2F"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="fOe-rL-uhv">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="fOe-rL-uhv">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -43,30 +43,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8RJ-h2-jHY" customClass="CouponView" customModule="CouponApp" customModuleProvider="target">
+                                                <view tag="500" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8RJ-h2-jHY" customClass="CouponView" customModule="CouponApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="8RJ-h2-jHY" secondAttribute="height" multiplier="1:1" id="KxQ-ZW-pKk"/>
-                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="ringThickness">
                                                             <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSelected" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="isRing" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <color key="value" red="0.94971822407783346" green="0.9882372125192791" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isUseCoupone" value="YES"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
+                                                            <color key="value" red="1" green="0.76028281722194824" blue="0.4385337325702906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="8RJ-h2-jHY" secondAttribute="trailing" id="8uI-ip-MaG"/>
-                                            <constraint firstItem="8RJ-h2-jHY" firstAttribute="top" secondItem="4Cj-Aq-wkW" secondAttribute="top" id="VmP-u8-liQ"/>
-                                            <constraint firstItem="8RJ-h2-jHY" firstAttribute="leading" secondItem="4Cj-Aq-wkW" secondAttribute="leading" id="YpX-N8-J07"/>
-                                        </constraints>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -82,6 +78,9 @@
                             <constraint firstItem="7ql-lu-KnR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="33" id="vdF-Oo-OXa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="myCollectionView" destination="7ql-lu-KnR" id="PWO-bg-2R3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
