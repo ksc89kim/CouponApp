@@ -24,10 +24,6 @@ class CouponView: UIView {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     
-    func setDrawRect(_ rect:CGRect) {
-        //self.draw()
-    }
-    
     override func draw(_ rect: CGRect) {
         
         // Drawing code
@@ -36,9 +32,7 @@ class CouponView: UIView {
         shapeLayer.path = dotPath.cgPath
         shapeLayer.fillColor = circleColor.cgColor
         layer.addSublayer(shapeLayer)
-        
-        print("draw \(rect)")
-        
+                
         if (isRing) { drawRingFittingInsideView(rect) }
         if (isUseCoupone) { drawCheckFittingInsideView(rect) }
     }

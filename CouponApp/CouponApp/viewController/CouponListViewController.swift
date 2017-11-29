@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -31,7 +30,6 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         layout.minimumInteritemSpacing = 5.0
         myCollectionView.setCollectionViewLayout(layout, animated: true)
         myCollectionView.reloadData()
-        
         // Do any additional setup after loading the view.
     }
 

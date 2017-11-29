@@ -10,6 +10,7 @@
 		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
 		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
 		592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponView.swift */; };
+		5960FA2F1FCEE18300135CA4 /* UserMerchantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */; };
 		596303771F431411000E2701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303761F431411000E2701 /* AppDelegate.swift */; };
 		596303791F431411000E2701 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303781F431411000E2701 /* ViewController.swift */; };
 		5963037C1F431411000E2701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037A1F431411000E2701 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		592FE2151FCAD9FB00C07C84 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMerchantTableViewController.swift; sourceTree = "<group>"; };
 		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		596303781F431411000E2701 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,16 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		5960FA301FCEE1FF00135CA4 /* viewController */ = {
+			isa = PBXGroup;
+			children = (
+				596303781F431411000E2701 /* ViewController.swift */,
+				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
+				5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */,
+			);
+			path = viewController;
+			sourceTree = "<group>";
+		};
 		5963036A1F431411000E2701 = {
 			isa = PBXGroup;
 			children = (
@@ -145,15 +157,14 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
+				5960FA301FCEE1FF00135CA4 /* viewController */,
 				592FE2141FCAD9FB00C07C84 /* view */,
 				59D9AB9C1FCAD79600A1F78E /* sqlite3 */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
-				596303781F431411000E2701 /* ViewController.swift */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
 				5963037D1F431411000E2701 /* Assets.xcassets */,
 				5963037F1F431411000E2701 /* LaunchScreen.storyboard */,
 				596303821F431411000E2701 /* Info.plist */,
-				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
 			);
 			path = CouponApp;
 			sourceTree = "<group>";
@@ -497,6 +508,7 @@
 			files = (
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
+				5960FA2F1FCEE18300135CA4 /* UserMerchantTableViewController.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
