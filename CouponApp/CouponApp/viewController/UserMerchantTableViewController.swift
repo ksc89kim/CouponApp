@@ -9,15 +9,23 @@
 import UIKit
 
 class UserMerchantTableViewController: UITableViewController {
-
+    var userMerchantList:[UserMerchantModel?]?
+    var merchantList:[MerchantModel?]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        let user1 = UserMerchantModel()
+        user1.merchantId = 1
+        user1.couponCount = 10
+        let user2 = UserMerchantModel()
+        user2.merchantId = 1
+        user2.couponCount = 20
+        self.userMerchantList = [user1,user2]
+        let merchant = MerchantModel()
+        merchant.maxCouponCount = 30
+        merchant.merchantId = 1
+        merchant.name = "커피샾1"
+        self.merchantList = [merchant]
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,14 +42,14 @@ class UserMerchantTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return self.userMerchantList!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let userMerchantModel = self.userMerchantList?[indexPath.row]
+        let merchantModel = findMerchantModel(merchantId: userMerchantModel?.merchantId)
+        cell.textLabel?.text = merchantModel?.name
         return cell
     }
 
@@ -89,5 +97,16 @@ class UserMerchantTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+     // MARK: -
+    func findMerchantModel(merchantId:Int?) -> MerchantModel? {
+        var fMerchantModel:MerchantModel? = nil;
+        for merchantModel in merchantList! {
+            if merchantModel?.merchantId == merchantId {
+                fMerchantModel = merchantModel
+                break;
+            }
+        }
+        return fMerchantModel
+    }
 }
