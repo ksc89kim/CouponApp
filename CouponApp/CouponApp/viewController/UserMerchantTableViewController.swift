@@ -11,21 +11,25 @@ import UIKit
 class UserMerchantTableViewController: UITableViewController {
     var userMerchantList:[UserMerchantModel?]?
     var merchantList:[MerchantModel?]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let user1 = UserMerchantModel()
         user1.merchantId = 1
         user1.couponCount = 10
         let user2 = UserMerchantModel()
-        user2.merchantId = 1
+        user2.merchantId = 2
         user2.couponCount = 20
         self.userMerchantList = [user1,user2]
-        let merchant = MerchantModel()
-        merchant.maxCouponCount = 30
-        merchant.merchantId = 1
-        merchant.name = "커피샾1"
-        self.merchantList = [merchant]
+        let merchant1 = MerchantModel()
+        merchant1.maxCouponCount = 30
+        merchant1.merchantId = 1
+        merchant1.name = "커피샾1"
+        let merchant2 = MerchantModel()
+        merchant2.maxCouponCount = 30
+        merchant2.merchantId = 2
+        merchant2.name = "커피샾2"
+        self.merchantList = [merchant1,merchant2]
     }
 
     override func didReceiveMemoryWarning() {
@@ -88,17 +92,20 @@ class UserMerchantTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "showCouponListView" {
+            let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
+            couponListView?.userMerchantData = self.userMerchantList?[(self.tableView.indexPathForSelectedRow?.row)!]
+            couponListView?.merchantData = findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
+        }
     }
-    */
     
-     // MARK: -
+    // MARK: -
     func findMerchantModel(merchantId:Int?) -> MerchantModel? {
         var fMerchantModel:MerchantModel? = nil;
         for merchantModel in merchantList! {

@@ -8,12 +8,16 @@
 
 import UIKit
 class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     @IBOutlet weak var myCollectionView: UICollectionView!
     var cellSize:CGSize!
+    var userMerchantData:UserMerchantModel?
+    var merchantData:MerchantModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = merchantData?.name
         //iPhone 8 사이즈 기준 CGSize (100,100) Rate 가져오기
         let widthRate:CGFloat = (50/375)
         let heightRate:CGFloat = (50/667)
@@ -55,7 +59,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     */
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return (merchantData?.maxCouponCount)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

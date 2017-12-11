@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="4yL-J6-jcl"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="showCouponListView" id="4yL-J6-jcl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
