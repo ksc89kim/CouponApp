@@ -10,10 +10,11 @@ import Foundation
 
 /* 회원 가맹점 데이터 */
 
-class UserMerchantModel {
+class UserCouponModel {
     var couponCount:Int? // 적립된 쿠폰 갯수
     var merchantId:Int? // 가맹점 ID
     init() {
         couponCount = 0
+        merchantId = 0
     }
 }

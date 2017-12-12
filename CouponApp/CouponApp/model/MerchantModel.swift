@@ -16,5 +16,7 @@ class MerchantModel {
     var maxCouponCount:Int? //최대 쿠폰 갯수
     init() {
         maxCouponCount = 0
+        name = ""
+        maxCouponCount = 0
     }
 }

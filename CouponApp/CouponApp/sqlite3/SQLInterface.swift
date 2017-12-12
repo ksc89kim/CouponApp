@@ -17,10 +17,8 @@ enum SQLError: Error {
 class SQLInterface {
     lazy var db:OpaquePointer? = {
         var _db:OpaquePointer? = nil
-        let path = FileManager.default
-        .urls(for: .documentDirectory, in: .userDomainMask)
-        .last!.appendingPathComponent("coupon.db").path
-        if sqlite3_open(path, &_db) == SQLITE_OK {
+        let dbPath = Bundle.main.path(forResource: "coupon", ofType:"db")
+        if sqlite3_open(dbPath, &_db) == SQLITE_OK {
             return _db
         }
         print("Fail to connect database..")
@@ -37,6 +35,24 @@ class SQLInterface {
         }
     }
     
+    func selectUserCouponData() throws  {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+     
+        let query = "select idx,merchant_idx,user_idx,coupon_count from coupon"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let idx:Int32 = sqlite3_column_int(stmt, 0)
+                let merchantIdx:Int32 = sqlite3_column_int(stmt, 1)
+                let userIdx:Int32 = sqlite3_column_int(stmt, 2)
+                let couponCount:Int32 = sqlite3_column_int(stmt, 3)
+                print("\(idx)")
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+    }
     /*
     func insert_value(value: Int32) throws {
         defer { sqlite3_finalize(stmt) }

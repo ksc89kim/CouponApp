@@ -9,18 +9,25 @@
 import UIKit
 
 class UserMerchantTableViewController: UITableViewController {
-    var userMerchantList:[UserMerchantModel?]?
+    var userCouponList:[UserCouponModel?]?
     var merchantList:[MerchantModel?]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user1 = UserMerchantModel()
+        
+        do {
+           try SQLInterface().selectUserCouponData()
+        } catch {
+            print(error)
+        }
+        
+        let user1 = UserCouponModel()
         user1.merchantId = 1
         user1.couponCount = 10
-        let user2 = UserMerchantModel()
+        let user2 = UserCouponModel()
         user2.merchantId = 2
         user2.couponCount = 20
-        self.userMerchantList = [user1,user2]
+        self.userCouponList = [user1,user2]
         let merchant1 = MerchantModel()
         merchant1.maxCouponCount = 30
         merchant1.merchantId = 1
@@ -46,13 +53,13 @@ class UserMerchantTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.userMerchantList!.count
+        return self.userCouponList!.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let userMerchantModel = self.userMerchantList?[indexPath.row]
-        let merchantModel = findMerchantModel(merchantId: userMerchantModel?.merchantId)
+        let userCouponModel = self.userCouponList?[indexPath.row]
+        let merchantModel = findMerchantModel(merchantId: userCouponModel?.merchantId)
         cell.textLabel?.text = merchantModel?.name
         return cell
     }
@@ -100,7 +107,7 @@ class UserMerchantTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
-            couponListView?.userMerchantData = self.userMerchantList?[(self.tableView.indexPathForSelectedRow?.row)!]
+            couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]
             couponListView?.merchantData = findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
         }
     }

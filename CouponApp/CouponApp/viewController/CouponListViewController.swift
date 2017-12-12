@@ -11,7 +11,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     var cellSize:CGSize!
-    var userMerchantData:UserMerchantModel?
+    var userMerchantData:UserCouponModel?
     var merchantData:MerchantModel?
     
     override func viewDidLoad() {
@@ -65,6 +65,11 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
         let couponView:CouponView = cell.viewWithTag(500) as! CouponView // tag에 붙은 CouponView를 가지고 온다.
+        if indexPath.row < (userMerchantData?.couponCount)! {
+            couponView.isUseCoupone = true
+        } else {
+            couponView.isUseCoupone = false
+        }
         couponView.frame.size = cellSize // 사이즈 재설정
         return cell
     }
