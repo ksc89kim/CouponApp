@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8gq-1u-9ul">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8gq-1u-9ul">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -108,11 +108,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="6jB-Ze-tP7"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPf-ar-NEn">
+                                <rect key="frame" x="129" y="601" width="117" height="30"/>
+                                <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="117" id="GMj-hf-4yB"/>
+                                </constraints>
+                                <state key="normal" title="쿠폰요청하기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickRequestCoupon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVw-7e-ze1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7ql-lu-KnR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="B16-EL-oQJ"/>
                             <constraint firstItem="7ql-lu-KnR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WOb-5c-PMX"/>
+                            <constraint firstItem="JPf-ar-NEn" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="24" id="gMB-pE-jGj"/>
+                            <constraint firstItem="JPf-ar-NEn" firstAttribute="centerX" secondItem="7ql-lu-KnR" secondAttribute="centerX" id="sr1-aO-zcb"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="90" id="zZ6-gJ-xJ6"/>
                         </constraints>
                     </view>
@@ -123,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2036" y="130"/>
+            <point key="canvasLocation" x="2036" y="129.98500749625188"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iCr-td-XfA">

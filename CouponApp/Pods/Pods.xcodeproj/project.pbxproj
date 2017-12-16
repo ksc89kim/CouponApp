@@ -70,22 +70,22 @@
 
 /* Begin PBXFileReference section */
 		02B12B875528FDB551F8987691B23088 /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		0700C2D341078C369C10CA53ECD21866 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		0700C2D341078C369C10CA53ECD21866 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		0770A447C9233F20E3304FFB79AB9EE1 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		0E06BA8D0EECC7E94950026252C3DAF8 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		100DFBACF7BFF2E0429A69028054F94B /* Pods-CouponAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CouponAppUITests-umbrella.h"; sourceTree = "<group>"; };
-		1301CB605783254AEEB9BFBB44775508 /* Pods-CouponAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CouponAppUITests.modulemap"; sourceTree = "<group>"; };
+		1301CB605783254AEEB9BFBB44775508 /* Pods-CouponAppUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CouponAppUITests.modulemap"; sourceTree = "<group>"; };
 		18256B0BE309B3C513A4D30F265108A8 /* Pods-CouponAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CouponAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		1B4D27CB8CE290C7AF75669A3A18C09D /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1BD671C5947C05026FCE9CAF97404F47 /* Pods-CouponAppUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CouponAppUITests-frameworks.sh"; sourceTree = "<group>"; };
 		1EB5AE91072AB613D46AB2A16A590B80 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVIndefiniteAnimatedView.m; path = SVProgressHUD/SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		22A2DC59FC9571C9CE5A10385CA66980 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		257F2CA7354D8A2891F7DA6AE912DAAF /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CouponAppUITests.framework; path = "Pods-CouponAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		257F2CA7354D8A2891F7DA6AE912DAAF /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25DBE246A16802312C0B19B56D987AC1 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		293B511E2BC12B9DAFC08A32EC793EE5 /* Pods-CouponApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CouponApp-dummy.m"; sourceTree = "<group>"; };
 		29ECBC72C504A0387224667BFC84E17D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A5BE5C6AD122ED5DA065AF91A757DF4 /* SVProgressHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVProgressHUD-dummy.m"; sourceTree = "<group>"; };
-		30AD691FE6413D2808975FB13CCEACEB /* Pods-CouponAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CouponAppTests.modulemap"; sourceTree = "<group>"; };
+		30AD691FE6413D2808975FB13CCEACEB /* Pods-CouponAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CouponAppTests.modulemap"; sourceTree = "<group>"; };
 		35AC849B0E8F49F4B5EE7EE284300BCA /* Pods-CouponAppTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CouponAppTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		35D008414A31298A7672E5CB58A1D500 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		37BB4573F18454F4CF238B51E56F8222 /* Pods-CouponAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CouponAppTests-umbrella.h"; sourceTree = "<group>"; };
@@ -110,35 +110,35 @@
 		780CE39CCF3109391662ADC5380B2CB6 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
 		7A08CCB65C5341E0ED3824C0BA220D54 /* SVProgressHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-prefix.pch"; sourceTree = "<group>"; };
 		7E50B6BF62A5B91041C849AC09F4AAE3 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
-		80D426A0427CB7A28C5CAD9C41237E24 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
+		80D426A0427CB7A28C5CAD9C41237E24 /* SVProgressHUD.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SVProgressHUD.modulemap; sourceTree = "<group>"; };
 		81104FFC085EFAB6D1B8E9C9BEFA1512 /* Pods-CouponApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CouponApp-acknowledgements.plist"; sourceTree = "<group>"; };
 		847C1C0429F860F56CE92395F4503B73 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C862FA742223A1033D9E437AF46BF13 /* SVProgressHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = SVProgressHUD/SVProgressHUD.h; sourceTree = "<group>"; };
 		8E47D5EB7CCE02C28694DA472B83D793 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9F5C2797619A15A34D416FF942662041 /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CouponAppTests.framework; path = "Pods-CouponAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9F5C2797619A15A34D416FF942662041 /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A033ABE33B6E9CF8CB69F89145EC5DE1 /* Pods-CouponAppUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CouponAppUITests-dummy.m"; sourceTree = "<group>"; };
 		A4B833B854142563E1DA4E2F760507A1 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVIndefiniteAnimatedView.h; path = SVProgressHUD/SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		AD4679DA24F6DD7CC469DCA314FC71B6 /* SVProgressHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = SVProgressHUD/SVProgressHUD.m; sourceTree = "<group>"; };
-		B54C22FEFEEF4CE934C24219CAE865FE /* Pods-CouponApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CouponApp.modulemap"; sourceTree = "<group>"; };
+		B54C22FEFEEF4CE934C24219CAE865FE /* Pods-CouponApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CouponApp.modulemap"; sourceTree = "<group>"; };
 		C1116C87B0D242B8FB8112477A327741 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
 		C8D36FE5D393E2AF16EF505E0B38A6EC /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		CDD7AC78C1C5BC2B380D96119E13C5CD /* Pods-CouponApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CouponApp-resources.sh"; sourceTree = "<group>"; };
 		D3180DA2B2680183EEC3AA576C2EAF39 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D78095D719F605C7EC6E0D3D66DB0BF7 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		D7E3E50D8E8EA11AAD45473E070BA264 /* SVProgressHUD-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-umbrella.h"; sourceTree = "<group>"; };
-		D9641F9179BF83C50640D3A443C234BE /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVProgressHUD.framework; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9641F9179BF83C50640D3A443C234BE /* SVProgressHUD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVProgressHUD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBD6A7676978A7B95F6914E6689FFC30 /* Pods-CouponAppTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CouponAppTests-frameworks.sh"; sourceTree = "<group>"; };
 		DBF9B318D6C8F8B63B469026786F722E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1D8FCCB46731EFEC401E60B01D5947D /* SVProgressHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = SVProgressHUD/SVProgressHUD.bundle; sourceTree = "<group>"; };
 		E4D87F2FB36A928AB8B2CDCEF4834872 /* Pods-CouponApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CouponApp-frameworks.sh"; sourceTree = "<group>"; };
 		E74B609D596CB1397CAC7430E5FAE0FB /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SVRadialGradientLayer.h; path = SVProgressHUD/SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		E9C39C353907596B6965935AABDD6240 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		ED36A244D480DFE7CFBA48648F98D092 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED36A244D480DFE7CFBA48648F98D092 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1BCDB1109D1EBEC6041F8261AF5B512 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		F5918557DC576FE722A666780D14505C /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
 		F5D8414497C72FA12548B59ADC001D62 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		F7FF9DBF19F70CB5CE63D4E1D9A75434 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CouponApp.framework; path = "Pods-CouponApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7FF9DBF19F70CB5CE63D4E1D9A75434 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91BCAF01A39089F0C99173F6F7D50AB /* Pods-CouponAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CouponAppTests-resources.sh"; sourceTree = "<group>"; };
 		FB6519F9DA913131B8AE77B05CC04D45 /* Pods-CouponApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CouponApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		FBE86AEF345A4F8CC9161BCCE5E01861 /* Pods-CouponApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CouponApp-umbrella.h"; sourceTree = "<group>"; };
@@ -284,7 +284,6 @@
 				96122C4B56C742A1CE9E39F79674550F /* Resources */,
 				3F625687ABCBBF4AABCB12FC730E5AB6 /* Support Files */,
 			);
-			name = SVProgressHUD;
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
@@ -367,7 +366,6 @@
 				C1116C87B0D242B8FB8112477A327741 /* Validation.swift */,
 				F61E9EB2BD0CDDAE752432472ED847C1 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -530,7 +528,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
+				TargetAttributes = {
+					88E9EC28B8B46C3631E6B242B50F4442 = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -827,6 +830,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -889,7 +893,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -921,7 +926,8 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

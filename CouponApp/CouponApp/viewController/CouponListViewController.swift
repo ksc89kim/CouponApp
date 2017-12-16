@@ -42,7 +42,19 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func clickRequestCoupon(_ sender: Any) {
+        let couponCount = (userMerchantData?.couponCount)!;
+        guard couponCount < (merchantData?.maxCouponCount)! else { return }
+        userMerchantData?.couponCount = couponCount + 1
+        do {
+            try SQLInterface().updateCouponCount(1,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
+                myCollectionView.reloadData()
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -66,11 +78,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
         let couponView:CouponView = cell.viewWithTag(500) as! CouponView // tag에 붙은 CouponView를 가지고 온다.
         if indexPath.row < (userMerchantData?.couponCount)! {
-            couponView.isUseCoupone = true
+            couponView.isUseCoupone = true // 쿠폰 활성화
         } else {
-            couponView.isUseCoupone = false
+            couponView.isUseCoupone = false // 쿠폰 비활성화
         }
         couponView.frame.size = cellSize // 사이즈 재설정
+        couponView.setNeedsDisplay()
         return cell
     }
     
