@@ -64,12 +64,11 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         // Pass the selected object to the new view controller.
     }
     */
-    
-    
+        
     /*
         UICollectionViewDataSource method
     */
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (merchantData?.maxCouponCount)!
     }

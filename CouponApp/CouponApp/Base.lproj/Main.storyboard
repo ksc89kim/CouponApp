@@ -131,12 +131,19 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="90" id="zZ6-gJ-xJ6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e68-HA-Mb9"/>
+                    <navigationItem key="navigationItem" id="e68-HA-Mb9">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OKM-4g-7cl">
+                            <connections>
+                                <segue destination="idr-xI-MZx" kind="unwind" identifier="unwindUserMerchant" unwindAction="unwindToUserMercahntTableViewWithSegue:" id="toe-re-CC1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="myCollectionView" destination="7ql-lu-KnR" id="PWO-bg-2R3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="idr-xI-MZx" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2036" y="129.98500749625188"/>
         </scene>

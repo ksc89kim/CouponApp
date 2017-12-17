@@ -49,7 +49,7 @@
 		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		592FE2151FCAD9FB00C07C84 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		594A56391FD814AF005EAA9C /* UserCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCouponModel.swift; sourceTree = "<group>"; };
-		594A563B1FD814EC005EAA9C /* MerchantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantModel.swift; sourceTree = "<group>"; };
+		594A563B1FD814EC005EAA9C /* MerchantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMerchantTableViewController.swift; sourceTree = "<group>"; };
 		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };

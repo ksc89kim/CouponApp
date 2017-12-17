@@ -14,19 +14,40 @@ class UserMerchantTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            self.userCouponList = try SQLInterface().selectUserCouponData(1)
-            self.merchantList = try SQLInterface().selectMerchantData()
-        } catch {
-            print(error)
-        }
+        setData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
+    
+    // MARK: - 가맹점 데이터 찾기
+    func findMerchantModel(merchantId:Int?) -> MerchantModel? {
+        var fMerchantModel:MerchantModel? = nil;
+        for merchantModel in merchantList! {
+            if merchantModel?.merchantId == merchantId {
+                fMerchantModel = merchantModel
+                break;
+            }
+        }
+        return fMerchantModel
+    }
+    
+    // MARK: - 가맹점 리스트, 유저 쿠폰 리스트 가져오기
+    func setData() {
+        do {
+            self.userCouponList = try SQLInterface().selectUserCouponData(1)
+            self.merchantList = try SQLInterface().selectMerchantData()
+            print("setData")
+        } catch {
+            print(error)
+        }
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,7 +67,7 @@ class UserMerchantTableViewController: UITableViewController {
         cell.textLabel?.text = merchantModel?.name
         return cell
     }
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -94,15 +115,10 @@ class UserMerchantTableViewController: UITableViewController {
         }
     }
     
-    // MARK: - 가맹점 데이터 찾기
-    func findMerchantModel(merchantId:Int?) -> MerchantModel? {
-        var fMerchantModel:MerchantModel? = nil;
-        for merchantModel in merchantList! {
-            if merchantModel?.merchantId == merchantId {
-                fMerchantModel = merchantModel
-                break;
-            }
+    @IBAction func unwindToUserMercahntTableView(segue:UIStoryboardSegue) {
+        if segue.identifier == "unwindUserMerchant" {
+            setData()
+            self.tableView.reloadData()
         }
-        return fMerchantModel
     }
 }
