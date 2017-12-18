@@ -21,6 +21,7 @@
 		5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963038B1F431412000E2701 /* CouponAppTests.swift */; };
 		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
 		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
+		597201D41FE7F36F001DEA78 /* UserCouponList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 597201D31FE7F36F001DEA78 /* UserCouponList.storyboard */; };
 		59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */; };
 		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
@@ -65,6 +66,7 @@
 		596303961F431412000E2701 /* CouponAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppUITests.swift; sourceTree = "<group>"; };
 		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
+		597201D31FE7F36F001DEA78 /* UserCouponList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserCouponList.storyboard; sourceTree = "<group>"; };
 		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
 		59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		59D9AB9D1FCAD79600A1F78E /* coupon.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = coupon.db; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				592FE2141FCAD9FB00C07C84 /* view */,
 				59D9AB9C1FCAD79600A1F78E /* sqlite3 */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
+				597201D31FE7F36F001DEA78 /* UserCouponList.storyboard */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
 				5963037D1F431411000E2701 /* Assets.xcassets */,
 				5963037F1F431411000E2701 /* LaunchScreen.storyboard */,
@@ -345,6 +348,7 @@
 			files = (
 				596303811F431411000E2701 /* LaunchScreen.storyboard in Resources */,
 				59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */,
+				597201D41FE7F36F001DEA78 /* UserCouponList.storyboard in Resources */,
 				5963037E1F431411000E2701 /* Assets.xcassets in Resources */,
 				5963037C1F431411000E2701 /* Main.storyboard in Resources */,
 			);

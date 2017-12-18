@@ -41,7 +41,6 @@ class UserMerchantTableViewController: UITableViewController {
         do {
             self.userCouponList = try SQLInterface().selectUserCouponData(1)
             self.merchantList = try SQLInterface().selectMerchantData()
-            print("setData")
         } catch {
             print(error)
         }
