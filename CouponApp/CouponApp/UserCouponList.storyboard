@@ -56,7 +56,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7ql-lu-KnR">
                                 <rect key="frame" x="15" y="88" width="344" height="489"/>
-                                <color key="backgroundColor" red="1" green="0.99461436960000005" blue="0.91202008450000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.99607843137254903" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7ql-lu-KnR" secondAttribute="height" multiplier="343:487" id="nJh-w7-pcb"/>
                                 </constraints>
@@ -86,11 +86,14 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isRing" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="circleColor">
-                                                            <color key="value" red="0.94971822407783346" green="0.9882372125192791" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="1" green="0.99607843137254903" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isUseCoupone" value="YES"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="ringColor">
-                                                            <color key="value" red="1" green="0.76028281722194824" blue="0.4385337325702906" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="1" green="0.80784313725490198" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="checkLineColor">
+                                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -109,13 +112,13 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JPf-ar-NEn">
-                                <rect key="frame" x="129" y="601" width="117" height="30"/>
-                                <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="15" y="585" width="345" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80784313725490198" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="GMj-hf-4yB"/>
+                                    <constraint firstAttribute="width" secondItem="JPf-ar-NEn" secondAttribute="height" multiplier="343:30" id="gnR-oe-QP2"/>
                                 </constraints>
                                 <state key="normal" title="쿠폰요청하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="clickRequestCoupon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rVw-7e-ze1"/>
@@ -126,13 +129,15 @@
                         <constraints>
                             <constraint firstItem="7ql-lu-KnR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="B16-EL-oQJ"/>
                             <constraint firstItem="7ql-lu-KnR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WOb-5c-PMX"/>
-                            <constraint firstItem="JPf-ar-NEn" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="24" id="gMB-pE-jGj"/>
-                            <constraint firstItem="JPf-ar-NEn" firstAttribute="centerX" secondItem="7ql-lu-KnR" secondAttribute="centerX" id="sr1-aO-zcb"/>
+                            <constraint firstItem="JPf-ar-NEn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oAV-lJ-hMC"/>
+                            <constraint firstItem="JPf-ar-NEn" firstAttribute="leading" secondItem="7ql-lu-KnR" secondAttribute="leading" id="rPt-5N-CII"/>
+                            <constraint firstItem="JPf-ar-NEn" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="8" symbolic="YES" id="wxN-KW-PWa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="7ql-lu-KnR" secondAttribute="bottom" constant="90" id="zZ6-gJ-xJ6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="e68-HA-Mb9">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="OKM-4g-7cl">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="idr-xI-MZx" kind="unwind" identifier="unwindUserMerchant" unwindAction="unwindToUserMercahntTableViewWithSegue:" id="toe-re-CC1"/>
                             </connections>
@@ -156,9 +161,9 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.33333333329999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="1" green="0.80784313725490198" blue="0.050980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
