@@ -58,12 +58,17 @@ class UserMerchantTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return self.userCouponList!.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! UserMerchantTableViewCell
         let userCouponModel = self.userCouponList?[indexPath.row]
         let merchantModel = findMerchantModel(merchantId: userCouponModel?.merchantId)
-        cell.textLabel?.text = merchantModel?.name
+        cell.merchantName.text = merchantModel?.name
+        //cell.textLabel?.text = merchantModel?.name
         return cell
     }
     

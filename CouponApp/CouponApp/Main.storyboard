@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,91 +9,59 @@
         <!--View Controller-->
         <scene sceneID="AMv-hF-1N5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ygr-JE-rkv" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UIViewController-ygr-JE-rkv" id="ygr-JE-rkv" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekX-M1-DkQ"/>
                         <viewControllerLayoutGuide type="bottom" id="gKj-nh-9hf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="phb-tq-clf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ha-wF-VYB">
-                                <rect key="frame" x="117" y="287" width="140" height="92"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ha-wF-VYB">
+                                <rect key="frame" x="129" y="337" width="140" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="Tld-2a-Gkp"/>
-                                    <constraint firstAttribute="height" constant="92" id="snI-XD-fhs"/>
-                                </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="MY 쿠폰 보기">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZaS-b4-QFN">
+                                <rect key="frame" x="129" y="237" width="140" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="쿠폰 가맹점 보기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="2ha-wF-VYB" firstAttribute="centerY" secondItem="phb-tq-clf" secondAttribute="centerY" id="02Q-y1-xzX"/>
-                            <constraint firstItem="2ha-wF-VYB" firstAttribute="centerX" secondItem="phb-tq-clf" secondAttribute="centerX" id="czZ-zi-cQe"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="yEt-EX-zJJ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="183" y="438"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="6g8-pV-Teb">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6ZA-pE-Yw8" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Zq-mY-Hsr">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="ygr-JE-rkv" kind="relationship" relationship="viewControllers" id="Mkn-FX-eEo"/>
-                        <segue destination="eth-2h-HML" kind="relationship" relationship="viewControllers" id="PAa-yu-dy7"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1ZA-IZ-QHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-844.79999999999995" y="129.53523238380811"/>
         </scene>
         <!--회원 가맹점 리스트-->
         <scene sceneID="Tc3-e7-rRw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Egp-UQ-YAn" customClass="UserMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cZO-ac-l5A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="100" id="vVm-lJ-pIq" customClass="UserMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="vVm-lJ-pIq">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vVm-lJ-pIq" id="kUK-RC-Eh4" customClass="UserMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vVm-lJ-pIq" id="kUK-RC-Eh4">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="O8a-cU-09K">
-                                            <rect key="frame" x="16" y="9" width="59" height="80"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="커피샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqK-Ge-lTw">
-                                            <rect key="frame" x="98" y="38" width="221" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="logoImage" destination="O8a-cU-09K" id="qeQ-ex-Tjk"/>
-                                    <outlet property="merchantName" destination="cqK-Ge-lTw" id="ms7-QK-fXm"/>
                                     <segue destination="zt0-fb-j4a" kind="show" identifier="showCouponListView" id="4vT-kt-xVl">
                                         <nil key="action"/>
                                     </segue>
@@ -111,29 +75,27 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="회원 가맹점 리스트" id="ddT-fr-j4z"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052" y="-227.13643178410797"/>
+            <point key="canvasLocation" x="1052" y="-227"/>
         </scene>
         <!--Coupon List View Controller-->
         <scene sceneID="lKA-In-z3X">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
-                <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="zt0-fb-j4a" customClass="CouponListViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ifm-21-m7q"/>
                         <viewControllerLayoutGuide type="bottom" id="jWh-qE-6FU"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="onV-De-4tH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-4f-ACv">
-                                <rect key="frame" x="16" y="88" width="342" height="440"/>
+                                <rect key="frame" x="32.5" y="88" width="309" height="440"/>
                                 <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="440" id="kBc-5g-i7o"/>
-                                    <constraint firstAttribute="width" constant="342" id="lJQ-fc-Mah"/>
+                                    <constraint firstAttribute="width" secondItem="ebv-4f-ACv" secondAttribute="height" multiplier="343:487" id="wEu-nK-st5"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VnE-BX-HQf">
                                     <size key="itemSize" width="50" height="50"/>
@@ -187,7 +149,7 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-S2-Wee">
-                                <rect key="frame" x="16" y="536" width="343" height="30"/>
+                                <rect key="frame" x="32.5" y="536" width="310" height="27"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="height" multiplier="343:30" id="Uvj-Wg-H9a"/>
@@ -222,14 +184,15 @@
                         <outlet property="myCollectionView" destination="ebv-4f-ACv" id="hgV-6Q-eej"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
+                <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="-227"/>
+            <point key="canvasLocation" x="1874" y="-227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="THt-yS-NrP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KKf-VU-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eth-2h-HML" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UINavigationController-eth-2h-HML" automaticallyAdjustsScrollViewInsets="NO" id="eth-2h-HML" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="I1E-aS-lDw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q0e-9q-7Gn">
@@ -249,11 +212,9 @@
                         <segue destination="Egp-UQ-YAn" kind="relationship" relationship="rootViewController" id="76g-Nw-7RG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKf-VU-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="-227"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="starbuck" width="465" height="473"/>
-    </resources>
 </document>
