@@ -13,7 +13,6 @@
         <!--View Controller-->
         <scene sceneID="AMv-hF-1N5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ygr-JE-rkv" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ekX-M1-DkQ"/>
@@ -44,6 +43,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="yEt-EX-zJJ"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="183" y="438"/>
         </scene>
@@ -53,6 +53,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="6ZA-pE-Yw8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Zq-mY-Hsr">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -68,7 +69,6 @@
         <!--회원 가맹점 리스트-->
         <scene sceneID="Tc3-e7-rRw">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Egp-UQ-YAn" customClass="UserMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cZO-ac-l5A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -111,14 +111,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="회원 가맹점 리스트" id="ddT-fr-j4z"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1052" y="-227.13643178410797"/>
         </scene>
         <!--Coupon List View Controller-->
         <scene sceneID="lKA-In-z3X">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
-                <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="zt0-fb-j4a" customClass="CouponListViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ifm-21-m7q"/>
@@ -222,13 +221,14 @@
                         <outlet property="myCollectionView" destination="ebv-4f-ACv" id="hgV-6Q-eej"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
+                <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1863" y="-227"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="THt-yS-NrP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KKf-VU-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eth-2h-HML" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="mostViewed" id="I1E-aS-lDw"/>
                     <toolbarItems/>
@@ -249,6 +249,7 @@
                         <segue destination="Egp-UQ-YAn" kind="relationship" relationship="rootViewController" id="76g-Nw-7RG"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KKf-VU-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="-227"/>
         </scene>
