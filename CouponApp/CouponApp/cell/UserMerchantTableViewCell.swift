@@ -10,8 +10,8 @@ import UIKit
 
 class UserMerchantTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var merchantName: UILabel!
-    @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var logoImage: UIImageView! //로고이미지
+    @IBOutlet weak var merchantName: UILabel! //
     
     override func awakeFromNib() {
         super.awakeFromNib()
