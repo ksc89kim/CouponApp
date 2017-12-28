@@ -44,7 +44,11 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     @IBAction func clickRequestCoupon(_ sender: Any) {
         let couponCount = (userMerchantData?.couponCount)!;
-        guard couponCount < (merchantData?.maxCouponCount)! else { return }
+        let maxCount = (merchantData?.maxCouponCount)!;
+        guard couponCount < maxCount else {
+            printAlert(title: "쿠폰 최대치!", message: "모든 쿠폰을 모았습니다.\n쿠폰을 소진해주세요.")
+            return
+        }
         userMerchantData?.couponCount = couponCount + 1
         do {
             try SQLInterface().updateCouponCount(1,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
@@ -55,6 +59,30 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    @IBAction func clickUseCopon(_ sender: Any) {
+        let couponCount = (userMerchantData?.couponCount)!;
+        let maxCount = (merchantData?.maxCouponCount)!;
+        guard couponCount >= maxCount else {
+            printAlert(title: "쿠폰 부족!", message: "쿠폰이 부족합니다.\n쿠폰을 더 모아주세요.")
+            return
+        }
+        userMerchantData?.couponCount = 0
+        do {
+            try SQLInterface().updateCouponCount(1,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
+                myCollectionView.reloadData()
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    
+    func printAlert(title:String, message:String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        present(alertController, animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

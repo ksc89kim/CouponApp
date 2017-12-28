@@ -22,6 +22,7 @@
 		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
 		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
 		596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */; };
+		599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599804D21FF51409001561C5 /* FindMerchantViewController.swift */; };
 		59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */; };
 		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
@@ -68,6 +69,7 @@
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
 		596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
+		599804D21FF51409001561C5 /* FindMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMerchantViewController.swift; sourceTree = "<group>"; };
 		59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		59D9AB9D1FCAD79600A1F78E /* coupon.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = coupon.db; sourceTree = "<group>"; };
 		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				596303781F431411000E2701 /* ViewController.swift */,
 				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
 				5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */,
+				599804D21FF51409001561C5 /* FindMerchantViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 			files = (
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				594A563C1FD814EC005EAA9C /* MerchantModel.swift in Sources */,
+				599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
 				5960FA2F1FCEE18300135CA4 /* UserMerchantTableViewController.swift in Sources */,
 				596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */,

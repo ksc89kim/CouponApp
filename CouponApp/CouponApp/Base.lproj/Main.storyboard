@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,30 +24,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ha-wF-VYB">
-                                <rect key="frame" x="117" y="287" width="140" height="92"/>
-                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rx-Oo-QOw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzA-gK-dr1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-77-Jo5">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.5" height="55.5"/>
+                                                <state key="normal" title="주변 가맹점">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-MJ-Js7">
+                                                <rect key="frame" x="187.5" y="0.0" width="187.5" height="55.5"/>
+                                                <state key="normal" title="전체 가맹점">
+                                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="1EM-MJ-Js7" firstAttribute="width" secondItem="SzA-gK-dr1" secondAttribute="width" multiplier="0.5" id="88G-P1-v0a"/>
+                                            <constraint firstAttribute="bottom" secondItem="VNI-77-Jo5" secondAttribute="bottom" id="Bme-Bc-9as"/>
+                                            <constraint firstItem="VNI-77-Jo5" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="LQ1-xA-cQh"/>
+                                            <constraint firstItem="VNI-77-Jo5" firstAttribute="width" secondItem="SzA-gK-dr1" secondAttribute="width" multiplier="0.5" id="Sv6-pg-dUm"/>
+                                            <constraint firstItem="1EM-MJ-Js7" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="Vwe-dP-y77"/>
+                                            <constraint firstAttribute="bottom" secondItem="1EM-MJ-Js7" secondAttribute="bottom" id="oc1-Za-0pU"/>
+                                            <constraint firstItem="VNI-77-Jo5" firstAttribute="leading" secondItem="SzA-gK-dr1" secondAttribute="leading" id="psL-zg-2jm"/>
+                                            <constraint firstItem="1EM-MJ-Js7" firstAttribute="leading" secondItem="VNI-77-Jo5" secondAttribute="trailing" id="rhc-QQ-hT0"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2dA-ef-ROb">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="498.5"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="Tld-2a-Gkp"/>
-                                    <constraint firstAttribute="height" constant="92" id="snI-XD-fhs"/>
+                                    <constraint firstItem="SzA-gK-dr1" firstAttribute="top" secondItem="9Rx-Oo-QOw" secondAttribute="top" id="0uB-En-Rh1"/>
+                                    <constraint firstItem="SzA-gK-dr1" firstAttribute="width" secondItem="9Rx-Oo-QOw" secondAttribute="width" id="8he-lK-TrQ"/>
+                                    <constraint firstItem="2dA-ef-ROb" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="bottom" id="9nE-rC-vv7"/>
+                                    <constraint firstItem="SzA-gK-dr1" firstAttribute="centerX" secondItem="9Rx-Oo-QOw" secondAttribute="centerX" id="Dzw-hC-TXr"/>
+                                    <constraint firstItem="2dA-ef-ROb" firstAttribute="height" secondItem="9Rx-Oo-QOw" secondAttribute="height" multiplier="0.9" id="GX5-MV-Qlw"/>
+                                    <constraint firstAttribute="bottom" secondItem="2dA-ef-ROb" secondAttribute="bottom" id="Ok4-cL-nEP"/>
+                                    <constraint firstItem="2dA-ef-ROb" firstAttribute="leading" secondItem="9Rx-Oo-QOw" secondAttribute="leading" id="QUM-56-Fv7"/>
+                                    <constraint firstItem="2dA-ef-ROb" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="bottom" id="c4x-bN-RMd"/>
+                                    <constraint firstItem="2dA-ef-ROb" firstAttribute="centerX" secondItem="9Rx-Oo-QOw" secondAttribute="centerX" id="mbe-3H-Qhc"/>
                                 </constraints>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="MY 쿠폰 보기">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2ha-wF-VYB" firstAttribute="centerY" secondItem="phb-tq-clf" secondAttribute="centerY" id="02Q-y1-xzX"/>
-                            <constraint firstItem="2ha-wF-VYB" firstAttribute="centerX" secondItem="phb-tq-clf" secondAttribute="centerX" id="czZ-zi-cQe"/>
+                            <constraint firstAttribute="trailing" secondItem="9Rx-Oo-QOw" secondAttribute="trailing" id="JlX-5U-dke"/>
+                            <constraint firstItem="gKj-nh-9hf" firstAttribute="top" secondItem="9Rx-Oo-QOw" secondAttribute="bottom" id="VtY-2i-owN"/>
+                            <constraint firstItem="9Rx-Oo-QOw" firstAttribute="leading" secondItem="phb-tq-clf" secondAttribute="leading" id="bDF-nN-vJO"/>
+                            <constraint firstItem="9Rx-Oo-QOw" firstAttribute="top" secondItem="ekX-M1-DkQ" secondAttribute="bottom" id="uyF-QN-9My"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="yEt-EX-zJJ"/>
+                    <navigationItem key="navigationItem" id="Uem-2A-wSN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="183" y="438"/>
+            <point key="canvasLocation" x="1052" y="436.73163418290858"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="6g8-pV-Teb">
@@ -59,7 +99,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ygr-JE-rkv" kind="relationship" relationship="viewControllers" id="Mkn-FX-eEo"/>
+                        <segue destination="KhQ-YF-Ang" kind="relationship" relationship="viewControllers" id="Mkn-FX-eEo"/>
                         <segue destination="eth-2h-HML" kind="relationship" relationship="viewControllers" id="PAa-yu-dy7"/>
                     </connections>
                 </tabBarController>
@@ -136,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-4f-ACv">
-                                <rect key="frame" x="16" y="88" width="343" height="440"/>
+                                <rect key="frame" x="16" y="74" width="343" height="454"/>
                                 <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VnE-BX-HQf">
                                     <size key="itemSize" width="50" height="50"/>
@@ -202,13 +242,26 @@
                                     <action selector="clickRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="5Xa-5D-2Ez"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG">
+                                <rect key="frame" x="16" y="574" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="쿠폰 소진하기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="YsI-C3-eLl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="top" secondItem="qMj-S2-Wee" secondAttribute="bottom" constant="8" symbolic="YES" id="0QB-Md-dBR"/>
                             <constraint firstItem="qMj-S2-Wee" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="7oF-iD-oZk"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="leading" secondItem="qMj-S2-Wee" secondAttribute="leading" id="98g-U9-KOb"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="centerX" secondItem="onV-De-4tH" secondAttribute="centerX" id="9nD-WR-Sad"/>
-                            <constraint firstItem="ebv-4f-ACv" firstAttribute="top" secondItem="ifm-21-m7q" secondAttribute="bottom" constant="24" id="QiM-Lw-9A9"/>
+                            <constraint firstItem="ebv-4f-ACv" firstAttribute="top" secondItem="ifm-21-m7q" secondAttribute="bottom" constant="10" id="QiM-Lw-9A9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ebv-4f-ACv" secondAttribute="trailing" id="Y4I-LG-vZt"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="trailing" secondItem="qMj-S2-Wee" secondAttribute="trailing" id="ZqR-Vq-DL8"/>
                             <constraint firstItem="qMj-S2-Wee" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="8" symbolic="YES" id="bhx-fT-ZAa"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="eAb-y8-k49"/>
                             <constraint firstItem="qMj-S2-Wee" firstAttribute="trailing" secondItem="onV-De-4tH" secondAttribute="trailingMargin" id="pqh-IM-uzA"/>
@@ -259,6 +312,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KKf-VU-1i9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="182" y="-227"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vMu-eD-QUO">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KhQ-YF-Ang" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="yEt-EX-zJJ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y4u-SN-AQf">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ygr-JE-rkv" kind="relationship" relationship="rootViewController" id="mTD-Y9-RFC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lO2-YG-9lg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="182.40000000000001" y="437.18140929535235"/>
         </scene>
     </scenes>
     <resources>
