@@ -37,10 +37,10 @@
             </objects>
             <point key="canvasLocation" x="182" y="1219"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Near Merchant Table View Controller-->
         <scene sceneID="DOc-lm-laX">
             <objects>
-                <tableViewController id="ArU-l8-lU0" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="nearMerchantTableView" id="ArU-l8-lU0" customClass="NearMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="74b-L9-GRv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -11,19 +11,23 @@ import UIKit
 class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
     var pageController:UIPageViewController?
-    
+    lazy var viewControllerList:[UIViewController] = {
+        let storyBoard = UIStoryboard(name:"FindMerchantPageView", bundle:Bundle.main)
+        let publicMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "publicMerchantTableView")
+        let nearMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "nearMerchantTableView")
+        return [publicMerchantTableViewController,nearMerchantTableViewController]
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-        
-        let publicFindMerchantTableView = viewControllerAtIndex(index: 0)!
-        let viewControllers:[UIViewController] = [publicFindMerchantTableView]
+        if let firstViewController = viewControllerList.first {
+            pageController!.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
+        }
         let mainView = self.view.viewWithTag(1)
         let topView = mainView?.viewWithTag(1)
         let pageView = self.pageController!.view
         pageView?.translatesAutoresizingMaskIntoConstraints = false
-        pageController!.setViewControllers(viewControllers, direction: .forward, animated: false, completion: nil)
         self.addChildViewController(pageController!)
         mainView?.addSubview(pageView!)
         
@@ -39,7 +43,6 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
         
         pageController?.delegate = self
         pageController?.dataSource = self
-        pageController?.view.backgroundColor = UIColor.black
         pageController!.didMove(toParentViewController: self)
         // Do any additional setup after loading the view.
         
@@ -50,20 +53,19 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func viewControllerAtIndex(index:Int) -> UIViewController? {
-        let storyBoard = UIStoryboard(name:"FindMerchantPageView", bundle:Bundle.main)
-        let dataViewControler = storyBoard.instantiateViewController(withIdentifier: "publicMerchantTableView")
-        return dataViewControler
-    }
-    
-    
     //MARK - PageViewController
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return viewControllerAtIndex(index: 0)
+        guard let vcIndex = viewControllerList.index(of: viewController) else { return nil }
+        let previousIndex = vcIndex - 1
+        guard previousIndex > 0 else { return nil }
+        return viewControllerList[previousIndex]
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return viewControllerAtIndex(index: 0)
+        guard let vcIndex = viewControllerList.index(of: viewController) else { return nil }
+        let nextIndex = vcIndex + 1
+        guard viewControllerList.count > nextIndex else { return nil }
+        return viewControllerList[nextIndex]
     }
     
     /*
