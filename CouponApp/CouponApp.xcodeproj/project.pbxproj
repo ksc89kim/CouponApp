@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
 		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
+		590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
 		592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponView.swift */; };
 		594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A2A7D1FFBAA94005F3236 /* NearMerchantTableViewController.swift */; };
 		594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A56391FD814AF005EAA9C /* UserCouponModel.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		590D16E4200202EF008FBA02 /* CouponSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSingleton.swift; sourceTree = "<group>"; };
 		592FE2151FCAD9FB00C07C84 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		594A2A7D1FFBAA94005F3236 /* NearMerchantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewController.swift; sourceTree = "<group>"; };
 		594A56391FD814AF005EAA9C /* UserCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCouponModel.swift; sourceTree = "<group>"; };
@@ -130,6 +132,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		590D16E320020282008FBA02 /* singleton */ = {
+			isa = PBXGroup;
+			children = (
+				590D16E4200202EF008FBA02 /* CouponSingleton.swift */,
+			);
+			path = singleton;
+			sourceTree = "<group>";
+		};
 		592FE2141FCAD9FB00C07C84 /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +175,6 @@
 			children = (
 				596303751F431411000E2701 /* CouponApp */,
 				5963038A1F431412000E2701 /* CouponAppTests */,
-				596303951F431412000E2701 /* CouponAppUITests */,
 				596303741F431411000E2701 /* Products */,
 				F9E87BFC1C800E97B09616A5 /* Pods */,
 				33A44ABBBF1E814232951653 /* Frameworks */,
@@ -185,6 +194,7 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
+				590D16E320020282008FBA02 /* singleton */,
 				596714111FEA89770009D73A /* cell */,
 				594A56381FD8148F005EAA9C /* model */,
 				5960FA301FCEE1FF00135CA4 /* viewController */,
@@ -203,6 +213,7 @@
 		5963038A1F431412000E2701 /* CouponAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				596303951F431412000E2701 /* CouponAppUITests */,
 				5963038B1F431412000E2701 /* CouponAppTests.swift */,
 				5963038D1F431412000E2701 /* Info.plist */,
 			);
@@ -555,6 +566,7 @@
 				599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
 				5960FA2F1FCEE18300135CA4 /* UserMerchantTableViewController.swift in Sources */,
+				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
 				596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */,
 				594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */,

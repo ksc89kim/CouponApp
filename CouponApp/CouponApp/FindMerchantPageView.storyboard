@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,13 +19,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dPv-J1-g9r">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicMerchantTableViewCell" rowHeight="99" id="dPv-J1-g9r" customClass="PublicMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPv-J1-g9r" id="WNr-Sl-ii5">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-EM-wxh" userLabel="Logo Image">
+                                            <rect key="frame" x="16" y="11" width="80" height="78"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="BhX-GE-Ttx"/>
+                                                <constraint firstAttribute="height" constant="78" id="so0-kw-vbD"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vy-qW-5zY" userLabel="Merchant Name">
+                                            <rect key="frame" x="104" y="39" width="44.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pdy-EM-wxh" firstAttribute="centerY" secondItem="WNr-Sl-ii5" secondAttribute="centerY" id="f1m-XG-lJg"/>
+                                        <constraint firstItem="pdy-EM-wxh" firstAttribute="leading" secondItem="WNr-Sl-ii5" secondAttribute="leadingMargin" id="jDO-A1-4BE"/>
+                                        <constraint firstItem="0Vy-qW-5zY" firstAttribute="leading" secondItem="pdy-EM-wxh" secondAttribute="trailing" constant="8" id="oGx-jC-6aw"/>
+                                        <constraint firstItem="0Vy-qW-5zY" firstAttribute="centerY" secondItem="WNr-Sl-ii5" secondAttribute="centerY" id="p0D-RK-8xI"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="logoImage" destination="pdy-EM-wxh" id="nYE-By-3mu"/>
+                                    <outlet property="merchantName" destination="0Vy-qW-5zY" id="5xe-zm-sjk"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -35,7 +61,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvQ-S7-rK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="182" y="1219"/>
+            <point key="canvasLocation" x="181.59999999999999" y="1218.440779610195"/>
         </scene>
         <!--Near Merchant Table View Controller-->
         <scene sceneID="DOc-lm-laX">
@@ -66,4 +92,7 @@
             <point key="canvasLocation" x="1052" y="1219"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="starbuck" width="930" height="946"/>
+    </resources>
 </document>

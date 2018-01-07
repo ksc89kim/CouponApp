@@ -10,8 +10,10 @@ import UIKit
 
 class UserMerchantTableViewController: UITableViewController {
     var userCouponList:[UserCouponModel?]?
-    var merchantList:[MerchantModel?]?
-
+    lazy var singleton:CouponSignleton = {
+        return CouponSignleton.sharedInstance
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -22,23 +24,12 @@ class UserMerchantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - 가맹점 데이터 찾기
-    func findMerchantModel(merchantId:Int?) -> MerchantModel? {
-        var fMerchantModel:MerchantModel? = nil;
-        for merchantModel in merchantList! {
-            if merchantModel?.merchantId == merchantId {
-                fMerchantModel = merchantModel
-                break;
-            }
-        }
-        return fMerchantModel
-    }
+ 
     
-    // MARK: - 가맹점 리스트, 유저 쿠폰 리스트 가져오기
+    // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         do {
             self.userCouponList = try SQLInterface().selectUserCouponData(1)
-            self.merchantList = try SQLInterface().selectMerchantData()
         } catch {
             print(error)
         }
@@ -62,7 +53,7 @@ class UserMerchantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserMerchantTableViewCell", for: indexPath) as! UserMerchantTableViewCell
         let userCouponModel = self.userCouponList?[indexPath.row]
-        let merchantModel = findMerchantModel(merchantId: userCouponModel?.merchantId)
+        let merchantModel =  singleton.findMerchantModel(merchantId: userCouponModel?.merchantId)
         cell.merchantName.text = merchantModel?.name
         cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         
@@ -77,7 +68,7 @@ class UserMerchantTableViewController: UITableViewController {
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]
-            couponListView?.merchantData = findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
+            couponListView?.merchantData = singleton.findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
         }
     }
     

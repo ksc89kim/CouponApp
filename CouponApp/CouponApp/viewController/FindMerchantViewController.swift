@@ -9,17 +9,23 @@
 import UIKit
 
 class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-
+    
+    @IBOutlet var tabButtonList:[UIButton] = []
+    var currentTabBtn:UIButton?
     var pageController:UIPageViewController?
+    
     lazy var viewControllerList:[UIViewController] = {
         let storyBoard = UIStoryboard(name:"FindMerchantPageView", bundle:Bundle.main)
         let publicMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "publicMerchantTableView")
         let nearMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "nearMerchantTableView")
-        return [publicMerchantTableViewController,nearMerchantTableViewController]
+        return [nearMerchantTableViewController,publicMerchantTableViewController]
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentTabBtn = tabButtonList[0]
+        currentTabBtn?.isSelected = true
+        
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         if let firstViewController = viewControllerList.first {
             pageController!.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
@@ -57,7 +63,7 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = viewControllerList.index(of: viewController) else { return nil }
         let previousIndex = vcIndex - 1
-        guard previousIndex > 0 else { return nil }
+        guard previousIndex > -1 else { return nil }
         return viewControllerList[previousIndex]
     }
     
@@ -66,6 +72,44 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
         let nextIndex = vcIndex + 1
         guard viewControllerList.count > nextIndex else { return nil }
         return viewControllerList[nextIndex]
+    }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if finished {
+            guard let vcIndex = viewControllerList.index(of: (pageViewController.viewControllers?.first)!) else { return }
+            refreshTabBtn(vcIndex)
+        }
+    }
+    
+    //MARK - 상단 탭 버튼
+    @IBAction func clickTab(_ sender: Any) {
+        let selectBtn:UIButton = sender as! UIButton
+        if !selectBtn.isSelected {
+            if selectBtn.tag > (self.currentTabBtn?.tag)! {
+                pageController!.setViewControllers([viewControllerList[selectBtn.tag-1]], direction: .forward, animated: true, completion: nil)
+            } else {
+                pageController!.setViewControllers([viewControllerList[selectBtn.tag-1]], direction: .reverse, animated: true, completion: nil)
+            }
+        }
+        refreshTabBtn(selectBtn.tag-1)
+    }
+    
+    func refreshTabBtn(_ index:Int) {
+        guard index < tabButtonList.count  && index > -1 else {
+            return
+        }
+        
+        for i in 0 ..< tabButtonList.count  {
+            let tabBtn = tabButtonList[i]
+            if i == index {
+                if !tabBtn.isSelected {
+                    tabBtn.isSelected = true
+                }
+                self.currentTabBtn = tabBtn
+            } else {
+                tabButtonList[i].isSelected = false
+            }
+        }
     }
     
     /*

@@ -10,6 +10,9 @@ import UIKit
 
 class PublicMerchantTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var merchantName: UILabel!
+    @IBOutlet weak var logoImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

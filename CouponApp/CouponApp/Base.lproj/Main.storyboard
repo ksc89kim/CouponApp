@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Find Merchant View Controller-->
+        <!--가맹점 찾기-->
         <scene sceneID="AMv-hF-1N5">
             <objects>
                 <viewController id="ygr-JE-rkv" customClass="FindMerchantViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,17 +30,25 @@
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzA-gK-dr1">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-77-Jo5">
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNI-77-Jo5">
                                                 <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="주변 가맹점">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="clickTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="hbu-p9-7nL"/>
+                                                </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-MJ-Js7">
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-MJ-Js7">
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="30"/>
+                                                <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="전체 가맹점">
                                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="clickTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="VQu-vt-SlB"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.66799789669999998" green="0.47512125970000002" blue="0.25860109930000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,7 +80,11 @@
                             <constraint firstItem="9Rx-Oo-QOw" firstAttribute="top" secondItem="ekX-M1-DkQ" secondAttribute="bottom" id="uyF-QN-9My"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uem-2A-wSN"/>
+                    <navigationItem key="navigationItem" title="가맹점 찾기" id="Uem-2A-wSN"/>
+                    <connections>
+                        <outletCollection property="tabButtonList" destination="VNI-77-Jo5" collectionClass="NSMutableArray" id="5pr-i3-Hiq"/>
+                        <outletCollection property="tabButtonList" destination="1EM-MJ-Js7" collectionClass="NSMutableArray" id="uyq-sE-DSp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y2B-uo-ANz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
