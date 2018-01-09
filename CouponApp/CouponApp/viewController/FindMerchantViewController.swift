@@ -8,11 +8,15 @@
 
 import UIKit
 
+/*
+     가맹점 찾기 뷰 컨트롤러
+     - 주변 가맹점, 전체 가맹점 찾는 뷰 컨트롤러
+ */
 class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    @IBOutlet var tabButtonList:[UIButton] = []
-    var currentTabBtn:UIButton?
-    var pageController:UIPageViewController?
+    @IBOutlet var tabButtonList:[UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
+    var currentTabBtn:UIButton? // 현재 등록된 탭 버튼
+    var pageController:UIPageViewController? // 페이지 컨트롤러
     
     lazy var viewControllerList:[UIViewController] = {
         let storyBoard = UIStoryboard(name:"FindMerchantPageView", bundle:Bundle.main)
@@ -94,6 +98,7 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
         refreshTabBtn(selectBtn.tag-1)
     }
     
+    // 상단 탭 버튼 리프레시
     func refreshTabBtn(_ index:Int) {
         guard index < tabButtonList.count  && index > -1 else {
             return

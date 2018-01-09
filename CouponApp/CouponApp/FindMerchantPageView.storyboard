@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,7 +14,7 @@
         <scene sceneID="vC5-47-s4y">
             <objects>
                 <tableViewController storyboardIdentifier="publicMerchantTableView" id="zKY-F5-kDc" customClass="PublicMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qel-Gf-AUi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qel-Gf-AUi" userLabel="PublicMerchantTableView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -22,10 +22,16 @@
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicMerchantTableViewCell" rowHeight="99" id="dPv-J1-g9r" customClass="PublicMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="99"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPv-J1-g9r" id="WNr-Sl-ii5">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPv-J1-g9r" id="WNr-Sl-ii5" userLabel="PublicMerchantView">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vy-qW-5zY" userLabel="Merchant Name">
+                                            <rect key="frame" x="104" y="39" width="44.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-EM-wxh" userLabel="Logo Image">
                                             <rect key="frame" x="16" y="11" width="80" height="78"/>
                                             <constraints>
@@ -33,12 +39,6 @@
                                                 <constraint firstAttribute="height" constant="78" id="so0-kw-vbD"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vy-qW-5zY" userLabel="Merchant Name">
-                                            <rect key="frame" x="104" y="39" width="44.5" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="pdy-EM-wxh" firstAttribute="centerY" secondItem="WNr-Sl-ii5" secondAttribute="centerY" id="f1m-XG-lJg"/>
@@ -50,6 +50,7 @@
                                 <connections>
                                     <outlet property="logoImage" destination="pdy-EM-wxh" id="nYE-By-3mu"/>
                                     <outlet property="merchantName" destination="0Vy-qW-5zY" id="5xe-zm-sjk"/>
+                                    <segue destination="4XN-qw-6h7" kind="show" id="y4h-QD-Rha"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -63,22 +64,66 @@
             </objects>
             <point key="canvasLocation" x="181.59999999999999" y="1218.440779610195"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="ECZ-BM-4Hx">
+            <objects>
+                <viewController id="4XN-qw-6h7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pQg-lB-1YC"/>
+                        <viewControllerLayoutGuide type="bottom" id="1EK-U3-Ssr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TUy-PU-3ok">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXE-Xi-3Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1116" y="1499"/>
+        </scene>
         <!--Near Merchant Table View Controller-->
         <scene sceneID="DOc-lm-laX">
             <objects>
                 <tableViewController storyboardIdentifier="nearMerchantTableView" id="ArU-l8-lU0" customClass="NearMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="74b-L9-GRv">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="74b-L9-GRv" userLabel="NearMerchantTableView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hXS-vL-b4N">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NearMerchantTableViewCell" rowHeight="100" id="hXS-vL-b4N" customClass="NearMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hXS-vL-b4N" id="2vf-x8-HDW">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hXS-vL-b4N" id="2vf-x8-HDW" userLabel="NearMerchantView">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="OqF-NN-YGJ">
+                                            <rect key="frame" x="16" y="11" width="80" height="78"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="b3S-0A-Avi"/>
+                                                <constraint firstAttribute="height" constant="78" id="cSd-67-s5k"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pt-bK-td3">
+                                            <rect key="frame" x="104" y="40" width="44.5" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OqF-NN-YGJ" firstAttribute="centerY" secondItem="2vf-x8-HDW" secondAttribute="centerY" id="Uq9-jQ-gOs"/>
+                                        <constraint firstItem="3Pt-bK-td3" firstAttribute="leading" secondItem="OqF-NN-YGJ" secondAttribute="trailing" constant="8" id="WbY-Gq-kNz"/>
+                                        <constraint firstItem="OqF-NN-YGJ" firstAttribute="leading" secondItem="2vf-x8-HDW" secondAttribute="leadingMargin" id="do1-6y-jAO"/>
+                                        <constraint firstItem="3Pt-bK-td3" firstAttribute="centerY" secondItem="2vf-x8-HDW" secondAttribute="centerY" id="thS-zZ-Agt"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="logoImage" destination="OqF-NN-YGJ" id="Vf4-5s-YRa"/>
+                                    <outlet property="merchantName" destination="3Pt-bK-td3" id="HYR-bf-7D5"/>
+                                    <segue destination="4XN-qw-6h7" kind="show" id="051-ia-Wp6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -89,10 +134,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hzX-e2-zgh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1052" y="1219"/>
+            <point key="canvasLocation" x="181.59999999999999" y="1912.8935532233884"/>
         </scene>
     </scenes>
     <resources>
         <image name="starbuck" width="930" height="946"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="y4h-QD-Rha"/>
+    </inferredMetricsTieBreakers>
 </document>

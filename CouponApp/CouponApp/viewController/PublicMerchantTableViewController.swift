@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+     전체 가맹점 테이블 뷰 컨트롤러
+ */
 class PublicMerchantTableViewController: UITableViewController {
     
     lazy var singleton:CouponSignleton = {

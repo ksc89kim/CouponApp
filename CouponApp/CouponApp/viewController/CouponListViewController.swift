@@ -7,6 +7,12 @@
 //
 
 import UIKit
+
+/*
+     쿠폰 리스트 뷰 컨트롤러
+     - 현재 가지고 있는 쿠폰 갯수와, 채울 수 있는 최대 쿠폰 갯수를 보여주는 뷰 컨트롤러
+     - 쿠폰 소진하기 및 쿠폰 요청하기 기능이 있음.
+ */
 class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var myCollectionView: UICollectionView!
@@ -42,6 +48,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
+    // 쿠폰 요청하기
     @IBAction func clickRequestCoupon(_ sender: Any) {
         let couponCount = (userMerchantData?.couponCount)!;
         let maxCount = (merchantData?.maxCouponCount)!;
@@ -59,6 +66,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // 쿠폰 사용하기
     @IBAction func clickUseCopon(_ sender: Any) {
         let couponCount = (userMerchantData?.couponCount)!;
         let maxCount = (merchantData?.maxCouponCount)!;
@@ -76,7 +84,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
-    
+    // 경고 팝업창
     func printAlert(title:String, message:String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -92,11 +100,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         // Pass the selected object to the new view controller.
     }
     */
-        
-    /*
-        UICollectionViewDataSource method
-    */
-        
+    
+     // MARK: -  UICollectionViewDataSource method
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (merchantData?.maxCouponCount)!
     }

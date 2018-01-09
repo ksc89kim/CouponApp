@@ -8,8 +8,15 @@
 
 import UIKit
 
+/*
+     주변 가맹점 테이블 뷰 컨트롤러
+ */
 class NearMerchantTableViewController: UITableViewController {
-
+    
+    lazy var singleton:CouponSignleton = {
+        return CouponSignleton.sharedInstance
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,23 +36,25 @@ class NearMerchantTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return (singleton.merchantList?.count)!
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NearMerchantTableViewCell", for: indexPath) as! NearMerchantTableViewCell
+        let merchantModel =  singleton.merchantList![indexPath.row]
+        cell.merchantName.text = merchantModel?.name
+        cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     /*
     // Override to support conditional editing of the table view.

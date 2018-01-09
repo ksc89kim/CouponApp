@@ -8,9 +8,13 @@
 
 import UIKit
 
+/*
+     회원 가맹점 테이블 뷰
+     - 현재 회원이 등록한 가맹점을 보여주는 테이블 뷰 컨트롤러
+ */
 class UserMerchantTableViewController: UITableViewController {
-    var userCouponList:[UserCouponModel?]?
-    lazy var singleton:CouponSignleton = {
+    var userCouponList:[UserCouponModel?]? // 회원 쿠폰 정보
+    lazy var singleton:CouponSignleton = {  // 쿠폰 싱글톤
         return CouponSignleton.sharedInstance
     }()
     

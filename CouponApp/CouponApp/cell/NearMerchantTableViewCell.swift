@@ -1,18 +1,18 @@
 //
-//  PublicMerchantTableViewCell.swift
+//  NearMerchantTableViewCell.swift
 //  CouponApp
 //
-//  Created by kim sunchul on 2017. 12. 31..
-//  Copyright © 2017년 kim sunchul. All rights reserved.
+//  Created by 벨소프트 on 2018. 1. 9..
+//  Copyright © 2018년 kim sunchul. All rights reserved.
 //
 
 import UIKit
 
-//전체 가맹점 테이블 뷰 셀 
-class PublicMerchantTableViewCell: UITableViewCell {
+//근처 가맹점 테이블 뷰 셀 
+class NearMerchantTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var merchantName: UILabel!   //가맹점 이름
     @IBOutlet weak var logoImage: UIImageView!  //로고 이미지
+    @IBOutlet weak var merchantName: UILabel!   //가맹점 이미지
     
     override func awakeFromNib() {
         super.awakeFromNib()
