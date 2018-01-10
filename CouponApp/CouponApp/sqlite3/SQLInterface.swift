@@ -82,19 +82,25 @@ class SQLInterface {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         var merchatList:[MerchantModel?]? =  [MerchantModel]()
-        let query = "select idx,name,content,max_coupon_count, image_url from merchant"
+        let query = "select idx,name,content,max_coupon_count, image_url, latitude, longitude from merchant"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 0)
                 let name = sqlite3_column_text(stmt, 1)
+                let content = sqlite3_column_text(stmt, 2)
                 let maxCouponCount:Int32 = sqlite3_column_int(stmt, 3)
                 let imageUrl = sqlite3_column_text(stmt, 4)
+                let latitude = sqlite3_column_double(stmt, 5)
+                let longitude = sqlite3_column_double(stmt, 6)
                 
                 var merchantModel:MerchantModel = MerchantModel()
                 merchantModel.merchantId = Int(merchantIdx)
                 merchantModel.name = String(cString: name!)
+                merchantModel.content = String(cString: content!)
                 merchantModel.maxCouponCount = Int(maxCouponCount)
                 merchantModel.logoImageUrl = String(cString:imageUrl!)
+                merchantModel.latitude = latitude
+                merchantModel.longitude = longitude
                 merchatList?.append(merchantModel)
             }
         } else {

@@ -19,7 +19,7 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
     var pageController:UIPageViewController? // 페이지 컨트롤러
     
     lazy var viewControllerList:[UIViewController] = {
-        let storyBoard = UIStoryboard(name:"FindMerchantPageView", bundle:Bundle.main)
+        let storyBoard = UIStoryboard(name:"Merchant", bundle:Bundle.main)
         let publicMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "publicMerchantTableView")
         let nearMerchantTableViewController = storyBoard.instantiateViewController(withIdentifier: "nearMerchantTableView")
         return [nearMerchantTableViewController,publicMerchantTableViewController]

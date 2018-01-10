@@ -50,7 +50,7 @@
                                 <connections>
                                     <outlet property="logoImage" destination="pdy-EM-wxh" id="nYE-By-3mu"/>
                                     <outlet property="merchantName" destination="0Vy-qW-5zY" id="5xe-zm-sjk"/>
-                                    <segue destination="4XN-qw-6h7" kind="show" id="y4h-QD-Rha"/>
+                                    <segue destination="4XN-qw-6h7" kind="show" identifier="showDetailMerchantView1" id="y4h-QD-Rha"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,23 +64,79 @@
             </objects>
             <point key="canvasLocation" x="181.59999999999999" y="1218.440779610195"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Merchant View Controller-->
         <scene sceneID="ECZ-BM-4Hx">
             <objects>
-                <viewController id="4XN-qw-6h7" sceneMemberID="viewController">
+                <viewController id="4XN-qw-6h7" customClass="DetailMerchantViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pQg-lB-1YC"/>
                         <viewControllerLayoutGuide type="bottom" id="1EK-U3-Ssr"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="TUy-PU-3ok">
+                    <view key="view" contentMode="scaleToFill" id="TUy-PU-3ok" userLabel="DetailMerchantVIew">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-l2-odD" userLabel="Logo Image">
+                                <rect key="frame" x="87" y="94" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="lPG-wP-Ija"/>
+                                    <constraint firstAttribute="width" constant="200" id="xkq-Sv-rMJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 샾" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymn-at-zkT" userLabel="Merchant Name">
+                                <rect key="frame" x="145.5" y="28" width="84.5" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="9Mn-gL-tft"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-IV-EVO" userLabel="Merchant Content">
+                                <rect key="frame" x="16" y="323" width="343" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="lPz-yB-3o0"/>
+                                </constraints>
+                                <string key="text">"커피 이상의 특별한 경험을 소개합니다.”
+세계인들의 생활 속에 스며들어 전 세계의 커피 문화를 선도하고 있는 스타벅스가 일상을 풍요롭게 하는 제3의 공간으로서 
+국내에서도 지역사회 속에서 고객 과 함께하며 새로운 커피문화를 정착시키고 있습니다.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-kX-ljw">
+                                <rect key="frame" x="16" y="462" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="추가하기"/>
+                                <connections>
+                                    <action selector="clickAction:" destination="4XN-qw-6h7" eventType="touchUpInside" id="FbI-bl-WWn"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="trailing" secondItem="TUy-PU-3ok" secondAttribute="trailingMargin" id="058-x5-oq5"/>
+                            <constraint firstItem="qPT-l2-odD" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="HgO-Ma-ECH"/>
+                            <constraint firstItem="sHW-IV-EVO" firstAttribute="top" secondItem="qPT-l2-odD" secondAttribute="bottom" constant="29" id="Ncw-f9-AMD"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="top" secondItem="pQg-lB-1YC" secondAttribute="bottom" constant="8" id="Tjz-tV-c69"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="17" id="Wb9-vD-y9G"/>
+                            <constraint firstItem="qPT-l2-odD" firstAttribute="top" secondItem="ymn-at-zkT" secondAttribute="bottom" constant="8" id="fnE-Wf-CYq"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="leading" secondItem="TUy-PU-3ok" secondAttribute="leadingMargin" id="gG8-65-G4K"/>
+                            <constraint firstItem="sHW-IV-EVO" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="ppl-zd-m9b"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="xfG-hx-AqR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="ghg-kX-ljw" id="Uu8-IK-wIf"/>
+                        <outlet property="logoImage" destination="qPT-l2-odD" id="j2k-JH-XOf"/>
+                        <outlet property="merchantContent" destination="sHW-IV-EVO" id="5kW-xk-eBy"/>
+                        <outlet property="merchantName" destination="ymn-at-zkT" id="csS-cZ-bmg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXE-Xi-3Cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1116" y="1499"/>
+            <point key="canvasLocation" x="1116" y="1498.2008995502249"/>
         </scene>
         <!--Near Merchant Table View Controller-->
         <scene sceneID="DOc-lm-laX">
@@ -122,7 +178,7 @@
                                 <connections>
                                     <outlet property="logoImage" destination="OqF-NN-YGJ" id="Vf4-5s-YRa"/>
                                     <outlet property="merchantName" destination="3Pt-bK-td3" id="HYR-bf-7D5"/>
-                                    <segue destination="4XN-qw-6h7" kind="show" id="051-ia-Wp6"/>
+                                    <segue destination="4XN-qw-6h7" kind="show" identifier="showDetailMerchantView2" id="051-ia-Wp6"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -141,6 +197,6 @@
         <image name="starbuck" width="930" height="946"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="y4h-QD-Rha"/>
+        <segue reference="051-ia-Wp6"/>
     </inferredMetricsTieBreakers>
 </document>

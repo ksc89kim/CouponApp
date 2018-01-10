@@ -68,7 +68,7 @@ class UserMerchantTableViewController: UITableViewController {
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // CouponListViewController -> 데이터 전달 (회원 쿠폰,
+        // CouponListViewController -> 데이터 전달
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]

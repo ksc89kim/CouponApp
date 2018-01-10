@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="-844.79999999999995" y="129.53523238380811"/>
         </scene>
-        <!--회원 가맹점 리스트-->
+        <!--회원 가맹점 목록-->
         <scene sceneID="Tc3-e7-rRw">
             <objects>
                 <tableViewController id="Egp-UQ-YAn" customClass="UserMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,7 +159,7 @@
                             <outlet property="delegate" destination="Egp-UQ-YAn" id="RXY-ao-RRV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="회원 가맹점 리스트" id="ddT-fr-j4z"/>
+                    <navigationItem key="navigationItem" title="회원 가맹점 목록" id="ddT-fr-j4z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
