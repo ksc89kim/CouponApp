@@ -63,7 +63,6 @@ class SQLInterface {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
-        print(query)
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success update")
@@ -74,6 +73,33 @@ class SQLInterface {
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print(errorMessage)
+        }
+    }
+    
+    func deleteCounpon(_  userId:Int, _ merchantId:Int) throws {
+        
+    }
+    
+    //회원 가맹점인지 여부
+    func isUserMerchant(_  userId:Int, _ merchantId:Int) throws -> Bool {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        let query = "select COUNT(idx) from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
+        var count = 0
+        
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while( sqlite3_step(stmt) == SQLITE_ROW )
+            {
+                count = Int(sqlite3_column_int(stmt, 0))
+            }
+            if count > 0 {
+                return true
+            } else {
+                return false
+            }
+            
+        } else {
+            return false
         }
     }
     
@@ -110,6 +136,7 @@ class SQLInterface {
         return merchatList
     }
     
+
     
     /*
     func insert_value(value: Int32) throws {

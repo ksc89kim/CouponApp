@@ -21,7 +21,7 @@ class DetailMerchantViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
     
     var merchantModel:MerchantModel?
-    
+    var isUserMerchant:Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,18 @@ class DetailMerchantViewController: UIViewController {
             merchantName.text = merchant.name
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
+            let userId = CouponSignleton.sharedInstance.userId
+            do {
+                isUserMerchant = try SQLInterface().isUserMerchant(userId!,merchant.merchantId!)
+            } catch {
+                isUserMerchant = false
+            }
         }
-       
+        if isUserMerchant {
+            button.setTitle("삭제하기", for: .normal)
+        } else {
+            button.setTitle("추가하기", for: .normal)
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -40,7 +50,10 @@ class DetailMerchantViewController: UIViewController {
     }
     
     @IBAction func clickAction(_ sender: Any) {
-        
+        if isUserMerchant {
+        } else {
+            
+        }
     }
     /*
     // MARK: - Navigation

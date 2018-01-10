@@ -32,8 +32,9 @@ class UserMerchantTableViewController: UITableViewController {
     
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
+        let userId = CouponSignleton.sharedInstance.userId
         do {
-            self.userCouponList = try SQLInterface().selectUserCouponData(1)
+            self.userCouponList = try SQLInterface().selectUserCouponData(userId!)
         } catch {
             print(error)
         }

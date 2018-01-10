@@ -57,8 +57,9 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         userMerchantData?.couponCount = couponCount + 1
+        let userId = CouponSignleton.sharedInstance.userId
         do {
-            try SQLInterface().updateCouponCount(1,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
+            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
                 myCollectionView.reloadData()
             })
         } catch {
@@ -75,8 +76,9 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         userMerchantData?.couponCount = 0
+        let userId = CouponSignleton.sharedInstance.userId
         do {
-            try SQLInterface().updateCouponCount(1,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
+            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: {
                 myCollectionView.reloadData()
             })
         } catch {
