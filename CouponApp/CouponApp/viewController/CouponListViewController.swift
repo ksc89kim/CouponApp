@@ -110,14 +110,16 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
-        let couponView:CouponView = cell.viewWithTag(500) as! CouponView // tag에 붙은 CouponView를 가지고 온다.
-        if indexPath.row < (userMerchantData?.couponCount)! {
-            couponView.isUseCoupone = true // 쿠폰 활성화
-        } else {
-            couponView.isUseCoupone = false // 쿠폰 비활성화
+        let couponDrawView:CouponDrawView = cell.viewWithTag(500) as! CouponDrawView // tag에 붙은 CouponDrawView를 가지고 온다.
+        let couponImageView:CouponImageView = cell.viewWithTag(501) as! CouponImageView // tag에 붙은 CouponImageView를 가지고 온다.
+        couponDrawView.frame.size = cellSize // 사이즈 재설정
+        if indexPath.row < (userMerchantData?.couponCount)! { // 쿠폰 활성화
+            couponDrawView.refreshCoupon(couponStatus: true)
+            couponImageView.refreshCoupon(couponStatus: true)
+        } else { // 쿠폰 비활성화
+            couponDrawView.refreshCoupon(couponStatus: false)
+            couponImageView.refreshCoupon(couponStatus: false)
         }
-        couponView.frame.size = cellSize // 사이즈 재설정
-        couponView.setNeedsDisplay()
         return cell
     }
     

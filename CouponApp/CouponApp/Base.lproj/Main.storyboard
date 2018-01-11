@@ -109,7 +109,7 @@
             </objects>
             <point key="canvasLocation" x="-844.79999999999995" y="129.53523238380811"/>
         </scene>
-        <!--회원 가맹점 목록-->
+        <!--회원 쿠폰 목록-->
         <scene sceneID="Tc3-e7-rRw">
             <objects>
                 <tableViewController id="Egp-UQ-YAn" customClass="UserMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,7 +159,7 @@
                             <outlet property="delegate" destination="Egp-UQ-YAn" id="RXY-ao-RRV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="회원 가맹점 목록" id="ddT-fr-j4z"/>
+                    <navigationItem key="navigationItem" title="회원 쿠폰 목록" id="ddT-fr-j4z"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,9 +194,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view tag="500" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y87-c8-FqX" customClass="CouponView" customModule="CouponApp" customModuleProvider="target">
+                                                <view tag="500" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y87-c8-FqX" customClass="CouponDrawView" customModule="CouponApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <color key="backgroundColor" red="1" green="0.99461436960000005" blue="0.91202008450000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="1" green="0.99607843137254903" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="Y87-c8-FqX" secondAttribute="height" multiplier="1:1" id="NcZ-Gz-mZe"/>
                                                     </constraints>
@@ -215,14 +215,27 @@
                                                         <userDefinedRuntimeAttribute type="color" keyPath="checkLineColor">
                                                             <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="checkLineWidth">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <view hidden="YES" tag="501" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emY-kK-05F" customClass="CouponImageView" customModule="CouponApp" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <color key="backgroundColor" red="1" green="0.99607843137254903" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="emY-kK-05F" secondAttribute="height" multiplier="1:1" id="OY0-pD-56p"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstItem="emY-kK-05F" firstAttribute="leading" secondItem="CgL-Z5-cmR" secondAttribute="leading" id="DOV-LF-Or0"/>
+                                            <constraint firstAttribute="trailing" secondItem="emY-kK-05F" secondAttribute="trailing" id="HEW-8o-GPk"/>
                                             <constraint firstAttribute="trailing" secondItem="Y87-c8-FqX" secondAttribute="trailing" id="YfK-2J-7PL"/>
                                             <constraint firstItem="Y87-c8-FqX" firstAttribute="leading" secondItem="CgL-Z5-cmR" secondAttribute="leading" id="efK-LM-7FZ"/>
                                             <constraint firstItem="Y87-c8-FqX" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="ncr-aA-0iX"/>
+                                            <constraint firstItem="emY-kK-05F" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="w3w-Mv-HCa"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>

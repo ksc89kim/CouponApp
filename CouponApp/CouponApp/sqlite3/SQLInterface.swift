@@ -76,17 +76,48 @@ class SQLInterface {
         }
     }
     
-    func deleteCounpon(_  userId:Int, _ merchantId:Int) throws {
-        
+    //회원 쿠폰 삭제
+    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: () -> Void) throws {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            if sqlite3_step(stmt) == SQLITE_DONE {
+                print("Success delete")
+                complete()
+            } else {
+                print("Fail delete")
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
     }
     
-    //회원 가맹점인지 여부
-    func isUserMerchant(_  userId:Int, _ merchantId:Int) throws -> Bool {
+    //회원 쿠폰 등록
+    func insertCoupon(_  userId:Int, _ merchantId:Int, complete: () -> Void) throws {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        let query = "insert into coupon (merchant_idx, user_idx, coupon_count) values (\(merchantId),\(userId),0)"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            if sqlite3_step(stmt) == SQLITE_DONE {
+                print("Success insert")
+                complete()
+            } else {
+                print("Fail insert")
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+    }
+    
+    //회원 쿠폰 여부
+    func isUserCoupon(_  userId:Int, _ merchantId:Int) throws -> Bool {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "select COUNT(idx) from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
         var count = 0
-        
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             while( sqlite3_step(stmt) == SQLITE_ROW )
             {
@@ -94,13 +125,9 @@ class SQLInterface {
             }
             if count > 0 {
                 return true
-            } else {
-                return false
             }
-            
-        } else {
-            return false
         }
+        return false
     }
     
     // 가맹점 데이터 가져오기
@@ -135,34 +162,5 @@ class SQLInterface {
         }
         return merchatList
     }
-    
 
-    
-    /*
-    func insert_value(value: Int32) throws {
-        defer { sqlite3_finalize(stmt) }
-        let query = "INSERT INTO test (id) VALUES (?)"
-        if sqlite3_prepare_v2(db, query, -1, &stmt, nil) == SQLITE_OK {
-            sqlite3_bind_int(stmt, 1, value)
-            if sqlite3_step(stmt) == SQLITE_DONE { return }
-        }
-        throw SQLError.QueryError
-     }
- 
- 
-    func get_values() throws -> [Int32] {
-        guard db != nil else { throw SQLError.ConnectionError }
-        defer { sqlite3_finalize(stmt) }
-        var result = [Int32]()
-        let query = "SELECT * FROM test"
-        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
-            while sqlite3_step(stmt) == SQLITE_ROW {
-                let i:Int32 = sqlite3_column_int(stmt, 0)
-                result.append(i)
-            }
-            return result
-        }
-        throw SQLError.QueryError
-    }
-     */
 }

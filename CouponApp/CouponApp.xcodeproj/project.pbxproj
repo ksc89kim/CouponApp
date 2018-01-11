@@ -10,7 +10,7 @@
 		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
 		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
 		590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
-		592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponView.swift */; };
+		592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */; };
 		594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A2A7D1FFBAA94005F3236 /* NearMerchantTableViewController.swift */; };
 		594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A56391FD814AF005EAA9C /* UserCouponModel.swift */; };
 		594A563C1FD814EC005EAA9C /* MerchantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A563B1FD814EC005EAA9C /* MerchantModel.swift */; };
@@ -34,6 +34,8 @@
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */; };
 		CC62DF502005D24300CCED88 /* DetailMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */; };
+		CC81729C200721EC0073E690 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729B200721EC0073E690 /* CouponView.swift */; };
+		CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729D2007238A0073E690 /* CouponImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +59,7 @@
 		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		590D16E4200202EF008FBA02 /* CouponSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSingleton.swift; sourceTree = "<group>"; };
-		592FE2151FCAD9FB00C07C84 /* CouponView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponDrawView.swift; sourceTree = "<group>"; };
 		594A2A7D1FFBAA94005F3236 /* NearMerchantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewController.swift; sourceTree = "<group>"; };
 		594A56391FD814AF005EAA9C /* UserCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCouponModel.swift; sourceTree = "<group>"; };
 		594A563B1FD814EC005EAA9C /* MerchantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -92,6 +94,8 @@
 		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMerchantViewController.swift; sourceTree = "<group>"; };
+		CC81729B200721EC0073E690 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		CC81729D2007238A0073E690 /* CouponImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponImageView.swift; sourceTree = "<group>"; };
 		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +151,9 @@
 		592FE2141FCAD9FB00C07C84 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				592FE2151FCAD9FB00C07C84 /* CouponView.swift */,
+				CC81729B200721EC0073E690 /* CouponView.swift */,
+				592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */,
+				CC81729D2007238A0073E690 /* CouponImageView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -567,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */,
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				594A563C1FD814EC005EAA9C /* MerchantModel.swift in Sources */,
 				599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */,
@@ -576,9 +583,10 @@
 				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
 				596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */,
 				594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */,
-				592FE2161FCAD9FB00C07C84 /* CouponView.swift in Sources */,
+				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
 				59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
+				CC81729C200721EC0073E690 /* CouponView.swift in Sources */,
 				CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */,
 				599AAC001FFA290300B3C246 /* PublicMerchantTableViewController.swift in Sources */,

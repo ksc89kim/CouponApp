@@ -22,6 +22,12 @@ class UserMerchantTableViewController: UITableViewController {
         super.viewDidLoad()
         setData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setData()
+        self.tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -79,8 +85,6 @@ class UserMerchantTableViewController: UITableViewController {
     
     @IBAction func unwindToUserMercahntTableView(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindUserMerchant" {
-            setData()
-            self.tableView.reloadData()
         }
     }
 }
