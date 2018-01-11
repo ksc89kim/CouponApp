@@ -17,7 +17,7 @@ class CouponDrawView: CouponView {
     @IBInspectable var ringThickness: CGFloat = 4 // 테두리 굵기
     @IBInspectable var isRing: Bool = true // 테두리 여부
     @IBInspectable var checkLineWidth: CGFloat = 4 // 쿠폰 체크박스 굵기
-    @IBInspectable var checkLineColor: UIColor = UIColor.orange // 쿠폰 체크 박스 색상
+    @IBInspectable var checkLineColor: UIColor = .orange // 쿠폰 체크 박스 색상
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
