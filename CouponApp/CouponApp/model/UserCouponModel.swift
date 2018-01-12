@@ -8,7 +8,7 @@
 
 import Foundation
 
-/* 회원 가맹점 데이터 */
+/* 회원 쿠폰 데이터 */
 
 struct UserCouponModel {
     var couponCount:Int? // 적립된 쿠폰 갯수

@@ -10,28 +10,29 @@ import UIKit
 
 // 쿠폰 이미지
 
-@IBDesignable
 class CouponDrawView: CouponView {
-    @IBInspectable var circleColor: UIColor = UIColor.blue // 원 색상
-    @IBInspectable var ringColor: UIColor = UIColor.orange // 테두리 색상
-    @IBInspectable var ringThickness: CGFloat = 4 // 테두리 굵기
-    @IBInspectable var isRing: Bool = true // 테두리 여부
-    @IBInspectable var checkLineWidth: CGFloat = 4 // 쿠폰 체크박스 굵기
-    @IBInspectable var checkLineColor: UIColor = .orange // 쿠폰 체크 박스 색상
+    var model:DrawCouponModel?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        model = DrawCouponModel()
+        //custom logic goes here
+    }
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         guard !isImageCoupon else { return }
+        guard model != nil else { return }
         
         // Drawing code
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = dotPath.cgPath
-        shapeLayer.fillColor = circleColor.cgColor
+        shapeLayer.fillColor = model?.circleColor.cgColor
         layer.addSublayer(shapeLayer)
         
-        if (isRing) { drawRingFittingInsideView(rect) }
+        if (model?.isRing)! { drawRingFittingInsideView(rect) }
         if (isUseCoupone) { drawCheckFittingInsideView(rect) }
     }
     
@@ -48,14 +49,14 @@ class CouponDrawView: CouponView {
     
     // 링 그리기
     func drawRingFittingInsideView(_ rect: CGRect) {
-        let hw:CGFloat = ringThickness/2
+        let hw:CGFloat = (model?.ringThickness)!/2
         let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: hw,dy: hw) )
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = ringColor.cgColor
-        shapeLayer.lineWidth = ringThickness
+        shapeLayer.strokeColor = model?.ringColor.cgColor
+        shapeLayer.lineWidth = (model?.ringThickness)!
         layer.addSublayer(shapeLayer)
     }
     
@@ -81,8 +82,8 @@ class CouponDrawView: CouponView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = checkLineColor.cgColor
-        shapeLayer.lineWidth = checkLineWidth
+        shapeLayer.strokeColor = model?.checkLineColor.cgColor
+        shapeLayer.lineWidth = (model?.checkLineWidth)!
         layer.addSublayer(shapeLayer)
     }
     

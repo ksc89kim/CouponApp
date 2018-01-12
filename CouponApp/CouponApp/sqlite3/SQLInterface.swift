@@ -6,7 +6,7 @@
 //  Copyright © 2017년 kim sunchul. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SQLError: Error {
     case connectionError
@@ -135,22 +135,21 @@ class SQLInterface {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         var merchatList:[MerchantModel?]? =  [MerchantModel]()
-        let query = "select idx,name,content,max_coupon_count, image_url, latitude, longitude from merchant"
+        let query = "select idx,name,content, image_url, latitude, longitude, is_couponImage from merchant"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 0)
                 let name = sqlite3_column_text(stmt, 1)
                 let content = sqlite3_column_text(stmt, 2)
-                let maxCouponCount:Int32 = sqlite3_column_int(stmt, 3)
-                let imageUrl = sqlite3_column_text(stmt, 4)
-                let latitude = sqlite3_column_double(stmt, 5)
-                let longitude = sqlite3_column_double(stmt, 6)
-                
+                let imageUrl = sqlite3_column_text(stmt, 3)
+                let latitude = sqlite3_column_double(stmt, 4)
+                let longitude = sqlite3_column_double(stmt, 5)
+                let isCouponImage = sqlite3_column_int(stmt, 6)
                 var merchantModel:MerchantModel = MerchantModel()
                 merchantModel.merchantId = Int(merchantIdx)
                 merchantModel.name = String(cString: name!)
                 merchantModel.content = String(cString: content!)
-                merchantModel.maxCouponCount = Int(maxCouponCount)
+                merchantModel.isCouponImage = (isCouponImage > 0)
                 merchantModel.logoImageUrl = String(cString:imageUrl!)
                 merchantModel.latitude = latitude
                 merchantModel.longitude = longitude
@@ -161,6 +160,44 @@ class SQLInterface {
             print(errorMessage)
         }
         return merchatList
+    }
+    
+    // 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
+    func selecDrawCouponData(merchantId:Int) throws -> [DrawCouponModel?]? {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        var drawCouponList:[DrawCouponModel?]? =  [DrawCouponModel]()
+        var query = "select merchant_idx, coupon_idx, circle_color, ring_color,ring_thickness, is_ring, checkline_width, checkline_color, is_event"
+        query.append(" from merchant_draw_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let merchantIdx:Int32 = sqlite3_column_int(stmt, 0)
+                let couponIdx:Int32 = sqlite3_column_int(stmt, 1)
+                let circleColor:String =  String(cString:sqlite3_column_text(stmt, 2))
+                let ringColor:String = String(cString:sqlite3_column_text(stmt, 3))
+                let ringThickness:CGFloat = CGFloat(sqlite3_column_double(stmt, 4))
+                let isRing:Bool = sqlite3_column_int(stmt, 5) > 0
+                let checkLineWidth:CGFloat = CGFloat(sqlite3_column_double(stmt, 6))
+                let checkLineColor:String = String(cString:sqlite3_column_text(stmt, 7))
+                let isEvent:Bool = sqlite3_column_int(stmt, 7) > 0
+                
+                var drawCouponModel:DrawCouponModel = DrawCouponModel()
+                drawCouponModel.merchantId = Int(merchantIdx)
+                drawCouponModel.couponId = Int(couponIdx)
+                drawCouponModel.circleColor = UIColor.hexStringToUIColor(hex: circleColor)
+                drawCouponModel.ringColor = UIColor.hexStringToUIColor(hex: ringColor)
+                drawCouponModel.ringThickness = ringThickness
+                drawCouponModel.isRing = isRing
+                drawCouponModel.checkLineColor = UIColor.hexStringToUIColor(hex: checkLineColor)
+                drawCouponModel.checkLineWidth = checkLineWidth
+                drawCouponModel.isEvent = isEvent
+                drawCouponList?.append(drawCouponModel)
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+        return drawCouponList
     }
 
 }

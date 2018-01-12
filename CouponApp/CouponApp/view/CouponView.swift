@@ -9,7 +9,7 @@
 import UIKit
 
 class CouponView: UIView {
-    @IBInspectable var isUseCoupone: Bool = true // 쿠폰 체크박스 여부
+    var isUseCoupone:Bool = true // 쿠폰 체크박스 여부
     var isImageCoupon:Bool = false // 이미지 쿠폰 존재 여부
     
     func refreshCoupon(couponStatus:Bool) {

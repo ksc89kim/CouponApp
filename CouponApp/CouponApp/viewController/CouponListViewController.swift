@@ -50,8 +50,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     // 쿠폰 요청하기
     @IBAction func clickRequestCoupon(_ sender: Any) {
-        let couponCount = (userMerchantData?.couponCount)!;
-        let maxCount = (merchantData?.maxCouponCount)!;
+        let couponCount = (userMerchantData?.couponCount)!
+        var maxCount = 0
+        if (merchantData?.isCouponImage)! {
+        } else {
+            maxCount = (merchantData?.drawCouponList?.count)!
+        }
         guard couponCount < maxCount else {
             printAlert(title: "쿠폰 최대치!", message: "모든 쿠폰을 모았습니다.\n쿠폰을 소진해주세요.")
             return
@@ -70,7 +74,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     // 쿠폰 사용하기
     @IBAction func clickUseCopon(_ sender: Any) {
         let couponCount = (userMerchantData?.couponCount)!;
-        let maxCount = (merchantData?.maxCouponCount)!;
+        var maxCount = 0
+        if (merchantData?.isCouponImage)! {
+        } else {
+            maxCount = (merchantData?.drawCouponList?.count)!
+        }
+        
         guard couponCount >= maxCount else {
             printAlert(title: "쿠폰 부족!", message: "쿠폰이 부족합니다.\n쿠폰을 더 모아주세요.")
             return
@@ -105,14 +114,25 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
      // MARK: -  UICollectionViewDataSource method
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (merchantData?.maxCouponCount)!
+        if (merchantData?.isCouponImage)! {
+            return 0
+        } else {
+             return (merchantData?.drawCouponList?.count)!
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
         let couponDrawView:CouponDrawView = cell.viewWithTag(500) as! CouponDrawView // tag에 붙은 CouponDrawView를 가지고 온다.
         let couponImageView:CouponImageView = cell.viewWithTag(501) as! CouponImageView // tag에 붙은 CouponImageView를 가지고 온다.
-        couponDrawView.frame.size = cellSize // 사이즈 재설정
+        
+        if (merchantData?.isCouponImage)! {
+            
+        } else {
+            couponDrawView.frame.size = cellSize // 사이즈 재설정
+            couponDrawView.model = merchantData?.drawCouponList![indexPath.row]
+        }
+        
         if indexPath.row < (userMerchantData?.couponCount)! { // 쿠폰 활성화
             couponDrawView.refreshCoupon(couponStatus: true)
             couponImageView.refreshCoupon(couponStatus: true)

@@ -18,6 +18,9 @@ class CouponSignleton {
     func createMerchantList() {
         do {
             CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
+            for merchantModel in merchantList! {
+                merchantModel?.drawCouponList = try SQLInterface().selecDrawCouponData(merchantId: (merchantModel?.merchantId)!)
+            }
         } catch {
             print(error)
         }
