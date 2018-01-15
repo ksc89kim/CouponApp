@@ -145,7 +145,7 @@ class SQLInterface {
                 let latitude = sqlite3_column_double(stmt, 4)
                 let longitude = sqlite3_column_double(stmt, 5)
                 let isCouponImage = sqlite3_column_int(stmt, 6)
-                var merchantModel:MerchantModel = MerchantModel()
+                let merchantModel:MerchantModel = MerchantModel()
                 merchantModel.merchantId = Int(merchantIdx)
                 merchantModel.name = String(cString: name!)
                 merchantModel.content = String(cString: content!)
@@ -163,7 +163,7 @@ class SQLInterface {
     }
     
     // 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
-    func selecDrawCouponData(merchantId:Int) throws -> [DrawCouponModel?]? {
+    func selectDrawCouponData(merchantId:Int) throws -> [DrawCouponModel?]? {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         var drawCouponList:[DrawCouponModel?]? =  [DrawCouponModel]()
@@ -198,6 +198,36 @@ class SQLInterface {
             print(errorMessage)
         }
         return drawCouponList
+    }
+    
+    // 가맹점 - 쿠폰 정보 가져오기 ( Image용 )
+    func selectImageCouponData(merchantId:Int) throws -> [ImageCouponModel?]? {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        var imageCouponList:[ImageCouponModel?]? =  [ImageCouponModel]()
+        var query = "select merchant_idx, coupon_idx, normal_image, select_image, is_event"
+        query.append(" from merchant_image_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                let merchantIdx:Int32 = sqlite3_column_int(stmt, 0)
+                let couponIdx:Int32 = sqlite3_column_int(stmt, 1)
+                let normalImage:String = String(cString:sqlite3_column_text(stmt, 2))
+                let selectImage:String = String(cString:sqlite3_column_text(stmt, 3))
+                let isEvent:Bool = sqlite3_column_int(stmt, 4) > 0
+                
+                var imageCouponModel:ImageCouponModel = ImageCouponModel()
+                imageCouponModel.merchantId = Int(merchantIdx)
+                imageCouponModel.normalImageString = normalImage
+                imageCouponModel.selectImageString = selectImage
+                imageCouponModel.couponId = Int(couponIdx)
+                imageCouponModel.isEvent = isEvent
+                imageCouponList?.append(imageCouponModel)
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+        return imageCouponList
     }
 
 }

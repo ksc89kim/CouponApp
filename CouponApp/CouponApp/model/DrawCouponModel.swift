@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 /* 쿠폰 그리기 데이터 */
 
 struct DrawCouponModel {

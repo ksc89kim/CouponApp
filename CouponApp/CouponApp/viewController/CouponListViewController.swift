@@ -39,6 +39,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         layout.minimumLineSpacing = 5.0
         layout.minimumInteritemSpacing = 5.0
         myCollectionView.setCollectionViewLayout(layout, animated: true)
+        
         myCollectionView.reloadData()
         // Do any additional setup after loading the view.
     }
@@ -53,6 +54,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let couponCount = (userMerchantData?.couponCount)!
         var maxCount = 0
         if (merchantData?.isCouponImage)! {
+            maxCount = (merchantData?.imageCouponList?.count)!
         } else {
             maxCount = (merchantData?.drawCouponList?.count)!
         }
@@ -76,6 +78,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let couponCount = (userMerchantData?.couponCount)!;
         var maxCount = 0
         if (merchantData?.isCouponImage)! {
+            maxCount = (merchantData?.imageCouponList?.count)!
         } else {
             maxCount = (merchantData?.drawCouponList?.count)!
         }
@@ -112,10 +115,10 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     }
     */
     
-     // MARK: -  UICollectionViewDataSource method
+    // MARK: -  UICollectionViewDataSource method
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (merchantData?.isCouponImage)! {
-            return 0
+            return (merchantData?.imageCouponList?.count)!
         } else {
              return (merchantData?.drawCouponList?.count)!
         }
@@ -127,10 +130,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let couponImageView:CouponImageView = cell.viewWithTag(501) as! CouponImageView // tag에 붙은 CouponImageView를 가지고 온다.
         
         if (merchantData?.isCouponImage)! {
-            
+            couponImageView.model = merchantData?.imageCouponList![indexPath.row]
+            couponImageView.isImageCoupon = true;
         } else {
             couponDrawView.frame.size = cellSize // 사이즈 재설정
             couponDrawView.model = merchantData?.drawCouponList![indexPath.row]
+            couponDrawView.isImageCoupon = false;
         }
         
         if indexPath.row < (userMerchantData?.couponCount)! { // 쿠폰 활성화

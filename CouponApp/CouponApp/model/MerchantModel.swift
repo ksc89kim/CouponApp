@@ -18,7 +18,8 @@ class MerchantModel {
     var latitude:Double? //위도
     var longitude:Double? //경도
     var isCouponImage:Bool? //쿠폰 이미지 여부
-    var drawCouponList:[DrawCouponModel?]?
+    var imageCouponList:[ImageCouponModel?]? //쿠폰 이미지 데이터
+    var drawCouponList:[DrawCouponModel?]? //쿠폰 그리기 데이터
     
     init() {
         merchantId = 0

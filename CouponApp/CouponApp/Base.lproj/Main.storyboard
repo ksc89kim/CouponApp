@@ -177,6 +177,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-S2-Wee">
+                                <rect key="frame" x="16" y="536" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="height" multiplier="343:30" id="Uvj-Wg-H9a"/>
+                                </constraints>
+                                <state key="normal" title="쿠폰 요청하기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="5Xa-5D-2Ez"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG">
+                                <rect key="frame" x="16" y="574" width="343" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="쿠폰 소진하기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="YsI-C3-eLl"/>
+                                </connections>
+                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-4f-ACv" userLabel="CouponCollectionView">
                                 <rect key="frame" x="16" y="74" width="343" height="454"/>
                                 <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -203,20 +226,32 @@
                                                 </view>
                                                 <view hidden="YES" tag="501" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emY-kK-05F" customClass="CouponImageView" customModule="CouponApp" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="normal" translatesAutoresizingMaskIntoConstraints="NO" id="tZB-9q-67b">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        </imageView>
+                                                    </subviews>
                                                     <color key="backgroundColor" red="1" green="0.99607843137254903" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="emY-kK-05F" secondAttribute="height" multiplier="1:1" id="OY0-pD-56p"/>
+                                                        <constraint firstAttribute="bottom" secondItem="tZB-9q-67b" secondAttribute="bottom" id="6AY-y3-eqI"/>
+                                                        <constraint firstItem="tZB-9q-67b" firstAttribute="leading" secondItem="emY-kK-05F" secondAttribute="leading" id="6oY-Mm-Jfx"/>
+                                                        <constraint firstItem="tZB-9q-67b" firstAttribute="top" secondItem="emY-kK-05F" secondAttribute="top" id="otJ-Rp-B7z"/>
+                                                        <constraint firstAttribute="trailing" secondItem="tZB-9q-67b" secondAttribute="trailing" id="ymV-RJ-WB9"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outlet property="couponImage" destination="tZB-9q-67b" id="eGH-Bx-RC2"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="JF7-gf-1vh" secondAttribute="trailing" id="0JP-4L-ddL"/>
-                                            <constraint firstItem="emY-kK-05F" firstAttribute="leading" secondItem="CgL-Z5-cmR" secondAttribute="leading" id="DOV-LF-Or0"/>
-                                            <constraint firstAttribute="trailing" secondItem="emY-kK-05F" secondAttribute="trailing" id="HEW-8o-GPk"/>
+                                            <constraint firstAttribute="bottom" secondItem="emY-kK-05F" secondAttribute="bottom" id="OVS-jR-hDZ"/>
+                                            <constraint firstItem="emY-kK-05F" firstAttribute="leading" secondItem="CgL-Z5-cmR" secondAttribute="leading" id="gaA-KH-yEw"/>
                                             <constraint firstItem="JF7-gf-1vh" firstAttribute="leading" secondItem="CgL-Z5-cmR" secondAttribute="leading" id="kZL-aq-huQ"/>
+                                            <constraint firstItem="emY-kK-05F" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="lM2-fp-pbL"/>
                                             <constraint firstItem="JF7-gf-1vh" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="oGI-mp-kQI"/>
-                                            <constraint firstItem="emY-kK-05F" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="w3w-Mv-HCa"/>
+                                            <constraint firstAttribute="trailing" secondItem="emY-kK-05F" secondAttribute="trailing" id="uAY-kh-skh"/>
                                         </constraints>
                                     </collectionViewCell>
                                 </cells>
@@ -225,29 +260,6 @@
                                     <outlet property="delegate" destination="zt0-fb-j4a" id="nxr-ui-qFD"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-S2-Wee">
-                                <rect key="frame" x="16" y="536" width="343" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="height" multiplier="343:30" id="Uvj-Wg-H9a"/>
-                                </constraints>
-                                <state key="normal" title="쿠폰요청하기">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="5Xa-5D-2Ez"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG">
-                                <rect key="frame" x="16" y="574" width="343" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="쿠폰 소진하기">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="YsI-C3-eLl"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -281,6 +293,24 @@
                 <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1863" y="-227"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uFP-fn-01u">
+            <objects>
+                <viewController id="TY3-Tg-h93" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pa3-Gr-Eg4"/>
+                        <viewControllerLayoutGuide type="bottom" id="HNE-X3-ti7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aOa-Hp-pCf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kqf-jT-uBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-851" y="-542"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="THt-yS-NrP">
@@ -332,6 +362,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="normal" width="133" height="96"/>
         <image name="starbuck" width="930" height="946"/>
     </resources>
 </document>

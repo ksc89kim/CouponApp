@@ -9,16 +9,24 @@
 import UIKit
 
 class CouponImageView: CouponView {
-
+    var model:ImageCouponModel?
+    @IBOutlet var couponImage:UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        //custom logic goes here
+        
+        model = ImageCouponModel()
     }
     
     override func refreshDisplay() {
         super.refreshDisplay()
         if isImageCoupon {
             self.isHidden = false
+            if isUseCoupone {
+                couponImage.image = UIImage(named: (model?.selectImageString)!)
+            } else {
+                couponImage.image = UIImage(named: (model?.normalImageString)!)
+            }
         } else {
             self.isHidden = true
         }

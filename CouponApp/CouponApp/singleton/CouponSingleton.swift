@@ -19,7 +19,12 @@ class CouponSignleton {
         do {
             CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
             for merchantModel in merchantList! {
-                merchantModel?.drawCouponList = try SQLInterface().selecDrawCouponData(merchantId: (merchantModel?.merchantId)!)
+                if (merchantModel?.isCouponImage)! {
+                    merchantModel?.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: (merchantModel?.merchantId)!)
+                } else {
+                    merchantModel?.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: (merchantModel?.merchantId)!)
+                }
+                
             }
         } catch {
             print(error)
