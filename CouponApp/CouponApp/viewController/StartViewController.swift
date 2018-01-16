@@ -46,5 +46,9 @@ class StartViewController: UIViewController {
         let initalViewController = storyBoard.instantiateInitialViewController()
         self.show(initalViewController!, sender: nil)
     }
+    
+    @IBAction func unwindToStartView(segue:UIStoryboardSegue) {
+
+    }
 
 }

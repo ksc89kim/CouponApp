@@ -36,6 +36,8 @@
 		CC047F84200C841F0070CC5D /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC047F83200C841F0070CC5D /* Start.storyboard */; };
 		CC047F86200C8A290070CC5D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* StartViewController.swift */; };
 		CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4F9200D96B600B512C0 /* RoundedButton.swift */; };
+		CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */; };
+		CC09A4FE200DBF6800B512C0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4FD200DBF6800B512C0 /* LoginViewController.swift */; };
 		CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */; };
 		CC62DF502005D24300CCED88 /* DetailMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */; };
 		CC81729C200721EC0073E690 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729B200721EC0073E690 /* CouponView.swift */; };
@@ -101,6 +103,8 @@
 		CC047F83200C841F0070CC5D /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CC047F85200C8A290070CC5D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CC09A4F9200D96B600B512C0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		CC09A4FD200DBF6800B512C0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMerchantViewController.swift; sourceTree = "<group>"; };
 		CC81729B200721EC0073E690 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
@@ -190,6 +194,8 @@
 				594A2A7D1FFBAA94005F3236 /* NearMerchantTableViewController.swift */,
 				CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */,
 				CC047F85200C8A290070CC5D /* StartViewController.swift */,
+				CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */,
+				CC09A4FD200DBF6800B512C0 /* LoginViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -609,6 +615,7 @@
 				CC88E7442008450E00F48B1C /* DrawCouponModel.swift in Sources */,
 				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
 				596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */,
+				CC09A4FE200DBF6800B512C0 /* LoginViewController.swift in Sources */,
 				594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
 				59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */,
@@ -618,6 +625,7 @@
 				CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */,
 				599AAC001FFA290300B3C246 /* PublicMerchantTableViewController.swift in Sources */,
+				CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */,
 				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
