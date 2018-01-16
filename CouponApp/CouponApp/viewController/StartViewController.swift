@@ -10,6 +10,8 @@ import UIKit
 
 class StartViewController: UIViewController {
 
+    @IBOutlet weak var loginWithSignView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,12 +25,20 @@ class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        loginWithSignView.isHidden = true
+        if let userId = CouponSignleton.sharedInstance.userId {
+            goMain()
+        } else {
+            loginWithSignView.isHidden = false
+        }
         
     }
     
-    func signUser() {
-        
+
+    @IBAction func loginUser(_ sender: Any) {
+    }
+    
+    @IBAction func signUser(_ sender: Any) {
     }
     
     func goMain() {
@@ -36,14 +46,5 @@ class StartViewController: UIViewController {
         let initalViewController = storyBoard.instantiateInitialViewController()
         self.show(initalViewController!, sender: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

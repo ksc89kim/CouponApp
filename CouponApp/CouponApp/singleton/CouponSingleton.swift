@@ -11,7 +11,7 @@ import Foundation
 // 쿠폰 전체앱 싱글톤 클래스
 class CouponSignleton {
     static let sharedInstance = CouponSignleton()
-    var userId:Int? = 1
+    var userId:Int?
     var merchantList:[MerchantModel?]? //가맹점 리스트
     
     // MARK: - 가맹점 데이터 리스트 생성
