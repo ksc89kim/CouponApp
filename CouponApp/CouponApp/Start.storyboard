@@ -55,7 +55,6 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="loginUser:" destination="IuN-cd-pBW" eventType="touchUpInside" id="KLM-tS-vgx"/>
                                             <segue destination="RGx-FH-H8W" kind="show" id="YCH-G6-BXO"/>
                                         </connections>
                                     </button>
@@ -76,7 +75,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signUser:" destination="IuN-cd-pBW" eventType="touchUpInside" id="lhS-me-Gl8"/>
                                             <segue destination="CfA-pA-K9j" kind="show" id="ASK-WY-mIo"/>
                                         </connections>
                                     </button>
@@ -137,6 +135,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickSignup:" destination="CfA-pA-K9j" eventType="touchUpInside" id="he2-vU-vRb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TD1-3h-rEx" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="46" height="30"/>
@@ -157,36 +158,64 @@
                                     <segue destination="Ulc-Fu-cwn" kind="unwind" unwindAction="unwindToStartViewWithSegue:" id="P1D-xw-9gf"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tN-rN-861">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tN-rN-861">
                                 <rect key="frame" x="95" y="200" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Zgs-xc-eya"/>
+                                    <constraint firstAttribute="width" constant="184" id="pl6-b7-MVx"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="passwod" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrl-If-ktZ">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="passwod" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nrl-If-ktZ">
                                 <rect key="frame" x="95" y="238" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="It9-9r-ZZl"/>
+                                    <constraint firstAttribute="width" constant="184" id="fZ1-jA-CVM"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udl-3b-Onv">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udl-3b-Onv">
                                 <rect key="frame" x="95" y="276" width="184" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3QG-aM-JcE"/>
+                                    <constraint firstAttribute="width" constant="184" id="x7q-pa-Bx4"/>
+                                </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CouponApp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu2-Va-szK">
+                                <rect key="frame" x="95" y="171" width="91.5" height="21"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Zu2-Va-szK" firstAttribute="top" secondItem="vex-uE-xJN" secondAttribute="bottom" constant="151" id="ALY-Bc-Mjc"/>
                             <constraint firstItem="F3R-o5-Qw7" firstAttribute="centerX" secondItem="K3x-MK-PKX" secondAttribute="centerX" id="EcW-pR-1LZ"/>
                             <constraint firstItem="TD1-3h-rEx" firstAttribute="leading" secondItem="K3x-MK-PKX" secondAttribute="leadingMargin" id="IPH-nq-nLv"/>
+                            <constraint firstItem="Nrl-If-ktZ" firstAttribute="centerX" secondItem="K3x-MK-PKX" secondAttribute="centerX" id="JjN-Ya-Mlh"/>
+                            <constraint firstItem="Zu2-Va-szK" firstAttribute="leading" secondItem="8tN-rN-861" secondAttribute="leading" id="XNe-6z-phg"/>
+                            <constraint firstItem="Nrl-If-ktZ" firstAttribute="top" secondItem="8tN-rN-861" secondAttribute="bottom" constant="8" id="bcC-gD-L9k"/>
                             <constraint firstItem="TD1-3h-rEx" firstAttribute="top" secondItem="vex-uE-xJN" secondAttribute="bottom" constant="8" id="bhK-vZ-uJe"/>
+                            <constraint firstItem="8tN-rN-861" firstAttribute="centerX" secondItem="K3x-MK-PKX" secondAttribute="centerX" id="cIg-js-w2Z"/>
+                            <constraint firstItem="8tN-rN-861" firstAttribute="top" secondItem="vex-uE-xJN" secondAttribute="bottom" constant="180" id="hiS-Ur-xi5"/>
+                            <constraint firstItem="udl-3b-Onv" firstAttribute="centerX" secondItem="K3x-MK-PKX" secondAttribute="centerX" id="koS-by-upB"/>
+                            <constraint firstItem="udl-3b-Onv" firstAttribute="top" secondItem="Nrl-If-ktZ" secondAttribute="bottom" constant="8" id="r1w-dH-C7G"/>
                             <constraint firstItem="KFV-KX-LMZ" firstAttribute="top" secondItem="F3R-o5-Qw7" secondAttribute="bottom" constant="58" id="vcR-DN-KpX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="name" destination="udl-3b-Onv" id="y0L-AK-dKi"/>
+                        <outlet property="password" destination="Nrl-If-ktZ" id="Nfb-xK-Jxb"/>
+                        <outlet property="phoneNumber" destination="8tN-rN-861" id="njf-sb-0Tl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Lf-Jo-eHh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ulc-Fu-cwn" userLabel="Exit" sceneMemberID="exit"/>
@@ -221,6 +250,9 @@
                                         <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickLogin:" destination="RGx-FH-H8W" eventType="touchUpInside" id="Xyz-m3-GPH"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cf-Qw-fFI">
                                 <rect key="frame" x="95" y="195" width="184" height="30"/>
@@ -240,7 +272,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8My-Qp-S4N" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="16" y="28" width="46" height="30"/>
@@ -282,6 +314,10 @@
                             <constraint firstItem="pd8-pS-5rM" firstAttribute="top" secondItem="4cf-Qw-fFI" secondAttribute="bottom" constant="8" id="hNL-n4-RUe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="password" destination="pd8-pS-5rM" id="2e6-6U-4Ye"/>
+                        <outlet property="phoneNumber" destination="4cf-Qw-fFI" id="oDH-y7-KdI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPm-XP-OZx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c45-0S-gjP" userLabel="Exit" sceneMemberID="exit"/>

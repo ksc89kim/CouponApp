@@ -35,6 +35,42 @@ class SQLInterface {
         }
     }
     
+    //회원가입
+    func insertUser(phoneNumber:String, password:String, name:String, complete: () -> Void) throws {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            if sqlite3_step(stmt) == SQLITE_DONE {
+                print("Success insert")
+                complete()
+            } else {
+                print("Fail insert")
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+    }
+    
+    //회원 데이터 가져 오기
+    func selectUserData(phoneNumber:String) throws -> Int? {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        var userId:Int? = nil
+        let query = "select idx from user where phone_number = '\(phoneNumber)'"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                userId = Int(sqlite3_column_int(stmt,0))
+                break;
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+        return userId
+    }
+    
     // 회원 쿠폰 데이터 가져오기
     func selectUserCouponData(_ userId:Int) throws -> [UserCouponModel?]?  {
         guard db != nil else { throw SQLError.connectionError }
