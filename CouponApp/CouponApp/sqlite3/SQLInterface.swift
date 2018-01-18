@@ -71,6 +71,23 @@ class SQLInterface {
         return userId
     }
     
+    func selectUserData(phoneNumber:String, password:String) throws -> Int? {
+        guard db != nil else { throw SQLError.connectionError }
+        defer { sqlite3_finalize(stmt) }
+        var userId:Int? = nil
+        let query = "select idx from user where phone_number = '\(phoneNumber)' and user_pwd = '\(password)'"
+        if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            while sqlite3_step(stmt) == SQLITE_ROW {
+                userId = Int(sqlite3_column_int(stmt,0))
+                break;
+            }
+        } else {
+            let errorMessage = String.init(cString: sqlite3_errmsg(db))
+            print(errorMessage)
+        }
+        return userId
+    }
+    
     // 회원 쿠폰 데이터 가져오기
     func selectUserCouponData(_ userId:Int) throws -> [UserCouponModel?]?  {
         guard db != nil else { throw SQLError.connectionError }

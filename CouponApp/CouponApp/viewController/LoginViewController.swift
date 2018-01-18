@@ -8,14 +8,15 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController , UITextFieldDelegate{
 
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        phoneNumber.delegate = self
+        password.delegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -25,16 +26,33 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func clickLogin(_ sender: Any) {
+        guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
+            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "전화번호를 입력해주세요")
+            return
+        }
+        guard (password.text != nil && (password.text?.count)! > 0 ) else {
+            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "비밀번호를 입력해주세요")
+            return
+        }
+        do {
+            CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!, password:password.text!)
+            if CouponSignleton.sharedInstance.userId != nil {
+                UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
+                goMain()
+            } else {
+                CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "전화번호 및 비밀번호가 잘못되었습니다.")
+            }
+        } catch {
+            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "로그인이 실패하였습니다.")
+        }
+        
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func goMain() {
+        let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
+        let initalViewController = storyBoard.instantiateInitialViewController()
+        self.show(initalViewController!, sender: nil)
     }
-    */
 
 }

@@ -29,8 +29,14 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func clickSignup(_ sender: Any) {
-        guard (phoneNumber.text != nil) else { return }
-        guard (password.text != nil) else { return }
+        guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
+            CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "전화번호를 입력해주세요")
+            return
+        }
+        guard (password.text != nil && (password.text?.count)! > 0 ) else {
+            CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "비밀번호를 입력해주세요")
+            return
+        }
         do {
             try SQLInterface().insertUser(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete: {
                 UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
