@@ -1,15 +1,22 @@
 //
-//  RoundedButton.swift
+//  RoundedView.swift
 //  CouponApp
 //
-//  Created by 벨소프트 on 2018. 1. 16..
+//  Created by 벨소프트 on 2018. 1. 19..
 //  Copyright © 2018년 kim sunchul. All rights reserved.
 //
 
 import UIKit
 
-@IBDesignable class RoundedButton: UIButton {
+@IBDesignable class RoundedView: UIView {
 
+    /*
+    // Only override draw() if you perform custom drawing.
+    // An empty implementation adversely affects performance during animation.
+    override func draw(_ rect: CGRect) {
+        // Drawing code
+    }
+    */
     override func layoutSubviews() {
         super.layoutSubviews()
         updateCornerRadius()
@@ -31,5 +38,4 @@ import UIKit
         layer.cornerRadius = rounded ? cornerRadius : 0
         layer.masksToBounds = rounded ? true : false
     }
-
 }

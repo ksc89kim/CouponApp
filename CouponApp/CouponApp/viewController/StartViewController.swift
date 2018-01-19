@@ -25,8 +25,9 @@ class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         loginWithSignView.isHidden = true
-        let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)        
+        let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
         if let phoneNumber = phoneNumberString {
             do {
                CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
@@ -38,11 +39,11 @@ class StartViewController: UIViewController {
             } catch {
                 loginWithSignView.isHidden = false
             }
-            
+
         } else {
             loginWithSignView.isHidden = false
-        }
-        
+        } 
+
     }
     
     func goMain() {
