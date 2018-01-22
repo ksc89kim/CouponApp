@@ -29,18 +29,23 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func clickSignup(_ sender: Any) {
+        let phoneNumberNeedInput = NSLocalizedString("phoneNumberNeedInput", comment: "")
+        let passwordNeedInput = NSLocalizedString("passwordNeedInput", comment: "")
+        let signupFailTitle = NSLocalizedString("signupFailTitle", comment: "")
+        let signupFailContent = NSLocalizedString("signupFailContent", comment: "")
+    
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "전화번호를 입력해주세요", callback: nil)
+            CouponSignleton.showCustomPopup(title: signupFailTitle, message: phoneNumberNeedInput, callback: nil)
             return
         }
         guard (password.text != nil && (password.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "비밀번호를 입력해주세요", callback: nil)
+            CouponSignleton.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
             return
         }
         do {
             try SQLInterface().insertUser(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccess in
                 guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
+                    CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                     return
                 }
                 do {
@@ -49,14 +54,14 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
                         UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                         goMain()
                     } else {
-                        CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
+                        CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                     }
                 } catch {
-                    CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
+                    CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 }
             })
         } catch {
-            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
+            CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
         }
     }
     

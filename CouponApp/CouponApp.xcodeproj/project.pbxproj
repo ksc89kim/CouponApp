@@ -26,14 +26,12 @@
 		596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */; };
 		599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599804D21FF51409001561C5 /* FindMerchantViewController.swift */; };
 		599AAC001FFA290300B3C246 /* PublicMerchantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599AABFF1FFA290300B3C246 /* PublicMerchantTableViewController.swift */; };
-		599AAC021FFA29BC00B3C246 /* Merchant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 599AAC011FFA29BC00B3C246 /* Merchant.storyboard */; };
 		59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */; };
 		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
 		59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */; };
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC047F82200C66170070CC5D /* ImageCouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCouponModel.swift */; };
-		CC047F84200C841F0070CC5D /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC047F83200C841F0070CC5D /* Start.storyboard */; };
 		CC047F86200C8A290070CC5D /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* StartViewController.swift */; };
 		CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4F9200D96B600B512C0 /* RoundedButton.swift */; };
 		CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */; };
@@ -41,12 +39,15 @@
 		CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */; };
 		CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32D06C2011B61C003A7422 /* RoundedView.swift */; };
 		CC32D0792011D0AA003A7422 /* CustomPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32D0782011D0AA003A7422 /* CustomPopupView.swift */; };
-		CC32D07B2011D10A003A7422 /* CustomPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC32D07A2011D10A003A7422 /* CustomPopupView.xib */; };
 		CC62DF502005D24300CCED88 /* DetailMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */; };
 		CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */; };
 		CC81729C200721EC0073E690 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729B200721EC0073E690 /* CouponView.swift */; };
 		CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729D2007238A0073E690 /* CouponImageView.swift */; };
 		CC88E7442008450E00F48B1C /* DrawCouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88E7432008450E00F48B1C /* DrawCouponModel.swift */; };
+		CCF0CF952015CF3000FA3E3B /* Merchant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF972015CF3000FA3E3B /* Merchant.storyboard */; };
+		CCF0CF982015CF3600FA3E3B /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */; };
+		CCF0CF9D2015CFA200FA3E3B /* CustomPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9F2015CFA200FA3E3B /* CustomPopupView.xib */; };
+		CCF0CFB32015D26300FA3E3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CFB52015D26300FA3E3B /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +94,6 @@
 		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
 		599804D21FF51409001561C5 /* FindMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMerchantViewController.swift; sourceTree = "<group>"; };
 		599AABFF1FFA290300B3C246 /* PublicMerchantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMerchantTableViewController.swift; sourceTree = "<group>"; };
-		599AAC011FFA29BC00B3C246 /* Merchant.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Merchant.storyboard; sourceTree = "<group>"; };
 		59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		59D9AB9D1FCAD79600A1F78E /* coupon.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = coupon.db; sourceTree = "<group>"; };
 		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -104,7 +104,6 @@
 		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CC047F81200C66170070CC5D /* ImageCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCouponModel.swift; sourceTree = "<group>"; };
-		CC047F83200C841F0070CC5D /* Start.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		CC047F85200C8A290070CC5D /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		CC09A4F9200D96B600B512C0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -112,12 +111,21 @@
 		CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		CC32D06C2011B61C003A7422 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		CC32D0782011D0AA003A7422 /* CustomPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupView.swift; sourceTree = "<group>"; };
-		CC32D07A2011D10A003A7422 /* CustomPopupView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPopupView.xib; sourceTree = "<group>"; };
 		CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMerchantViewController.swift; sourceTree = "<group>"; };
 		CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefualtKey.swift; sourceTree = "<group>"; };
 		CC81729B200721EC0073E690 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		CC81729D2007238A0073E690 /* CouponImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponImageView.swift; sourceTree = "<group>"; };
 		CC88E7432008450E00F48B1C /* DrawCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawCouponModel.swift; sourceTree = "<group>"; };
+		CCF0CF962015CF3000FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Merchant.storyboard; sourceTree = "<group>"; };
+		CCF0CF992015CF3600FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
+		CCF0CF9E2015CFA200FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomPopupView.xib; sourceTree = "<group>"; };
+		CCF0CFA02015D0A700FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/CustomPopupView.strings; sourceTree = "<group>"; };
+		CCF0CFA12015D0A700FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Start.strings; sourceTree = "<group>"; };
+		CCF0CFA32015D0A700FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		CCF0CFA42015D0A700FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		CCF0CFA62015D10F00FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Merchant.strings; sourceTree = "<group>"; };
+		CCF0CFB62015D26C00FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CCF0CFB72015D27300FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -178,7 +186,7 @@
 				CC81729D2007238A0073E690 /* CouponImageView.swift */,
 				CC32D06C2011B61C003A7422 /* RoundedView.swift */,
 				CC32D0782011D0AA003A7422 /* CustomPopupView.swift */,
-				CC32D07A2011D10A003A7422 /* CustomPopupView.xib */,
+				CCF0CF9F2015CFA200FA3E3B /* CustomPopupView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -243,9 +251,10 @@
 				5960FA301FCEE1FF00135CA4 /* viewController */,
 				592FE2141FCAD9FB00C07C84 /* view */,
 				59D9AB9C1FCAD79600A1F78E /* sqlite3 */,
+				CCF0CFB52015D26300FA3E3B /* Localizable.strings */,
 				596303761F431411000E2701 /* AppDelegate.swift */,
-				CC047F83200C841F0070CC5D /* Start.storyboard */,
-				599AAC011FFA29BC00B3C246 /* Merchant.storyboard */,
+				CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */,
+				CCF0CF972015CF3000FA3E3B /* Merchant.storyboard */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
 				5963037D1F431411000E2701 /* Assets.xcassets */,
 				5963037F1F431411000E2701 /* LaunchScreen.storyboard */,
@@ -423,6 +432,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 5963036A1F431411000E2701;
 			productRefGroup = 596303741F431411000E2701 /* Products */;
@@ -441,13 +451,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				599AAC021FFA29BC00B3C246 /* Merchant.storyboard in Resources */,
+				CCF0CF952015CF3000FA3E3B /* Merchant.storyboard in Resources */,
 				596303811F431411000E2701 /* LaunchScreen.storyboard in Resources */,
 				59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */,
 				5963037E1F431411000E2701 /* Assets.xcassets in Resources */,
+				CCF0CFB32015D26300FA3E3B /* Localizable.strings in Resources */,
 				5963037C1F431411000E2701 /* Main.storyboard in Resources */,
-				CC32D07B2011D10A003A7422 /* CustomPopupView.xib in Resources */,
-				CC047F84200C841F0070CC5D /* Start.storyboard in Resources */,
+				CCF0CF9D2015CFA200FA3E3B /* CustomPopupView.xib in Resources */,
+				CCF0CF982015CF3600FA3E3B /* Start.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +701,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5963037B1F431411000E2701 /* Base */,
+				CCF0CFA32015D0A700FA3E3B /* ko */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -698,8 +710,45 @@
 			isa = PBXVariantGroup;
 			children = (
 				596303801F431411000E2701 /* Base */,
+				CCF0CFA42015D0A700FA3E3B /* ko */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CCF0CF972015CF3000FA3E3B /* Merchant.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF0CF962015CF3000FA3E3B /* Base */,
+				CCF0CFA62015D10F00FA3E3B /* ko */,
+			);
+			name = Merchant.storyboard;
+			sourceTree = "<group>";
+		};
+		CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF0CF992015CF3600FA3E3B /* Base */,
+				CCF0CFA12015D0A700FA3E3B /* ko */,
+			);
+			name = Start.storyboard;
+			sourceTree = "<group>";
+		};
+		CCF0CF9F2015CFA200FA3E3B /* CustomPopupView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF0CF9E2015CFA200FA3E3B /* Base */,
+				CCF0CFA02015D0A700FA3E3B /* ko */,
+			);
+			name = CustomPopupView.xib;
+			sourceTree = "<group>";
+		};
+		CCF0CFB52015D26300FA3E3B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCF0CFB62015D26C00FA3E3B /* ko */,
+				CCF0CFB72015D27300FA3E3B /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -709,6 +758,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -766,6 +816,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

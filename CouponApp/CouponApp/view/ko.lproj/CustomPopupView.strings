@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "제목"; ObjectID = "8Ve-3b-0pg"; */
+"8Ve-3b-0pg.text" = "제목";
+
+/* Class = "UIButton"; normalTitle = "확인"; ObjectID = "S8r-Qx-Ycm"; */
+"S8r-Qx-Ycm.normalTitle" = "확인";
+
+/* Class = "UILabel"; text = "내용"; ObjectID = "Ybw-yc-yZV"; */
+"Ybw-yc-yZV.text" = "내용";

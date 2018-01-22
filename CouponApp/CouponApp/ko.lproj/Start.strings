@@ -1,0 +1,42 @@
+
+/* Class = "UITextField"; placeholder = "phone number"; ObjectID = "4cf-Qw-fFI"; */
+"4cf-Qw-fFI.placeholder" = "phone number";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "6h2-fd-frG"; */
+"6h2-fd-frG.normalTitle" = "Signup";
+
+/* Class = "UIButton"; normalTitle = "back"; ObjectID = "8My-Qp-S4N"; */
+"8My-Qp-S4N.normalTitle" = "back";
+
+/* Class = "UITextField"; placeholder = "phone number"; ObjectID = "8tN-rN-861"; */
+"8tN-rN-861.placeholder" = "phone number";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "F3R-o5-Qw7"; */
+"F3R-o5-Qw7.normalTitle" = "Signup";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "NmS-el-U2h"; */
+"NmS-el-U2h.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "passwod"; ObjectID = "Nrl-If-ktZ"; */
+"Nrl-If-ktZ.placeholder" = "passwod";
+
+/* Class = "UIButton"; normalTitle = "back"; ObjectID = "TD1-3h-rEx"; */
+"TD1-3h-rEx.normalTitle" = "back";
+
+/* Class = "UILabel"; text = "CouponApp"; ObjectID = "Zu2-Va-szK"; */
+"Zu2-Va-szK.text" = "CouponApp";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "cmy-8f-02k"; */
+"cmy-8f-02k.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "CouponApp"; ObjectID = "fvc-aw-MzZ"; */
+"fvc-aw-MzZ.text" = "CouponApp";
+
+/* Class = "UILabel"; text = "Coupon App"; ObjectID = "kn5-Ji-QWv"; */
+"kn5-Ji-QWv.text" = "Coupon App";
+
+/* Class = "UITextField"; placeholder = "password"; ObjectID = "pd8-pS-5rM"; */
+"pd8-pS-5rM.placeholder" = "password";
+
+/* Class = "UITextField"; placeholder = "name"; ObjectID = "udl-3b-Onv"; */
+"udl-3b-Onv.placeholder" = "name";

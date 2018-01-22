@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "전체 가맹점"; ObjectID = "1EM-MJ-Js7"; */
+"1EM-MJ-Js7.normalTitle" = "전체 가맹점";
+
+/* Class = "UIButton"; normalTitle = "쿠폰 소진하기"; ObjectID = "GLy-va-rNG"; */
+"GLy-va-rNG.normalTitle" = "쿠폰 소진하기";
+
+/* Class = "UINavigationItem"; title = "가맹점 찾기"; ObjectID = "Uem-2A-wSN"; */
+"Uem-2A-wSN.title" = "가맹점 찾기";
+
+/* Class = "UIButton"; normalTitle = "주변 가맹점"; ObjectID = "VNI-77-Jo5"; */
+"VNI-77-Jo5.normalTitle" = "주변 가맹점";
+
+/* Class = "UILabel"; text = "카페샾"; ObjectID = "XsE-2W-PFK"; */
+"XsE-2W-PFK.text" = "카페샾";
+
+/* Class = "UINavigationItem"; title = "회원 쿠폰 목록"; ObjectID = "ddT-fr-j4z"; */
+"ddT-fr-j4z.title" = "회원 쿠폰 목록";
+
+/* Class = "UIButton"; normalTitle = "쿠폰 요청하기"; ObjectID = "qMj-S2-Wee"; */
+"qMj-S2-Wee.normalTitle" = "쿠폰 요청하기";
