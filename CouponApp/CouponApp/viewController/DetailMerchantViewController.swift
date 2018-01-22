@@ -69,7 +69,11 @@ class DetailMerchantViewController: UIViewController {
     func deleteCoupon(merchantModel:MerchantModel){
          let userId = CouponSignleton.sharedInstance.userId
         do{
-            try SQLInterface().deleteCounpon(userId!, merchantModel.merchantId!, complete: {
+            try SQLInterface().deleteCounpon(userId!, merchantModel.merchantId!, complete: { isSuccess in
+                guard isSuccess else {
+                    CouponSignleton.showCustomPopup(title: "쿠폰 삭제 실패", message: "쿠폰 삭제가 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    return
+                }
                 isUserCoupon = false
                 refreshButton()
             })
@@ -82,7 +86,11 @@ class DetailMerchantViewController: UIViewController {
     func insertCoupon(merchantModel:MerchantModel){
          let userId = CouponSignleton.sharedInstance.userId
         do {
-            try SQLInterface().insertCoupon(userId!, merchantModel.merchantId!, complete: {
+            try SQLInterface().insertCoupon(userId!, merchantModel.merchantId!, complete: { isSuccess in
+                guard isSuccess else {
+                    CouponSignleton.showCustomPopup(title: "쿠폰 추가 실패", message: "쿠폰 추가가 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    return
+                }
                 isUserCoupon = true
                 refreshButton()
             })

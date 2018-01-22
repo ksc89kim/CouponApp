@@ -27,11 +27,11 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     
     @IBAction func clickLogin(_ sender: Any) {
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
-            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "전화번호를 입력해주세요")
+            CouponSignleton.showCustomPopup(title: "로그인 실패", message: "전화번호를 입력해주세요", callback: nil)
             return
         }
         guard (password.text != nil && (password.text?.count)! > 0 ) else {
-            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "비밀번호를 입력해주세요")
+            CouponSignleton.showCustomPopup(title: "로그인 실패", message: "비밀번호를 입력해주세요", callback: nil)
             return
         }
         do {
@@ -40,10 +40,10 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                 UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                 goMain()
             } else {
-                CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "전화번호 및 비밀번호가 잘못되었습니다.")
+                CouponSignleton.showCustomPopup( title: "로그인 실패", message: "전화번호 및 비밀번호가 잘못되었습니다.", callback: nil)
             }
         } catch {
-            CouponSignleton.printAlert(viewController: self, title: "로그인 실패", message: "로그인이 실패하였습니다.")
+            CouponSignleton.showCustomPopup(title: "로그인 실패", message: "로그인이 실패하였습니다.", callback: nil)
         }
         
         

@@ -9,14 +9,11 @@
 import UIKit
 
 class CustomPopupView: UIView {
+    
+    @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var title: UILabel!
+    var okCallback:(() -> Void)?
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
@@ -36,6 +33,9 @@ class CustomPopupView: UIView {
     }
     
     @IBAction func clickOk(_ sender: Any) {
-        
+        if okCallback != nil {
+            okCallback!()
+        }
+        self.removeFromSuperview()
     }
 }

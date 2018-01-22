@@ -45,10 +45,21 @@ class CouponSignleton {
     
     
     // 경고 팝업창
-    static func printAlert(viewController:UIViewController,title:String, message:String) {
+    static func showAlert(viewController:UIViewController,title:String, message:String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         viewController.present(alertController, animated: true, completion: nil)
+    }
+    
+    //커스텀 팝업창
+    static func showCustomPopup(title:String, message:String, callback:(() -> Void)?){
+        let customPopup = CustomPopupView()
+        customPopup.okCallback = callback
+        customPopup.title.text = title
+        customPopup.content.text = message
+        let window = UIApplication.shared.keyWindow!
+        customPopup.frame = window.frame
+        window.addSubview(customPopup)
     }
 }

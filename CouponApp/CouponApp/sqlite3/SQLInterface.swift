@@ -36,16 +36,17 @@ class SQLInterface {
     }
     
     //회원가입
-    func insertUser(phoneNumber:String, password:String, name:String, complete: () -> Void) throws {
+    func insertUser(phoneNumber:String, password:String, name:String, complete: (Bool) -> Void) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success insert")
-                complete()
+                complete(true)
             } else {
                 print("Fail insert")
+                complete(false)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
@@ -112,16 +113,17 @@ class SQLInterface {
     }
     
     // 회원 쿠폰 횟수 업데이트
-    func updateCouponCount(_  userId:Int, _ merchantId:Int, _ couponCount:Int, complete: () -> Void) throws {
+    func updateCouponCount(_  userId:Int, _ merchantId:Int, _ couponCount:Int, complete: (Bool) -> Void) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success update")
-                complete()
+                complete(true)
             } else {
                 print("Fail update")
+                complete(false)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
@@ -130,16 +132,17 @@ class SQLInterface {
     }
     
     //회원 쿠폰 삭제
-    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: () -> Void) throws {
+    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success delete")
-                complete()
+                complete(true)
             } else {
                 print("Fail delete")
+                complete(false)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
@@ -148,16 +151,17 @@ class SQLInterface {
     }
     
     //회원 쿠폰 등록
-    func insertCoupon(_  userId:Int, _ merchantId:Int, complete: () -> Void) throws {
+    func insertCoupon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "insert into coupon (merchant_idx, user_idx, coupon_count) values (\(merchantId),\(userId),0)"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success insert")
-                complete()
+                complete(true)
             } else {
                 print("Fail insert")
+                complete(false)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))

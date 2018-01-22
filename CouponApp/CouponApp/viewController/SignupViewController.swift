@@ -30,29 +30,33 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     
     @IBAction func clickSignup(_ sender: Any) {
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
-            CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "전화번호를 입력해주세요")
+            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "전화번호를 입력해주세요", callback: nil)
             return
         }
         guard (password.text != nil && (password.text?.count)! > 0 ) else {
-            CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "비밀번호를 입력해주세요")
+            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "비밀번호를 입력해주세요", callback: nil)
             return
         }
         do {
-            try SQLInterface().insertUser(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete: {
-                UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
+            try SQLInterface().insertUser(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccess in
+                guard isSuccess else {
+                    CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
+                    return
+                }
                 do {
                     CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!)
                     if CouponSignleton.sharedInstance.userId != nil {
+                        UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                         goMain()
                     } else {
-                        CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n 다시 시도 해주세요.")
+                        CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
                     }
                 } catch {
-                    CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n 다시 시도 해주세요.")
+                    CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
                 }
             })
         } catch {
-            CouponSignleton.printAlert(viewController: self, title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n 다시 시도 해주세요.")
+            CouponSignleton.showCustomPopup(title: "회원가입 실패", message: "회원 가입에 실패하였습니다.\n다시 시도 해주세요.", callback: nil)
         }
     }
     
