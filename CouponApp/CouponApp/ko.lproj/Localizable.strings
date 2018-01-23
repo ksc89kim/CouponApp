@@ -13,3 +13,7 @@
 "passwordNeedInput" = "비밀번호를 입력해주세요";
 "signupFailTitle" = "회원가입 실패";
 "signupFailContent" = "회원 가입에 실패하였습니다.\n다시 시도 해주세요.";
+"useCouponFailTitle" = "쿠폰 소진 실패";
+"useCouponFailContent" = "쿠폰 소진이 실패하였습니다.\n다시 시도해주시기 바랍니다.";
+"lackCouponTitle" = "쿠폰 부족!";
+"lackCouponContent" = "쿠폰이 부족합니다.\n쿠폰을 더 모아주세요.";

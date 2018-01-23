@@ -86,9 +86,13 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         } else {
             maxCount = (merchantData?.drawCouponList?.count)!
         }
+        let useCouponFailTitle = NSLocalizedString("useCouponFailTitle", comment: "")
+        let useCouponFailContent = NSLocalizedString("useCouponFailContent", comment: "")
+        let lackCouponTitle = NSLocalizedString("lackCouponTitle", comment: "")
+        let lackCouponContent = NSLocalizedString("lackCouponContent", comment: "")
         
         guard couponCount >= maxCount else {
-            CouponSignleton.showCustomPopup(title: "쿠폰 부족!", message: "쿠폰이 부족합니다.\n쿠폰을 더 모아주세요.",callback: nil)
+            CouponSignleton.showCustomPopup(title: lackCouponTitle, message: lackCouponContent,callback: nil)
             return
         }
         userMerchantData?.couponCount = 0
@@ -96,7 +100,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         do {
             try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccess in
                 guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: "쿠폰 소진 실패", message: "쿠폰 소진이 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    CouponSignleton.showCustomPopup(title: useCouponFailTitle, message: useCouponFailContent,callback: nil)
                     return
                 }
                 myCollectionView.reloadData()
