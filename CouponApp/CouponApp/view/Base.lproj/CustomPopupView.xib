@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopupView" customModule="CouponApp" customModuleProvider="target">
             <connections>
                 <outlet property="content" destination="Ybw-yc-yZV" id="eZU-7P-Bdh"/>
+                <outlet property="popupView" destination="2VO-2I-wp4" id="vVP-r7-XBq"/>
                 <outlet property="title" destination="8Ve-3b-0pg" id="LDu-p1-TyM"/>
             </connections>
         </placeholder>

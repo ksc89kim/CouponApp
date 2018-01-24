@@ -71,6 +71,16 @@ class UserMerchantTableViewController: UITableViewController {
         //cell.textLabel?.text = merchantModel?.name
         return cell
     }
+    
+    override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            let userMerchantModel = userCouponList?[indexPath.row]
+            if(deleteCoupon(merchantId:userMerchantModel?.merchantId)) {
+                userCouponList?.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            }
+        }
+    }
  
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -85,6 +95,26 @@ class UserMerchantTableViewController: UITableViewController {
     
     @IBAction func unwindToUserMercahntTableView(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindUserMerchant" {
+        }
+    }
+    
+    // MARK - ETC
+    //삭제하기
+    func deleteCoupon(merchantId:Int?) -> Bool {
+        let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
+        let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
+        let userId = CouponSignleton.sharedInstance.userId
+        do{
+            let state = try SQLInterface().deleteCounpon(userId!, merchantId!, complete: { isSuccess in
+                guard isSuccess else {
+                    CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                    return
+                }
+            })
+            return state
+        } catch {
+            CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+            return false
         }
     }
 }

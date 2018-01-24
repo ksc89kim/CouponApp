@@ -132,7 +132,7 @@ class SQLInterface {
     }
     
     //회원 쿠폰 삭제
-    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws {
+    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws -> Bool {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -140,13 +140,16 @@ class SQLInterface {
             if sqlite3_step(stmt) == SQLITE_DONE {
                 print("Success delete")
                 complete(true)
+                return true
             } else {
                 print("Fail delete")
                 complete(false)
+                return false
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print(errorMessage)
+            return false
         }
     }
     

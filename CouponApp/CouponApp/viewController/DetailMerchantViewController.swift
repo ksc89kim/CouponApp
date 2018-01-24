@@ -67,35 +67,42 @@ class DetailMerchantViewController: UIViewController {
     
     //삭제하기
     func deleteCoupon(merchantModel:MerchantModel){
-         let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userId
+        let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
+        let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         do{
-            try SQLInterface().deleteCounpon(userId!, merchantModel.merchantId!, complete: { isSuccess in
+            let state = try SQLInterface().deleteCounpon(userId!, merchantModel.merchantId!, complete: { isSuccess in
                 guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: "쿠폰 삭제 실패", message: "쿠폰 삭제가 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
                     return
                 }
                 isUserCoupon = false
                 refreshButton()
             })
+            if !state {
+                CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+            }
         } catch {
-            print("삭제하기 실패")
+            CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
         }
     }
     
     //추가하기
     func insertCoupon(merchantModel:MerchantModel){
-         let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userId
+        let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
+        let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         do {
             try SQLInterface().insertCoupon(userId!, merchantModel.merchantId!, complete: { isSuccess in
                 guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: "쿠폰 추가 실패", message: "쿠폰 추가가 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
                     return
                 }
                 isUserCoupon = true
                 refreshButton()
             })
         } catch {
-            print("추가하기 실패")
+            CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
         }
     }
 

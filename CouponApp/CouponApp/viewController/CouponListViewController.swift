@@ -58,8 +58,14 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         } else {
             maxCount = (merchantData?.drawCouponList?.count)!
         }
+        
+        let maxCouponTitle = NSLocalizedString("maxCouponTitle", comment: "")
+        let maxCouponContent = NSLocalizedString("maxCouponContent", comment: "")
+        let requestFailCouponTitle = NSLocalizedString("requestFailCouponTitle", comment: "")
+        let requestFailCouponContent = NSLocalizedString("requestFailCouponContent", comment: "")
+        
         guard couponCount < maxCount else {
-            CouponSignleton.showCustomPopup(title: "쿠폰 최대치!", message: "모든 쿠폰을 모았습니다.\n쿠폰을 소진해주세요.",callback: nil)
+            CouponSignleton.showCustomPopup(title: maxCouponTitle, message:maxCouponContent,callback: nil)
             return
         }
         userMerchantData?.couponCount = couponCount + 1
@@ -67,13 +73,13 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         do {
             try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccess in
                 guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: "쿠폰 요청 실패", message: "쿠폰 요청이 실패하였습니다.\n다시 시도해주시기 바랍니다. ",callback: nil)
+                    CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
                     return
                 }
                 myCollectionView.reloadData()
             })
         } catch {
-            print(error)
+            CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
         }
     }
     
@@ -106,7 +112,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
                 myCollectionView.reloadData()
             })
         } catch {
-            print(error)
+            CouponSignleton.showCustomPopup(title: useCouponFailTitle, message: useCouponFailContent,callback: nil)
         }
     }
  
