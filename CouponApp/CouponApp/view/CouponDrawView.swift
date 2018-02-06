@@ -8,8 +8,10 @@
 
 import UIKit
 
-// 쿠폰 이미지
-
+/*
+     쿠폰 그리기 뷰
+     - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
+ */
 class CouponDrawView: CouponView {
     var model:DrawCouponModel?
     

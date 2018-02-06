@@ -8,6 +8,10 @@
 
 import UIKit
 
+/*
+     쿠폰 뷰
+     - CouponDrawImageView, CouponImageView 부모 뷰
+ */
 class CouponView: UIView {
     var isUseCoupone:Bool = true // 쿠폰 체크박스 여부
     var isImageCoupon:Bool = false // 이미지 쿠폰 존재 여부

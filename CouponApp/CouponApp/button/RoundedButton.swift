@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+     라운드 버튼
+ */
 @IBDesignable class RoundedButton: UIButton {
 
     override func layoutSubviews() {

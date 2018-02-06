@@ -8,7 +8,9 @@
 
 import UIKit
 
-// 쿠폰 전체앱 싱글톤 클래스
+/*
+     쿠폰 전체앱 싱글톤 클래스
+ */
 class CouponSignleton {
     static let sharedInstance = CouponSignleton()
     var userId:Int?
@@ -44,7 +46,7 @@ class CouponSignleton {
     }
     
     
-    // 경고 팝업창
+     // MARK: - 경고 팝업창
     static func showAlert(viewController:UIViewController,title:String, message:String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -52,7 +54,7 @@ class CouponSignleton {
         viewController.present(alertController, animated: true, completion: nil)
     }
     
-    //커스텀 팝업창
+    // MARK: - 커스텀 팝업창
     static func showCustomPopup(title:String, message:String, callback:(() -> Void)?){
         let customPopup = CustomPopupView()
         customPopup.okCallback = callback

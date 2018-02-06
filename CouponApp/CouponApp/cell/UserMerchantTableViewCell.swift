@@ -8,7 +8,9 @@
 
 import UIKit
 
-//회원 가맹점 테이블 뷰 셀 
+/*
+     회원 가맹점 테이블 뷰 셀
+ */
 class UserMerchantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoImage: UIImageView!  //로고이미지

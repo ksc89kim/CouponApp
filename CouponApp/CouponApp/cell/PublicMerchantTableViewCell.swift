@@ -8,7 +8,9 @@
 
 import UIKit
 
-//전체 가맹점 테이블 뷰 셀 
+/*
+     전체 가맹점 테이블 뷰 셀
+ */
 class PublicMerchantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var merchantName: UILabel!   //가맹점 이름

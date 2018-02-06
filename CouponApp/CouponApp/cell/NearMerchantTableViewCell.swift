@@ -8,7 +8,9 @@
 
 import UIKit
 
-//근처 가맹점 테이블 뷰 셀 
+/*
+     근처 가맹점 테이블 뷰 셀
+ */
 class NearMerchantTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoImage: UIImageView!  //로고 이미지

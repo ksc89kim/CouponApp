@@ -8,8 +8,9 @@
 
 import UIKit
 
-/* 쿠폰 그리기 데이터 */
-
+/*
+     쿠폰 그리기 데이터
+*/
 struct DrawCouponModel {
     var couponId:Int? // 쿠폰 인덱스
     var merchantId:Int? // 가맹점 ID

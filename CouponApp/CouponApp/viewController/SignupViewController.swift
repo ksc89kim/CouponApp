@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+/*
+     가입 뷰컨트롤러
+ */
 class SignupViewController: UIViewController , UITextFieldDelegate{
 
     @IBOutlet weak var phoneNumber: UITextField!
@@ -42,27 +44,25 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
             CouponSignleton.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
             return
         }
-        do {
-            try SQLInterface().insertUser(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccess in
-                guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
-                    return
-                }
-                do {
-                    CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!)
-                    if CouponSignleton.sharedInstance.userId != nil {
-                        UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
-                        goMain()
-                    } else {
-                        CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
-                    }
-                } catch {
+        
+        CouponNetwork.sharedInstance.requestSignup(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccess in
+            guard isSuccess else {
+                CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                return
+            }
+            do {
+                CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!)
+                if CouponSignleton.sharedInstance.userId != nil {
+                    UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
+                    goMain()
+                } else {
                     CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 }
-            })
-        } catch {
-            CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
-        }
+            } catch {
+                CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+            }
+        })
+      
     }
     
     func goMain() {

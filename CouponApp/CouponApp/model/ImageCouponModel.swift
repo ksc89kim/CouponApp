@@ -8,9 +8,9 @@
 
 import Foundation
 
-
-/* 쿠폰 이미지 데이터 */
-
+/*
+     쿠폰 이미지 데이터
+*/
 struct ImageCouponModel {
     var couponId:Int? // 쿠폰 인덱스
     var merchantId:Int? // 가맹점 ID

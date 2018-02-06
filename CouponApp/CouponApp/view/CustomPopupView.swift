@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+     커스텀 팝업 뷰
+*/
 class CustomPopupView: UIView {
     
     @IBOutlet weak var popupView: RoundedView!

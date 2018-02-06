@@ -8,6 +8,12 @@
 
 import UIKit
 
+/*
+     시작 뷰컨트롤러
+     - 로그인
+     - 가입하기
+     - 메인으로 가기
+ */
 class StartViewController: UIViewController {
 
     @IBOutlet weak var loginWithSignView: UIView!

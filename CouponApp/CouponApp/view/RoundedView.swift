@@ -8,6 +8,9 @@
 
 import UIKit
 
+/*
+     라운드 뷰
+ */
 @IBDesignable class RoundedView: UIView {
 
     /*

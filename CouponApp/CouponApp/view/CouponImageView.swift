@@ -8,6 +8,11 @@
 
 import UIKit
 
+/*
+     쿠폰 이미지 뷰
+     - UIImageView를 통한 쿠폰 이미지 뷰
+ */
+
 class CouponImageView: CouponView {
     var model:ImageCouponModel?
     @IBOutlet var couponImage:UIImageView!
