@@ -50,17 +50,15 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
                 CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 return
             }
-            do {
-                CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!)
-                if CouponSignleton.sharedInstance.userId != nil {
-                    UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
-                    goMain()
+            
+            CouponNetwork.sharedInstance.requestUserData(phoneNumber: self.phoneNumber.text!, complete: { isSuccess in
+                if isSuccess {
+                    UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
+                    self.goMain()
                 } else {
-                    CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                     CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 }
-            } catch {
-                CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
-            }
+            })
         })
       
     }
