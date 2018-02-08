@@ -29,7 +29,7 @@ class DetailMerchantViewController: UIViewController {
             merchantName.text = merchant.name
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
-            let userId = CouponSignleton.sharedInstance.userId
+            let userId = CouponSignleton.sharedInstance.userData?.id
             do {
                 isUserCoupon = try SQLInterface().isUserCoupon(userId!,merchant.merchantId!)
             } catch {
@@ -67,7 +67,7 @@ class DetailMerchantViewController: UIViewController {
     
     //삭제하기
     func deleteCoupon(merchantModel:MerchantModel){
-        let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userData?.id
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         do{
@@ -89,7 +89,7 @@ class DetailMerchantViewController: UIViewController {
     
     //추가하기
     func insertCoupon(merchantModel:MerchantModel){
-        let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         do {

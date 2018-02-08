@@ -38,7 +38,7 @@ class UserMerchantTableViewController: UITableViewController {
     
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
-        let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userData?.id
         do {
             self.userCouponList = try SQLInterface().selectUserCouponData(userId!)
         } catch {
@@ -103,7 +103,7 @@ class UserMerchantTableViewController: UITableViewController {
     func deleteCoupon(merchantId:Int?) -> Bool {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
-        let userId = CouponSignleton.sharedInstance.userId
+        let userId = CouponSignleton.sharedInstance.userData?.id
         do{
             let state = try SQLInterface().deleteCounpon(userId!, merchantId!, complete: { isSuccess in
                 guard isSuccess else {

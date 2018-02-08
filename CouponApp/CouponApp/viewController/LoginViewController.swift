@@ -44,8 +44,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             return
         }
         do {
-            CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!, password:password.text!)
-            if CouponSignleton.sharedInstance.userId != nil {
+            CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!, password:password.text!)
+            if CouponSignleton.sharedInstance.userData?.id != nil {
                 UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                 goMain()
             } else {

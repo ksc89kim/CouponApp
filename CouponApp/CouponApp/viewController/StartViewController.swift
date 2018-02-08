@@ -36,8 +36,8 @@ class StartViewController: UIViewController {
         let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
         if let phoneNumber = phoneNumberString {
             do {
-               CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-                if CouponSignleton.sharedInstance.userId != nil {
+               CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+                if CouponSignleton.sharedInstance.userData?.id != nil {
                     goMain()
                 } else {
                     loginWithSignView.isHidden = false

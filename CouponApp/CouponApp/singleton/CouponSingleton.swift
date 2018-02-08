@@ -13,7 +13,7 @@ import UIKit
  */
 class CouponSignleton {
     static let sharedInstance = CouponSignleton()
-    var userId:Int?
+    var userData:UserModel? = UserModel()
     var merchantList:[MerchantModel?]? //가맹점 리스트
     
     // MARK: - 가맹점 데이터 리스트 생성

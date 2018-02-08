@@ -45,6 +45,7 @@
 		CC81729C200721EC0073E690 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729B200721EC0073E690 /* CouponView.swift */; };
 		CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729D2007238A0073E690 /* CouponImageView.swift */; };
 		CC88E7442008450E00F48B1C /* DrawCouponModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88E7432008450E00F48B1C /* DrawCouponModel.swift */; };
+		CCB5C7A6202BE0EF00CBBEB5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5C7A5202BE0EF00CBBEB5 /* UserModel.swift */; };
 		CCF0CF952015CF3000FA3E3B /* Merchant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF972015CF3000FA3E3B /* Merchant.storyboard */; };
 		CCF0CF982015CF3600FA3E3B /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */; };
 		CCF0CF9D2015CFA200FA3E3B /* CustomPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9F2015CFA200FA3E3B /* CustomPopupView.xib */; };
@@ -118,6 +119,7 @@
 		CC81729B200721EC0073E690 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		CC81729D2007238A0073E690 /* CouponImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponImageView.swift; sourceTree = "<group>"; };
 		CC88E7432008450E00F48B1C /* DrawCouponModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawCouponModel.swift; sourceTree = "<group>"; };
+		CCB5C7A5202BE0EF00CBBEB5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		CCF0CF962015CF3000FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Merchant.storyboard; sourceTree = "<group>"; };
 		CCF0CF992015CF3600FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Start.storyboard; sourceTree = "<group>"; };
 		CCF0CF9E2015CFA200FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomPopupView.xib; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				594A563B1FD814EC005EAA9C /* MerchantModel.swift */,
 				CC88E7432008450E00F48B1C /* DrawCouponModel.swift */,
 				CC047F81200C66170070CC5D /* ImageCouponModel.swift */,
+				CCB5C7A5202BE0EF00CBBEB5 /* UserModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */,
 				596303791F431411000E2701 /* ViewController.swift in Sources */,
 				CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */,
+				CCB5C7A6202BE0EF00CBBEB5 /* UserModel.swift in Sources */,
 				594A563C1FD814EC005EAA9C /* MerchantModel.swift in Sources */,
 				599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,

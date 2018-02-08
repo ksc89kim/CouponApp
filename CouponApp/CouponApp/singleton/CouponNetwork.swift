@@ -32,10 +32,12 @@ class CouponNetwork {
             Alamofire.request(fullUrl, method:.post, parameters: parameter)
                 .validate().responseJSON(completionHandler: { (response) -> Void in
                     self.closeProgress()
-                    if response.result.isSuccess {
-                        complete(true)
+                    print("response = \(response)")
+                    let tupleData = self.checkResponseData(response)
+                    if tupleData.isSuccess {
+                         complete(true)
                     } else {
-                        complete(false)
+                         complete(false)
                     }
             })
         }
@@ -44,8 +46,8 @@ class CouponNetwork {
     func requestUserData(phoneNumber:String, complete: @escaping (Bool) -> Void) {
         if isSqlite {
             do {
-                CouponSignleton.sharedInstance.userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-                if CouponSignleton.sharedInstance.userId != nil {
+                CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+                if CouponSignleton.sharedInstance.userData?.id != nil {
                     complete(true)
                 } else {
                     complete(false)
@@ -61,14 +63,33 @@ class CouponNetwork {
                 .validate().responseJSON(completionHandler: { (response) -> Void in
                     print("response = \(response)")
                     self.closeProgress()
-                    if response.result.isSuccess {
-                        //CouponSignleton.sharedInstance.userId = response.result.
+                    
+                    let tupleData = self.checkResponseData(response)
+                    if tupleData.isSuccess {
+                        let userInfoArray = tupleData.jsonData!["userInfoArray"] as! [Any]
+                        let userData = userInfoArray[0] as! [String:Any]
+                        CouponSignleton.sharedInstance.userData?.parseData(data: userData)
                         complete(true)
                     } else {
                         complete(false)
                     }
                 })
         }
+    }
+    
+    func checkResponseData(_ response:DataResponse<Any>) -> (isSuccess:Bool,jsonData:[String:AnyObject]?) {
+        var isSuccess:Bool = false
+        var jsonData:[String:AnyObject]? = nil
+        switch response.result {
+        case .success(let data):
+            jsonData = data as? [String:AnyObject]
+            isSuccess = jsonData!["isSuccess"] as! Bool
+            break
+        case .failure(_):
+    
+            break
+        }
+        return (isSuccess:isSuccess, jsonData:jsonData)
     }
     
     func showProgress() {
