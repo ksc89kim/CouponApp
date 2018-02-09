@@ -26,7 +26,6 @@ class CouponSignleton {
                 } else {
                     merchantModel?.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: (merchantModel?.merchantId)!)
                 }
-                
             }
         } catch {
             print(error)

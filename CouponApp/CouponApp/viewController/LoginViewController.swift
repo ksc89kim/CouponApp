@@ -43,19 +43,15 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             CouponSignleton.showCustomPopup(title: loginFailTitle, message: passwordNeedInput, callback: nil)
             return
         }
-        do {
-            CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber.text!, password:password.text!)
-            if CouponSignleton.sharedInstance.userData?.id != nil {
-                UserDefaults.standard.set(phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
-                goMain()
+        
+        CouponNetwork.sharedInstance.requestCheckPassword(phoneNumber: phoneNumber.text!, password:password.text!, complete: { isSuccess in
+            if isSuccess {
+                UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
+                self.goMain()
             } else {
                 CouponSignleton.showCustomPopup( title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
             }
-        } catch {
-            CouponSignleton.showCustomPopup(title: loginFailTitle, message: loginFailContent, callback: nil)
-        }
-        
-        
+        })
     }
     
     func goMain() {

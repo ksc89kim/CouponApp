@@ -18,6 +18,7 @@ class CouponNetwork {
     let isSqlite = false;
     let mainUrl = "http://192.168.2.28:8080/CouponProject/"
     
+    // MARK: - 회원가입 하기
     func requestSignup(phoneNumber:String, password:String, name:String, complete: @escaping (Bool) -> Void){
         if isSqlite {
             do {
@@ -43,6 +44,7 @@ class CouponNetwork {
         }
     }
     
+    // MARK: - 회원 정보 가져오기
     func requestUserData(phoneNumber:String, complete: @escaping (Bool) -> Void) {
         if isSqlite {
             do {
@@ -61,9 +63,7 @@ class CouponNetwork {
             self.showProgress()
             Alamofire.request(fullUrl, method:.post, parameters: parameter)
                 .validate().responseJSON(completionHandler: { (response) -> Void in
-                    print("response = \(response)")
                     self.closeProgress()
-                    
                     let tupleData = self.checkResponseData(response)
                     if tupleData.isSuccess {
                         let userInfoArray = tupleData.jsonData!["userInfoArray"] as! [Any]
@@ -76,6 +76,73 @@ class CouponNetwork {
                 })
         }
     }
+    
+    // MARK: - 패스워드 확인
+    func requestCheckPassword(phoneNumber:String, password:String, complete: @escaping (Bool) -> Void) {
+        if isSqlite {
+            do {
+                CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
+                if CouponSignleton.sharedInstance.userData?.id != nil {
+                    complete(true)
+                } else {
+                    complete(false)
+                }
+            } catch {
+                complete(false)
+            }
+        } else {
+            let fullUrl = "\(mainUrl)user_data"
+            let parameter = ["phone_number":phoneNumber, "password":password, "mode":"CheckUserPassword"]
+            self.showProgress()
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
+                .validate().responseJSON(completionHandler: { (response) -> Void in
+                    self.closeProgress()
+                    let tupleData = self.checkResponseData(response)
+                    if tupleData.isSuccess {
+                        let userId = tupleData.jsonData!["userId"] as! Int
+                        CouponSignleton.sharedInstance.userData?.id = userId
+                        complete(true)
+                    } else {
+                        complete(false)
+                    }
+                })
+            
+        }
+    }
+    
+    func requestGetMerchantData() {
+        if isSqlite {
+            do {
+                CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
+                for merchantModel in CouponSignleton.sharedInstance.merchantList! {
+                    if (merchantModel?.isCouponImage)! {
+                        merchantModel?.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: (merchantModel?.merchantId)!)
+                    } else {
+                        merchantModel?.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: (merchantModel?.merchantId)!)
+                    }
+                }
+            } catch {
+                
+            }
+        } else {
+            let fullUrl = "\(mainUrl)merchant_data"
+            self.showProgress()
+            Alamofire.request(fullUrl, method:.post, parameters: nil)
+                .validate().responseJSON(completionHandler: { (response) -> Void in
+                    let tupleData = self.checkResponseData(response)
+                    if tupleData.isSuccess {
+                        let merchatList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
+                        for merchantJsonData in merchatList {
+                            let merchantModel = MerchantModel()
+                            merchantJsonData[""]
+                        }
+                        
+                    }
+                })
+        }
+    }
+    
+    
     
     func checkResponseData(_ response:DataResponse<Any>) -> (isSuccess:Bool,jsonData:[String:AnyObject]?) {
         var isSuccess:Bool = false
