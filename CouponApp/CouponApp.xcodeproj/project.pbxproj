@@ -39,6 +39,7 @@
 		CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */; };
 		CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32D06C2011B61C003A7422 /* RoundedView.swift */; };
 		CC32D0792011D0AA003A7422 /* CustomPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32D0782011D0AA003A7422 /* CustomPopupView.swift */; };
+		CC595CAD2032B648007E493E /* ParseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC595CAC2032B648007E493E /* ParseProtocol.swift */; };
 		CC62DF502005D24300CCED88 /* DetailMerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */; };
 		CC65744520299405005F111A /* CouponNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC65744420299405005F111A /* CouponNetwork.swift */; };
 		CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */; };
@@ -113,6 +114,7 @@
 		CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		CC32D06C2011B61C003A7422 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		CC32D0782011D0AA003A7422 /* CustomPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupView.swift; sourceTree = "<group>"; };
+		CC595CAC2032B648007E493E /* ParseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseProtocol.swift; sourceTree = "<group>"; };
 		CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMerchantViewController.swift; sourceTree = "<group>"; };
 		CC65744420299405005F111A /* CouponNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponNetwork.swift; sourceTree = "<group>"; };
 		CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefualtKey.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
+				CC595CAB2032B5FC007E493E /* protocol */,
 				CC7BE8CA200F199100DB8E09 /* etc */,
 				CC09A4F8200D969D00B512C0 /* button */,
 				590D16E320020282008FBA02 /* singleton */,
@@ -314,6 +317,14 @@
 				CC09A4F9200D96B600B512C0 /* RoundedButton.swift */,
 			);
 			path = button;
+			sourceTree = "<group>";
+		};
+		CC595CAB2032B5FC007E493E /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CC595CAC2032B648007E493E /* ParseProtocol.swift */,
+			);
+			path = protocol;
 			sourceTree = "<group>";
 		};
 		CC7BE8CA200F199100DB8E09 /* etc */ = {
@@ -664,6 +675,7 @@
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				CC65744520299405005F111A /* CouponNetwork.swift in Sources */,
 				CC81729C200721EC0073E690 /* CouponView.swift in Sources */,
+				CC595CAD2032B648007E493E /* ParseProtocol.swift in Sources */,
 				CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */,
 				CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */,

@@ -16,21 +16,6 @@ class CouponSignleton {
     var userData:UserModel? = UserModel()
     var merchantList:[MerchantModel?]? //가맹점 리스트
     
-    // MARK: - 가맹점 데이터 리스트 생성
-    func createMerchantList() {
-        do {
-            CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
-            for merchantModel in merchantList! {
-                if (merchantModel?.isCouponImage)! {
-                    merchantModel?.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: (merchantModel?.merchantId)!)
-                } else {
-                    merchantModel?.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: (merchantModel?.merchantId)!)
-                }
-            }
-        } catch {
-            print(error)
-        }
-    }
     
     // MARK: - 가맹점 데이터 찾기
     func findMerchantModel(merchantId:Int?) -> MerchantModel? {

@@ -11,7 +11,7 @@ import UIKit
 /*
      쿠폰 그리기 데이터
 */
-struct DrawCouponModel {
+class DrawCouponModel:ParseProtocol{
     var couponId:Int? // 쿠폰 인덱스
     var merchantId:Int? // 가맹점 ID
     var circleColor:UIColor // 원 색상
@@ -30,5 +30,17 @@ struct DrawCouponModel {
         checkLineWidth = 4
         checkLineColor = UIColor.black
         isEvent = false
+    }
+    
+    func parseData(data:[String:Any]){
+        self.merchantId = data["merchant_id"] as? Int
+        self.couponId = data["coupon_id"] as? Int
+        self.ringColor = UIColor.hexStringToUIColor(hex: data["ring_color"] as! String)
+        self.circleColor = UIColor.hexStringToUIColor(hex: data["circle_color"] as! String)
+        self.checkLineColor = UIColor.hexStringToUIColor(hex: data["checkline_color"] as! String)
+        self.ringThickness = data["ring_thickness"] as! CGFloat
+        self.checkLineWidth = data["checkline_width"] as! CGFloat
+        self.isRing = data["isRing"] as! Bool
+        self.isEvent = data["isEvent"] as! Bool
     }
 }

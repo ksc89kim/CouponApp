@@ -11,7 +11,7 @@ import Foundation
 /*
      회원 쿠폰 데이터
  */
-struct UserCouponModel {
+class UserCouponModel {
     var couponCount:Int? // 적립된 쿠폰 갯수
     var merchantId:Int? // 가맹점 ID
     init() {

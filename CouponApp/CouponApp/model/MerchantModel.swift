@@ -11,7 +11,8 @@ import Foundation
 /*
      가맹점 데이터
 */
-class MerchantModel {
+class MerchantModel:ParseProtocol{
+    
     var merchantId:Int? // 가맹점 ID
     var name:String? // 가맹점 이름
     var content:String? // 가맹점 소개 내용
@@ -30,5 +31,31 @@ class MerchantModel {
         latitude = 0
         longitude = 0
         isCouponImage = false
+    }
+    
+    func parseData(data: [String : Any]) {
+        self.merchantId =  data["id"] as? Int
+        self.name = data["name"] as? String
+        self.content = data["content"] as? String
+        self.logoImageUrl = data["imageUrl"] as? String
+        self.latitude = data["latitude"] as? Double
+        self.longitude = data["longitude"] as? Double
+        self.isCouponImage = data["isCouponImage"] as? Bool
+        
+        if let imageCouponList = data["imageCouponList"] as? [[String:Any]] {
+            for imageCouponJsonData in imageCouponList {
+                let imageCouponModel = ImageCouponModel()
+                imageCouponModel.parseData(data: imageCouponJsonData)
+                self.imageCouponList?.append(imageCouponModel)
+            }
+        }
+        
+        if let drawCouponList = data["drawCouponList"] as? [[String:Any]] {
+            for drawCouponJsonData in drawCouponList {
+                let drawCouponModel = DrawCouponModel()
+                drawCouponModel.parseData(data: drawCouponJsonData)
+                self.drawCouponList?.append(drawCouponModel)
+            }
+        }
     }
 }

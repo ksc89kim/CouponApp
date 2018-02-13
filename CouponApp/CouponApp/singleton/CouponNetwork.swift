@@ -110,7 +110,7 @@ class CouponNetwork {
         }
     }
     
-    func requestGetMerchantData() {
+    func requestGetMerchantData(complete: @escaping (Bool) -> Void) {
         if isSqlite {
             do {
                 CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
@@ -122,21 +122,27 @@ class CouponNetwork {
                     }
                 }
             } catch {
-                
+                complete(false)
             }
         } else {
             let fullUrl = "\(mainUrl)merchant_data"
+            let parameter = ["mode":"GetMerchantData"]
             self.showProgress()
-            Alamofire.request(fullUrl, method:.post, parameters: nil)
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
                 .validate().responseJSON(completionHandler: { (response) -> Void in
                     let tupleData = self.checkResponseData(response)
                     if tupleData.isSuccess {
+                        self.closeProgress()
+                        CouponSignleton.sharedInstance.merchantList =  [MerchantModel]()
                         let merchatList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
                         for merchantJsonData in merchatList {
                             let merchantModel = MerchantModel()
-                            merchantJsonData[""]
+                            merchantModel.parseData(data: merchantJsonData)
+                            CouponSignleton.sharedInstance.merchantList?.append(merchantModel)
                         }
-                        
+                        complete(true)
+                    } else {
+                        complete(false)
                     }
                 })
         }
@@ -147,6 +153,7 @@ class CouponNetwork {
     func checkResponseData(_ response:DataResponse<Any>) -> (isSuccess:Bool,jsonData:[String:AnyObject]?) {
         var isSuccess:Bool = false
         var jsonData:[String:AnyObject]? = nil
+        print("log \(response)")
         switch response.result {
         case .success(let data):
             jsonData = data as? [String:AnyObject]

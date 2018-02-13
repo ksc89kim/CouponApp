@@ -32,20 +32,30 @@ class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        loginWithSignView.isHidden = true
-        let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
-        if let phoneNumber = phoneNumberString {
-            CouponNetwork.sharedInstance.requestUserData(phoneNumber: phoneNumber, complete: { isSuccessed in
-                if isSuccessed {
-                    self.goMain()
+        // 전체 가맹점 불러오기
+       self.getMerchantData()
+    }
+    
+    func getMerchantData() {
+        CouponNetwork.sharedInstance.requestGetMerchantData(complete: { isSuccessed in
+            self.loginWithSignView.isHidden = true
+            if isSuccessed {
+                let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
+                if let phoneNumber = phoneNumberString {
+                    CouponNetwork.sharedInstance.requestUserData(phoneNumber: phoneNumber, complete: { isSuccessed in
+                        if isSuccessed {
+                            self.goMain()
+                        } else {
+                            self.loginWithSignView.isHidden = false
+                        }
+                    })
                 } else {
                     self.loginWithSignView.isHidden = false
                 }
-            })
-        } else {
-            loginWithSignView.isHidden = false
-        } 
-
+            } else {
+                self.getMerchantData()
+            }
+        })
     }
     
     func goMain() {

@@ -11,7 +11,7 @@ import Foundation
 /*
      회원 데이터
  */
-class UserModel {
+class UserModel:ParseProtocol {
     var name:String?
     var phoneNumber:String?
     var id:Int?
