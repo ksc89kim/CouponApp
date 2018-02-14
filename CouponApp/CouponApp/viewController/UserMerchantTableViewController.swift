@@ -104,17 +104,15 @@ class UserMerchantTableViewController: UITableViewController {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let userId = CouponSignleton.sharedInstance.userData?.id
-        do{
-            let state = try SQLInterface().deleteCounpon(userId!, merchantId!, complete: { isSuccess in
-                guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
-                    return
-                }
-            })
-            return state
-        } catch {
-            CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
-            return false
-        }
+        var state = false
+        CouponNetwork.sharedInstance.requestDeleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
+            if isSuccessed {
+               state = isSuccessed
+            } else {
+                CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                state = false
+            }
+        })
+        return state
     }
 }

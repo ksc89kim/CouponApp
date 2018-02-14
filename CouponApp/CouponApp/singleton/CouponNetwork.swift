@@ -110,6 +110,7 @@ class CouponNetwork {
         }
     }
     
+    // MARK: - 가맹점 데이터 가져오기
     func requestGetMerchantData(complete: @escaping (Bool) -> Void) {
         if isSqlite {
             do {
@@ -131,8 +132,8 @@ class CouponNetwork {
             Alamofire.request(fullUrl, method:.post, parameters: parameter)
                 .validate().responseJSON(completionHandler: { (response) -> Void in
                     let tupleData = self.checkResponseData(response)
+                    self.closeProgress()
                     if tupleData.isSuccess {
-                        self.closeProgress()
                         CouponSignleton.sharedInstance.merchantList =  [MerchantModel]()
                         let merchatList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
                         for merchantJsonData in merchatList {
@@ -148,6 +149,82 @@ class CouponNetwork {
         }
     }
     
+    // MARK: - 유저 쿠폰 추가하기
+    func requestInsertUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void) {
+        if isSqlite {
+            do {
+                try SQLInterface().insertCoupon(userId, merchantId, complete:complete)
+            } catch {
+                complete(false)
+            }
+        } else {
+            let fullUrl = "\(mainUrl)coupon_data"
+            let parameter = ["mode":"InsertCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
+            self.showProgress()
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
+            .validate().responseJSON(completionHandler: { (response) -> Void in
+                let tupleData = self.checkResponseData(response)
+                self.closeProgress()
+                if tupleData.isSuccess {
+                    complete(true)
+                } else {
+                    complete(false)
+                }
+            })
+        }
+    }
+    
+    // MARK: - 유저 쿠폰 확인하기
+    func requestCheckUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void){
+        if isSqlite {
+            do {
+                let isUserCoupon = try SQLInterface().isUserCoupon(userId,merchantId)
+                complete(isUserCoupon)
+            } catch {
+                complete(false)
+            }
+        } else {
+            let fullUrl = "\(mainUrl)coupon_data"
+            let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
+            self.showProgress()
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
+                .validate().responseJSON(completionHandler: { (response) -> Void in
+                let tupleData = self.checkResponseData(response)
+                self.closeProgress()
+                if tupleData.isSuccess {
+                    let isCouponData = tupleData.jsonData!["isCouponData"] as! Bool
+                    complete(isCouponData)
+                } else {
+                    complete(false)
+                }
+            })
+        }
+    }
+    
+    // MARK: - 유저 쿠폰 삭제하기
+    func requestDeleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void){
+        if isSqlite {
+            do{
+                try SQLInterface().deleteCounpon(userId, merchantId, complete:complete)
+            } catch {
+                complete(false)
+            }
+        } else {
+            let fullUrl = "\(mainUrl)coupon_data"
+            let parameter = ["mode":"DeleteCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
+            self.showProgress()
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
+                .validate().responseJSON(completionHandler: { (response) -> Void in
+                    let tupleData = self.checkResponseData(response)
+                    self.closeProgress()
+                    if tupleData.isSuccess {
+                        complete(true)
+                    } else {
+                        complete(false)
+                    }
+                })
+        }
+    }
     
     
     func checkResponseData(_ response:DataResponse<Any>) -> (isSuccess:Bool,jsonData:[String:AnyObject]?) {

@@ -30,13 +30,11 @@ class DetailMerchantViewController: UIViewController {
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
             let userId = CouponSignleton.sharedInstance.userData?.id
-            do {
-                isUserCoupon = try SQLInterface().isUserCoupon(userId!,merchant.merchantId!)
-            } catch {
-                isUserCoupon = false
-            }
+            CouponNetwork.sharedInstance.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { isSuccessed in
+                self.isUserCoupon = isSuccessed
+                self.refreshButton()
+            })
         }
-        refreshButton()
         // Do any additional setup after loading the view.
     }
 
@@ -70,21 +68,15 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.sharedInstance.userData?.id
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
-        do{
-            let state = try SQLInterface().deleteCounpon(userId!, merchantModel.merchantId!, complete: { isSuccess in
-                guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
-                    return
-                }
-                isUserCoupon = false
-                refreshButton()
-            })
-            if !state {
-                CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+        
+        CouponNetwork.sharedInstance.requestDeleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+            if isSuccessed {
+                self.isUserCoupon = false
+                self.refreshButton()
+            } else {
+                 CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
             }
-        } catch {
-            CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
-        }
+        })
     }
     
     //추가하기
@@ -92,18 +84,14 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.sharedInstance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        do {
-            try SQLInterface().insertCoupon(userId!, merchantModel.merchantId!, complete: { isSuccess in
-                guard isSuccess else {
-                    CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
-                    return
-                }
-                isUserCoupon = true
-                refreshButton()
-            })
-        } catch {
-            CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
-        }
+        CouponNetwork.sharedInstance.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccess in
+            guard isSuccess else {
+                CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
+                return
+            }
+            self.isUserCoupon = true
+            self.refreshButton()
+        })
     }
 
 }
