@@ -44,8 +44,8 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             return
         }
         
-        CouponNetwork.sharedInstance.requestCheckPassword(phoneNumber: phoneNumber.text!, password:password.text!, complete: { isSuccess in
-            if isSuccess {
+        CouponNetwork.sharedInstance.requestCheckPassword(phoneNumber: phoneNumber.text!, password:password.text!, complete: { isSuccessed in
+            if isSuccessed {
                 UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                 self.goMain()
             } else {

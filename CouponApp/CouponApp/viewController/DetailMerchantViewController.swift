@@ -84,8 +84,8 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.sharedInstance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        CouponNetwork.sharedInstance.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccess in
-            guard isSuccess else {
+        CouponNetwork.sharedInstance.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+            guard isSuccessed else {
                 CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
                 return
             }

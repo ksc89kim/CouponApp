@@ -71,8 +71,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         userMerchantData?.couponCount = couponCount + 1
         let userId = CouponSignleton.sharedInstance.userData?.id
         do {
-            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccess in
-                guard isSuccess else {
+            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccessed in
+                guard isSuccessed else {
                     CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
                     return
                 }
@@ -104,8 +104,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         userMerchantData?.couponCount = 0
         let userId = CouponSignleton.sharedInstance.userData?.id
         do {
-            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccess in
-                guard isSuccess else {
+            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccessed in
+                guard isSuccessed else {
                     CouponSignleton.showCustomPopup(title: useCouponFailTitle, message: useCouponFailContent,callback: nil)
                     return
                 }

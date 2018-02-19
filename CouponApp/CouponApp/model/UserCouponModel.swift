@@ -11,11 +11,16 @@ import Foundation
 /*
      회원 쿠폰 데이터
  */
-class UserCouponModel {
+class UserCouponModel:ParseProtocol {
     var couponCount:Int? // 적립된 쿠폰 갯수
     var merchantId:Int? // 가맹점 ID
     init() {
         couponCount = 0
         merchantId = 0
+    }
+    
+    func parseData(data: [String : Any]) {
+        self.merchantId = data["merchant_id"] as? Int
+        self.couponCount = data["coupon_count"] as? Int
     }
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 /*
-     회원 가맹점 테이블 뷰
-     - 현재 회원이 등록한 가맹점을 보여주는 테이블 뷰 컨트롤러
+     회원 가맹점(쿠폰) 테이블 뷰
+     - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
 class UserMerchantTableViewController: UITableViewController {
     var userCouponList:[UserCouponModel?]? // 회원 쿠폰 정보
@@ -39,11 +39,18 @@ class UserMerchantTableViewController: UITableViewController {
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.sharedInstance.userData?.id
-        do {
-            self.userCouponList = try SQLInterface().selectUserCouponData(userId!)
-        } catch {
-            print(error)
-        }
+        CouponNetwork.sharedInstance.requestUserCouponData(userId: userId!, complete: { isSuccessed, userCouponList in
+            if isSuccessed {
+                self.userCouponList = userCouponList
+                if self.userCouponList != nil {
+                    self.tableView.reloadData()
+                } else {
+                    self.setData()
+                }
+            } else{
+                self.setData()
+            }
+        })
     }
     
     // MARK: - Table view data source
@@ -54,7 +61,11 @@ class UserMerchantTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.userCouponList!.count
+        if self.userCouponList == nil {
+            return 0
+        } else {
+            return self.userCouponList!.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,7 +78,6 @@ class UserMerchantTableViewController: UITableViewController {
         let merchantModel =  singleton.findMerchantModel(merchantId: userCouponModel?.merchantId)
         cell.merchantName.text = merchantModel?.name
         cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
-        
         //cell.textLabel?.text = merchantModel?.name
         return cell
     }

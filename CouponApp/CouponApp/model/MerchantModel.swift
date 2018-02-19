@@ -31,6 +31,8 @@ class MerchantModel:ParseProtocol{
         latitude = 0
         longitude = 0
         isCouponImage = false
+        imageCouponList = [ImageCouponModel?]()
+        drawCouponList = [DrawCouponModel?]()
     }
     
     func parseData(data: [String : Any]) {

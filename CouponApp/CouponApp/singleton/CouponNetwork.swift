@@ -135,8 +135,8 @@ class CouponNetwork {
                     self.closeProgress()
                     if tupleData.isSuccess {
                         CouponSignleton.sharedInstance.merchantList =  [MerchantModel]()
-                        let merchatList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
-                        for merchantJsonData in merchatList {
+                        let merchatJsonList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
+                        for merchantJsonData in merchatJsonList {
                             let merchantModel = MerchantModel()
                             merchantModel.parseData(data: merchantJsonData)
                             CouponSignleton.sharedInstance.merchantList?.append(merchantModel)
@@ -185,6 +185,8 @@ class CouponNetwork {
             }
         } else {
             let fullUrl = "\(mainUrl)coupon_data"
+            print("userId = \(userId)")
+            print("merchantId = \(merchantId)")
             let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
             self.showProgress()
             Alamofire.request(fullUrl, method:.post, parameters: parameter)
@@ -226,7 +228,38 @@ class CouponNetwork {
         }
     }
     
+    // MARK: - 유저 쿠폰 데이터 요청하기
+    func requestUserCouponData(userId:Int, complete: @escaping (Bool, [UserCouponModel?]?) -> Void) {
+        if isSqlite {
+            do {
+                complete(true, try SQLInterface().selectUserCouponData(userId))
+            } catch {
+               complete(false, nil)
+            }
+        } else {
+            let fullUrl = "\(mainUrl)coupon_data"
+            let parameter = ["mode":"GetCouponData","user_id":userId] as [String : Any]
+            Alamofire.request(fullUrl, method:.post, parameters: parameter)
+                .validate().responseJSON(completionHandler: { (response) -> Void in
+                    let tupleData = self.checkResponseData(response)
+                    if tupleData.isSuccess {
+                        var userCouponList:[UserCouponModel?]? =  [UserCouponModel]()
+                        let userCouponJsonList = tupleData.jsonData!["couponInfoArray"] as! [[String:Any]]
+                        for userCouponJsonData in userCouponJsonList {
+                            let userCouponModel = UserCouponModel()
+                            userCouponModel.parseData(data: userCouponJsonData)
+                            userCouponList?.append(userCouponModel)
+                        }
+                        complete(true,userCouponList)
+                    } else {
+                        complete(false,nil)
+                    }
+                })
+            
+        }
+    }
     
+    // MARK: - 기타등등
     func checkResponseData(_ response:DataResponse<Any>) -> (isSuccess:Bool,jsonData:[String:AnyObject]?) {
         var isSuccess:Bool = false
         var jsonData:[String:AnyObject]? = nil
