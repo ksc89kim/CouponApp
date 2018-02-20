@@ -12,9 +12,9 @@ import Foundation
      회원 데이터
  */
 class UserModel:ParseProtocol {
-    var name:String?
-    var phoneNumber:String?
-    var id:Int?
+    var name:String? //회원 이름
+    var phoneNumber:String? //회원 전화번호
+    var id:Int? //회원 아이디
     
     func parseData(data:[String:Any]){
         self.name = data["name"] as? String;

@@ -39,7 +39,7 @@ class UserMerchantTableViewController: UITableViewController {
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.sharedInstance.userData?.id
-        CouponNetwork.sharedInstance.requestUserCouponData(userId: userId!, complete: { isSuccessed, userCouponList in
+        CouponNetwork.requestUserCouponData(userId: userId!, complete: { isSuccessed, userCouponList in
             if isSuccessed {
                 self.userCouponList = userCouponList
                 if self.userCouponList != nil {
@@ -115,7 +115,7 @@ class UserMerchantTableViewController: UITableViewController {
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let userId = CouponSignleton.sharedInstance.userData?.id
         var state = false
-        CouponNetwork.sharedInstance.requestDeleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
+        CouponNetwork.requestDeleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
             if isSuccessed {
                state = isSuccessed
             } else {

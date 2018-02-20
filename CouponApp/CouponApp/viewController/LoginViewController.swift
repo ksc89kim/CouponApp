@@ -32,7 +32,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         let phoneNumberNeedInput = NSLocalizedString("phoneNumberNeedInput", comment: "")
         let passwordNeedInput = NSLocalizedString("passwordNeedInput", comment: "")
         let loginFailTitle = NSLocalizedString("loginFailTitle", comment: "")
-        let loginFailContent = NSLocalizedString("loginFailContent", comment: "")
+        //let loginFailContent = NSLocalizedString("loginFailContent", comment: "")
         let phoneNumberOrPasswordFail = NSLocalizedString("phoneNumberOrPasswordFail", comment: "")
         
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
             return
         }
         
-        CouponNetwork.sharedInstance.requestCheckPassword(phoneNumber: phoneNumber.text!, password:password.text!, complete: { isSuccessed in
+        CouponNetwork.requestCheckPassword(phoneNumber: phoneNumber.text!, password:password.text!, complete: { isSuccessed in
             if isSuccessed {
                 UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                 self.goMain()

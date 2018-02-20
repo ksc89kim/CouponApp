@@ -68,19 +68,16 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             CouponSignleton.showCustomPopup(title: maxCouponTitle, message:maxCouponContent,callback: nil)
             return
         }
-        userMerchantData?.couponCount = couponCount + 1
+        
         let userId = CouponSignleton.sharedInstance.userData?.id
-        do {
-            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccessed in
-                guard isSuccessed else {
-                    CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
-                    return
-                }
-                myCollectionView.reloadData()
-            })
-        } catch {
-            CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
-        }
+        CouponNetwork.requestUpdateUesrCoupon(userId: userId!, merchantId: (merchantData?.merchantId)!, couponCount: couponCount + 1, complete: { isSuccessed in
+            if isSuccessed {
+                self.userMerchantData?.couponCount = couponCount + 1
+                self.myCollectionView.reloadData()
+            } else {
+                CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
+            }
+        })
     }
     
     // 쿠폰 사용하기
@@ -101,19 +98,15 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             CouponSignleton.showCustomPopup(title: lackCouponTitle, message: lackCouponContent,callback: nil)
             return
         }
-        userMerchantData?.couponCount = 0
         let userId = CouponSignleton.sharedInstance.userData?.id
-        do {
-            try SQLInterface().updateCouponCount(userId!,(merchantData?.merchantId)!,(userMerchantData?.couponCount)!,complete: { isSuccessed in
-                guard isSuccessed else {
-                    CouponSignleton.showCustomPopup(title: useCouponFailTitle, message: useCouponFailContent,callback: nil)
-                    return
-                }
-                myCollectionView.reloadData()
-            })
-        } catch {
-            CouponSignleton.showCustomPopup(title: useCouponFailTitle, message: useCouponFailContent,callback: nil)
-        }
+        CouponNetwork.requestUpdateUesrCoupon(userId: userId!, merchantId: (merchantData?.merchantId)!, couponCount: 0, complete: { isSuccessed in
+            if isSuccessed {
+                self.userMerchantData?.couponCount = 0
+                self.myCollectionView.reloadData()
+            } else {
+                CouponSignleton.showCustomPopup(title:useCouponFailTitle, message: useCouponFailContent,callback: nil)
+            }
+        })
     }
  
     /*

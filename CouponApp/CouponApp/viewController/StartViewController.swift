@@ -20,7 +20,7 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.loginWithSignView.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -37,12 +37,12 @@ class StartViewController: UIViewController {
     }
     
     func getMerchantData() {
-        CouponNetwork.sharedInstance.requestGetMerchantData(complete: { isSuccessed in
+        CouponNetwork.requestGetMerchantData(complete: { isSuccessed in
             self.loginWithSignView.isHidden = true
             if isSuccessed {
                 let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
                 if let phoneNumber = phoneNumberString {
-                    CouponNetwork.sharedInstance.requestUserData(phoneNumber: phoneNumber, complete: { isSuccessed in
+                    CouponNetwork.requestUserData(phoneNumber: phoneNumber, complete: { isSuccessed in
                         if isSuccessed {
                             self.goMain()
                         } else {

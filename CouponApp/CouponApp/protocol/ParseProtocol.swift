@@ -8,6 +8,9 @@
 
 import Foundation
 
+/*
+     JSON PARSE 프로토콜
+ */
 protocol ParseProtocol {
     func parseData(data:[String:Any])
 }

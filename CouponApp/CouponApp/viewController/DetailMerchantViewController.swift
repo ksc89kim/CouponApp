@@ -30,7 +30,7 @@ class DetailMerchantViewController: UIViewController {
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
             let userId = CouponSignleton.sharedInstance.userData?.id
-            CouponNetwork.sharedInstance.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { isSuccessed in
+            CouponNetwork.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { isSuccessed in
                 self.isUserCoupon = isSuccessed
                 self.refreshButton()
             })
@@ -69,7 +69,7 @@ class DetailMerchantViewController: UIViewController {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         
-        CouponNetwork.sharedInstance.requestDeleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+        CouponNetwork.requestDeleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
             if isSuccessed {
                 self.isUserCoupon = false
                 self.refreshButton()
@@ -84,7 +84,7 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.sharedInstance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        CouponNetwork.sharedInstance.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+        CouponNetwork.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
             guard isSuccessed else {
                 CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
                 return

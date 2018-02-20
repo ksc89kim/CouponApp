@@ -45,13 +45,13 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
             return
         }
         
-        CouponNetwork.sharedInstance.requestSignup(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccessed in
+        CouponNetwork.requestSignup(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccessed in
             guard isSuccessed else {
                 CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 return
             }
             
-            CouponNetwork.sharedInstance.requestUserData(phoneNumber: self.phoneNumber.text!, complete: { isSuccessed in
+            CouponNetwork.requestUserData(phoneNumber: self.phoneNumber.text!, complete: { isSuccessed in
                 if isSuccessed {
                     UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                     self.goMain()

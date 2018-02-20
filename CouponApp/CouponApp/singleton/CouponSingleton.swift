@@ -13,6 +13,7 @@ import UIKit
  */
 class CouponSignleton {
     static let sharedInstance = CouponSignleton()
+    var networkData:NetworkModel? = NetworkModel()
     var userData:UserModel? = UserModel()
     var merchantList:[MerchantModel?]? //가맹점 리스트
     
