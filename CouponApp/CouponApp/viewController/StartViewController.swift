@@ -65,7 +65,21 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func unwindToStartView(segue:UIStoryboardSegue) {
-
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLoginViewController" {
+            goRightAnimation()
+        } else if segue.identifier == "showSignupViewController" {
+            goRightAnimation()
+        }
+    }
+    
+    func goRightAnimation() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromRight
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+    }
 }

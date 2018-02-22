@@ -55,7 +55,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="RGx-FH-H8W" kind="show" id="YCH-G6-BXO"/>
+                                            <segue destination="RGx-FH-H8W" kind="show" identifier="showLoginViewController" animates="NO" id="YCH-G6-BXO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6h2-fd-frG" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
@@ -75,7 +75,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="CfA-pA-K9j" kind="show" id="ASK-WY-mIo"/>
+                                            <segue destination="CfA-pA-K9j" kind="show" identifier="showSignupViewController" animates="NO" id="ASK-WY-mIo"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -155,7 +155,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="Ulc-Fu-cwn" kind="unwind" unwindAction="unwindToStartViewWithSegue:" id="P1D-xw-9gf"/>
+                                    <action selector="clickBack:" destination="CfA-pA-K9j" eventType="touchUpInside" id="bBF-s9-vOn"/>
+                                    <segue destination="Ulc-Fu-cwn" kind="unwind" identifier="dimissSignupViewController" animates="NO" unwindAction="unwindToStartViewWithSegue:" id="P1D-xw-9gf"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8tN-rN-861">
@@ -290,7 +291,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="c45-0S-gjP" kind="unwind" unwindAction="unwindToStartViewWithSegue:" id="UGu-lx-XZM"/>
+                                    <action selector="clickBack:" destination="RGx-FH-H8W" eventType="touchUpInside" id="OYi-Eb-XrR"/>
+                                    <segue destination="c45-0S-gjP" kind="unwind" identifier="dimissLoginViewController" animates="NO" unwindAction="unwindToStartViewWithSegue:" id="UGu-lx-XZM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CouponApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvc-aw-MzZ">

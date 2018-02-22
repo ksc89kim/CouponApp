@@ -54,10 +54,22 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         })
     }
     
+    @IBAction func clickBack(_ sender: Any) {
+        goLeftAnimation()
+    }
+    
     func goMain() {
         let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
         let initalViewController = storyBoard.instantiateInitialViewController()
         self.show(initalViewController!, sender: nil)
+    }
+    
+    func goLeftAnimation() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
     }
 
 }

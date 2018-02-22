@@ -123,6 +123,7 @@ class CouponNetwork {
                         merchantModel?.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: (merchantModel?.merchantId)!)
                     }
                 }
+                complete(true)
             } catch {
                 complete(false)
             }

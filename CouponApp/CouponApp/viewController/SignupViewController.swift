@@ -22,6 +22,7 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
         password.delegate = self
         name.delegate = self
         
+
         // Do any additional setup after loading the view.
     }
 
@@ -63,6 +64,10 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
       
     }
     
+    @IBAction func clickBack(_ sender: Any) {
+        goLeftAnimation()
+    }
+    
     func goMain() {
         let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
         let initalViewController = storyBoard.instantiateInitialViewController()
@@ -81,5 +86,11 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
         return newLength <= limitCount
     }
     
-
+    func goLeftAnimation() {
+        let transition = CATransition()
+        transition.duration = 0.25
+        transition.type = kCATransitionPush
+        transition.subtype = kCATransitionFromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+    }
 }
