@@ -49,4 +49,4 @@ CouponApp
 ![Alt text](/readme_images/coupon2.png)
 ![Alt text](/readme_images/coupon3.png)
 
-1. 쿠폰을 요청할 수 있고, 소진할수도 있음.
+2. 쿠폰을 요청할 수 있고, 소진할수도 있음.
