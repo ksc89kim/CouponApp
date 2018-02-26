@@ -20,12 +20,33 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
         phoneNumber.delegate = self
         password.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(_:)), name:.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func keyboardWillShow(_ sender: Notification) {
+        CouponSignleton.setUpViewHeight(self.view, sender)
+    }
+    
+    @objc func keyboardWillHide(_ sender: Notification) {
+        self.view.frame.origin.y = 0
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        phoneNumber.resignFirstResponder()
+        password.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBAction func clickLogin(_ sender: Any) {
