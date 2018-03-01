@@ -9,19 +9,20 @@ CouponApp
 -------------
 ![Alt text](/readme_images/main.png)
 
-1. 등록된 핸드폰 번호가 캐시에 존재하지 않으면 해당 메인 페이지를 보여준다.
+1. 등록된 정보가 없으면 해당 시작 페이지를 보여준다.
+2. 등록된 정보가 있으면 쿠폰 메인 페이지로 이동한다.
 
 로그인 페이지
 -------------
 ![Alt text](/readme_images/login.png)
 
-1. 등록된 핸드폰 번호와 비밀번호로 접속한다.
+1. 등록된 핸드폰 번호와 비밀번호로 쿠폰앱을 접속한다.
 
 가입 페이지
 -------------
 ![Alt text](/readme_images/signup.png)
 
-1. 핸드폰 번호 및 비밀번호 이름으로 가입한다.
+1. 핸드폰 번호,비밀번호,이름으로 쿠폰앱을 가입한다.
 
 메인 페이지
 -------------
@@ -31,7 +32,7 @@ CouponApp
 
 ![Alt text](/readme_images/allmerchant.png)
 
-2. 전체 가맹점을 보여준다.
+2. 쿠폰앱에 등록된 전체 가맹점을 보여준다.
 
 ![Alt text](/readme_images/detailmerchant.png)
 
