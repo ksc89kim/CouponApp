@@ -16,3 +16,10 @@
 
 소스 플로우
 -------------
+![Alt text](/readme_images/flow/viewcontroller_flow.png)
+![Alt text](/readme_images/flow/startview_flow.png)
+![Alt text](/readme_images/flow/loginview_flow.png)
+![Alt text](/readme_images/flow/signupview_flow.png)
+![Alt text](/readme_images/flow/main_flow.png)
+![Alt text](/readme_images/flow/findmerchant_flow.png)
+![Alt text](/readme_images/flow/usermerchant_flow.png)
