@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,24 +29,25 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vy-qW-5zY" userLabel="Merchant Name">
-                                            <rect key="frame" x="104" y="39" width="44.5" height="21"/>
+                                            <rect key="frame" x="92.5" y="39" width="266.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-EM-wxh" userLabel="Logo Image">
-                                            <rect key="frame" x="16" y="11" width="80" height="78"/>
+                                            <rect key="frame" x="16" y="15" width="68.5" height="68.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="BhX-GE-Ttx"/>
-                                                <constraint firstAttribute="height" constant="78" id="so0-kw-vbD"/>
+                                                <constraint firstAttribute="width" secondItem="pdy-EM-wxh" secondAttribute="height" multiplier="930:940" id="kqo-4Z-tIl"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="0Vy-qW-5zY" secondAttribute="trailing" id="Ofv-fZ-Tnk"/>
                                         <constraint firstItem="pdy-EM-wxh" firstAttribute="centerY" secondItem="WNr-Sl-ii5" secondAttribute="centerY" id="f1m-XG-lJg"/>
                                         <constraint firstItem="pdy-EM-wxh" firstAttribute="leading" secondItem="WNr-Sl-ii5" secondAttribute="leadingMargin" id="jDO-A1-4BE"/>
                                         <constraint firstItem="0Vy-qW-5zY" firstAttribute="leading" secondItem="pdy-EM-wxh" secondAttribute="trailing" constant="8" id="oGx-jC-6aw"/>
                                         <constraint firstItem="0Vy-qW-5zY" firstAttribute="centerY" secondItem="WNr-Sl-ii5" secondAttribute="centerY" id="p0D-RK-8xI"/>
+                                        <constraint firstItem="pdy-EM-wxh" firstAttribute="height" secondItem="WNr-Sl-ii5" secondAttribute="height" multiplier="0.7" id="wCd-Ny-G0f"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -78,19 +80,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-l2-odD" userLabel="Logo Image">
-                                <rect key="frame" x="94" y="94" width="187.5" height="200"/>
+                                <rect key="frame" x="94" y="102.5" width="187.5" height="200"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 샾" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymn-at-zkT" userLabel="Merchant Name">
-                                <rect key="frame" x="156.5" y="28" width="62" height="58"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="58" id="9Mn-gL-tft"/>
-                                </constraints>
+                                <rect key="frame" x="94" y="28" width="187.5" height="66.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-IV-EVO" userLabel="Merchant Content">
-                                <rect key="frame" x="19" y="323" width="337.5" height="133.5"/>
+                                <rect key="frame" x="19" y="331.5" width="337.5" height="133.5"/>
                                 <string key="text">"커피 이상의 특별한 경험을 소개합니다.”
 세계인들의 생활 속에 스며들어 전 세계의 커피 문화를 선도하고 있는 스타벅스가 일상을 풍요롭게 하는 제3의 공간으로서 
 국내에서도 지역사회 속에서 고객 과 함께하며 새로운 커피문화를 정착시키고 있습니다.</string>
@@ -99,7 +98,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-kX-ljw" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="19.5" y="473" width="337.5" height="30"/>
+                                <rect key="frame" x="19.5" y="481.5" width="337.5" height="33.5"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="추가하기"/>
@@ -118,10 +117,13 @@
                         <constraints>
                             <constraint firstItem="ghg-kX-ljw" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="2dO-Oe-jXM"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.3" id="2ye-Lz-DDB"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.5" id="7AE-7b-x80"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="Cik-AE-Uuy"/>
                             <constraint firstItem="ghg-kX-ljw" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.9" id="GAQ-8A-Skx"/>
                             <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="16.5" id="Oot-7J-jRZ"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.1" id="ShV-wz-sIl"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="top" secondItem="pQg-lB-1YC" secondAttribute="bottom" constant="8" id="Tjz-tV-c69"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.05" id="TuV-Qz-FW0"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.2" id="YM5-Y3-3T3"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="top" secondItem="ymn-at-zkT" secondAttribute="bottom" constant="8" id="dZp-JR-Nqi"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="top" secondItem="qPT-l2-odD" secondAttribute="bottom" constant="29" id="iZH-aw-n6h"/>
@@ -159,23 +161,24 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="OqF-NN-YGJ">
-                                            <rect key="frame" x="16" y="11" width="80" height="78"/>
+                                            <rect key="frame" x="16" y="15" width="71.5" height="69.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="b3S-0A-Avi"/>
-                                                <constraint firstAttribute="height" constant="78" id="cSd-67-s5k"/>
+                                                <constraint firstAttribute="width" secondItem="OqF-NN-YGJ" secondAttribute="height" multiplier="40:39" id="Jjz-Ov-Uql"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pt-bK-td3">
-                                            <rect key="frame" x="104" y="40" width="44.5" height="21"/>
+                                            <rect key="frame" x="95.5" y="39.5" width="263.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="3Pt-bK-td3" secondAttribute="trailing" id="7QP-xA-iVC"/>
                                         <constraint firstItem="OqF-NN-YGJ" firstAttribute="centerY" secondItem="2vf-x8-HDW" secondAttribute="centerY" id="Uq9-jQ-gOs"/>
                                         <constraint firstItem="3Pt-bK-td3" firstAttribute="leading" secondItem="OqF-NN-YGJ" secondAttribute="trailing" constant="8" id="WbY-Gq-kNz"/>
                                         <constraint firstItem="OqF-NN-YGJ" firstAttribute="leading" secondItem="2vf-x8-HDW" secondAttribute="leadingMargin" id="do1-6y-jAO"/>
+                                        <constraint firstItem="OqF-NN-YGJ" firstAttribute="height" secondItem="2vf-x8-HDW" secondAttribute="height" multiplier="0.7" id="g4q-is-7ey"/>
                                         <constraint firstItem="3Pt-bK-td3" firstAttribute="centerY" secondItem="2vf-x8-HDW" secondAttribute="centerY" id="thS-zZ-Agt"/>
                                     </constraints>
                                 </tableViewCellContentView>

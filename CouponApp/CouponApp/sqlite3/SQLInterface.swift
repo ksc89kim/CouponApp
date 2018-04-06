@@ -100,7 +100,7 @@ class SQLInterface {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 1)
                 let couponCount:Int32 = sqlite3_column_int(stmt, 2)
                 
-                var userCouponModel:UserCouponModel = UserCouponModel()
+                let userCouponModel:UserCouponModel = UserCouponModel()
                 userCouponModel.merchantId = Int(merchantIdx)
                 userCouponModel.couponCount = Int(couponCount)
                 userCouponList?.append(userCouponModel)
@@ -240,7 +240,7 @@ class SQLInterface {
                 let checkLineColor:String = String(cString:sqlite3_column_text(stmt, 7))
                 let isEvent:Bool = sqlite3_column_int(stmt, 7) > 0
                 
-                var drawCouponModel:DrawCouponModel = DrawCouponModel()
+                let drawCouponModel:DrawCouponModel = DrawCouponModel()
                 drawCouponModel.merchantId = Int(merchantIdx)
                 drawCouponModel.couponId = Int(couponIdx)
                 drawCouponModel.circleColor = UIColor.hexStringToUIColor(hex: circleColor)
@@ -274,7 +274,7 @@ class SQLInterface {
                 let selectImage:String = String(cString:sqlite3_column_text(stmt, 3))
                 let isEvent:Bool = sqlite3_column_int(stmt, 4) > 0
                 
-                var imageCouponModel:ImageCouponModel = ImageCouponModel()
+                let imageCouponModel:ImageCouponModel = ImageCouponModel()
                 imageCouponModel.merchantId = Int(merchantIdx)
                 imageCouponModel.normalImageString = normalImage
                 imageCouponModel.selectImageString = selectImage

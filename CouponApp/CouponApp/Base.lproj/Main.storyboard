@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -55,6 +55,7 @@
                                         <constraints>
                                             <constraint firstItem="1EM-MJ-Js7" firstAttribute="width" secondItem="SzA-gK-dr1" secondAttribute="width" multiplier="0.5" id="88G-P1-v0a"/>
                                             <constraint firstAttribute="bottom" secondItem="VNI-77-Jo5" secondAttribute="bottom" id="Bme-Bc-9as"/>
+                                            <constraint firstAttribute="trailing" secondItem="1EM-MJ-Js7" secondAttribute="trailing" id="GBV-s9-pfo"/>
                                             <constraint firstItem="VNI-77-Jo5" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="LQ1-xA-cQh"/>
                                             <constraint firstItem="VNI-77-Jo5" firstAttribute="width" secondItem="SzA-gK-dr1" secondAttribute="width" multiplier="0.5" id="Sv6-pg-dUm"/>
                                             <constraint firstItem="1EM-MJ-Js7" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="Vwe-dP-y77"/>
@@ -126,14 +127,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="s9W-QL-drs">
-                                            <rect key="frame" x="16" y="11" width="80" height="78"/>
+                                            <rect key="frame" x="16" y="15" width="71" height="69.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="7hH-LR-nKj"/>
-                                                <constraint firstAttribute="height" constant="78" id="lAK-68-3aa"/>
+                                                <constraint firstAttribute="width" secondItem="s9W-QL-drs" secondAttribute="height" multiplier="40:39" id="D8E-eC-U9n"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-2W-PFK">
-                                            <rect key="frame" x="104" y="39" width="44.5" height="21"/>
+                                            <rect key="frame" x="95" y="39.5" width="264" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -142,6 +142,8 @@
                                     <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="XsE-2W-PFK" firstAttribute="centerY" secondItem="B6i-Ej-vhP" secondAttribute="centerY" id="OxL-nk-Dot"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="XsE-2W-PFK" secondAttribute="trailing" id="TF4-bB-ry6"/>
+                                        <constraint firstItem="s9W-QL-drs" firstAttribute="height" secondItem="B6i-Ej-vhP" secondAttribute="height" multiplier="0.7" id="ezX-B0-bvE"/>
                                         <constraint firstItem="s9W-QL-drs" firstAttribute="leading" secondItem="B6i-Ej-vhP" secondAttribute="leadingMargin" id="laP-fP-Jdl"/>
                                         <constraint firstItem="s9W-QL-drs" firstAttribute="centerY" secondItem="B6i-Ej-vhP" secondAttribute="centerY" id="tnN-QG-aqU"/>
                                         <constraint firstItem="XsE-2W-PFK" firstAttribute="leading" secondItem="s9W-QL-drs" secondAttribute="trailing" constant="8" id="y1S-77-c7C"/>
@@ -178,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-S2-Wee" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="585" width="343" height="30"/>
+                                <rect key="frame" x="16" y="582.5" width="343" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="height" multiplier="343:30" id="Uvj-Wg-H9a"/>
@@ -197,7 +199,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="623" width="343" height="30"/>
+                                <rect key="frame" x="16" y="620.5" width="343" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="쿠폰 소진하기">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -213,7 +215,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-4f-ACv" userLabel="CouponCollectionView">
-                                <rect key="frame" x="16" y="74" width="343" height="503"/>
+                                <rect key="frame" x="16" y="74" width="343" height="493.5"/>
                                 <color key="backgroundColor" red="1" green="0.99607843139999996" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VnE-BX-HQf">
                                     <size key="itemSize" width="50" height="50"/>
@@ -279,14 +281,13 @@
                             <constraint firstItem="qMj-S2-Wee" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="7oF-iD-oZk"/>
                             <constraint firstItem="GLy-va-rNG" firstAttribute="leading" secondItem="qMj-S2-Wee" secondAttribute="leading" id="98g-U9-KOb"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="centerX" secondItem="onV-De-4tH" secondAttribute="centerX" id="9nD-WR-Sad"/>
-                            <constraint firstItem="ebv-4f-ACv" firstAttribute="top" secondItem="ifm-21-m7q" secondAttribute="bottom" constant="10" id="QiM-Lw-9A9"/>
+                            <constraint firstItem="ebv-4f-ACv" firstAttribute="top" secondItem="ifm-21-m7q" secondAttribute="bottom" constant="10" id="Wte-ji-NFL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ebv-4f-ACv" secondAttribute="trailing" id="Y4I-LG-vZt"/>
                             <constraint firstItem="GLy-va-rNG" firstAttribute="trailing" secondItem="qMj-S2-Wee" secondAttribute="trailing" id="ZqR-Vq-DL8"/>
-                            <constraint firstItem="qMj-S2-Wee" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="8" symbolic="YES" id="bhx-fT-ZAa"/>
+                            <constraint firstItem="ebv-4f-ACv" firstAttribute="height" secondItem="onV-De-4tH" secondAttribute="height" multiplier="0.74" id="d7P-LD-THU"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="eAb-y8-k49"/>
+                            <constraint firstItem="qMj-S2-Wee" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="15" id="jnn-fO-oXQ"/>
                             <constraint firstItem="qMj-S2-Wee" firstAttribute="trailing" secondItem="onV-De-4tH" secondAttribute="trailingMargin" id="pqh-IM-uzA"/>
-                            <constraint firstItem="qMj-S2-Wee" firstAttribute="centerX" secondItem="onV-De-4tH" secondAttribute="centerX" id="prT-h1-Yq8"/>
-                            <constraint firstItem="jWh-qE-6FU" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="90" id="zpa-wb-1u6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aDI-Tz-wQg">
@@ -304,7 +305,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
                 <exit id="dRr-Fc-OcD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1863" y="-227"/>
+            <point key="canvasLocation" x="1861.5999999999999" y="-227.13643178410797"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="THt-yS-NrP">

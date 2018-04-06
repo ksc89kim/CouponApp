@@ -57,7 +57,8 @@ class CouponSignleton {
             let keyboardHeight = keyboardRectangle.height
             let keyboardMaxY = view.frame.height - keyboardHeight
             let firstResponder = findFirstResponder(inView: view)
-            let textFieldMaxY = ceil((firstResponder?.frame.origin.y)! + (firstResponder?.frame.size.height)!)
+            let globalFrame = firstResponder?.superview?.convert((firstResponder?.frame)!, to: nil)
+            let textFieldMaxY = ceil((globalFrame?.origin.y)! + (globalFrame?.size.height)! + 15)
             let frameY = keyboardMaxY - textFieldMaxY
             if frameY > 0 {
                 view.frame.origin.y = 0
