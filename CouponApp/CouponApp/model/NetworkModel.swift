@@ -9,6 +9,6 @@
 import Foundation
 
 class NetworkModel {
-    let isSqlite = true
+    let isSqlite = false
     let mainUrl = "http://192.168.2.28:8080/CouponProject/"
 }

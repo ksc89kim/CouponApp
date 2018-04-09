@@ -52,6 +52,7 @@
 		CCF0CF982015CF3600FA3E3B /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */; };
 		CCF0CF9D2015CFA200FA3E3B /* CustomPopupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CF9F2015CFA200FA3E3B /* CustomPopupView.xib */; };
 		CCF0CFB32015D26300FA3E3B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CCF0CFB52015D26300FA3E3B /* Localizable.strings */; };
+		CCFA662D207AFFEF00EE0477 /* CouponNetworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +135,7 @@
 		CCF0CFA62015D10F00FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Merchant.strings; sourceTree = "<group>"; };
 		CCF0CFB62015D26C00FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CCF0CFB72015D27300FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponNetworkTests.swift; sourceTree = "<group>"; };
 		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -281,6 +283,7 @@
 				596303951F431412000E2701 /* CouponAppUITests */,
 				5963038B1F431412000E2701 /* CouponAppTests.swift */,
 				5963038D1F431412000E2701 /* Info.plist */,
+				CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */,
 			);
 			path = CouponAppTests;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCFA662D207AFFEF00EE0477 /* CouponNetworkTests.swift in Sources */,
 				5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
