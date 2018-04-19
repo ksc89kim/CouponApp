@@ -12,10 +12,10 @@ import UIKit
      로그인 뷰컨트롤러
  */
 class LoginViewController: UIViewController , UITextFieldDelegate{
-
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password: UITextField!
-    
+    var originalPositionY:CGFloat = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         phoneNumber.delegate = self
