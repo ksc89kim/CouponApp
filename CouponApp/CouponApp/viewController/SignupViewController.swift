@@ -38,7 +38,7 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        CouponSignleton.setUpViewHeight(self.view, sender)
+        Utils.setUpViewHeight(self.view, sender)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
@@ -63,17 +63,17 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
         let signupFailContent = NSLocalizedString("signupFailContent", comment: "")
     
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: signupFailTitle, message: phoneNumberNeedInput, callback: nil)
+            Utils.showCustomPopup(title: signupFailTitle, message: phoneNumberNeedInput, callback: nil)
             return
         }
         guard (password.text != nil && (password.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
+            Utils.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
             return
         }
         
         CouponNetwork.requestSignup(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccessed in
             guard isSuccessed else {
-                CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 return
             }
             
@@ -82,7 +82,7 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
                     UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                     self.goMain()
                 } else {
-                     CouponSignleton.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                     Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 }
             })
         })

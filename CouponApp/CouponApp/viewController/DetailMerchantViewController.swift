@@ -29,7 +29,7 @@ class DetailMerchantViewController: UIViewController {
             merchantName.text = merchant.name
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
-            let userId = CouponSignleton.sharedInstance.userData?.id
+            let userId = CouponSignleton.instance.userData?.id
             CouponNetwork.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { isSuccessed in
                 self.isUserCoupon = isSuccessed
                 self.refreshButton()
@@ -65,7 +65,7 @@ class DetailMerchantViewController: UIViewController {
     
     //삭제하기
     func deleteCoupon(merchantModel:MerchantModel){
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         
@@ -74,19 +74,19 @@ class DetailMerchantViewController: UIViewController {
                 self.isUserCoupon = false
                 self.refreshButton()
             } else {
-                 CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                 Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
             }
         })
     }
     
     //추가하기
     func insertCoupon(merchantModel:MerchantModel){
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         CouponNetwork.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
             guard isSuccessed else {
-                CouponSignleton.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
+                Utils.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
                 return
             }
             self.isUserCoupon = true

@@ -65,17 +65,17 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let requestFailCouponContent = NSLocalizedString("requestFailCouponContent", comment: "")
         
         guard couponCount < maxCount else {
-            CouponSignleton.showCustomPopup(title: maxCouponTitle, message:maxCouponContent,callback: nil)
+            Utils.showCustomPopup(title: maxCouponTitle, message:maxCouponContent,callback: nil)
             return
         }
         
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         CouponNetwork.requestUpdateUesrCoupon(userId: userId!, merchantId: (merchantData?.merchantId)!, couponCount: couponCount + 1, complete: { isSuccessed in
             if isSuccessed {
                 self.userMerchantData?.couponCount = couponCount + 1
                 self.myCollectionView.reloadData()
             } else {
-                CouponSignleton.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
+                Utils.showCustomPopup(title:requestFailCouponTitle, message: requestFailCouponContent,callback: nil)
             }
         })
     }
@@ -95,16 +95,16 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let lackCouponContent = NSLocalizedString("lackCouponContent", comment: "")
         
         guard couponCount >= maxCount else {
-            CouponSignleton.showCustomPopup(title: lackCouponTitle, message: lackCouponContent,callback: nil)
+            Utils.showCustomPopup(title: lackCouponTitle, message: lackCouponContent,callback: nil)
             return
         }
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         CouponNetwork.requestUpdateUesrCoupon(userId: userId!, merchantId: (merchantData?.merchantId)!, couponCount: 0, complete: { isSuccessed in
             if isSuccessed {
                 self.userMerchantData?.couponCount = 0
                 self.myCollectionView.reloadData()
             } else {
-                CouponSignleton.showCustomPopup(title:useCouponFailTitle, message: useCouponFailContent,callback: nil)
+                Utils.showCustomPopup(title:useCouponFailTitle, message: useCouponFailContent,callback: nil)
             }
         })
     }

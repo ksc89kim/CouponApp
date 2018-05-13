@@ -18,7 +18,7 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     var nearMerchantModelList:[MerchantModel?]?
     
     lazy var singleton:CouponSignleton = {
-        return CouponSignleton.sharedInstance
+        return CouponSignleton.instance
     }()
     
     override func viewDidLoad() {

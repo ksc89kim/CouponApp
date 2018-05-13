@@ -14,7 +14,7 @@ import UIKit
 class PublicMerchantTableViewController: UITableViewController  {
     
     lazy var singleton:CouponSignleton = {
-        return CouponSignleton.sharedInstance
+        return CouponSignleton.instance
     }()
     
     override func viewDidLoad() {

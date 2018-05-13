@@ -38,7 +38,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        CouponSignleton.setUpViewHeight(self.view, sender)
+        Utils.setUpViewHeight(self.view, sender)
     }
     
     @objc func keyboardWillHide(_ sender: Notification) {
@@ -63,11 +63,11 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
         let phoneNumberOrPasswordFail = NSLocalizedString("phoneNumberOrPasswordFail", comment: "")
         
         guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: loginFailTitle, message: phoneNumberNeedInput, callback: nil)
+            Utils.showCustomPopup(title: loginFailTitle, message: phoneNumberNeedInput, callback: nil)
             return
         }
         guard (password.text != nil && (password.text?.count)! > 0 ) else {
-            CouponSignleton.showCustomPopup(title: loginFailTitle, message: passwordNeedInput, callback: nil)
+            Utils.showCustomPopup(title: loginFailTitle, message: passwordNeedInput, callback: nil)
             return
         }
         
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate{
                 UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
                 self.goMain()
             } else {
-                CouponSignleton.showCustomPopup( title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
+                Utils.showCustomPopup( title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
             }
         })
     }

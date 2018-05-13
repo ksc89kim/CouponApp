@@ -17,7 +17,7 @@ class CouponNetwork {
     
     // MARK: - 회원가입 하기
     static func requestSignup(phoneNumber:String, password:String, name:String, complete: @escaping (Bool) -> Void){
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
                 try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete:complete)
@@ -44,11 +44,11 @@ class CouponNetwork {
     
     // MARK: - 회원 정보 가져오기
     static func requestUserData(phoneNumber:String, complete: @escaping (Bool) -> Void) {
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
-                CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-                if CouponSignleton.sharedInstance.userData?.id != nil {
+                CouponSignleton.instance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+                if CouponSignleton.instance.userData?.id != nil {
                     complete(true)
                 } else {
                     complete(false)
@@ -67,7 +67,7 @@ class CouponNetwork {
                     if tupleData.isSuccess {
                         let userInfoArray = tupleData.jsonData!["userInfoArray"] as! [Any]
                         let userData = userInfoArray[0] as! [String:Any]
-                        CouponSignleton.sharedInstance.userData?.parseData(data: userData)
+                        CouponSignleton.instance.userData?.parseData(data: userData)
                         complete(true)
                     } else {
                         complete(false)
@@ -78,11 +78,11 @@ class CouponNetwork {
     
     // MARK: - 패스워드 확인
     static func requestCheckPassword(phoneNumber:String, password:String, complete: @escaping (Bool) -> Void) {
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
-                CouponSignleton.sharedInstance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
-                if CouponSignleton.sharedInstance.userData?.id != nil {
+                CouponSignleton.instance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
+                if CouponSignleton.instance.userData?.id != nil {
                     complete(true)
                 } else {
                     complete(false)
@@ -100,7 +100,7 @@ class CouponNetwork {
                     let tupleData = CouponNetwork.checkResponseData(response)
                     if tupleData.isSuccess {
                         let userId = tupleData.jsonData!["userId"] as! Int
-                        CouponSignleton.sharedInstance.userData?.id = userId
+                        CouponSignleton.instance.userData?.id = userId
                         complete(true)
                     } else {
                         complete(false)
@@ -112,11 +112,11 @@ class CouponNetwork {
     
     // MARK: - 가맹점 데이터 가져오기
     static func requestGetMerchantData(complete: @escaping (Bool) -> Void) {
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
-                CouponSignleton.sharedInstance.merchantList = try SQLInterface().selectMerchantData()
-                for merchantModel in CouponSignleton.sharedInstance.merchantList! {
+                CouponSignleton.instance.merchantList = try SQLInterface().selectMerchantData()
+                for merchantModel in CouponSignleton.instance.merchantList! {
                     if (merchantModel?.isCouponImage)! {
                         merchantModel?.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: (merchantModel?.merchantId)!)
                     } else {
@@ -136,12 +136,12 @@ class CouponNetwork {
                     let tupleData = CouponNetwork.checkResponseData(response)
                     CouponNetwork.closeProgress()
                     if tupleData.isSuccess {
-                        CouponSignleton.sharedInstance.merchantList =  [MerchantModel]()
+                        CouponSignleton.instance.merchantList =  [MerchantModel]()
                         let merchatJsonList = tupleData.jsonData!["merchantInfoArray"] as! [[String:Any]]
                         for merchantJsonData in merchatJsonList {
                             let merchantModel = MerchantModel()
                             merchantModel.parseData(data: merchantJsonData)
-                            CouponSignleton.sharedInstance.merchantList?.append(merchantModel)
+                            CouponSignleton.instance.merchantList?.append(merchantModel)
                         }
                         complete(true)
                     } else {
@@ -153,7 +153,7 @@ class CouponNetwork {
     
     // MARK: - 유저 쿠폰 추가하기
     static func requestInsertUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void) {
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
                 try SQLInterface().insertCoupon(userId, merchantId, complete:complete)
@@ -179,7 +179,7 @@ class CouponNetwork {
     
     // MARK: - 유저 쿠폰 확인하기
     static func requestCheckUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void){
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
                 let isUserCoupon = try SQLInterface().isUserCoupon(userId,merchantId)
@@ -209,7 +209,7 @@ class CouponNetwork {
     
     // MARK: - 유저 쿠폰 삭제하기
     static func requestDeleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping (Bool) -> Void){
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do{
                 try SQLInterface().deleteCounpon(userId, merchantId, complete:complete)
@@ -235,7 +235,7 @@ class CouponNetwork {
     
     // MARK: - 유저 쿠폰 데이터 요청하기
     static func requestUserCouponData(userId:Int, complete: @escaping (Bool, [UserCouponModel?]?) -> Void) {
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
                 complete(true, try SQLInterface().selectUserCouponData(userId))
@@ -267,7 +267,7 @@ class CouponNetwork {
     
     // MARK: - 유저 쿠폰 카운트 업데이트 하기.
     static func requestUpdateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping (Bool) -> Void){
-        let networkData = (CouponSignleton.sharedInstance.networkData)!
+        let networkData = (CouponSignleton.instance.networkData)!
         if networkData.isSqlite {
             do {
                 try SQLInterface().updateCouponCount(userId,merchantId,couponCount,complete:complete)

@@ -15,7 +15,7 @@ import UIKit
 class UserMerchantTableViewController: UITableViewController {
     var userCouponList:[UserCouponModel?]? // 회원 쿠폰 정보
     lazy var singleton:CouponSignleton = {  // 쿠폰 싱글톤
-        return CouponSignleton.sharedInstance
+        return CouponSignleton.instance
     }()
     
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class UserMerchantTableViewController: UITableViewController {
     
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         CouponNetwork.requestUserCouponData(userId: userId!, complete: { isSuccessed, userCouponList in
             if isSuccessed {
                 self.userCouponList = userCouponList
@@ -113,13 +113,13 @@ class UserMerchantTableViewController: UITableViewController {
     func deleteCoupon(merchantId:Int?) -> Bool {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
-        let userId = CouponSignleton.sharedInstance.userData?.id
+        let userId = CouponSignleton.instance.userData?.id
         var state = false
         CouponNetwork.requestDeleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
             if isSuccessed {
                state = isSuccessed
             } else {
-                CouponSignleton.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
                 state = false
             }
         })
