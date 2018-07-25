@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,29 +29,31 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2VO-2I-wp4" userLabel="PopupView" customClass="RoundedView" customModule="CouponApp" customModuleProvider="target">
-                    <rect key="frame" x="18" y="233" width="337.5" height="200.5"/>
+                    <rect key="frame" x="37" y="248" width="300" height="170.5"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ve-3b-0pg">
-                            <rect key="frame" x="10" y="15" width="317.5" height="37"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="8Ve-3b-0pg">
+                            <rect key="frame" x="10.5" y="15" width="280" height="25.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybw-yc-yZV">
-                            <rect key="frame" x="20" y="82" width="297.5" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내용" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ybw-yc-yZV">
+                            <rect key="frame" x="20.5" y="55.5" width="260" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8r-Qx-Ycm" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                            <rect key="frame" x="113" y="153" width="111" height="30"/>
-                            <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <rect key="frame" x="9.5" y="108.5" width="282" height="44.5"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="111" id="WsU-jl-8d8"/>
-                                <constraint firstAttribute="height" constant="30" id="qcM-gK-MUg"/>
+                                <constraint firstAttribute="width" secondItem="S8r-Qx-Ycm" secondAttribute="height" multiplier="317:50" id="4Hm-ae-g7M"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="확인"/>
+                            <state key="normal" title="확인">
+                                <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -65,14 +68,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="S8r-Qx-Ycm" secondAttribute="bottom" constant="17.5" id="6tK-Hi-9i7"/>
-                        <constraint firstAttribute="height" secondItem="Ybw-yc-yZV" secondAttribute="height" constant="180" id="923-bc-e3P"/>
+                        <constraint firstAttribute="height" secondItem="Ybw-yc-yZV" secondAttribute="height" constant="150" id="923-bc-e3P"/>
                         <constraint firstAttribute="trailing" secondItem="8Ve-3b-0pg" secondAttribute="trailing" constant="10" id="HmN-6I-jV6"/>
-                        <constraint firstItem="Ybw-yc-yZV" firstAttribute="top" secondItem="8Ve-3b-0pg" secondAttribute="bottom" constant="30" id="I0s-oP-tLx"/>
+                        <constraint firstItem="Ybw-yc-yZV" firstAttribute="top" secondItem="8Ve-3b-0pg" secondAttribute="bottom" constant="15" id="I0s-oP-tLx"/>
                         <constraint firstItem="8Ve-3b-0pg" firstAttribute="leading" secondItem="2VO-2I-wp4" secondAttribute="leading" constant="10" id="Pr2-ot-yiL"/>
                         <constraint firstAttribute="trailing" secondItem="Ybw-yc-yZV" secondAttribute="trailing" constant="20" id="UWu-2x-jFd"/>
                         <constraint firstItem="Ybw-yc-yZV" firstAttribute="leading" secondItem="2VO-2I-wp4" secondAttribute="leading" constant="20" id="YDo-s4-2C3"/>
                         <constraint firstItem="S8r-Qx-Ycm" firstAttribute="centerX" secondItem="2VO-2I-wp4" secondAttribute="centerX" id="bLc-ad-bJ9"/>
                         <constraint firstItem="8Ve-3b-0pg" firstAttribute="top" secondItem="2VO-2I-wp4" secondAttribute="top" constant="15" id="sZ2-uV-XZo"/>
+                        <constraint firstItem="S8r-Qx-Ycm" firstAttribute="width" secondItem="2VO-2I-wp4" secondAttribute="width" multiplier="0.94" id="uFI-i4-GAW"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
@@ -86,7 +90,7 @@
                 <constraint firstItem="2VO-2I-wp4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1ke-tZ-14J"/>
                 <constraint firstItem="zQ5-Rs-leS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7Aa-5c-lFc"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zQ5-Rs-leS" secondAttribute="bottom" id="Hrj-Kj-fPT"/>
-                <constraint firstItem="2VO-2I-wp4" firstAttribute="width" secondItem="zQ5-Rs-leS" secondAttribute="width" multiplier="0.9" id="P00-6j-3LV"/>
+                <constraint firstItem="2VO-2I-wp4" firstAttribute="width" secondItem="zQ5-Rs-leS" secondAttribute="width" multiplier="0.8" id="P00-6j-3LV"/>
                 <constraint firstItem="2VO-2I-wp4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aSd-wd-cBO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zQ5-Rs-leS" secondAttribute="trailing" id="bOY-Fo-IcB"/>
                 <constraint firstItem="zQ5-Rs-leS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="och-vz-Mjl"/>

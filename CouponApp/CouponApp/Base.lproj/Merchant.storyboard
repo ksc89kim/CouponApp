@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -84,7 +84,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 샾" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymn-at-zkT" userLabel="Merchant Name">
                                 <rect key="frame" x="94" y="28" width="187.5" height="66.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -98,10 +98,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-kX-ljw" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="19.5" y="481.5" width="337.5" height="33.5"/>
-                                <color key="backgroundColor" red="1" green="0.80784313730000001" blue="0.050980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="12" y="480" width="352.5" height="53.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="추가하기"/>
+                                <state key="normal" title="추가하기">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -119,16 +122,16 @@
                             <constraint firstItem="qPT-l2-odD" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.3" id="2ye-Lz-DDB"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.5" id="7AE-7b-x80"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="Cik-AE-Uuy"/>
-                            <constraint firstItem="ghg-kX-ljw" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.9" id="GAQ-8A-Skx"/>
-                            <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="16.5" id="Oot-7J-jRZ"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.94" id="GAQ-8A-Skx"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.1" id="ShV-wz-sIl"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="top" secondItem="pQg-lB-1YC" secondAttribute="bottom" constant="8" id="Tjz-tV-c69"/>
-                            <constraint firstItem="ghg-kX-ljw" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.05" id="TuV-Qz-FW0"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.08" id="TuV-Qz-FW0"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.2" id="YM5-Y3-3T3"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="top" secondItem="ymn-at-zkT" secondAttribute="bottom" constant="8" id="dZp-JR-Nqi"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="top" secondItem="qPT-l2-odD" secondAttribute="bottom" constant="29" id="iZH-aw-n6h"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.9" id="mLi-Ym-nle"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="nsp-7Q-SKf"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="15" id="vAd-qP-aMW"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.5" id="vPy-u3-YPm"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="xfG-hx-AqR"/>
                         </constraints>
@@ -204,6 +207,6 @@
         <image name="starbuck" width="930" height="946"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="051-ia-Wp6"/>
+        <segue reference="y4h-QD-Rha"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,21 +11,27 @@ import UIKit
      가입 뷰컨트롤러
  */
 class SignupViewController: UIViewController , UITextFieldDelegate{
-    @IBOutlet weak var phoneNumber: UITextField!
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var name: UITextField!
+
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var phoneNumberTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneNumber.delegate = self
-        password.delegate = self
-        name.delegate = self
+        phoneNumberTextField.delegate = self
+        passwordTextField.delegate = self
+        nameTextField.delegate = self
         
         NotificationCenter.default.addObserver(self, selector:#selector(keyboardWillShow(_:)), name:.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
@@ -46,9 +52,9 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        phoneNumber.resignFirstResponder()
-        password.resignFirstResponder()
-        name.resignFirstResponder()
+        phoneNumberTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        nameTextField.resignFirstResponder()
         return true
     }
     
@@ -62,25 +68,25 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
         let signupFailTitle = NSLocalizedString("signupFailTitle", comment: "")
         let signupFailContent = NSLocalizedString("signupFailContent", comment: "")
     
-        guard (phoneNumber.text != nil && (phoneNumber.text?.count)! > 0 ) else {
+        guard (phoneNumberTextField.text != nil && (phoneNumberTextField.text?.count)! > 0 ) else {
             Utils.showCustomPopup(title: signupFailTitle, message: phoneNumberNeedInput, callback: nil)
             return
         }
-        guard (password.text != nil && (password.text?.count)! > 0 ) else {
+        guard (passwordTextField.text != nil && (passwordTextField.text?.count)! > 0 ) else {
             Utils.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
             return
         }
         
-        CouponNetwork.requestSignup(phoneNumber: phoneNumber.text!, password: password.text!, name: name.text!, complete:{ isSuccessed in
+        CouponNetwork.requestSignup(phoneNumber: phoneNumberTextField.text!, password: passwordTextField.text!, name: nameTextField.text!, complete:{ [weak self] isSuccessed in
             guard isSuccessed else {
                 Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 return
             }
             
-            CouponNetwork.requestUserData(phoneNumber: self.phoneNumber.text!, complete: { isSuccessed in
+            CouponNetwork.requestUserData(phoneNumber: (self?.phoneNumberTextField.text!)!, complete: { [weak self] isSuccessed in
                 if isSuccessed {
-                    UserDefaults.standard.set(self.phoneNumber.text, forKey: DefaultKey.phoneNumber.rawValue)
-                    self.goMain()
+                    UserDefaults.standard.set(self?.phoneNumberTextField.text, forKey: DefaultKey.phoneNumber.rawValue)
+                    self?.goMain()
                 } else {
                      Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
                 }
@@ -89,33 +95,23 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
       
     }
     
-    @IBAction func clickBack(_ sender: Any) {
-        goLeftAnimation()
-    }
-    
     func goMain() {
         let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
-        let initalViewController = storyBoard.instantiateInitialViewController()
-        self.show(initalViewController!, sender: nil)
+        if let initalViewController = storyBoard.instantiateInitialViewController() {
+            self.present(initalViewController, animated: true, completion: nil)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
         var limitCount = 20
-        if phoneNumber == textField {
+        if phoneNumberTextField == textField {
             limitCount = 11
-        } else if password == textField {
+        } else if passwordTextField == textField {
             limitCount = 12
         }
         return newLength <= limitCount
     }
     
-    func goLeftAnimation() {
-        let transition = CATransition()
-        transition.duration = 0.25
-        transition.type = kCATransitionPush
-        transition.subtype = kCATransitionFromLeft
-        self.view.window!.layer.add(transition, forKey: kCATransition)
-    }
 }
