@@ -182,11 +182,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qMj-S2-Wee" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="582.5" width="343" height="30"/>
+                                <rect key="frame" x="11" y="535" width="352.5" height="53.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="height" multiplier="343:30" id="Uvj-Wg-H9a"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="쿠폰 요청하기">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -201,25 +198,8 @@
                                     <action selector="clickRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="5Xa-5D-2Ez"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="16" y="620.5" width="343" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="쿠폰 소진하기">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="YsI-C3-eLl"/>
-                                </connections>
-                            </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ebv-4f-ACv" userLabel="CouponCollectionView">
-                                <rect key="frame" x="16" y="74" width="343" height="493.5"/>
+                                <rect key="frame" x="16" y="74" width="343" height="451"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="VnE-BX-HQf">
                                     <size key="itemSize" width="50" height="50"/>
@@ -278,20 +258,39 @@
                                     <outlet property="delegate" destination="zt0-fb-j4a" id="nxr-ui-qFD"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GLy-va-rNG" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
+                                <rect key="frame" x="11" y="598.5" width="352.5" height="53.5"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="쿠폰 소진하기">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="rounded" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="YsI-C3-eLl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GLy-va-rNG" firstAttribute="top" secondItem="qMj-S2-Wee" secondAttribute="bottom" constant="8" symbolic="YES" id="0QB-Md-dBR"/>
-                            <constraint firstItem="qMj-S2-Wee" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="7oF-iD-oZk"/>
-                            <constraint firstItem="GLy-va-rNG" firstAttribute="leading" secondItem="qMj-S2-Wee" secondAttribute="leading" id="98g-U9-KOb"/>
+                            <constraint firstItem="qMj-S2-Wee" firstAttribute="width" secondItem="onV-De-4tH" secondAttribute="width" multiplier="0.94" id="1qn-U4-LGJ"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="width" secondItem="qMj-S2-Wee" secondAttribute="width" id="8Ry-tn-fDX"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="centerX" secondItem="onV-De-4tH" secondAttribute="centerX" id="9nD-WR-Sad"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="height" secondItem="qMj-S2-Wee" secondAttribute="height" id="KKf-9K-be1"/>
+                            <constraint firstItem="qMj-S2-Wee" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="10" id="LZt-6D-SBc"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="centerX" secondItem="qMj-S2-Wee" secondAttribute="centerX" id="MJZ-m7-4NS"/>
+                            <constraint firstItem="jWh-qE-6FU" firstAttribute="top" secondItem="GLy-va-rNG" secondAttribute="bottom" constant="15" id="SaZ-s2-hTP"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="top" secondItem="ifm-21-m7q" secondAttribute="bottom" constant="10" id="Wte-ji-NFL"/>
+                            <constraint firstItem="GLy-va-rNG" firstAttribute="top" secondItem="qMj-S2-Wee" secondAttribute="bottom" constant="10" id="Xus-kG-XwJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ebv-4f-ACv" secondAttribute="trailing" id="Y4I-LG-vZt"/>
-                            <constraint firstItem="GLy-va-rNG" firstAttribute="trailing" secondItem="qMj-S2-Wee" secondAttribute="trailing" id="ZqR-Vq-DL8"/>
-                            <constraint firstItem="ebv-4f-ACv" firstAttribute="height" secondItem="onV-De-4tH" secondAttribute="height" multiplier="0.74" id="d7P-LD-THU"/>
                             <constraint firstItem="ebv-4f-ACv" firstAttribute="leading" secondItem="onV-De-4tH" secondAttribute="leadingMargin" id="eAb-y8-k49"/>
-                            <constraint firstItem="qMj-S2-Wee" firstAttribute="top" secondItem="ebv-4f-ACv" secondAttribute="bottom" constant="15" id="jnn-fO-oXQ"/>
-                            <constraint firstItem="qMj-S2-Wee" firstAttribute="trailing" secondItem="onV-De-4tH" secondAttribute="trailingMargin" id="pqh-IM-uzA"/>
+                            <constraint firstItem="qMj-S2-Wee" firstAttribute="height" secondItem="onV-De-4tH" secondAttribute="height" multiplier="0.08" id="xxo-ko-Elc"/>
+                            <constraint firstItem="qMj-S2-Wee" firstAttribute="centerX" secondItem="onV-De-4tH" secondAttribute="centerX" id="zS1-g2-TNx"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aDI-Tz-wQg">

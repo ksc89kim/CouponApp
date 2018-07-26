@@ -15,9 +15,8 @@ import UIKit
      - 메인으로 가기
  */
 class StartViewController: UIViewController {
-    @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    var isCompleteMerchantData:Bool = false
+    @IBOutlet weak var phoneNumberTextField: UITextField! // 로그인 - 전화번호 입력 필드
+    @IBOutlet weak var passwordTextField: UITextField! // 로그인 - 패스워드 입력 필드
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,13 +72,10 @@ class StartViewController: UIViewController {
                 let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
                 if let phoneNumber = phoneNumberString {
                     CouponNetwork.requestUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
-                        self?.isCompleteMerchantData = true
                         if isSuccessed {
                             self?.goMain()
                         }
                     })
-                } else {
-                     self?.isCompleteMerchantData = true
                 }
             } else {
                 self?.getMerchantData()
@@ -88,23 +84,22 @@ class StartViewController: UIViewController {
     }
     
     @IBAction func clickLogin(_ sender: Any) {
-        let phoneNumberNeedInput = NSLocalizedString("phoneNumberNeedInput", comment: "")
-        let passwordNeedInput = NSLocalizedString("passwordNeedInput", comment: "")
-        let loginFailTitle = NSLocalizedString("loginFailTitle", comment: "")
-        let phoneNumberOrPasswordFail = NSLocalizedString("phoneNumberOrPasswordFail", comment: "")
-        
-        guard (phoneNumberTextField.text != nil && (phoneNumberTextField.text?.count)! > 0 ) else {
-            Utils.showCustomPopup(title: loginFailTitle, message: phoneNumberNeedInput, callback: nil)
-            return
-        }
-        guard (passwordTextField.text != nil && (passwordTextField.text?.count)! > 0 ) else {
-            Utils.showCustomPopup(title: loginFailTitle, message: passwordNeedInput, callback: nil)
+        let loginFailTitle = "loginFailTitle".localized
+        let phoneNumberOrPasswordFail = "phoneNumberOrPasswordFail".localized
+            
+        guard let phoneNumberText =  phoneNumberTextField.text, !phoneNumberText.isEmpty else {
+            Utils.showCustomPopup(title: loginFailTitle, message: "phoneNumberNeedInput".localized)
             return
         }
         
-        CouponNetwork.requestCheckPassword(phoneNumber: phoneNumberTextField.text!, password:passwordTextField.text!, complete: { [weak self] isSuccessed in
+        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
+            Utils.showCustomPopup(title: loginFailTitle, message:"passwordNeedInput".localized)
+            return
+        }
+        
+        CouponNetwork.requestCheckPassword(phoneNumber: phoneNumberText, password:passwordText, complete: { [weak self] isSuccessed in
             if isSuccessed {
-                UserDefaults.standard.set(self?.phoneNumberTextField.text, forKey: DefaultKey.phoneNumber.rawValue)
+                UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                 self?.goMain()
             } else {
                 Utils.showCustomPopup( title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)

@@ -11,7 +11,6 @@ import UIKit
      가입 뷰컨트롤러
  */
 class SignupViewController: UIViewController , UITextFieldDelegate{
-
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -63,36 +62,39 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
     }
     
     @IBAction func clickSignup(_ sender: Any) {
-        let phoneNumberNeedInput = NSLocalizedString("phoneNumberNeedInput", comment: "")
-        let passwordNeedInput = NSLocalizedString("passwordNeedInput", comment: "")
-        let signupFailTitle = NSLocalizedString("signupFailTitle", comment: "")
-        let signupFailContent = NSLocalizedString("signupFailContent", comment: "")
-    
-        guard (phoneNumberTextField.text != nil && (phoneNumberTextField.text?.count)! > 0 ) else {
-            Utils.showCustomPopup(title: signupFailTitle, message: phoneNumberNeedInput, callback: nil)
-            return
-        }
-        guard (passwordTextField.text != nil && (passwordTextField.text?.count)! > 0 ) else {
-            Utils.showCustomPopup(title: signupFailTitle, message:passwordNeedInput, callback: nil)
+        let signupFailTitle = "signupFailTitle".localized
+        let signupFailContent = "signupFailContent".localized
+        
+        guard let nameText = nameTextField.text, !nameText.isEmpty else {
+            Utils.showCustomPopup(title: signupFailTitle, message: "nameNeedInput".localized)
             return
         }
         
-        CouponNetwork.requestSignup(phoneNumber: phoneNumberTextField.text!, password: passwordTextField.text!, name: nameTextField.text!, complete:{ [weak self] isSuccessed in
+        guard let phoneNumberText =  phoneNumberTextField.text, !phoneNumberText.isEmpty else {
+            Utils.showCustomPopup(title: signupFailTitle, message: "phoneNumberNeedInput".localized)
+            return
+        }
+        
+        guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
+            Utils.showCustomPopup(title: signupFailTitle, message:"passwordNeedInput".localized)
+            return
+        }
+
+        CouponNetwork.requestSignup(phoneNumber: phoneNumberText, password: passwordText, name: nameText, complete:{ [weak self] isSuccessed in
             guard isSuccessed else {
-                Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent)
                 return
             }
             
-            CouponNetwork.requestUserData(phoneNumber: (self?.phoneNumberTextField.text!)!, complete: { [weak self] isSuccessed in
+            CouponNetwork.requestUserData(phoneNumber: phoneNumberText, complete: { [weak self] isSuccessed in
                 if isSuccessed {
-                    UserDefaults.standard.set(self?.phoneNumberTextField.text, forKey: DefaultKey.phoneNumber.rawValue)
+                    UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                     self?.goMain()
                 } else {
-                     Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent, callback: nil)
+                     Utils.showCustomPopup(title: signupFailTitle, message: signupFailContent)
                 }
             })
         })
-      
     }
     
     func goMain() {

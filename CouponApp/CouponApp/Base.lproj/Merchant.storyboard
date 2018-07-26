@@ -21,21 +21,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicMerchantTableViewCell" rowHeight="99" id="dPv-J1-g9r" customClass="PublicMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="99"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PublicMerchantTableViewCell" rowHeight="90" id="dPv-J1-g9r" customClass="PublicMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dPv-J1-g9r" id="WNr-Sl-ii5" userLabel="PublicMerchantView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vy-qW-5zY" userLabel="Merchant Name">
-                                            <rect key="frame" x="92.5" y="39" width="266.5" height="21"/>
+                                            <rect key="frame" x="86.5" y="34.5" width="272.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-EM-wxh" userLabel="Logo Image">
-                                            <rect key="frame" x="16" y="15" width="68.5" height="68.5"/>
+                                            <rect key="frame" x="16" y="13.5" width="62.5" height="62.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="pdy-EM-wxh" secondAttribute="height" multiplier="930:940" id="kqo-4Z-tIl"/>
                                             </constraints>
@@ -80,25 +80,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="qPT-l2-odD" userLabel="Logo Image">
-                                <rect key="frame" x="94" y="102.5" width="187.5" height="200"/>
+                                <rect key="frame" x="94" y="83.5" width="187.5" height="200"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페 샾" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymn-at-zkT" userLabel="Merchant Name">
-                                <rect key="frame" x="94" y="28" width="187.5" height="66.5"/>
+                                <rect key="frame" x="94" y="40" width="187.5" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHW-IV-EVO" userLabel="Merchant Content">
-                                <rect key="frame" x="19" y="331.5" width="337.5" height="133.5"/>
+                                <rect key="frame" x="19" y="312.5" width="337.5" height="133.5"/>
                                 <string key="text">"커피 이상의 특별한 경험을 소개합니다.”
 세계인들의 생활 속에 스며들어 전 세계의 커피 문화를 선도하고 있는 스타벅스가 일상을 풍요롭게 하는 제3의 공간으로서 
 국내에서도 지역사회 속에서 고객 과 함께하며 새로운 커피문화를 정착시키고 있습니다.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-kX-ljw" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="12" y="480" width="352.5" height="53.5"/>
+                                <rect key="frame" x="12" y="466" width="352.5" height="53.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,15 +123,15 @@
                             <constraint firstItem="ymn-at-zkT" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.5" id="7AE-7b-x80"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="Cik-AE-Uuy"/>
                             <constraint firstItem="ghg-kX-ljw" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.94" id="GAQ-8A-Skx"/>
-                            <constraint firstItem="ymn-at-zkT" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.1" id="ShV-wz-sIl"/>
-                            <constraint firstItem="ymn-at-zkT" firstAttribute="top" secondItem="pQg-lB-1YC" secondAttribute="bottom" constant="8" id="Tjz-tV-c69"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.05" id="ShV-wz-sIl"/>
+                            <constraint firstItem="ymn-at-zkT" firstAttribute="top" secondItem="pQg-lB-1YC" secondAttribute="bottom" constant="20" id="Tjz-tV-c69"/>
                             <constraint firstItem="ghg-kX-ljw" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.08" id="TuV-Qz-FW0"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="height" secondItem="TUy-PU-3ok" secondAttribute="height" multiplier="0.2" id="YM5-Y3-3T3"/>
-                            <constraint firstItem="qPT-l2-odD" firstAttribute="top" secondItem="ymn-at-zkT" secondAttribute="bottom" constant="8" id="dZp-JR-Nqi"/>
+                            <constraint firstItem="qPT-l2-odD" firstAttribute="top" secondItem="ymn-at-zkT" secondAttribute="bottom" constant="10" id="dZp-JR-Nqi"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="top" secondItem="qPT-l2-odD" secondAttribute="bottom" constant="29" id="iZH-aw-n6h"/>
                             <constraint firstItem="sHW-IV-EVO" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.9" id="mLi-Ym-nle"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="nsp-7Q-SKf"/>
-                            <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="15" id="vAd-qP-aMW"/>
+                            <constraint firstItem="ghg-kX-ljw" firstAttribute="top" secondItem="sHW-IV-EVO" secondAttribute="bottom" constant="20" id="vAd-qP-aMW"/>
                             <constraint firstItem="qPT-l2-odD" firstAttribute="width" secondItem="TUy-PU-3ok" secondAttribute="width" multiplier="0.5" id="vPy-u3-YPm"/>
                             <constraint firstItem="ymn-at-zkT" firstAttribute="centerX" secondItem="TUy-PU-3ok" secondAttribute="centerX" id="xfG-hx-AqR"/>
                         </constraints>
@@ -156,21 +156,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NearMerchantTableViewCell" rowHeight="100" id="hXS-vL-b4N" customClass="NearMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NearMerchantTableViewCell" rowHeight="90" id="hXS-vL-b4N" customClass="NearMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hXS-vL-b4N" id="2vf-x8-HDW" userLabel="NearMerchantView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="OqF-NN-YGJ">
-                                            <rect key="frame" x="16" y="15" width="71.5" height="69.5"/>
+                                            <rect key="frame" x="16" y="13.5" width="64.5" height="62.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="OqF-NN-YGJ" secondAttribute="height" multiplier="40:39" id="Jjz-Ov-Uql"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Pt-bK-td3">
-                                            <rect key="frame" x="95.5" y="39.5" width="263.5" height="21"/>
+                                            <rect key="frame" x="88.5" y="34.5" width="270.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

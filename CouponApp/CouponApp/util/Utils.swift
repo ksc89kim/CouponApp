@@ -19,7 +19,7 @@ class Utils {
     }
     
     // MARK: - 커스텀 팝업창
-    static func showCustomPopup(title:String, message:String, callback:(() -> Void)?){
+    static func showCustomPopup(title:String, message:String, callback:(() -> Void)? = nil){
         let customPopup = CustomPopupView()
         customPopup.okCallback = callback
         customPopup.title.text = title

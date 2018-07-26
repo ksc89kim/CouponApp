@@ -39,16 +39,16 @@ class UserMerchantTableViewController: UITableViewController {
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.instance.userData?.id
-        CouponNetwork.requestUserCouponData(userId: userId!, complete: { isSuccessed, userCouponList in
+        CouponNetwork.requestUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
-                self.userCouponList = userCouponList
-                if self.userCouponList != nil {
-                    self.tableView.reloadData()
+                self?.userCouponList = userCouponList
+                if self?.userCouponList != nil {
+                    self?.tableView.reloadData()
                 } else {
-                    self.setData()
+                    self?.setData()
                 }
             } else{
-                self.setData()
+                self?.setData()
             }
         })
     }
@@ -119,7 +119,7 @@ class UserMerchantTableViewController: UITableViewController {
             if isSuccessed {
                state = isSuccessed
             } else {
-                Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
                 state = false
             }
         })

@@ -30,9 +30,9 @@ class DetailMerchantViewController: UIViewController {
             logoImage.downloadedFrom(link: merchant.logoImageUrl!)
             merchantContent.text = merchant.content
             let userId = CouponSignleton.instance.userData?.id
-            CouponNetwork.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { isSuccessed in
-                self.isUserCoupon = isSuccessed
-                self.refreshButton()
+            CouponNetwork.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { [weak self] isSuccessed in
+                self?.isUserCoupon = isSuccessed
+                self?.refreshButton()
             })
         }
         // Do any additional setup after loading the view.
@@ -74,7 +74,7 @@ class DetailMerchantViewController: UIViewController {
                 self.isUserCoupon = false
                 self.refreshButton()
             } else {
-                 Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent,callback: nil)
+                 Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
             }
         })
     }
@@ -84,13 +84,13 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.instance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        CouponNetwork.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+        CouponNetwork.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
-                Utils.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent,callback: nil)
+                Utils.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
                 return
             }
-            self.isUserCoupon = true
-            self.refreshButton()
+            self?.isUserCoupon = true
+            self?.refreshButton()
         })
     }
 

@@ -59,4 +59,21 @@ class MerchantModel:ParseProtocol{
             }
         }
     }
+    
+    func couponCount() -> Int {
+        if let isImage = isCouponImage, isImage {
+            guard let imageCoupons = imageCouponList else {
+                print("couponCount - imageCoupons nil")
+                return 0
+            }
+            return imageCoupons.count
+        } else {
+            guard let drawCoupons = drawCouponList else {
+                print("couponCount - drawCouponList nil")
+                return 0
+            }
+            return drawCoupons.count
+        }
+    }
+    
 }
