@@ -38,9 +38,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         layout.minimumLineSpacing = 5.0
         layout.minimumInteritemSpacing = 5.0
         myCollectionView.setCollectionViewLayout(layout, animated: true)
-        
         myCollectionView.reloadData()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,20 +48,15 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     // 쿠폰 요청하기
     @IBAction func clickRequestCoupon(_ sender: Any) {
-        guard let couponCount = userMerchantData?.couponCount else {
-            print("clickRequestCoupon - userMerchantData error")
-            return
-        }
-        
-        guard let merchant = merchantData else {
-            print("clickRequestCoupon - merchantData error")
+        guard let couponCount = userMerchantData?.couponCount, let merchant =  merchantData else {
+            print("clickRequestCoupon - userMerchantData, merchantData error")
             return
         }
         
         let maxCount = merchant.couponCount()
         
         guard couponCount < maxCount else {
-            Utils.showCustomPopup(title: "maxCouponTitle".localized, message:"maxCouponContent".localized)
+            Utils.showCustomPopup(self, title: "maxCouponTitle".localized, message:"maxCouponContent".localized)
             return
         }
         
@@ -72,37 +65,26 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         
-        guard let merchantId = CouponSignleton.instance.userData?.id else {
-            print("clickRequestCoupon - merchantId error")
-            return
-        }
-        
-        CouponNetwork.requestUpdateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
+        CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.userMerchantData?.couponCount = couponCount + 1
                 self?.myCollectionView.reloadData()
             } else {
-                Utils.showCustomPopup(title:"requestFailCouponTitle".localized, message: "requestFailCouponContent".localized)
+                Utils.showCustomPopup(self!,title:"requestFailCouponTitle".localized, message: "requestFailCouponContent".localized)
             }
         })
     }
     
     // 쿠폰 사용하기
     @IBAction func clickUseCopon(_ sender: Any) {
-        guard let couponCount = userMerchantData?.couponCount else {
-            print("clickUseCopon - userMerchantData error")
-            return
-        }
-        
-        guard let merchant = merchantData else {
-            print("clickUseCopon - merchantData error")
+        guard let couponCount = userMerchantData?.couponCount, let merchant = merchantData else {
+            print("clickUseCopon - userMerchantData, merchantData error")
             return
         }
         
         let maxCount = merchant.couponCount()
-
         guard couponCount >= maxCount else {
-            Utils.showCustomPopup(title: "lackCouponTitle".localized, message: "lackCouponContent".localized,callback: nil)
+            Utils.showCustomPopup(self, title: "lackCouponTitle".localized, message: "lackCouponContent".localized,callback: nil)
             return
         }
         
@@ -111,17 +93,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         
-        guard let merchantId = CouponSignleton.instance.userData?.id else {
-            print("clickUseCopon - merchantId error")
-            return
-        }
-        
-        CouponNetwork.requestUpdateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
+        CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.userMerchantData?.couponCount = 0
                 self?.myCollectionView.reloadData()
             } else {
-                Utils.showCustomPopup(title:"useCouponFailTitle".localized, message:"useCouponFailContent".localized)
+                Utils.showCustomPopup(self!, title:"useCouponFailTitle".localized, message:"useCouponFailContent".localized)
             }
         })
     }
@@ -147,12 +124,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return cell
         }
         
-        if let isCouponImage = merchant.isCouponImage, isCouponImage {
-            couponImageView.model = merchant.imageCouponList?[indexPath.row]
+        if merchant.isCouponImage {
+            couponImageView.model = merchant.imageCouponList[indexPath.row]
             couponImageView.isImageCoupon = true
         } else {
             couponDrawView.frame.size = cellSize // 사이즈 재설정
-            couponDrawView.model = merchant.drawCouponList?[indexPath.row]
+            couponDrawView.model = merchant.drawCouponList[indexPath.row]
             couponDrawView.isImageCoupon = false
         }
         

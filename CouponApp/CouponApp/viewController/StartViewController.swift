@@ -67,18 +67,18 @@ class StartViewController: UIViewController {
     }
     
     func getMerchantData() {
-        CouponNetwork.requestGetMerchantData(complete: { [weak self] isSuccessed in
+        CouponData.getMerchantData(complete: { [weak self] isSuccessed in
             if isSuccessed {
                 let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
                 if let phoneNumber = phoneNumberString {
-                    CouponNetwork.requestUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
+                    CouponData.getUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
                         if isSuccessed {
                             self?.goMain()
                         }
                     })
                 }
             } else {
-                self?.getMerchantData()
+                //self?.getMerchantData()
             }
         })
     }
@@ -88,21 +88,21 @@ class StartViewController: UIViewController {
         let phoneNumberOrPasswordFail = "phoneNumberOrPasswordFail".localized
             
         guard let phoneNumberText =  phoneNumberTextField.text, !phoneNumberText.isEmpty else {
-            Utils.showCustomPopup(title: loginFailTitle, message: "phoneNumberNeedInput".localized)
+            Utils.showCustomPopup(self,title: loginFailTitle, message: "phoneNumberNeedInput".localized)
             return
         }
         
         guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
-            Utils.showCustomPopup(title: loginFailTitle, message:"passwordNeedInput".localized)
+            Utils.showCustomPopup(self,title: loginFailTitle, message:"passwordNeedInput".localized)
             return
         }
         
-        CouponNetwork.requestCheckPassword(phoneNumber: phoneNumberText, password:passwordText, complete: { [weak self] isSuccessed in
+        CouponData.checkPassword(phoneNumber: phoneNumberText, password:passwordText, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                 self?.goMain()
             } else {
-                Utils.showCustomPopup( title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
+                Utils.showCustomPopup(self!,title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
             }
         })
     }

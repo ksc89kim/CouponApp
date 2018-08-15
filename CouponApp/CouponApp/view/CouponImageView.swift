@@ -28,9 +28,9 @@ class CouponImageView: CouponView {
         if isImageCoupon {
             self.isHidden = false
             if isUseCoupone {
-                couponImage.image = UIImage(named: (model?.selectImageString)!)
+                couponImage.image = UIImage(named: (model?.selectImage)!)
             } else {
-                couponImage.image = UIImage(named: (model?.normalImageString)!)
+                couponImage.image = UIImage(named: (model?.normalImage)!)
             }
         } else {
             self.isHidden = true

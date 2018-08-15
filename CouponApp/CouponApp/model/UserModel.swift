@@ -11,14 +11,28 @@ import Foundation
 /*
      회원 데이터
  */
-class UserModel:ParseProtocol {
-    var name:String? //회원 이름
-    var phoneNumber:String? //회원 전화번호
-    var id:Int? //회원 아이디
+
+struct UserModel:Codable {
+    var phoneNumber:String
+    var id:Int
+    var name:String
     
-    func parseData(data:[String:Any]){
-        self.name = data["name"] as? String;
-        self.phoneNumber = data["phoneNumber"] as? String;
-        self.id = data["userId"] as? Int
+    init() {
+        self.phoneNumber = ""
+        self.id = 0
+        self.name = ""
+    }
+    
+    private enum UserModelKeys: String, CodingKey {
+        case phoneNumber
+        case name
+        case id = "userId"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserModelKeys.self)
+        self.phoneNumber = (try? container.decode(String.self, forKey: .phoneNumber)) ?? ""
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.name = (try? container.decode(String.self, forKey: .name)) ?? ""
     }
 }

@@ -36,29 +36,29 @@ class SQLInterface {
     }
     
     //회원가입
-    func insertUser(phoneNumber:String, password:String, name:String, complete: (Bool) -> Void) throws {
+    func insertUser(phoneNumber:String, password:String, name:String, complete:@escaping CouponBaseCallBack) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             if sqlite3_step(stmt) == SQLITE_DONE {
-                print("Success insert")
                 complete(true)
             } else {
                 print("Fail insert")
-                complete(false)
+                // complete(false)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print(errorMessage)
+            // complete(false)
         }
     }
     
     //회원 데이터 가져 오기
-    func selectUserData(phoneNumber:String) throws -> Int? {
+    func selectUserData(phoneNumber:String) throws -> Int {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var userId:Int? = nil
+        var userId:Int = 0
         let query = "select idx from user where phone_number = '\(phoneNumber)'"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
@@ -72,10 +72,10 @@ class SQLInterface {
         return userId
     }
     
-    func selectUserData(phoneNumber:String, password:String) throws -> Int? {
+    func selectUserData(phoneNumber:String, password:String) throws -> Int {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var userId:Int? = nil
+        var userId:Int = 0
         let query = "select idx from user where phone_number = '\(phoneNumber)' and user_pwd = '\(password)'"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
             while sqlite3_step(stmt) == SQLITE_ROW {
@@ -90,30 +90,31 @@ class SQLInterface {
     }
     
     // 회원 쿠폰 데이터 가져오기
-    func selectUserCouponData(_ userId:Int) throws -> [UserCouponModel?]?  {
+    func selectUserCouponData(_ userId:Int) throws -> UserCouponListModel?  {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var userCouponList:[UserCouponModel?]? =  [UserCouponModel]()
         let query = "select idx,merchant_idx,coupon_count from coupon where user_idx = \(userId)"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            var userCouponList:UserCouponListModel? = UserCouponListModel()
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 1)
                 let couponCount:Int32 = sqlite3_column_int(stmt, 2)
                 
-                let userCouponModel:UserCouponModel = UserCouponModel()
+                var userCouponModel:UserCouponModel = UserCouponModel()
                 userCouponModel.merchantId = Int(merchantIdx)
                 userCouponModel.couponCount = Int(couponCount)
                 userCouponList?.append(userCouponModel)
             }
+            return userCouponList
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print(errorMessage)
+            return nil
         }
-        return userCouponList
     }
     
     // 회원 쿠폰 횟수 업데이트
-    func updateCouponCount(_  userId:Int, _ merchantId:Int, _ couponCount:Int, complete: (Bool) -> Void) throws {
+    func updateCouponCount(_  userId:Int, _ merchantId:Int, _ couponCount:Int, complete:@escaping CouponBaseCallBack) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -132,7 +133,7 @@ class SQLInterface {
     }
     
     //회원 쿠폰 삭제
-    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws {
+    func deleteCounpon(_  userId:Int, _ merchantId:Int, complete:@escaping CouponBaseCallBack) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -152,7 +153,7 @@ class SQLInterface {
     }
     
     //회원 쿠폰 등록
-    func insertCoupon(_  userId:Int, _ merchantId:Int, complete: (Bool) -> Void) throws {
+    func insertCoupon(_  userId:Int, _ merchantId:Int, complete:@escaping CouponBaseCallBack) throws {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
         let query = "insert into coupon (merchant_idx, user_idx, coupon_count) values (\(merchantId),\(userId),0)"
@@ -190,12 +191,12 @@ class SQLInterface {
     }
     
     // 가맹점 데이터 가져오기
-    func selectMerchantData() throws -> [MerchantModel?]?  {
+    func selectMerchantData() throws -> MerchantListModel?  {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var merchatList:[MerchantModel?]? =  [MerchantModel]()
         let query = "select idx,name,content, image_url, latitude, longitude, is_couponImage from merchant"
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
+            var merchatList:MerchantListModel? = MerchantListModel()
             while sqlite3_step(stmt) == SQLITE_ROW {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 0)
                 let name = sqlite3_column_text(stmt, 1)
@@ -204,7 +205,7 @@ class SQLInterface {
                 let latitude = sqlite3_column_double(stmt, 4)
                 let longitude = sqlite3_column_double(stmt, 5)
                 let isCouponImage = sqlite3_column_int(stmt, 6)
-                let merchantModel:MerchantModel = MerchantModel()
+                var merchantModel:MerchantModel = MerchantModel()
                 merchantModel.merchantId = Int(merchantIdx)
                 merchantModel.name = String(cString: name!)
                 merchantModel.content = String(cString: content!)
@@ -212,20 +213,21 @@ class SQLInterface {
                 merchantModel.logoImageUrl = String(cString:imageUrl!)
                 merchantModel.latitude = latitude
                 merchantModel.longitude = longitude
-                merchatList?.append(merchantModel)
+                merchatList?.list.append(merchantModel)
             }
+            return merchatList
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
             print(errorMessage)
+            return nil
         }
-        return merchatList
     }
     
     // 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
-    func selectDrawCouponData(merchantId:Int) throws -> [DrawCouponModel?]? {
+    func selectDrawCouponData(merchantId:Int) throws -> [DrawCouponModel] {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var drawCouponList:[DrawCouponModel?]? =  [DrawCouponModel]()
+        var drawCouponList:[DrawCouponModel] =  [DrawCouponModel]()
         var query = "select merchant_idx, coupon_idx, circle_color, ring_color,ring_thickness, is_ring, checkline_width, checkline_color, is_event"
         query.append(" from merchant_draw_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
@@ -240,17 +242,17 @@ class SQLInterface {
                 let checkLineColor:String = String(cString:sqlite3_column_text(stmt, 7))
                 let isEvent:Bool = sqlite3_column_int(stmt, 7) > 0
                 
-                let drawCouponModel:DrawCouponModel = DrawCouponModel()
+                var drawCouponModel:DrawCouponModel = DrawCouponModel()
                 drawCouponModel.merchantId = Int(merchantIdx)
                 drawCouponModel.couponId = Int(couponIdx)
-                drawCouponModel.circleColor = UIColor.hexStringToUIColor(hex: circleColor)
-                drawCouponModel.ringColor = UIColor.hexStringToUIColor(hex: ringColor)
+                drawCouponModel.circleColor = circleColor
+                drawCouponModel.ringColor = ringColor
                 drawCouponModel.ringThickness = ringThickness
                 drawCouponModel.isRing = isRing
-                drawCouponModel.checkLineColor = UIColor.hexStringToUIColor(hex: checkLineColor)
+                drawCouponModel.checkLineColor = checkLineColor
                 drawCouponModel.checkLineWidth = checkLineWidth
                 drawCouponModel.isEvent = isEvent
-                drawCouponList?.append(drawCouponModel)
+                drawCouponList.append(drawCouponModel)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))
@@ -260,10 +262,10 @@ class SQLInterface {
     }
     
     // 가맹점 - 쿠폰 정보 가져오기 ( Image용 )
-    func selectImageCouponData(merchantId:Int) throws -> [ImageCouponModel?]? {
+    func selectImageCouponData(merchantId:Int) throws -> [ImageCouponModel] {
         guard db != nil else { throw SQLError.connectionError }
         defer { sqlite3_finalize(stmt) }
-        var imageCouponList:[ImageCouponModel?]? =  [ImageCouponModel]()
+        var imageCouponList:[ImageCouponModel] =  [ImageCouponModel]()
         var query = "select merchant_idx, coupon_idx, normal_image, select_image, is_event"
         query.append(" from merchant_image_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
         if sqlite3_prepare(db, query, -1, &stmt, nil) == SQLITE_OK {
@@ -274,13 +276,13 @@ class SQLInterface {
                 let selectImage:String = String(cString:sqlite3_column_text(stmt, 3))
                 let isEvent:Bool = sqlite3_column_int(stmt, 4) > 0
                 
-                let imageCouponModel:ImageCouponModel = ImageCouponModel()
+                var imageCouponModel:ImageCouponModel = ImageCouponModel()
                 imageCouponModel.merchantId = Int(merchantIdx)
-                imageCouponModel.normalImageString = normalImage
-                imageCouponModel.selectImageString = selectImage
+                imageCouponModel.normalImage = normalImage
+                imageCouponModel.selectImage = selectImage
                 imageCouponModel.couponId = Int(couponIdx)
                 imageCouponModel.isEvent = isEvent
-                imageCouponList?.append(imageCouponModel)
+                imageCouponList.append(imageCouponModel)
             }
         } else {
             let errorMessage = String.init(cString: sqlite3_errmsg(db))

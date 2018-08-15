@@ -13,9 +13,9 @@ import UIKit
      - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
 class UserMerchantTableViewController: UITableViewController {
-    var userCouponList:[UserCouponModel?]? // 회원 쿠폰 정보
-    lazy var singleton:CouponSignleton = {  // 쿠폰 싱글톤
-        return CouponSignleton.instance
+    var userCouponList:UserCouponListModel? // 회원 쿠폰 정보
+    lazy var merchantList:MerchantListModel? = {
+        return CouponSignleton.instance.merchantList
     }()
     
     override func viewDidLoad() {
@@ -35,20 +35,15 @@ class UserMerchantTableViewController: UITableViewController {
     }
     
  
-    
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.instance.userData?.id
-        CouponNetwork.requestUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
+        CouponData.getUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
                 self?.userCouponList = userCouponList
                 if self?.userCouponList != nil {
                     self?.tableView.reloadData()
-                } else {
-                    self?.setData()
                 }
-            } else{
-                self?.setData()
             }
         })
     }
@@ -75,7 +70,7 @@ class UserMerchantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserMerchantTableViewCell", for: indexPath) as! UserMerchantTableViewCell
         let userCouponModel = self.userCouponList?[indexPath.row]
-        let merchantModel =  singleton.findMerchantModel(merchantId: userCouponModel?.merchantId)
+        let merchantModel = merchantList?.findMerchantModel(merchantId: userCouponModel?.merchantId)
         cell.merchantName.text = merchantModel?.name
         cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         //cell.textLabel?.text = merchantModel?.name
@@ -86,7 +81,7 @@ class UserMerchantTableViewController: UITableViewController {
         if editingStyle == UITableViewCellEditingStyle.delete {
             let userMerchantModel = userCouponList?[indexPath.row]
             if(deleteCoupon(merchantId:userMerchantModel?.merchantId)) {
-                userCouponList?.remove(at: indexPath.row)
+                userCouponList?.remove(indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }
         }
@@ -99,7 +94,7 @@ class UserMerchantTableViewController: UITableViewController {
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]
-            couponListView?.merchantData = singleton.findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
+            couponListView?.merchantData = merchantList?.findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
         }
     }
     
@@ -115,11 +110,11 @@ class UserMerchantTableViewController: UITableViewController {
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let userId = CouponSignleton.instance.userData?.id
         var state = false
-        CouponNetwork.requestDeleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
             if isSuccessed {
                state = isSuccessed
             } else {
-                Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
+                Utils.showCustomPopup(self,title: deleteCouponFailTitle, message: deleteCouponFailContent)
                 state = false
             }
         })

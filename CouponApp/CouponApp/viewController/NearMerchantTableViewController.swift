@@ -17,8 +17,8 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     var locationManager:CLLocationManager!
     var nearMerchantModelList:[MerchantModel?]?
     
-    lazy var singleton:CouponSignleton = {
-        return CouponSignleton.instance
+    lazy var merchantList:MerchantListModel? = {
+        return CouponSignleton.instance.merchantList
     }()
     
     override func viewDidLoad() {
@@ -67,8 +67,12 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
         if let coor = manager.location?.coordinate {
             nearMerchantModelList?.removeAll()
             let currentLocation = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-            for merchantModel in singleton.merchantList! {
-                let tempLocation = CLLocation(latitude: (merchantModel?.latitude)!, longitude: (merchantModel?.longitude)!)
+            
+            for i in 0 ..< (merchantList?.list.count)! {
+                guard let merchantModel = merchantList?[i] else {
+                    return
+                }
+                let tempLocation = CLLocation(latitude: merchantModel.latitude, longitude: merchantModel.longitude)
                 let diffDistance = currentLocation.distance(from: tempLocation)
                 if  diffDistance < 1000 { // 주변 가맹점인지 여부
                     nearMerchantModelList?.append(merchantModel)

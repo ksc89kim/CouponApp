@@ -31,7 +31,7 @@ class CouponDrawView: CouponView {
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = dotPath.cgPath
-        shapeLayer.fillColor = model?.circleColor.cgColor
+        shapeLayer.fillColor = UIColor.hexStringToUIColor(hex: (model?.circleColor)!).cgColor
         layer.addSublayer(shapeLayer)
         
         if (model?.isRing)! { drawRingFittingInsideView(rect) }
@@ -57,14 +57,13 @@ class CouponDrawView: CouponView {
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = model?.ringColor.cgColor
+        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.ringColor)!).cgColor
         shapeLayer.lineWidth = (model?.ringThickness)!
         layer.addSublayer(shapeLayer)
     }
     
     // 체크박스 그리기
     func drawCheckFittingInsideView(_ rect:CGRect) {
-        
         let radius = rect.maxX/2
         let startCircleInPoint:CGPoint = CGPoint(x: rect.maxX/4, y: rect.maxY/4)
         let endCircleInPoint:CGPoint = CGPoint(x:startCircleInPoint.x + radius,y:startCircleInPoint.y + radius)
@@ -84,7 +83,7 @@ class CouponDrawView: CouponView {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = model?.checkLineColor.cgColor
+        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.checkLineColor)!).cgColor
         shapeLayer.lineWidth = (model?.checkLineWidth)!
         layer.addSublayer(shapeLayer)
     }

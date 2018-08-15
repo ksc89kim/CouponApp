@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "057CB6E16E82E703BCF779B64D25888F"
+               BlueprintIdentifier = "1683308D1F7AA23D50E816BAE4C47866"
                BuildableName = "Pods_CouponAppUITests.framework"
                BlueprintName = "Pods-CouponAppUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "057CB6E16E82E703BCF779B64D25888F"
+            BlueprintIdentifier = "1683308D1F7AA23D50E816BAE4C47866"
             BuildableName = "Pods_CouponAppUITests.framework"
             BlueprintName = "Pods-CouponAppUITests"
             ReferencedContainer = "container:Pods.xcodeproj">

@@ -19,14 +19,23 @@ class Utils {
     }
     
     // MARK: - 커스텀 팝업창
-    static func showCustomPopup(title:String, message:String, callback:(() -> Void)? = nil){
-        let customPopup = CustomPopupView()
-        customPopup.okCallback = callback
-        customPopup.title.text = title
-        customPopup.content.text = message
-        let window = UIApplication.shared.keyWindow!
-        customPopup.frame = window.frame
-        window.addSubview(customPopup)
+    static func showCustomPopup(_ viewController:UIViewController, title:String, message:String, callback:(() -> Void)? = nil){
+//        let customPopup = CustomPopupView()
+//        customPopup.okCallback = callback
+//        customPopup.title.text = title
+//        customPopup.content.text = message
+//        let window = UIApplication.shared.keyWindow!
+//        customPopup.frame = window.frame
+//        window.addSubview(customPopup)
+        
+        let customPopupViewController:CustomPopupViewController = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
+        customPopupViewController.okCallback = callback
+        customPopupViewController.titleText = title
+        customPopupViewController.contentText = message
+        customPopupViewController.view.frame = viewController.view.frame
+        viewController.view.addSubview(customPopupViewController.view)
+        viewController.addChildViewController(customPopupViewController)
+        
     }
     
     // MARK: - 키보드에 따른 뷰 높이 계산

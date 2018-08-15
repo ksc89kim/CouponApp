@@ -12,11 +12,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopupView" customModule="CouponApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopupViewController" customModule="CouponApp" customModuleProvider="target">
             <connections>
-                <outlet property="content" destination="Ybw-yc-yZV" id="eZU-7P-Bdh"/>
+                <outlet property="contentLabel" destination="Ybw-yc-yZV" id="U6e-Bn-u8g"/>
                 <outlet property="popupView" destination="2VO-2I-wp4" id="vVP-r7-XBq"/>
-                <outlet property="title" destination="8Ve-3b-0pg" id="LDu-p1-TyM"/>
+                <outlet property="titleLabel" destination="8Ve-3b-0pg" id="tgm-Al-P2w"/>
+                <outlet property="view" destination="iN0-l3-epB" id="HYw-9W-IC7"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

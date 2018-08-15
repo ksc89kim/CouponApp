@@ -14,7 +14,6 @@ import UIKit
      - 회원 가맹점 삭제하기
  */
 class DetailMerchantViewController: UIViewController {
-
     @IBOutlet weak var merchantName: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var merchantContent: UILabel!
@@ -27,10 +26,10 @@ class DetailMerchantViewController: UIViewController {
         super.viewDidLoad()
         if let merchant = merchantModel {
             merchantName.text = merchant.name
-            logoImage.downloadedFrom(link: merchant.logoImageUrl!)
+            logoImage.downloadedFrom(link: merchant.logoImageUrl)
             merchantContent.text = merchant.content
             let userId = CouponSignleton.instance.userData?.id
-            CouponNetwork.requestCheckUserCoupon(userId: userId!, merchantId: merchant.merchantId!, complete: { [weak self] isSuccessed in
+            CouponData.checkUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
                 self?.isUserCoupon = isSuccessed
                 self?.refreshButton()
             })
@@ -69,12 +68,12 @@ class DetailMerchantViewController: UIViewController {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         
-        CouponNetwork.requestDeleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { isSuccessed in
             if isSuccessed {
                 self.isUserCoupon = false
                 self.refreshButton()
             } else {
-                 Utils.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
+                 Utils.showCustomPopup(self,title: deleteCouponFailTitle, message: deleteCouponFailContent)
             }
         })
     }
@@ -84,9 +83,9 @@ class DetailMerchantViewController: UIViewController {
         let userId = CouponSignleton.instance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        CouponNetwork.requestInsertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId!, complete: { [weak self] isSuccessed in
+        CouponData.insertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
-                Utils.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
+                Utils.showCustomPopup(self!,title: insertCouponFailTitle, message: insertCouponFailContent)
                 return
             }
             self?.isUserCoupon = true

@@ -13,8 +13,8 @@ import UIKit
  */
 class PublicMerchantTableViewController: UITableViewController  {
     
-    lazy var singleton:CouponSignleton = {
-        return CouponSignleton.instance
+    lazy var merchantList:MerchantListModel? = {
+        return CouponSignleton.instance.merchantList
     }()
     
     override func viewDidLoad() {
@@ -36,14 +36,19 @@ class PublicMerchantTableViewController: UITableViewController  {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return (singleton.merchantList?.count)!
+        guard let model = merchantList else {
+            return 0
+        }
+        return model.list.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PublicMerchantTableViewCell", for: indexPath) as! PublicMerchantTableViewCell
-        let merchantModel =  singleton.merchantList![indexPath.row]
-        cell.merchantName.text = merchantModel?.name
-        cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        guard let model:MerchantModel = merchantList?[indexPath.row] else {
+            return cell
+        }
+        cell.merchantName.text = model.name
+        cell.logoImage.downloadedFrom(link:model.logoImageUrl)
         return cell
     }
     
@@ -55,7 +60,7 @@ class PublicMerchantTableViewController: UITableViewController  {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMerchantView1" {
             let detailMerchantView:DetailMerchantViewController? = segue.destination as? DetailMerchantViewController
-            let merchantModel = singleton.merchantList![(self.tableView.indexPathForSelectedRow?.row)!]
+            let merchantModel = merchantList?[(self.tableView.indexPathForSelectedRow?.row)!]
             detailMerchantView?.merchantModel = merchantModel
         }
     }
