@@ -100,7 +100,7 @@ class SQLInterface {
                 let merchantIdx:Int32 = sqlite3_column_int(stmt, 1)
                 let couponCount:Int32 = sqlite3_column_int(stmt, 2)
                 
-                var userCouponModel:UserCouponModel = UserCouponModel()
+                let userCouponModel:UserCouponModel = UserCouponModel()
                 userCouponModel.merchantId = Int(merchantIdx)
                 userCouponModel.couponCount = Int(couponCount)
                 userCouponList?.append(userCouponModel)

@@ -24,7 +24,7 @@ struct MerchantListModel:Codable, ListProtocol {
         self.list = try container.decode([MerchantModel].self, forKey: .list)
     }
     
-    func findMerchantModel(merchantId:Int?) -> MerchantModel? {
+    func index(merchantId:Int?) -> MerchantModel? {
         var fModel:MerchantModel? = nil;
         for model in list {
             if model.merchantId == merchantId {

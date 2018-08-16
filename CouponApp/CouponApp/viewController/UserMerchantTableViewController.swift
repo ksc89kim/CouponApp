@@ -70,10 +70,9 @@ class UserMerchantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserMerchantTableViewCell", for: indexPath) as! UserMerchantTableViewCell
         let userCouponModel = self.userCouponList?[indexPath.row]
-        let merchantModel = merchantList?.findMerchantModel(merchantId: userCouponModel?.merchantId)
+        let merchantModel = merchantList?.index(merchantId: userCouponModel?.merchantId)
         cell.merchantName.text = merchantModel?.name
         cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
-        //cell.textLabel?.text = merchantModel?.name
         return cell
     }
     
@@ -94,7 +93,7 @@ class UserMerchantTableViewController: UITableViewController {
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]
-            couponListView?.merchantData = merchantList?.findMerchantModel(merchantId:couponListView?.userMerchantData?.merchantId)
+            couponListView?.merchantData = merchantList?.index(merchantId:couponListView?.userMerchantData?.merchantId)
         }
     }
     

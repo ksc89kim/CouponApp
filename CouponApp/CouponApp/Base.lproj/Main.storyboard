@@ -208,7 +208,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CouponCell" id="CgL-Z5-cmR">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CouponCell" id="CgL-Z5-cmR" customClass="CouponCollectionViewCell" customModule="CouponApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -251,6 +251,10 @@
                                             <constraint firstItem="JF7-gf-1vh" firstAttribute="top" secondItem="CgL-Z5-cmR" secondAttribute="top" id="oGI-mp-kQI"/>
                                             <constraint firstAttribute="trailing" secondItem="emY-kK-05F" secondAttribute="trailing" id="uAY-kh-skh"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="drawView" destination="JF7-gf-1vh" id="0pA-0K-WKS"/>
+                                            <outlet property="imageView" destination="emY-kK-05F" id="7wC-pT-vTk"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

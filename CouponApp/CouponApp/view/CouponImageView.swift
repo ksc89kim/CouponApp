@@ -12,28 +12,21 @@ import UIKit
      쿠폰 이미지 뷰
      - UIImageView를 통한 쿠폰 이미지 뷰
  */
-
-class CouponImageView: CouponView {
-    var model:ImageCouponModel?
-    @IBOutlet var couponImage:UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        model = ImageCouponModel()
-    }
-    
-    override func refreshDisplay() {
-        super.refreshDisplay()
-        if isImageCoupon {
-            self.isHidden = false
+class CouponImageView: UIView, CouponViewProtocol {
+    var isUseCoupone: Bool = false{
+        didSet {
             if isUseCoupone {
                 couponImage.image = UIImage(named: (model?.selectImage)!)
             } else {
                 couponImage.image = UIImage(named: (model?.normalImage)!)
             }
-        } else {
-            self.isHidden = true
         }
+    }
+    
+    var model:ImageCouponModel?
+    @IBOutlet var couponImage:UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 }

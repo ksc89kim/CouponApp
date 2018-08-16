@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "68EC713C7E6D82B6B9075452B9CB6810"
-               BuildableName = "Pods_CouponApp.framework"
-               BlueprintName = "Pods-CouponApp"
+               BlueprintIdentifier = "9EFE4C70245EE2857D336B8B9FA4E825"
+               BuildableName = "AlamofireImage.framework"
+               BlueprintName = "AlamofireImage"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "68EC713C7E6D82B6B9075452B9CB6810"
-            BuildableName = "Pods_CouponApp.framework"
-            BlueprintName = "Pods-CouponApp"
+            BlueprintIdentifier = "9EFE4C70245EE2857D336B8B9FA4E825"
+            BuildableName = "AlamofireImage.framework"
+            BlueprintName = "AlamofireImage"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

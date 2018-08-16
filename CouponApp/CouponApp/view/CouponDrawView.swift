@@ -12,19 +12,24 @@ import UIKit
      쿠폰 그리기 뷰
      - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
  */
-class CouponDrawView: CouponView {
+class CouponDrawView: UIView, CouponViewProtocol {
     var model:DrawCouponModel?
+    var isUseCoupone: Bool = false {
+        didSet {
+            if model != nil {
+                setNeedsDisplay()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        model = DrawCouponModel()
         //custom logic goes here
     }
     
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        guard !isImageCoupon else { return }
         guard model != nil else { return }
         
         // Drawing code
@@ -33,20 +38,9 @@ class CouponDrawView: CouponView {
         shapeLayer.path = dotPath.cgPath
         shapeLayer.fillColor = UIColor.hexStringToUIColor(hex: (model?.circleColor)!).cgColor
         layer.addSublayer(shapeLayer)
-        
+    
         if (model?.isRing)! { drawRingFittingInsideView(rect) }
         if (isUseCoupone) { drawCheckFittingInsideView(rect) }
-    }
-    
-    // 이미지 갱신
-    override func refreshDisplay() {
-        super.refreshDisplay()
-        if isImageCoupon {
-            self.isHidden = true
-        } else {
-            self.isHidden = false
-            setNeedsDisplay()
-        }
     }
     
     // 링 그리기

@@ -110,37 +110,19 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             print("collectionView - merchantData error")
             return 0
         }
-        
         return merchant.couponCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath)
-        let couponDrawView:CouponDrawView = cell.viewWithTag(500) as! CouponDrawView // tag에 붙은 CouponDrawView를 가지고 온다.
-        let couponImageView:CouponImageView = cell.viewWithTag(501) as! CouponImageView // tag에 붙은 CouponImageView를 가지고 온다.
+        let cell:CouponCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath) as! CouponCollectionViewCell
         
-        guard let merchant = merchantData else {
-            print("collectionView - merchantData error")
+        guard let merchant = merchantData, let couponCount = userMerchantData?.couponCount else  {
+            print("collectionView - merchantData error,  couponCount error")
             return cell
         }
         
-        if merchant.isCouponImage {
-            couponImageView.model = merchant.imageCouponList[indexPath.row]
-            couponImageView.isImageCoupon = true
-        } else {
-            couponDrawView.frame.size = cellSize // 사이즈 재설정
-            couponDrawView.model = merchant.drawCouponList[indexPath.row]
-            couponDrawView.isImageCoupon = false
-        }
-        
-        if let couponCount = userMerchantData?.couponCount, indexPath.row < couponCount { // 쿠폰 활성화
-            couponDrawView.refreshCoupon(couponStatus: true)
-            couponImageView.refreshCoupon(couponStatus: true)
-        } else { // 쿠폰 비활성화
-            couponDrawView.refreshCoupon(couponStatus: false)
-            couponImageView.refreshCoupon(couponStatus: false)
-        }
-        
+        let isUseCoupon:Bool = (indexPath.row < couponCount)
+        cell.refreshView(isUseCoupon, couponProtocol: merchant.index(indexPath.row))
         return cell
     }
     

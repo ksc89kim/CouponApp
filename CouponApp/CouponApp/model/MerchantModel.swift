@@ -60,6 +60,10 @@ struct MerchantModel:Codable,  MerchantProtocol {
         self.imageCouponList = (try? container.decode([ImageCouponModel].self, forKey: .imageCouponList)) ?? []
     }
     
+    func index(_ index:Int) -> CouponProtocol {
+        return isCouponImage ? imageCouponList[index] : drawCouponList[index]
+    }
+    
     func couponCount() -> Int {
         return isCouponImage ? imageCouponList.count : drawCouponList.count
     }

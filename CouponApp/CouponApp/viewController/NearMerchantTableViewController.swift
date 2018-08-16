@@ -29,7 +29,6 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
-        
         nearMerchantModelList = []
     }
 
