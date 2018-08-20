@@ -56,7 +56,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         let maxCount = merchant.couponCount()
         
         guard couponCount < maxCount else {
-            Utils.showCustomPopup(self, title: "maxCouponTitle".localized, message:"maxCouponContent".localized)
+            self.showCustomPopup(title: "maxCouponTitle".localized, message:"maxCouponContent".localized)
             return
         }
         
@@ -70,7 +70,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
                 self?.userMerchantData?.couponCount = couponCount + 1
                 self?.myCollectionView.reloadData()
             } else {
-                Utils.showCustomPopup(self!,title:"requestFailCouponTitle".localized, message: "requestFailCouponContent".localized)
+                self?.showCustomPopup(title:"requestFailCouponTitle".localized, message: "requestFailCouponContent".localized)
             }
         })
     }
@@ -84,7 +84,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         
         let maxCount = merchant.couponCount()
         guard couponCount >= maxCount else {
-            Utils.showCustomPopup(self, title: "lackCouponTitle".localized, message: "lackCouponContent".localized,callback: nil)
+            self.showCustomPopup(title: "lackCouponTitle".localized, message: "lackCouponContent".localized,callback: nil)
             return
         }
         
@@ -98,7 +98,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
                 self?.userMerchantData?.couponCount = 0
                 self?.myCollectionView.reloadData()
             } else {
-                Utils.showCustomPopup(self!, title:"useCouponFailTitle".localized, message:"useCouponFailContent".localized)
+                self?.showCustomPopup(title:"useCouponFailTitle".localized, message:"useCouponFailContent".localized)
             }
         })
     }

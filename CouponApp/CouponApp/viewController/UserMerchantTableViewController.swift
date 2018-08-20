@@ -109,11 +109,11 @@ class UserMerchantTableViewController: UITableViewController {
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let userId = CouponSignleton.instance.userData?.id
         var state = false
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { [weak self] isSuccessed in
             if isSuccessed {
                state = isSuccessed
             } else {
-                Utils.showCustomPopup(self,title: deleteCouponFailTitle, message: deleteCouponFailContent)
+                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
                 state = false
             }
         })

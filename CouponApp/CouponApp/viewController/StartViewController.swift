@@ -88,12 +88,12 @@ class StartViewController: UIViewController {
         let phoneNumberOrPasswordFail = "phoneNumberOrPasswordFail".localized
             
         guard let phoneNumberText =  phoneNumberTextField.text, !phoneNumberText.isEmpty else {
-            Utils.showCustomPopup(self,title: loginFailTitle, message: "phoneNumberNeedInput".localized)
+            self.showCustomPopup(title: loginFailTitle, message: "phoneNumberNeedInput".localized)
             return
         }
         
         guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
-            Utils.showCustomPopup(self,title: loginFailTitle, message:"passwordNeedInput".localized)
+            self.showCustomPopup(title: loginFailTitle, message:"passwordNeedInput".localized)
             return
         }
         
@@ -102,7 +102,7 @@ class StartViewController: UIViewController {
                 UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                 self?.goMain()
             } else {
-                Utils.showCustomPopup(self!,title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
+                self?.showCustomPopup(title: loginFailTitle, message: phoneNumberOrPasswordFail, callback: nil)
             }
         })
     }

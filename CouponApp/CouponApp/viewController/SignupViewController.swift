@@ -66,23 +66,23 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
         let signupFailContent = "signupFailContent".localized
         
         guard let nameText = nameTextField.text, !nameText.isEmpty else {
-            Utils.showCustomPopup(self,title: signupFailTitle, message: "nameNeedInput".localized)
+            self.showCustomPopup(title: signupFailTitle, message: "nameNeedInput".localized)
             return
         }
         
         guard let phoneNumberText =  phoneNumberTextField.text, !phoneNumberText.isEmpty else {
-            Utils.showCustomPopup(self,title: signupFailTitle, message: "phoneNumberNeedInput".localized)
+            self.showCustomPopup(title: signupFailTitle, message: "phoneNumberNeedInput".localized)
             return
         }
         
         guard let passwordText = passwordTextField.text, !passwordText.isEmpty else {
-            Utils.showCustomPopup(self,title: signupFailTitle, message:"passwordNeedInput".localized)
+            self.showCustomPopup(title: signupFailTitle, message:"passwordNeedInput".localized)
             return
         }
 
         CouponData.signup(phoneNumber: phoneNumberText, password: passwordText, name: nameText, complete:{ [weak self] isSuccessed in
             guard isSuccessed else {
-                Utils.showCustomPopup(self!,title: signupFailTitle, message: signupFailContent)
+                self?.showCustomPopup(title: signupFailTitle, message: signupFailContent)
                 return
             }
             
@@ -91,7 +91,7 @@ class SignupViewController: UIViewController , UITextFieldDelegate{
                     UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                     self?.goMain()
                 } else {
-                    Utils.showCustomPopup(self!,title: signupFailTitle, message: signupFailContent)
+                    self?.showCustomPopup(title: signupFailTitle, message: signupFailContent)
                 }
             })
         })

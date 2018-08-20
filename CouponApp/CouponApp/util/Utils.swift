@@ -10,26 +10,6 @@ import UIKit
 
 class Utils {
     
-    // MARK: - 경고 팝업창
-    static func showAlert(viewController:UIViewController,title:String, message:String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-        alertController.addAction(defaultAction)
-        viewController.present(alertController, animated: true, completion: nil)
-    }
-    
-    // MARK: - 커스텀 팝업창
-    static func showCustomPopup(_ viewController:UIViewController, title:String, message:String, callback:(() -> Void)? = nil){
-        let customPopupViewController:CustomPopupViewController = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
-        customPopupViewController.okCallback = callback
-        customPopupViewController.titleText = title
-        customPopupViewController.contentText = message
-        customPopupViewController.view.frame = viewController.view.frame
-        viewController.view.addSubview(customPopupViewController.view)
-        viewController.addChildViewController(customPopupViewController)
-        
-    }
-    
     // MARK: - 키보드에 따른 뷰 높이 계산
     static func setUpViewHeight (_ view:UIView, _ notification: Notification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {

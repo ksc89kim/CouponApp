@@ -68,12 +68,12 @@ class DetailMerchantViewController: UIViewController {
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { [weak self] isSuccessed in
             if isSuccessed {
-                self.isUserCoupon = false
-                self.refreshButton()
+                self?.isUserCoupon = false
+                self?.refreshButton()
             } else {
-                 Utils.showCustomPopup(self,title: deleteCouponFailTitle, message: deleteCouponFailContent)
+                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
             }
         })
     }
@@ -85,7 +85,7 @@ class DetailMerchantViewController: UIViewController {
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         CouponData.insertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
-                Utils.showCustomPopup(self!,title: insertCouponFailTitle, message: insertCouponFailContent)
+                self?.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
                 return
             }
             self?.isUserCoupon = true
