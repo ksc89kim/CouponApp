@@ -25,8 +25,14 @@ extension UIViewController {
             customPopupViewController.titleText = title
             customPopupViewController.contentText = message
             customPopupViewController.view.frame = self.view.frame
-            self.view.addSubview(customPopupViewController.view)
-            self.addChildViewController(customPopupViewController)
+            
+            if let navigationController =  self.navigationController {
+                navigationController.view.addSubview(customPopupViewController.view)
+                navigationController.addChildViewController(customPopupViewController)
+            } else {
+                self.view.addSubview(customPopupViewController.view)
+                self.addChildViewController(customPopupViewController)
+            }
         }
     }
 }
