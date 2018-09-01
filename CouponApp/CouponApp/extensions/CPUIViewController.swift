@@ -29,9 +29,11 @@ extension UIViewController {
             if let navigationController =  self.navigationController {
                 navigationController.view.addSubview(customPopupViewController.view)
                 navigationController.addChildViewController(customPopupViewController)
+                customPopupViewController.didMove(toParentViewController: navigationController)
             } else {
                 self.view.addSubview(customPopupViewController.view)
                 self.addChildViewController(customPopupViewController)
+                customPopupViewController.didMove(toParentViewController: self)
             }
         }
     }

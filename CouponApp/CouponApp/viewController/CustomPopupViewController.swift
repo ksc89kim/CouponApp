@@ -39,6 +39,7 @@ class CustomPopupViewController: UIViewController {
         if okCallback != nil {
             okCallback!()
         }
+        self.willMove(toParentViewController: nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()
     }
