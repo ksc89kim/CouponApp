@@ -410,7 +410,7 @@
     </scenes>
     <resources>
         <image name="back" width="22" height="15"/>
-        <image name="normal" width="133" height="96"/>
+        <image name="normal" width="120" height="99"/>
         <image name="starbuck" width="930" height="946"/>
     </resources>
 </document>
