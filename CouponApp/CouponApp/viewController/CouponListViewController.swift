@@ -14,21 +14,30 @@ import UIKit
      - 쿠폰 소진하기 및 쿠폰 요청하기 기능이 있음.
  */
 class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    @IBOutlet weak var myCollectionView: UICollectionView!
     var cellSize:CGSize!
     var userMerchantData:UserCouponModel?
     var merchantData:MerchantModel?
     
+    @IBOutlet weak var myCollectionView: UICollectionView!
+    @IBOutlet weak var backgroundRoundedView: UIView!
+    @IBOutlet weak var bottomRoundedView: UIView!
+    @IBOutlet weak var dotLineView: UIView!
+    @IBOutlet weak var leftRoundedView: UIView!
+    @IBOutlet weak var rightRoundedView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUI()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setUI() {
         self.navigationItem.title = merchantData?.name
-        //iPhone 8 사이즈 기준 CGSize (100,100) Rate 가져오기
-        let widthRate:CGFloat = (50/375)
-        let heightRate:CGFloat = (50/667)
-        let cellWidth : CGFloat = self.view.frame.size.width * widthRate
-        let cellheight : CGFloat = self.view.frame.size.height * heightRate
-        cellSize = CGSize(width: cellWidth.rounded() , height:cellheight.rounded())
+        cellSize = CGSize(width: 50 , height:50)
         
         // UICollectionViewFlowLayout 재설정 (cellSize를 다시 설정하기 위하여 새롭게 FlowLayout을 생성한다)
         let layout = UICollectionViewFlowLayout()
@@ -39,11 +48,22 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         layout.minimumInteritemSpacing = 5.0
         myCollectionView.setCollectionViewLayout(layout, animated: true)
         myCollectionView.reloadData()
+        
+        bottomRoundedView.layer.borderWidth = 1
+        bottomRoundedView.layer.borderColor = UIColor.hexStringToUIColor(hex: "#E6E6E6").cgColor
+        
+        dotLineView.addDashedBorder(color:UIColor.hexStringToUIColor(hex: "#dedede"), lineWidth: 2)
+        
+        let roundedColor = UIColor.hexStringToUIColor(hex: "#dedede")
+        self.setRoundedView(view:backgroundRoundedView, width: 1, color:roundedColor , radius: 10)
+        self.setRoundedView(view: leftRoundedView, width: 1, color: roundedColor, radius:leftRoundedView.frame.size.width/2)
+        self.setRoundedView(view: rightRoundedView, width: 1, color: roundedColor, radius:leftRoundedView.frame.size.width/2)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func setRoundedView(view:UIView, width:CGFloat, color:UIColor, radius:CGFloat) {
+        view.layer.borderWidth = width
+        view.layer.borderColor = color.cgColor
+        view.layer.cornerRadius = radius
     }
     
     // 쿠폰 요청하기

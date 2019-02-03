@@ -58,20 +58,16 @@ class CouponDrawView: UIView, CouponViewProtocol {
     
     // 체크박스 그리기
     func drawCheckFittingInsideView(_ rect:CGRect) {
-        let radius = rect.maxX/2
-        let startCircleInPoint:CGPoint = CGPoint(x: rect.maxX/4, y: rect.maxY/4)
-        let endCircleInPoint:CGPoint = CGPoint(x:startCircleInPoint.x + radius,y:startCircleInPoint.y + radius)
         
-        var start:CGPoint = CGPoint(x: startCircleInPoint.x, y: startCircleInPoint.y)
-        var end:CGPoint = CGPoint(x: startCircleInPoint.x+(radius/2), y: endCircleInPoint.y)
+        var start:CGPoint = CGPoint(x: rect.maxX * 0.25, y: rect.maxY * 0.45)
+        var end:CGPoint = CGPoint(x: rect.maxX * 0.5, y: rect.maxY * 0.65)
+        
         let path = UIBezierPath()
         path.move(to: start)
         path.addLine(to: end)
         
-        start.x = startCircleInPoint.x+(radius/2)
-        start.y = endCircleInPoint.y
-        end.x = endCircleInPoint.x
-        end.y = startCircleInPoint.y
+        start = CGPoint(x: end.x, y: end.y)
+        end = CGPoint(x: rect.maxX * 0.75, y: rect.maxY * 0.35)
         path.move(to: start)
         path.addLine(to: end)
         
@@ -79,6 +75,7 @@ class CouponDrawView: UIView, CouponViewProtocol {
         shapeLayer.path = path.cgPath
         shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.checkLineColor)!).cgColor
         shapeLayer.lineWidth = (model?.checkLineWidth)!
+        shapeLayer.lineCap = "round"
         layer.addSublayer(shapeLayer)
     }
     
