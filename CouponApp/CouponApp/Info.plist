@@ -29,6 +29,12 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>위치기반 컨텐츠 추천을 위해 GPS정보가 필요합니다.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansCJKkr-Bold</string>
+		<string>NotoSansCJKkr-Medium</string>
+		<string>NotoSansCJKkr-Regular</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

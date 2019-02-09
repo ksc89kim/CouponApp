@@ -9,8 +9,9 @@
 import UIKit
 
 /*
-     회원 가맹점 테이블 뷰 셀
+     회원이 가입한 가맹점 테이블 뷰 셀
  */
+
 class UserMerchantTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImage: UIImageView!  //로고이미지
     @IBOutlet weak var merchantName: UILabel!   //가맹점 이름

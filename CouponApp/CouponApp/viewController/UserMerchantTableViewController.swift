@@ -20,13 +20,13 @@ class UserMerchantTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUI()
         setData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setData()
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +34,13 @@ class UserMerchantTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
- 
+    func setUI() {
+        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+
+        let nib = UINib(nibName: "MerchantTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier:"MerchantTableViewCell")
+    }
+    
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.instance.userData?.id
@@ -64,16 +70,20 @@ class UserMerchantTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 145
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserMerchantTableViewCell", for: indexPath) as! UserMerchantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MerchantTableViewCell", for: indexPath) as! MerchantTableViewCell
         let userCouponModel = self.userCouponList?[indexPath.row]
         let merchantModel = merchantList?.index(merchantId: userCouponModel?.merchantId)
-        cell.merchantName.text = merchantModel?.name
-        cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        cell.titleLabel.text = merchantModel?.name
+        cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showCouponListView", sender: indexPath)
     }
     
     override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
