@@ -14,6 +14,7 @@ import UIKit
  */
 class CouponDrawView: UIView, CouponViewProtocol {
     var model:DrawCouponModel?
+    var isCheckBoxAnimation:Bool = false
     var isUseCoupone: Bool = false {
         didSet {
             if model != nil {
@@ -32,7 +33,6 @@ class CouponDrawView: UIView, CouponViewProtocol {
     override func draw(_ rect: CGRect) {
         guard model != nil else { return }
         
-        // Drawing code
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = dotPath.cgPath
@@ -58,7 +58,6 @@ class CouponDrawView: UIView, CouponViewProtocol {
     
     // 체크박스 그리기
     func drawCheckFittingInsideView(_ rect:CGRect) {
-        
         var start:CGPoint = CGPoint(x: rect.maxX * 0.25, y: rect.maxY * 0.45)
         var end:CGPoint = CGPoint(x: rect.maxX * 0.5, y: rect.maxY * 0.65)
         
@@ -76,6 +75,16 @@ class CouponDrawView: UIView, CouponViewProtocol {
         shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.checkLineColor)!).cgColor
         shapeLayer.lineWidth = (model?.checkLineWidth)!
         shapeLayer.lineCap = "round"
+        
+        if isCheckBoxAnimation {
+            let animation = CABasicAnimation(keyPath: "strokeEnd")
+            animation.fromValue = 0
+            animation.toValue = 1
+            animation.duration = 0.3
+            shapeLayer.add(animation, forKey: "line")
+            isCheckBoxAnimation = false
+        }
+        
         layer.addSublayer(shapeLayer)
     }
     

@@ -30,11 +30,19 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         nearMerchantModelList = []
+        
+        setUI()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setUI() {
+        self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        let nib = UINib(nibName: "MerchantTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier:"MerchantTableViewCell")
     }
 
     // MARK: - Table view data source
@@ -50,15 +58,20 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NearMerchantTableViewCell", for: indexPath) as! NearMerchantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MerchantTableViewCell", for: indexPath) as! MerchantTableViewCell
         let merchantModel =  nearMerchantModelList![indexPath.row]
-        cell.merchantName.text = merchantModel?.name
-        cell.logoImage.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        cell.titleLabel.text = merchantModel?.name
+        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchantModel?.cardBackGround)!)
+        cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 145
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetailMerchantView2", sender: indexPath)
     }
 
     // MARK: - CLLocation delegate
@@ -85,7 +98,8 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetailMerchantView2" {
             let detailMerchantView:DetailMerchantViewController? = segue.destination as? DetailMerchantViewController
-            let merchantModel = nearMerchantModelList![(self.tableView.indexPathForSelectedRow?.row)!]
+            let indexPath:IndexPath = sender as! IndexPath
+            let merchantModel = nearMerchantModelList![indexPath.row]
             detailMerchantView?.merchantModel = merchantModel
         }
     }

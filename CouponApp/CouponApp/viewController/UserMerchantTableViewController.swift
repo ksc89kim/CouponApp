@@ -36,7 +36,6 @@ class UserMerchantTableViewController: UITableViewController {
     
     func setUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-
         let nib = UINib(nibName: "MerchantTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier:"MerchantTableViewCell")
     }
@@ -78,6 +77,7 @@ class UserMerchantTableViewController: UITableViewController {
         let userCouponModel = self.userCouponList?[indexPath.row]
         let merchantModel = merchantList?.index(merchantId: userCouponModel?.merchantId)
         cell.titleLabel.text = merchantModel?.name
+        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchantModel?.cardBackGround)!)
         cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
         return cell
     }
@@ -102,7 +102,8 @@ class UserMerchantTableViewController: UITableViewController {
         // CouponListViewController -> 데이터 전달
         if segue.identifier == "showCouponListView" {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
-            couponListView?.userMerchantData = self.userCouponList?[(self.tableView.indexPathForSelectedRow?.row)!]
+            let indexPath:IndexPath = sender as! IndexPath
+            couponListView?.userMerchantData = self.userCouponList?[indexPath.row]
             couponListView?.merchantData = merchantList?.index(merchantId:couponListView?.userMerchantData?.merchantId)
         }
     }

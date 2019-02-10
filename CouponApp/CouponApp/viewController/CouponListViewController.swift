@@ -17,6 +17,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     var cellSize:CGSize!
     var userMerchantData:UserCouponModel?
     var merchantData:MerchantModel?
+    var selectCouponIndex:NSInteger?
     
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var backgroundRoundedView: UIView!
@@ -39,7 +40,6 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         self.navigationItem.title = merchantData?.name
         cellSize = CGSize(width: 50 , height:50)
         
-        // UICollectionViewFlowLayout 재설정 (cellSize를 다시 설정하기 위하여 새롭게 FlowLayout을 생성한다)
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = cellSize
@@ -88,6 +88,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.userMerchantData?.couponCount = couponCount + 1
+                self?.selectCouponIndex = couponCount
                 self?.myCollectionView.reloadData()
             } else {
                 self?.showCustomPopup(title:"requestFailCouponTitle".localized, message: "requestFailCouponContent".localized)
@@ -142,7 +143,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         let isUseCoupon:Bool = (indexPath.row < couponCount)
-        cell.refreshView(isUseCoupon, couponProtocol: merchant.index(indexPath.row))
+        let isAnimation:Bool = (indexPath.row == selectCouponIndex)
+        cell.refreshView(isUseCoupon, isAnimaton:isAnimation,couponProtocol: merchant.index(indexPath.row))
         return cell
     }
     

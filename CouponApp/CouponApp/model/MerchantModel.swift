@@ -22,6 +22,7 @@ struct MerchantModel:Codable,  MerchantProtocol {
     var isCouponImage:Bool //쿠폰 이미지 여부
     var imageCouponList:[ImageCouponModel] //쿠폰 이미지 데이터
     var drawCouponList:[DrawCouponModel] //쿠폰 그리기 데이터
+    var cardBackGround:String = "000000"
     
     init() {
         self.merchantId = 0

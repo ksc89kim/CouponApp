@@ -115,50 +115,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserMerchantTableViewCell" rowHeight="100" id="zZ3-Pl-wFM" customClass="UserMerchantTableViewCell" customModule="CouponApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zZ3-Pl-wFM" id="B6i-Ej-vhP" userLabel="UserMerchantView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starbuck" translatesAutoresizingMaskIntoConstraints="NO" id="s9W-QL-drs">
-                                            <rect key="frame" x="16" y="15" width="72" height="70"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="s9W-QL-drs" secondAttribute="height" multiplier="40:39" id="D8E-eC-U9n"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="카페샾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-2W-PFK">
-                                            <rect key="frame" x="96" y="39.5" width="263" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstItem="XsE-2W-PFK" firstAttribute="centerY" secondItem="B6i-Ej-vhP" secondAttribute="centerY" id="OxL-nk-Dot"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="XsE-2W-PFK" secondAttribute="trailing" id="TF4-bB-ry6"/>
-                                        <constraint firstItem="s9W-QL-drs" firstAttribute="height" secondItem="B6i-Ej-vhP" secondAttribute="height" multiplier="0.7" id="ezX-B0-bvE"/>
-                                        <constraint firstItem="s9W-QL-drs" firstAttribute="leading" secondItem="B6i-Ej-vhP" secondAttribute="leadingMargin" id="laP-fP-Jdl"/>
-                                        <constraint firstItem="s9W-QL-drs" firstAttribute="centerY" secondItem="B6i-Ej-vhP" secondAttribute="centerY" id="tnN-QG-aqU"/>
-                                        <constraint firstItem="XsE-2W-PFK" firstAttribute="leading" secondItem="s9W-QL-drs" secondAttribute="trailing" constant="8" id="y1S-77-c7C"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="logoImage" destination="s9W-QL-drs" id="b0e-BE-6QQ"/>
-                                    <outlet property="merchantName" destination="XsE-2W-PFK" id="1bT-RF-SfE"/>
-                                    <segue destination="zt0-fb-j4a" kind="show" identifier="showCouponListView" id="o8J-oc-ZqU"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Egp-UQ-YAn" id="KMo-td-13T"/>
                             <outlet property="delegate" destination="Egp-UQ-YAn" id="RXY-ao-RRV"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="회원 쿠폰 목록" id="ddT-fr-j4z"/>
+                    <connections>
+                        <segue destination="zt0-fb-j4a" kind="show" identifier="showCouponListView" id="jwA-g6-LWc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gj-bY-M3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -415,6 +380,5 @@
     <resources>
         <image name="back" width="22" height="15"/>
         <image name="normal" width="120" height="99"/>
-        <image name="starbuck" width="930" height="946"/>
     </resources>
 </document>

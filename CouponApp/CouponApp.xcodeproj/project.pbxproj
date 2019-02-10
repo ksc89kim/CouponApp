@@ -272,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				59A43FB721244FC10099581D /* CustomPopupViewController.xib */,
+				59A43FAB2124460D0099581D /* CustomPopupViewController.swift */,
 				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
 				5960FA2E1FCEE18300135CA4 /* UserMerchantTableViewController.swift */,
 				599804D21FF51409001561C5 /* FindMerchantViewController.swift */,
@@ -280,7 +281,6 @@
 				CC62DF4F2005D24300CCED88 /* DetailMerchantViewController.swift */,
 				CC047F85200C8A290070CC5D /* StartViewController.swift */,
 				CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */,
-				59A43FAB2124460D0099581D /* CustomPopupViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
