@@ -12,9 +12,12 @@ import UIKit
      가맹점 찾기 뷰 컨트롤러
      - 주변 가맹점, 전체 가맹점 찾는 뷰 컨트롤러
  */
-class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     
     @IBOutlet var tabButtonList:[UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!
+
     var currentTabBtn:UIButton? // 현재 등록된 탭 버튼
     var pageController:UIPageViewController? // 페이지 컨트롤러
     
@@ -34,27 +37,29 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
         if let firstViewController = viewControllerList.first {
             pageController!.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
         }
-        let mainView = self.view.viewWithTag(1)
-        let topView = mainView?.viewWithTag(1)
+        
         let pageView = self.pageController!.view
         pageView?.translatesAutoresizingMaskIntoConstraints = false
         self.addChildViewController(pageController!)
-        mainView?.addSubview(pageView!)
+        self.view.addSubview(pageView!)
         
         let pageViewWidthLayout = NSLayoutConstraint(item: pageView!, attribute: .width, relatedBy: .equal,
-                                                     toItem: mainView, attribute: .width, multiplier: 1, constant: 0)
+                                                     toItem: self.view, attribute: .width, multiplier: 1, constant: 0)
+        
         let pageViewCenterLayout = NSLayoutConstraint(item: pageView!, attribute: .centerX, relatedBy: .equal,
-                                                      toItem: mainView, attribute: .centerX, multiplier: 1, constant: 0)
+                                                      toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
+        
         let pageViewTopLayout = NSLayoutConstraint(item: pageView!, attribute: .top, relatedBy: .equal,
-                                                   toItem: topView, attribute: .top, multiplier: 1, constant: 30)
+                                                   toItem: topView, attribute: .bottom, multiplier: 1, constant:0)
+        
         let pageViewBottomLayout = NSLayoutConstraint(item: pageView!, attribute: .bottom, relatedBy: .equal,
-                                                      toItem: mainView, attribute: .bottom, multiplier: 1, constant: 0)
-        mainView?.addConstraints([pageViewWidthLayout,pageViewCenterLayout,pageViewTopLayout,pageViewBottomLayout])
+                                                      toItem: self.view, attribute: .bottom, multiplier: 1, constant: 0)
+        
+        self.view.addConstraints([pageViewWidthLayout,pageViewCenterLayout,pageViewTopLayout,pageViewBottomLayout])
         
         pageController?.delegate = self
         pageController?.dataSource = self
         pageController!.didMove(toParentViewController: self)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,12 +113,20 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
             if i == index {
                 if !tabBtn.isSelected {
                     tabBtn.isSelected = true
+                    animationSelectTabView(button: tabBtn)
                 }
                 self.currentTabBtn = tabBtn
             } else {
                 tabButtonList[i].isSelected = false
             }
         }
+    }
+    
+    func animationSelectTabView(button:UIButton){
+        selectLeadingLayout.constant = button.frame.origin.x
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 
 }
