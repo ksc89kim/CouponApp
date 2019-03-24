@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "CouponSqlite.checkPassword(phoneNumber:password:complete:):CouponSqlite.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "db">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

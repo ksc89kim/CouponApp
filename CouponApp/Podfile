@@ -10,6 +10,9 @@ target 'CouponApp' do
     pod 'Alamofire'
     pod 'AlamofireImage'
     
+  # FMDB
+    pod 'FMDB'
+
   # Progress
    pod 'SVProgressHUD', '~> 2.2.2' 
 
