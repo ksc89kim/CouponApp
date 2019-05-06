@@ -25,15 +25,24 @@ extension UIViewController {
             customPopupViewController.titleText = title
             customPopupViewController.contentText = message
             customPopupViewController.view.frame = self.view.frame
-            
-            if let navigationController =  self.navigationController {
-                navigationController.view.addSubview(customPopupViewController.view)
-                navigationController.addChildViewController(customPopupViewController)
-                customPopupViewController.didMove(toParentViewController: navigationController)
+            self.addCustomViewController(viewController: customPopupViewController)
+        }
+    }
+    
+    func addCustomViewController(viewController:UIViewController){
+        DispatchQueue.main.async {
+            if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+                window.addSubview(viewController.view)
+                self.addChildViewController(viewController)
+                viewController.didMove(toParentViewController: self)
+            } else if let navigationController =  self.navigationController{
+                navigationController.view.addSubview(viewController.view)
+                navigationController.addChildViewController(viewController)
+                viewController.didMove(toParentViewController: navigationController)
             } else {
-                self.view.addSubview(customPopupViewController.view)
-                self.addChildViewController(customPopupViewController)
-                customPopupViewController.didMove(toParentViewController: self)
+                self.view.addSubview(viewController.view)
+                self.addChildViewController(viewController)
+                viewController.didMove(toParentViewController: self)
             }
         }
     }

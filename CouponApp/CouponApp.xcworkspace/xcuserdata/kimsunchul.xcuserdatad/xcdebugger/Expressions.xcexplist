@@ -3,10 +3,24 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
+      </ContextState>
+      <ContextState
          contextName = "CouponSqlite.checkPassword(phoneNumber:password:complete:):CouponSqlite.swift">
          <PersistentStrings>
             <PersistentString
                value = "db">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "headerImageView.image">
+            </PersistentString>
+            <PersistentString
+               value = "merchantModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

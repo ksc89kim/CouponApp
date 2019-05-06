@@ -71,7 +71,26 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetailMerchantView2", sender: indexPath)
+        guard let cell:MerchantTableViewCell = tableView.cellForRow(at: indexPath) as? MerchantTableViewCell  else {
+            return
+        }
+        
+        guard let model:MerchantModel = merchantList?[indexPath.row] else {
+            return
+        }
+        
+        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: "MerchantInfoViewController", bundle: nil)
+        
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            let positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
+            customPopupViewController.merchantInfoModel.setData(model: model, topView: cell.topView, animationY: positionY)
+            customPopupViewController.view.frame = window.frame
+            customPopupViewController.setHeaderImageView(image: cell.logoImageView.image ?? UIImage())
+            
+            window.addSubview(customPopupViewController.view)
+            self.addChildViewController(customPopupViewController)
+            customPopupViewController.didMove(toParentViewController: self)
+        }
     }
 
     // MARK: - CLLocation delegate
@@ -96,11 +115,6 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailMerchantView2" {
-            let detailMerchantView:DetailMerchantViewController? = segue.destination as? DetailMerchantViewController
-            let indexPath:IndexPath = sender as! IndexPath
-            let merchantModel = nearMerchantModelList![indexPath.row]
-            detailMerchantView?.merchantModel = merchantModel
-        }
+ 
     }
 }

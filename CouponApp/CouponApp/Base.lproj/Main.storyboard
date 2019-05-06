@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -74,6 +74,7 @@
                                     <constraint firstItem="Uw9-XP-psq" firstAttribute="top" secondItem="VNI-77-Jo5" secondAttribute="bottom" id="Bme-Bc-9as"/>
                                     <constraint firstAttribute="trailing" secondItem="1EM-MJ-Js7" secondAttribute="trailing" id="GBV-s9-pfo"/>
                                     <constraint firstItem="VNI-77-Jo5" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="LQ1-xA-cQh"/>
+                                    <constraint firstAttribute="height" constant="42" id="M1d-2f-pxs"/>
                                     <constraint firstAttribute="bottom" secondItem="B9k-1j-Ehq" secondAttribute="bottom" id="MjJ-mj-8oR"/>
                                     <constraint firstItem="VNI-77-Jo5" firstAttribute="width" secondItem="SzA-gK-dr1" secondAttribute="width" multiplier="0.5" id="Sv6-pg-dUm"/>
                                     <constraint firstItem="1EM-MJ-Js7" firstAttribute="top" secondItem="SzA-gK-dr1" secondAttribute="top" id="Vwe-dP-y77"/>
@@ -249,7 +250,7 @@
                                                         <rect key="frame" x="168" y="0.0" width="167" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                        <state key="normal" title="쿠폰 소진">
+                                                        <state key="normal" title="쿠폰 사용">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -398,7 +399,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="22" height="15"/>
+        <image name="back" width="22" height="15.5"/>
         <image name="list" width="30" height="30"/>
         <image name="map_marker" width="30" height="30"/>
         <image name="normal" width="120" height="99"/>

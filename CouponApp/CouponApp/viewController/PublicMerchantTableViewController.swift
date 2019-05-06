@@ -21,7 +21,7 @@ class PublicMerchantTableViewController: UITableViewController  {
         super.viewDidLoad()
         setUI()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -55,6 +55,7 @@ class PublicMerchantTableViewController: UITableViewController  {
         
         cell.titleLabel.text = model.name
         cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: model.cardBackGround)
+        cell.topView.isHidden = false
         cell.logoImageView.downloadedFrom(link:model.logoImageUrl)
         return cell
     }
@@ -64,17 +65,30 @@ class PublicMerchantTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showDetailMerchantView1", sender: indexPath)
+        guard let cell:MerchantTableViewCell = tableView.cellForRow(at: indexPath) as? MerchantTableViewCell  else {
+            return
+        }
+        
+        guard let model:MerchantModel = merchantList?[indexPath.row] else {
+            return
+        }
+        
+        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: "MerchantInfoViewController", bundle: nil)
+        
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            let positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
+            customPopupViewController.merchantInfoModel.setData(model: model, topView: cell.topView, animationY: positionY)
+            customPopupViewController.view.frame = window.frame
+            customPopupViewController.setHeaderImageView(image: cell.logoImageView.image ?? UIImage())
+            
+            window.addSubview(customPopupViewController.view)
+            self.addChildViewController(customPopupViewController)
+            customPopupViewController.didMove(toParentViewController: self)
+        }
     }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetailMerchantView1" {
-            let detailMerchantView:DetailMerchantViewController? = segue.destination as? DetailMerchantViewController
-            let indexPath:IndexPath = sender as! IndexPath
-            let merchantModel = merchantList?[indexPath.row]
-            detailMerchantView?.merchantModel = merchantModel
-        }
     }
 
 }

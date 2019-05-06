@@ -9,7 +9,7 @@
 import Foundation
 
 struct CheckCouponModel:Codable {
-    var isCouponData:Bool
+    var isCouponData:Bool //쿠폰 여부
     
     private enum CheckCouponKeys: String, CodingKey {
         case isCouponData

@@ -113,9 +113,10 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             print("clickUseCopon - userId error")
             return
         }
-        
+
         CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
             if isSuccessed {
+                self?.showCustomPopup(title: "successUseCouponTitle".localized, message: "successUseCouponContent".localized,callback: nil)
                 self?.userMerchantData?.couponCount = 0
                 self?.myCollectionView.reloadData()
             } else {
