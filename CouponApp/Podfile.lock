@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.2)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
+  - AnimatedTextInput (0.5.5)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -10,6 +11,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
+  - AnimatedTextInput
   - FMDB
   - SVProgressHUD (~> 2.2.2)
 
@@ -17,15 +19,17 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
+    - AnimatedTextInput
     - FMDB
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  AnimatedTextInput: aadbdfa5a538a03cc9fbea700b43d2bb21a5d132
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 70cd2fb8be2947b23993586d236a334b3795e712
+PODFILE CHECKSUM: 96048bcb856739b07472c3a9ba47387eb2d867ed
 
 COCOAPODS: 1.6.1

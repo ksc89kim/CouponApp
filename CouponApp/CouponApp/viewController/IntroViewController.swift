@@ -26,9 +26,16 @@ class IntroViewController: UIViewController {
     
     func fadeAnimation() {
         self.backgroundView.alpha = 1
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.backgroundView.alpha = 0
-        })
+        UIView.animate(withDuration: 0.3,
+                       animations: { [weak self] in
+                            self?.backgroundView.alpha = 0
+                        },
+                       completion: { [weak self] finished in
+                            if finished {
+                                self?.backgroundView.isHidden = true
+                            }
+                        }
+        )
     }
     
     func setMerchantData() {

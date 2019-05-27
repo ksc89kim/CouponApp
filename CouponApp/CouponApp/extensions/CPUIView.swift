@@ -9,7 +9,6 @@
 import UIKit
 
 extension UIView {
-    
     func addDashedBorder(color:UIColor, lineWidth:CGFloat) {
         self.layoutIfNeeded()
         let shapeLayer = CAShapeLayer()

@@ -49,9 +49,11 @@
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
 		59E54C03212AAB7F00D31BD8 /* CPUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */; };
 		59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */; };
+		A4011F3D229AA17000A3977A /* CPUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4011F3C229AA17000A3977A /* CPUIButton.swift */; };
 		A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DB2286A890009403EB /* IntroViewController.swift */; };
 		A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DD2286AC40009403EB /* IntroStampView.swift */; };
 		A407E56A22801FD7007B7C18 /* MerchantInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */; };
+		A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */; };
 		A4942E3322632D2800083359 /* CPUImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* CPUImage.swift */; };
@@ -150,9 +152,11 @@
 		59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIViewController.swift; sourceTree = "<group>"; };
 		59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4011F3C229AA17000A3977A /* CPUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIButton.swift; sourceTree = "<group>"; };
 		A405C9DB2286A890009403EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A405C9DD2286AC40009403EB /* IntroStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampView.swift; sourceTree = "<group>"; };
 		A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoModel.swift; sourceTree = "<group>"; };
+		A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputStyle.swift; sourceTree = "<group>"; };
 		A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoViewController.swift; sourceTree = "<group>"; };
 		A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantInfoViewController.xib; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* CPUImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUImage.swift; sourceTree = "<group>"; };
@@ -393,6 +397,7 @@
 				A4DB78842206CE4400EE23D2 /* CPUIView.swift */,
 				A4942E3222632D2800083359 /* CPUImage.swift */,
 				A4942E34226347E000083359 /* CPUILabel.swift */,
+				A4011F3C229AA17000A3977A /* CPUIButton.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */,
+				A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */,
 			);
 			path = etc;
 			sourceTree = "<group>";
@@ -670,6 +676,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AnimatedTextInput/AnimatedTextInput.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
@@ -677,6 +684,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedTextInput.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
@@ -698,6 +706,7 @@
 				CCB5C7A6202BE0EF00CBBEB5 /* UserModel.swift in Sources */,
 				59A43FA22123FC7A0099581D /* RespCodeModel.swift in Sources */,
 				A4DB78852206CE4400EE23D2 /* CPUIView.swift in Sources */,
+				A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */,
 				594A563C1FD814EC005EAA9C /* MerchantModel.swift in Sources */,
 				A4DB7889220EB0DD00EE23D2 /* MerchantTableViewCell.swift in Sources */,
 				A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */,
@@ -706,6 +715,7 @@
 				CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */,
 				A4942E35226347E000083359 /* CPUILabel.swift in Sources */,
 				CC047F82200C66170070CC5D /* ImageCouponModel.swift in Sources */,
+				A4011F3D229AA17000A3977A /* CPUIButton.swift in Sources */,
 				59A43FAC2124460D0099581D /* CustomPopupViewController.swift in Sources */,
 				A407E56A22801FD7007B7C18 /* MerchantInfoModel.swift in Sources */,
 				59BE1D1B21184C0B0082F04E /* CouponData.swift in Sources */,

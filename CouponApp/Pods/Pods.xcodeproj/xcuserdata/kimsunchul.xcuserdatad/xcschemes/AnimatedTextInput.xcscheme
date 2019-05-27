@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DFE562F10A41E0EC27EE63B36DFAEF12"
-               BuildableName = "Pods_CouponAppTests.framework"
-               BlueprintName = "Pods-CouponAppTests"
+               BlueprintIdentifier = "5496622F6AF81716CFC6DD598AE69006"
+               BuildableName = "AnimatedTextInput.framework"
+               BlueprintName = "AnimatedTextInput"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DFE562F10A41E0EC27EE63B36DFAEF12"
-            BuildableName = "Pods_CouponAppTests.framework"
-            BlueprintName = "Pods-CouponAppTests"
+            BlueprintIdentifier = "5496622F6AF81716CFC6DD598AE69006"
+            BuildableName = "AnimatedTextInput.framework"
+            BlueprintName = "AnimatedTextInput"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

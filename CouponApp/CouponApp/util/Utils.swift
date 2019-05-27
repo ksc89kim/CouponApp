@@ -38,4 +38,11 @@ class Utils {
         }
         return nil
     }
+    
+    static func validate(value: String) -> Bool {
+        let regex = "^((\\+)|(00))[0-9]{6,14}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", regex)
+        let result =  phoneTest.evaluate(with: value)
+        return result
+    }
 }

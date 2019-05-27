@@ -115,7 +115,6 @@ class MerchantInfoViewController: UIViewController {
             self?.headerTopConstraint.constant = 0
             self?.contentTopConstraint.constant = 0
             self?.backgroundView.alpha = 1.0
-            
             self?.titleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
             self?.setTitleFrame()
             self?.view.layoutIfNeeded()
