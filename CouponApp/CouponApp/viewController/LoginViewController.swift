@@ -89,6 +89,19 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
         self.performSegue(withIdentifier: "showSignupViewController", sender: nil)
     }
     
+    func animatedTextInput(animatedTextInput: AnimatedTextInput, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let currentCharacterCount = animatedTextInput.text?.count ?? 0
+        if range.length + range.location > currentCharacterCount {
+            return false
+        }
+        
+        if (animatedTextInput == phoneNumberTextInput) {
+            let newLength = currentCharacterCount + string.count - range.length
+            return newLength <= 11
+        }
+        return true
+    }
+    
     @IBAction func unwindLoginViewController(segue:UIStoryboardSegue) {
         if segue.identifier == "unwindLoginViewController" {
         }

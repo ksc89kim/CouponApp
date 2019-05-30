@@ -10,6 +10,7 @@
 "loginFailContent" = "로그인이 실패하였습니다.";
 "phoneNumberOrPasswordFail" = "전화번호 및 비밀번호가 잘못되었습니다.";
 "phoneNumberNeedInput" = "전화번호를 입력해주세요";
+"phoneNumberValidate" = "전화번호가 유효하지 않습니다. \n다시 시도해주세요.";
 "passwordNeedInput" = "비밀번호를 입력해주세요";
 "nameNeedInput" = "이름을 입력해주세요.";
 "signupFailTitle" = "회원가입 실패";
