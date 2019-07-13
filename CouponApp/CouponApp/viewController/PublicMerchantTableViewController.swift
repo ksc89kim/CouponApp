@@ -12,7 +12,6 @@ import UIKit
      전체 가맹점 테이블 뷰 컨트롤러
  */
 class PublicMerchantTableViewController: UITableViewController  {
-    
     lazy var merchantList:MerchantListModel? = {
         return CouponSignleton.instance.merchantList
     }()
@@ -29,16 +28,11 @@ class PublicMerchantTableViewController: UITableViewController  {
 
     func setUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
-        let nib = UINib(nibName: "MerchantTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier:"MerchantTableViewCell")
+        let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
     }
     
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         guard let model = merchantList else {
@@ -48,7 +42,7 @@ class PublicMerchantTableViewController: UITableViewController  {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MerchantTableViewCell", for: indexPath) as! MerchantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
         guard let model:MerchantModel = merchantList?[indexPath.row] else {
             return cell
         }
@@ -60,10 +54,6 @@ class PublicMerchantTableViewController: UITableViewController  {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 145
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell:MerchantTableViewCell = tableView.cellForRow(at: indexPath) as? MerchantTableViewCell  else {
             return
@@ -73,7 +63,7 @@ class PublicMerchantTableViewController: UITableViewController  {
             return
         }
         
-        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: "MerchantInfoViewController", bundle: nil)
+        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: CouponNibName.merchantInfoViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             let positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86

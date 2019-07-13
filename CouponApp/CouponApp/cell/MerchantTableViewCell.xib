@@ -48,6 +48,7 @@
                                     <constraint firstAttribute="trailing" secondItem="orY-AO-iRG" secondAttribute="trailing" constant="15" id="2J9-l5-NR8"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="height" secondItem="bTc-u8-8c2" secondAttribute="height" multiplier="0.6" id="TN2-4q-7KI"/>
                                     <constraint firstItem="orY-AO-iRG" firstAttribute="top" secondItem="bTc-u8-8c2" secondAttribute="top" constant="20" id="Tiy-ap-pjQ"/>
+                                    <constraint firstAttribute="height" constant="81.5" id="ls0-Wc-G9C"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="leading" secondItem="bTc-u8-8c2" secondAttribute="leading" constant="15" id="v86-Iy-fIK"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="centerY" secondItem="bTc-u8-8c2" secondAttribute="centerY" id="zWA-Ru-QaF"/>
                                 </constraints>
@@ -75,10 +76,10 @@
                             <constraint firstItem="bTc-u8-8c2" firstAttribute="leading" secondItem="C7f-K3-8Cs" secondAttribute="leading" id="S3q-ST-myM"/>
                             <constraint firstAttribute="trailing" secondItem="bTc-u8-8c2" secondAttribute="trailing" id="XoV-9w-k1g"/>
                             <constraint firstItem="nx9-lC-CPO" firstAttribute="leading" secondItem="C7f-K3-8Cs" secondAttribute="leading" id="a0q-gR-saV"/>
-                            <constraint firstItem="bTc-u8-8c2" firstAttribute="height" secondItem="C7f-K3-8Cs" secondAttribute="height" multiplier="0.6" id="b2y-Fl-dJ2"/>
                             <constraint firstAttribute="trailing" secondItem="nx9-lC-CPO" secondAttribute="trailing" id="oz7-QS-tFn"/>
                             <constraint firstItem="bTc-u8-8c2" firstAttribute="top" secondItem="C7f-K3-8Cs" secondAttribute="top" id="pbs-Jk-SMD"/>
                             <constraint firstAttribute="bottom" secondItem="rxz-bj-mTO" secondAttribute="bottom" constant="5" id="pvV-kH-ysF"/>
+                            <constraint firstItem="rxz-bj-mTO" firstAttribute="top" secondItem="bTc-u8-8c2" secondAttribute="bottom" constant="46" id="y7z-9F-NVg"/>
                         </constraints>
                     </view>
                 </subviews>

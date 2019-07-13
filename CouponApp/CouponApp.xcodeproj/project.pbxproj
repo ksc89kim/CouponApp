@@ -24,7 +24,6 @@
 		5963038C1F431412000E2701 /* CouponAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5963038B1F431412000E2701 /* CouponAppTests.swift */; };
 		596303971F431412000E2701 /* CouponAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303961F431412000E2701 /* CouponAppUITests.swift */; };
 		596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303A41F4314E3000E2701 /* CouponListViewController.swift */; };
-		596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */; };
 		59978E052109BB1E001F3A8D /* CPUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59978E042109BB1E001F3A8D /* CPUIColor.swift */; };
 		59978E072109BB8E001F3A8D /* CPUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59978E062109BB8E001F3A8D /* CPUIImageView.swift */; };
 		59978E092109BBAB001F3A8D /* CPString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59978E082109BBAB001F3A8D /* CPString.swift */; };
@@ -48,7 +47,6 @@
 		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
 		59E54C03212AAB7F00D31BD8 /* CPUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */; };
-		59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */; };
 		A4011F3D229AA17000A3977A /* CPUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4011F3C229AA17000A3977A /* CPUIButton.swift */; };
 		A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DB2286A890009403EB /* IntroViewController.swift */; };
 		A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DD2286AC40009403EB /* IntroStampView.swift */; };
@@ -56,6 +54,8 @@
 		A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
 		A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */; };
 		A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */; };
+		A425C9E722D9D7AB00093D8E /* CouponNibName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9E622D9D7AB00093D8E /* CouponNibName.swift */; };
+		A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9ED22D9E37C00093D8E /* TabController.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */; };
 		A4942E3322632D2800083359 /* CPUImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* CPUImage.swift */; };
@@ -71,7 +71,6 @@
 		CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* LoginViewController.swift */; };
 		CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4F9200D96B600B512C0 /* RoundedButton.swift */; };
 		CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */; };
-		CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */; };
 		CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC32D06C2011B61C003A7422 /* RoundedView.swift */; };
 		CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */; };
 		CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC81729D2007238A0073E690 /* CouponImageView.swift */; };
@@ -124,7 +123,6 @@
 		596303961F431412000E2701 /* CouponAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppUITests.swift; sourceTree = "<group>"; };
 		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
-		596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
 		59978E042109BB1E001F3A8D /* CPUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIColor.swift; sourceTree = "<group>"; };
 		59978E062109BB8E001F3A8D /* CPUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIImageView.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLInterface.swift; sourceTree = "<group>"; };
 		59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIViewController.swift; sourceTree = "<group>"; };
-		59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4011F3C229AA17000A3977A /* CPUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIButton.swift; sourceTree = "<group>"; };
 		A405C9DB2286A890009403EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +158,8 @@
 		A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputStyle.swift; sourceTree = "<group>"; };
 		A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponStoryBoardName.swift; sourceTree = "<group>"; };
 		A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponIdentifier.swift; sourceTree = "<group>"; };
+		A425C9E622D9D7AB00093D8E /* CouponNibName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponNibName.swift; sourceTree = "<group>"; };
+		A425C9ED22D9E37C00093D8E /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoViewController.swift; sourceTree = "<group>"; };
 		A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantInfoViewController.xib; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* CPUImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUImage.swift; sourceTree = "<group>"; };
@@ -178,7 +177,6 @@
 		CC047F85200C8A290070CC5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC09A4F9200D96B600B512C0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearMerchantTableViewCell.swift; sourceTree = "<group>"; };
 		CC32D06C2011B61C003A7422 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 		CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefualtKey.swift; sourceTree = "<group>"; };
 		CC81729D2007238A0073E690 /* CouponImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponImageView.swift; sourceTree = "<group>"; };
@@ -334,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				A4DB788A220ED44000EE23D2 /* font */,
+				A425C9EC22D9E2C300093D8E /* controller */,
 				59978E032109BAFC001F3A8D /* extensions */,
 				594A011220A825100007503D /* util */,
 				594A011120A825020007503D /* network */,
@@ -381,9 +380,6 @@
 		596714111FEA89770009D73A /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				596714151FEA89F00009D73A /* UserMerchantTableViewCell.swift */,
-				59FC8CE01FF91AC400D93929 /* PublicMerchantTableViewCell.swift */,
-				CC1ABAD5200483A00053F132 /* NearMerchantTableViewCell.swift */,
 				59A43FBC212540E80099581D /* CouponCollectionViewCell.swift */,
 				A4DB7886220EB0C800EE23D2 /* MerchantTableViewCell.xib */,
 				A4DB7888220EB0DD00EE23D2 /* MerchantTableViewCell.swift */,
@@ -414,6 +410,14 @@
 				59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */,
 			);
 			path = sqlite3;
+			sourceTree = "<group>";
+		};
+		A425C9EC22D9E2C300093D8E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A425C9ED22D9E37C00093D8E /* TabController.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		A4DB788A220ED44000EE23D2 /* font */ = {
@@ -453,6 +457,7 @@
 				A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */,
 				A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */,
 				A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */,
+				A425C9E622D9D7AB00093D8E /* CouponNibName.swift */,
 			);
 			path = etc;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A425C9E722D9D7AB00093D8E /* CouponNibName.swift in Sources */,
 				59A43FBF212547350099581D /* CouponViewProtocol.swift in Sources */,
 				CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */,
 				CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */,
@@ -735,11 +741,9 @@
 				59E54C03212AAB7F00D31BD8 /* CPUIViewController.swift in Sources */,
 				594A011420A825700007503D /* CouponNetwork.swift in Sources */,
 				59A43FBD212540E80099581D /* CouponCollectionViewCell.swift in Sources */,
-				596714161FEA89F00009D73A /* UserMerchantTableViewCell.swift in Sources */,
 				594A2A7E1FFBAA94005F3236 /* NearMerchantTableViewController.swift in Sources */,
 				59BE1D1921184BF40082F04E /* CouponSqlite.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
-				59FC8CE11FF91AC400D93929 /* PublicMerchantTableViewCell.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				A4942E3322632D2800083359 /* CPUImage.swift in Sources */,
 				59A43FA6212402760099581D /* UserCouponListModel.swift in Sources */,
@@ -751,9 +755,9 @@
 				59978E072109BB8E001F3A8D /* CPUIImageView.swift in Sources */,
 				CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */,
 				59978E052109BB1E001F3A8D /* CPUIColor.swift in Sources */,
-				CC1ABAD6200483A00053F132 /* NearMerchantTableViewCell.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCouponModel.swift in Sources */,
 				599AAC001FFA290300B3C246 /* PublicMerchantTableViewController.swift in Sources */,
+				A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */,
 				59A43FAA2124062F0099581D /* ListProtocol.swift in Sources */,
 				A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */,
 				CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */,
