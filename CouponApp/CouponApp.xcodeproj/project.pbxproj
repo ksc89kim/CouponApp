@@ -54,6 +54,8 @@
 		A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DD2286AC40009403EB /* IntroStampView.swift */; };
 		A407E56A22801FD7007B7C18 /* MerchantInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */; };
 		A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
+		A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */; };
+		A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */; };
 		A4942E3322632D2800083359 /* CPUImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* CPUImage.swift */; };
@@ -157,6 +159,8 @@
 		A405C9DD2286AC40009403EB /* IntroStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampView.swift; sourceTree = "<group>"; };
 		A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoModel.swift; sourceTree = "<group>"; };
 		A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputStyle.swift; sourceTree = "<group>"; };
+		A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponStoryBoardName.swift; sourceTree = "<group>"; };
+		A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponIdentifier.swift; sourceTree = "<group>"; };
 		A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoViewController.swift; sourceTree = "<group>"; };
 		A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantInfoViewController.xib; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* CPUImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUImage.swift; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 			children = (
 				CC7BE8CB200F19D900DB8E09 /* DefualtKey.swift */,
 				A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */,
+				A425C9E222D9CCFF00093D8E /* CouponStoryBoardName.swift */,
+				A425C9E422D9CF3C00093D8E /* CouponIdentifier.swift */,
 			);
 			path = etc;
 			sourceTree = "<group>";
@@ -712,6 +718,7 @@
 				A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */,
 				599804D31FF51409001561C5 /* FindMerchantViewController.swift in Sources */,
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
+				A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */,
 				CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */,
 				A4942E35226347E000083359 /* CPUILabel.swift in Sources */,
 				CC047F82200C66170070CC5D /* ImageCouponModel.swift in Sources */,
@@ -722,6 +729,7 @@
 				59A43FA4212400D70099581D /* CheckCouponModel.swift in Sources */,
 				5960FA2F1FCEE18300135CA4 /* UserMerchantTableViewController.swift in Sources */,
 				CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */,
+				A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */,
 				CC88E7442008450E00F48B1C /* DrawCouponModel.swift in Sources */,
 				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
 				59E54C03212AAB7F00D31BD8 /* CPUIViewController.swift in Sources */,

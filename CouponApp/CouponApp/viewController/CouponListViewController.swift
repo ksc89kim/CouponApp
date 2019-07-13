@@ -67,9 +67,9 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     // 쿠폰 요청하기
-    @IBAction func clickRequestCoupon(_ sender: Any) {
+    @IBAction func onRequestCoupon(_ sender: Any) {
         guard let couponCount = userMerchantData?.couponCount, let merchant =  merchantData else {
-            print("clickRequestCoupon - userMerchantData, merchantData error")
+            print("onRequestCoupon - userMerchantData, merchantData error")
             return
         }
         
@@ -81,7 +81,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         guard let userId = CouponSignleton.instance.userData?.id else {
-            print("clickRequestCoupon - userId error")
+            print("onRequestCoupon - userId error")
             return
         }
         
@@ -97,9 +97,9 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     // 쿠폰 사용하기
-    @IBAction func clickUseCopon(_ sender: Any) {
+    @IBAction func onUseCopon(_ sender: Any) {
         guard let couponCount = userMerchantData?.couponCount, let merchant = merchantData else {
-            print("clickUseCopon - userMerchantData, merchantData error")
+            print("onUseCopon - userMerchantData, merchantData error")
             return
         }
         
@@ -110,7 +110,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         }
         
         guard let userId = CouponSignleton.instance.userData?.id else {
-            print("clickUseCopon - userId error")
+            print("onUseCopon - userId error")
             return
         }
 

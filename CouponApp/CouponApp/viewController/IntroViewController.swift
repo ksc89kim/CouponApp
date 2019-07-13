@@ -8,13 +8,16 @@
 
 import UIKit
 
+/*
+    인트로 뷰컨트롤러
+ */
 class IntroViewController: UIViewController {
     @IBOutlet weak var stampView: IntroStampView!
     @IBOutlet weak var backgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setMerchantData()
+        self.getMerchantData()
         self.stampView.completion = { [weak self] in
             self?.fadeAnimation()
         };
@@ -24,6 +27,7 @@ class IntroViewController: UIViewController {
         super.viewDidAppear(animated)
     }
     
+    // MARK: - Animation Function
     func fadeAnimation() {
         self.backgroundView.alpha = 1
         UIView.animate(withDuration: 0.3,
@@ -38,51 +42,45 @@ class IntroViewController: UIViewController {
         )
     }
     
-    func setMerchantData() {
-        let loginViewController =  self.createLoginViewController()
+    // MARK: - Get Data Function
+    func getMerchantData() {
+        guard  let bringSubView = self.backgroundView else {
+             print("backgorundView nil");
+            return
+        }
+        
+        let loginViewController =  self.createViewController(storyboardName:CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
+
         CouponData.getMerchantData(complete: { [weak self] isSuccessed in
             if isSuccessed {
                 let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
                 if let phoneNumber = phoneNumberString {
-                    self?.setUserData(phoneNumber: phoneNumber)
+                    self?.getUserData(phoneNumber: phoneNumber)
                 } else {
-                    self?.addViewController(viewController: loginViewController)
+                    self?.addViewController(viewController: loginViewController, bringSubView:bringSubView)
                 }
             } else {
-                self?.addViewController(viewController: loginViewController)
+                self?.addViewController(viewController: loginViewController, bringSubView:bringSubView)
             }
         })
     }
     
-    func setUserData(phoneNumber:String) {
+    func getUserData(phoneNumber:String) {
         CouponData.getUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
+            guard let bringSubView = self?.backgroundView else {
+                print("backgorundView nil");
+                return;
+            }
+            
             if isSuccessed {
-                let mainViewcontroller =  self?.createMainViewController()
-                self?.addViewController(viewController: mainViewcontroller ?? UIViewController())
+                let mainViewcontroller =  self?.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+                self?.addViewController(viewController: mainViewcontroller ?? UIViewController(),bringSubView:bringSubView)
 
             } else {
-                let loginViewController =  self?.createLoginViewController()
-                self?.addViewController(viewController: loginViewController ?? UIViewController())
+                let loginViewController =  self?.createViewController(storyboardName: CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
+                self?.addViewController(viewController: loginViewController ?? UIViewController(),bringSubView:bringSubView)
             }
         })
-    }
-    
-    func createLoginViewController() -> UIViewController {
-        let storyBoard = UIStoryboard(name:"Start", bundle:Bundle.main)
-        let loginViewController = storyBoard.instantiateViewController(withIdentifier: "loginNavigationController")
-        return loginViewController
-    }
-    
-    func createMainViewController() -> UIViewController {
-        let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
-        let mainViewController = storyBoard.instantiateInitialViewController() ?? UIViewController()
-        return mainViewController
-    }
-    
-    func addViewController(viewController:UIViewController) {
-        self.addChildViewController(viewController)
-        self.view.addSubview(viewController.view)
-        self.view.bringSubview(toFront:backgroundView)
     }
 
 }

@@ -171,7 +171,7 @@ class MerchantInfoViewController: UIViewController {
         }
     }
 
-    @IBAction func clickEvent(_ sender: Any) {
+    @IBAction func onEvent(_ sender: Any) {
         guard let merchant = merchantInfoModel.merchantModel  else {
             return
         }

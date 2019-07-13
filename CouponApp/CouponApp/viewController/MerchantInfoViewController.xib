@@ -78,7 +78,7 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <connections>
-                                                <action selector="clickEvent:" destination="-1" eventType="touchUpInside" id="mSv-7b-JTM"/>
+                                                <action selector="onEvent:" destination="-1" eventType="touchUpInside" id="rkQ-U2-G4O"/>
                                             </connections>
                                         </button>
                                     </subviews>

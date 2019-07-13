@@ -8,6 +8,7 @@
 
 import UIKit
 import AnimatedTextInput
+
 /*
      가입 뷰컨트롤러
  */
@@ -18,19 +19,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameTextInput.placeHolderText  = "UserName"
-        nameTextInput.style = CustomTextInputStyle()
-        
-        phoneNumberTextInput.placeHolderText  = "PhoneNumber"
-        phoneNumberTextInput.type = .phone;
-        phoneNumberTextInput.delegate = self
-        phoneNumberTextInput.style = CustomTextInputStyle()
-        
-        passwordTextInput.placeHolderText  = "Password"
-        passwordTextInput.type = .password(toggleable: true)
-        phoneNumberTextInput.delegate = self
-        passwordTextInput.style = CustomTextInputStyle()
+        self.setUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +39,24 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
         self.view.endEditing(true)
     }
     
-    @IBAction func clickSignup(_ sender: Any) {
+    // MARK: - Set Function
+    func setUI(){
+        nameTextInput.placeHolderText  = "UserName"
+        nameTextInput.style = CustomTextInputStyle()
+        
+        phoneNumberTextInput.placeHolderText  = "PhoneNumber"
+        phoneNumberTextInput.type = .phone;
+        phoneNumberTextInput.delegate = self
+        phoneNumberTextInput.style = CustomTextInputStyle()
+        
+        passwordTextInput.placeHolderText  = "Password"
+        passwordTextInput.type = .password(toggleable: true)
+        phoneNumberTextInput.delegate = self
+        passwordTextInput.style = CustomTextInputStyle()
+    }
+    
+    // MARK: - Event Function
+    @IBAction func onSignUp(_ sender: Any) {
         let signupFailTitle = "signupFailTitle".localized
         let signupFailContent = "signupFailContent".localized
         
@@ -86,12 +92,10 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
         })
     }
     
-    
+    // MARK: - Etc Function
     func goMain() {
-        let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
-        if let initalViewController = storyBoard.instantiateInitialViewController() {
-            self.present(initalViewController, animated: true, completion: nil)
-        }
+        let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+        self.present(mainViewController, animated: true, completion: nil)
     }
     
     func animatedTextInput(animatedTextInput: AnimatedTextInput, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -104,6 +108,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
             let newLength = currentCharacterCount + string.count - range.length
             return newLength <= 11
         }
+        
         return true
     }
     

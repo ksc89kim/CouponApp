@@ -90,7 +90,7 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
     }
     
     //MARK - 상단 탭 버튼
-    @IBAction func clickTab(_ sender: Any) {
+    @IBAction func onTab(_ sender: Any) {
         let selectBtn:UIButton = sender as! UIButton
         if !selectBtn.isSelected {
             if selectBtn.tag > (self.currentTabBtn?.tag)! {

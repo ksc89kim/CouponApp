@@ -53,7 +53,7 @@ class CustomPopupViewController: UIViewController {
         })
     }
     
-    @IBAction func clickOk(_ sender: Any) {
+    @IBAction func onOk(_ sender: Any) {
         if okCallback != nil {
             okCallback!()
         }

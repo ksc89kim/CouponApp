@@ -18,15 +18,7 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        phoneNumberTextInput.placeHolderText  = "PhoneNumber"
-        phoneNumberTextInput.type = .phone;
-        phoneNumberTextInput.delegate = self
-        phoneNumberTextInput.style = CustomTextInputStyle()
-        
-        passwordTextInput.placeHolderText = "Password"
-        passwordTextInput.type = .password(toggleable: true)
-        passwordTextInput.delegate = self
-        passwordTextInput.style = CustomTextInputStyle()
+        self.setUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +42,27 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
         self.view.endEditing(true)
     }
     
-    @IBAction func clickLogin(_ sender: UIButton) {
+    // MARK: - Set Function
+    func setUI(){
+        phoneNumberTextInput.placeHolderText  = "PhoneNumber"
+        phoneNumberTextInput.type = .phone;
+        phoneNumberTextInput.delegate = self
+        phoneNumberTextInput.style = CustomTextInputStyle()
+        
+        passwordTextInput.placeHolderText = "Password"
+        passwordTextInput.type = .password(toggleable: true)
+        passwordTextInput.delegate = self
+        passwordTextInput.style = CustomTextInputStyle()
+    }
+    
+    // MARK: - Unwind Function
+    @IBAction func unwindLoginViewController(segue:UIStoryboardSegue) {
+        if segue.identifier == CouponIdentifier.unwindLoginViewController.rawValue {
+        }
+    }
+    
+    // MARK: - Event Function
+    @IBAction func onLogin(_ sender: UIButton) {
         let loginFailTitle = "loginFailTitle".localized
         let phoneNumberOrPasswordFail = "phoneNumberOrPasswordFail".localized
         
@@ -74,19 +86,18 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
         })
     }
     
-    @IBAction func clickSignup(_ sender: Any) {
+    @IBAction func onSignup(_ sender: Any) {
         goSignup()
     }
     
+    // MARK: - Etc Function
     func goMain() {
-        let storyBoard = UIStoryboard(name:"Main", bundle:Bundle.main)
-        if let initalViewController = storyBoard.instantiateInitialViewController() {
-            self.present(initalViewController, animated: true, completion: nil)
-        }
+        let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+        self.present(mainViewController, animated: true, completion: nil)
     }
     
     func goSignup() {
-        self.performSegue(withIdentifier: "showSignupViewController", sender: nil)
+        self.performSegue(withIdentifier:CouponIdentifier.showSignupViewController.rawValue, sender: nil)
     }
     
     func animatedTextInput(animatedTextInput: AnimatedTextInput, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -100,11 +111,6 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
             return newLength <= 11
         }
         return true
-    }
-    
-    @IBAction func unwindLoginViewController(segue:UIStoryboardSegue) {
-        if segue.identifier == "unwindLoginViewController" {
-        }
     }
 }
 

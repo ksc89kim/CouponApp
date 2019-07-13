@@ -6,54 +6,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CouponApp/viewController/StartViewController.swift"
-            timestampString = "573305461.496918"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "clickLogin(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CouponApp.StartViewController.clickLogin(Any) -&gt; ()"
-                  moduleName = "CouponApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimsunchul/Documents/develop/CoponApp/CouponApp/CouponApp/viewController/StartViewController.swift"
-                  timestampString = "573305239.866899"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1048">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Bool) -&gt; () in CouponApp.StartViewController.clickLogin(Any) -&gt; ()"
-                  moduleName = "CouponApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kimsunchul/Documents/develop/CoponApp/CouponApp/CouponApp/viewController/StartViewController.swift"
-                  timestampString = "573305239.869675"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"

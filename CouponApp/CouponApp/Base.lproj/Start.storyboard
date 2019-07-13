@@ -74,8 +74,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="clickLogin:" destination="IuN-cd-pBW" eventType="touchUpInside" id="oYg-hc-KaR"/>
-                                    <action selector="clickSignup:" destination="CfA-pA-K9j" eventType="touchUpInside" id="f29-KK-Rpc"/>
+                                    <action selector="onLogin:" destination="IuN-cd-pBW" eventType="touchUpInside" id="037-el-ZQA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23W-r9-FVw">
@@ -85,7 +84,7 @@
                                     <color key="titleColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="clickSignup:" destination="IuN-cd-pBW" eventType="touchUpInside" id="8wn-QV-ln2"/>
+                                    <action selector="onSignup:" destination="IuN-cd-pBW" eventType="touchUpInside" id="dfS-xU-g4V"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -184,8 +183,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="clickLogin:" destination="IuN-cd-pBW" eventType="touchUpInside" id="5Xg-Jt-rge"/>
-                                    <action selector="clickSignup:" destination="CfA-pA-K9j" eventType="touchUpInside" id="DBt-44-4rY"/>
+                                    <action selector="onSignUp:" destination="CfA-pA-K9j" eventType="touchUpInside" id="zU0-ZL-R0y"/>
                                 </connections>
                             </button>
                         </subviews>

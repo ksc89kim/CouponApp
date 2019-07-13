@@ -38,7 +38,7 @@
                                             <color key="titleColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="clickTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="hbu-p9-7nL"/>
+                                            <action selector="onTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="e1B-23-f1U"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-MJ-Js7">
@@ -53,7 +53,7 @@
                                             <color key="titleColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="clickTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="VQu-vt-SlB"/>
+                                            <action selector="onTab:" destination="ygr-JE-rkv" eventType="touchUpInside" id="sa1-Zp-qUf"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uw9-XP-psq" userLabel="LineView">
@@ -247,7 +247,7 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="clickRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="qwV-NP-PhI"/>
+                                                            <action selector="onRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="wYK-2u-mig"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-HD-gP1">
@@ -258,7 +258,7 @@
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="clickUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="8nr-P3-OZw"/>
+                                                            <action selector="onUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="V6T-Tc-9o1"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
