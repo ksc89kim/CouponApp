@@ -1,5 +1,5 @@
 //
-//  NearMerchantTableViewController.swift
+//  AroundTableViewController.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2018. 1. 2..
@@ -12,19 +12,15 @@ import CoreLocation
 /*
      주변 가맹점 테이블 뷰 컨트롤러
  */
-class NearMerchantTableViewController: UITableViewController , CLLocationManagerDelegate {
+class AroundTableViewController: UITableViewController , CLLocationManagerDelegate {
     var locationManager:CLLocationManager!
-    var nearMerchantModelList:[MerchantModel?]?
-    
-    lazy var merchantList:MerchantListModel? = {
-        return CouponSignleton.instance.merchantList
-    }()
+    var merchantModelArray:[MerchantModel?]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        merchantModelArray = []
         setUI()
         setLocationManager()
-        nearMerchantModelList = []
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,15 +44,13 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (nearMerchantModelList?.count)!
+        return (merchantModelArray?.count)!
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-        let merchantModel =  nearMerchantModelList![indexPath.row]
-        cell.titleLabel.text = merchantModel?.name
-        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchantModel?.cardBackGround)!)
-        cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        let merchantModel = merchantModelArray![indexPath.row]
+        cell.setData(data: merchantModel)
         return cell
     }
     
@@ -65,15 +59,12 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
             return
         }
         
-        guard let model:MerchantModel = merchantList?[indexPath.row] else {
-            return
-        }
-        
         let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: CouponNibName.merchantInfoViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
             let positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
-            customPopupViewController.merchantInfoModel.setData(model: model, topView: cell.topView, animationY: positionY)
+            
+            customPopupViewController.merchantInfoModel.setData(model: cell.model, topView: cell.topView, animationY: positionY)
             customPopupViewController.view.frame = window.frame
             customPopupViewController.setHeaderImageView(image: cell.logoImageView.image ?? UIImage())
             
@@ -85,22 +76,31 @@ class NearMerchantTableViewController: UITableViewController , CLLocationManager
 
     // MARK: - CLLocation delegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let coor = manager.location?.coordinate {
-            nearMerchantModelList?.removeAll()
-            let currentLocation = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-            
-            for i in 0 ..< (merchantList?.list.count)! {
-                guard let merchantModel = merchantList?[i] else {
-                    return
-                }
-                let tempLocation = CLLocation(latitude: merchantModel.latitude, longitude: merchantModel.longitude)
-                let diffDistance = currentLocation.distance(from: tempLocation)
-                if  diffDistance < 1000 { // 주변 가맹점인지 여부
-                    nearMerchantModelList?.append(merchantModel)
-                }
-            }
-            self.tableView.reloadData()
+        guard let merchantListModel = CouponSignleton.instance.merchantList else {
+            print("merchantListModel nil")
+            return
         }
+        
+        guard let coor = manager.location?.coordinate else {
+            print("coordinate nil")
+            return
+        }
+        
+        merchantModelArray?.removeAll()
+        let currentLocation = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
+        
+        for i in 0 ..< merchantListModel.count {
+            guard let merchantModel = merchantListModel[i] else {
+                continue
+            }
+            
+            let tempLocation = CLLocation(latitude: merchantModel.latitude, longitude: merchantModel.longitude)
+            let diffDistance = currentLocation.distance(from: tempLocation)
+            if  diffDistance < 1000 { // 주변 가맹점인지 여부
+                merchantModelArray?.append(merchantModel)
+            }
+        }
+        tableView.reloadData()
     }
     
     // MARK: - Navigation

@@ -1,5 +1,5 @@
 //
-//  UserMerchantTableViewController.swift
+//  UserTableViewController.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2017. 11. 29..
@@ -12,7 +12,7 @@ import UIKit
      회원 가맹점(쿠폰) 테이블 뷰
      - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
-class UserMerchantTableViewController: UITableViewController {
+class UserTableViewController : UITableViewController {
     var userCouponList:UserCouponListModel? // 회원 쿠폰 정보
     lazy var merchantList:MerchantListModel? = {
         return CouponSignleton.instance.merchantList
@@ -26,7 +26,6 @@ class UserMerchantTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,14 +35,14 @@ class UserMerchantTableViewController: UITableViewController {
     
     func setUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
-        let nib = UINib(nibName: "MerchantTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier:"MerchantTableViewCell")
+        let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
     }
     
     // MARK: - 유저 쿠폰 리스트 가져오기
     func setData() {
         let userId = CouponSignleton.instance.userData?.id
-        CouponData.getUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
+        CouponData.loadUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
                 self?.userCouponList = userCouponList
                 if self?.userCouponList != nil {
@@ -69,17 +68,19 @@ class UserMerchantTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MerchantTableViewCell", for: indexPath) as! MerchantTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
+
         let userCouponModel = self.userCouponList?[indexPath.row]
         let merchantModel = merchantList?.index(merchantId: userCouponModel?.merchantId)
         cell.titleLabel.text = merchantModel?.name
         cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchantModel?.cardBackGround)!)
         cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "showCouponListView", sender: indexPath)
+        self.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: indexPath)
     }
     
     override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
@@ -96,7 +97,7 @@ class UserMerchantTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // CouponListViewController -> 데이터 전달
-        if segue.identifier == "showCouponListView" {
+        if segue.identifier == CouponIdentifier.showCouponListView.rawValue {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             let indexPath:IndexPath = sender as! IndexPath
             couponListView?.userMerchantData = self.userCouponList?[indexPath.row]
@@ -105,15 +106,16 @@ class UserMerchantTableViewController: UITableViewController {
     }
     
     @IBAction func unwindToUserMercahntTableView(segue:UIStoryboardSegue) {
-        if segue.identifier == "unwindUserMerchant" {
+        if segue.identifier == CouponIdentifier.unwindUserMerchant.rawValue {
         }
     }
     
     // MARK - ETC
     //삭제하기
     func deleteCoupon(merchantId:Int?) -> Bool {
-        let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
-        let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
+        let deleteCouponFailTitle = "deleteCouponFailTitle".localized
+        let deleteCouponFailContent = "deleteCouponFailContent".localized
+
         let userId = CouponSignleton.instance.userData?.id
         var state = false
         CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { [weak self] isSuccessed in

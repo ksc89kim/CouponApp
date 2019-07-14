@@ -17,7 +17,7 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.getMerchantData()
+        self.setMerchantData()
         self.stampView.completion = { [weak self] in
             self?.fadeAnimation()
         };
@@ -43,7 +43,7 @@ class IntroViewController: UIViewController {
     }
     
     // MARK: - Get Data Function
-    func getMerchantData() {
+    func setMerchantData() {
         guard  let bringSubView = self.backgroundView else {
              print("backgorundView nil");
             return
@@ -51,11 +51,11 @@ class IntroViewController: UIViewController {
         
         let loginViewController =  self.createViewController(storyboardName:CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
 
-        CouponData.getMerchantData(complete: { [weak self] isSuccessed in
+        CouponData.loadMerchantData(complete: { [weak self] isSuccessed in
             if isSuccessed {
                 let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
                 if let phoneNumber = phoneNumberString {
-                    self?.getUserData(phoneNumber: phoneNumber)
+                    self?.setUserData(phoneNumber: phoneNumber)
                 } else {
                     self?.addViewController(viewController: loginViewController, bringSubView:bringSubView)
                 }
@@ -65,8 +65,8 @@ class IntroViewController: UIViewController {
         })
     }
     
-    func getUserData(phoneNumber:String) {
-        CouponData.getUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
+    func setUserData(phoneNumber:String) {
+        CouponData.loadUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
             guard let bringSubView = self?.backgroundView else {
                 print("backgorundView nil");
                 return;

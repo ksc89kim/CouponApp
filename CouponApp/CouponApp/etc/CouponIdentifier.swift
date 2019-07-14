@@ -11,14 +11,16 @@ import Foundation
 enum CouponIdentifier:String{
     // viewController identifier
     case loginNavigationController = "loginNavigationController"
-    case publicMerchantViewController = "publicMerchantTableView"
-    case nearMerchantViewController = "nearMerchantTableView"
+    case areasTableViewController = "areasTableViewController"
+    case aroundTableViewController = "aroundTableViewController"
 
     // show segue identifier
     case showSignupViewController = "showSignupViewController"
-
+    case showCouponListView = "showCouponListView"
+    
     // unwind segue identifier
     case unwindLoginViewController = "unwindLoginViewController"
+    case unwindUserMerchant = "unwindUserMerchant"
     
     // cell identifier
     case merchantTableViewCell = "MerchantTableViewCell"

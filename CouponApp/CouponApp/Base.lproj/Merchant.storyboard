@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Public Merchant Table View Controller-->
+        <!--Areas Table View Controller-->
         <scene sceneID="vC5-47-s4y">
             <objects>
-                <tableViewController storyboardIdentifier="publicMerchantTableView" id="zKY-F5-kDc" customClass="PublicMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qel-Gf-AUi" userLabel="PublicMerchantTableView">
+                <tableViewController storyboardIdentifier="areasTableViewController" id="zKY-F5-kDc" customClass="AreasTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qel-Gf-AUi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -27,11 +27,11 @@
             </objects>
             <point key="canvasLocation" x="181.59999999999999" y="1218.440779610195"/>
         </scene>
-        <!--Near Merchant Table View Controller-->
+        <!--Around Table View Controller-->
         <scene sceneID="DOc-lm-laX">
             <objects>
-                <tableViewController storyboardIdentifier="nearMerchantTableView" id="ArU-l8-lU0" customClass="NearMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="74b-L9-GRv" userLabel="NearMerchantTableView">
+                <tableViewController storyboardIdentifier="aroundTableViewController" id="ArU-l8-lU0" customClass="AroundTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="74b-L9-GRv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

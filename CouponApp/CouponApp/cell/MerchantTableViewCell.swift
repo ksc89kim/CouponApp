@@ -16,6 +16,13 @@ class MerchantTableViewCell: UITableViewCell {
     @IBOutlet weak var grayLineView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    let dashLineLayer:CAShapeLayer = CAShapeLayer()
+    var model:MerchantModel?
+    
+    deinit {
+        lineView.layer.removeObserver(self, forKeyPath: "bounds")
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setUI()
@@ -27,7 +34,6 @@ class MerchantTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        lineView.addDashedBorder(color: UIColor.white, lineWidth: 3)
     }
     
     func setUI() {
@@ -45,5 +51,27 @@ class MerchantTableViewCell: UITableViewCell {
         
         logoImageView.layer.cornerRadius = logoImageView.bounds.width/2
         grayLineView.layer.cornerRadius = 5
+        
+        lineView.addDashLine(dashLayer:dashLineLayer,color: UIColor.white, lineWidth: 3)
+        lineView.layer.addObserver(self, forKeyPath:"bounds", options:.new, context: nil)
+    }
+    
+    func setData(data:MerchantModel?) {
+        guard let marchantModel = data else {
+            print("merchantModel nil")
+            return
+        }
+        
+        self.titleLabel.text = marchantModel.name
+        self.topView.backgroundColor = UIColor.hexStringToUIColor(hex: marchantModel.cardBackGround)
+        self.logoImageView.downloadedFrom(link:marchantModel.logoImageUrl)
+        self.model = marchantModel
+    }
+    
+    // MARK: -  observe
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "bounds" {
+            lineView.updateDashLineSize(dashLayer: dashLineLayer)
+        }
     }
 }

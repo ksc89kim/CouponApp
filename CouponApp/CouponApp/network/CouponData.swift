@@ -16,7 +16,7 @@ class CouponData {
     }
     
     // MARK: - 회원 정보 가져오기
-    static func getUserData(phoneNumber:String, complete: @escaping CouponBaseCallBack) {
+    static func loadUserData(phoneNumber:String, complete: @escaping CouponBaseCallBack) {
        getCouponDataProtocol().getUserData(phoneNumber: phoneNumber, complete: complete)
     }
     
@@ -26,7 +26,7 @@ class CouponData {
     }
     
     // MARK: - 가맹점 데이터 가져오기
-    static func getMerchantData(complete: @escaping CouponBaseCallBack) {
+    static func loadMerchantData(complete: @escaping CouponBaseCallBack) {
        getCouponDataProtocol().getMerchantData(complete: complete)
     }
     
@@ -46,7 +46,7 @@ class CouponData {
     }
     
     // MARK: - 유저 쿠폰 데이터 요청하기
-    static func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponListModel?) -> Void) {
+    static func loadUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponListModel?) -> Void) {
         getCouponDataProtocol().getUserCouponData(userId: userId, complete: complete)
     }
     

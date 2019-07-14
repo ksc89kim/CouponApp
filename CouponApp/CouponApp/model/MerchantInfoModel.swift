@@ -26,7 +26,7 @@ struct MerchantInfoModel {
     var titleScaleY:CGFloat = 0
     
     
-    mutating func setData(model:MerchantModel, topView:UIView, animationY:CGFloat) {
+    mutating func setData(model:MerchantModel?, topView:UIView, animationY:CGFloat) {
         self.merchantModel = model
         self.cellTopView = topView
         self.positionY = animationY

@@ -12,8 +12,7 @@ import UIKit
      가맹점 찾기 뷰 컨트롤러
      - 주변 가맹점, 전체 가맹점 찾는 뷰 컨트롤러
  */
-class FindMerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
-    
+class MerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     @IBOutlet var tabButtonArray:[UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!
@@ -23,9 +22,9 @@ class FindMerchantViewController: UIViewController, UIPageViewControllerDataSour
     var tabController:TabController?
     
     lazy var viewControllerArray:[UIViewController] = {
-        let publicMerchantTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.publicMerchantViewController.rawValue)
-        let nearMerchantTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.nearMerchantViewController.rawValue)
-        return [nearMerchantTableViewController,publicMerchantTableViewController]
+        let areasTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.areasTableViewController.rawValue)
+        let aroundTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.aroundTableViewController.rawValue)
+        return [aroundTableViewController,areasTableViewController]
     }()
 
     override func viewDidLoad() {

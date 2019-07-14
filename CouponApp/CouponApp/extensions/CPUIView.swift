@@ -9,17 +9,18 @@
 import UIKit
 
 extension UIView {
-    func addDashedBorder(color:UIColor, lineWidth:CGFloat) {
-        self.layoutIfNeeded()
-        let shapeLayer = CAShapeLayer()
-        shapeLayer.strokeColor = color.cgColor
-        shapeLayer.lineWidth = lineWidth
-        shapeLayer.lineDashPattern = [2,3]
+    func addDashLine(dashLayer:CAShapeLayer, color:UIColor, lineWidth:CGFloat) {
+        dashLayer.strokeColor = color.cgColor
+        dashLayer.lineWidth = lineWidth
+        dashLayer.lineDashPattern = [2,3]
+        self.updateDashLineSize(dashLayer: dashLayer)
+        self.layer.addSublayer(dashLayer)
+    }
+    
+    func updateDashLineSize(dashLayer:CAShapeLayer) {
         let path = CGMutablePath()
         path.addLines(between: [CGPoint(x: 0, y: 0),
                                 CGPoint(x: self.frame.width, y: 0)])
-        shapeLayer.path = path
-        layer.addSublayer(shapeLayer)
+        dashLayer.path = path
     }
-
 }

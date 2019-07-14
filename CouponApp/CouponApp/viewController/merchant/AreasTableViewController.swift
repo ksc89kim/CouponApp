@@ -1,5 +1,5 @@
 //
-//  PublicMerchantTableViewController.swift
+//  AreasTableViewController.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2018. 1. 1..
@@ -11,7 +11,7 @@ import UIKit
 /*
      전체 가맹점 테이블 뷰 컨트롤러
  */
-class PublicMerchantTableViewController: UITableViewController  {
+class AreasTableViewController: UITableViewController  {
     lazy var merchantList:MerchantListModel? = {
         return CouponSignleton.instance.merchantList
     }()
@@ -43,14 +43,7 @@ class PublicMerchantTableViewController: UITableViewController  {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-        guard let model:MerchantModel = merchantList?[indexPath.row] else {
-            return cell
-        }
-        
-        cell.titleLabel.text = model.name
-        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: model.cardBackGround)
-        cell.topView.isHidden = false
-        cell.logoImageView.downloadedFrom(link:model.logoImageUrl)
+        cell.setData(data: merchantList?[indexPath.row])
         return cell
     }
     

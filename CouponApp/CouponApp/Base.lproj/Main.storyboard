@@ -18,8 +18,8 @@
         <!--가맹점 찾기-->
         <scene sceneID="AMv-hF-1N5">
             <objects>
-                <viewController id="ygr-JE-rkv" customClass="FindMerchantViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="phb-tq-clf" userLabel="FindMerchantView">
+                <viewController id="ygr-JE-rkv" customClass="MerchantViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="phb-tq-clf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -129,7 +129,7 @@
         <!--회원 쿠폰 목록-->
         <scene sceneID="Tc3-e7-rRw">
             <objects>
-                <tableViewController id="Egp-UQ-YAn" customClass="UserMerchantTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Egp-UQ-YAn" customClass="UserTableViewController" customModule="CouponApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cZO-ac-l5A" userLabel="UserMerchantTableView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

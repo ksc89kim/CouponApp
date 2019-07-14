@@ -14,17 +14,22 @@ import UIKit
      - 쿠폰 소진하기 및 쿠폰 요청하기 기능이 있음.
  */
 class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    var cellSize:CGSize!
-    var userMerchantData:UserCouponModel?
-    var merchantData:MerchantModel?
-    var selectCouponIndex:NSInteger?
-    
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var backgroundRoundedView: UIView!
     @IBOutlet weak var bottomRoundedView: UIView!
     @IBOutlet weak var dotLineView: UIView!
     @IBOutlet weak var leftRoundedView: UIView!
     @IBOutlet weak var rightRoundedView: UIView!
+    
+    var cellSize:CGSize!
+    var userMerchantData:UserCouponModel?
+    var merchantData:MerchantModel?
+    var selectCouponIndex:NSInteger?
+    let dashLineLayer:CAShapeLayer = CAShapeLayer()
+    
+    deinit {
+        dotLineView.layer.removeObserver(self, forKeyPath:"bounds")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +57,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         bottomRoundedView.layer.borderWidth = 1
         bottomRoundedView.layer.borderColor = UIColor.hexStringToUIColor(hex: "#E6E6E6").cgColor
         
-        dotLineView.addDashedBorder(color:UIColor.hexStringToUIColor(hex: "#dedede"), lineWidth: 2)
+        dotLineView.addDashLine(dashLayer: dashLineLayer, color: UIColor.hexStringToUIColor(hex: "#dedede"), lineWidth: 2)
+        dotLineView.layer.addObserver(self, forKeyPath: "bounds", options: .new, context:nil)
         
         let roundedColor = UIColor.hexStringToUIColor(hex: "#dedede")
         self.setRoundedView(view:backgroundRoundedView, width: 1, color:roundedColor , radius: 10)
@@ -126,7 +132,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     }
  
     
-    // MARK: -  UICollectionViewDataSource method
+    // MARK: -  UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let merchant = merchantData else {
             print("collectionView - merchantData error")
@@ -149,5 +155,11 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         return cell
     }
     
-
+    
+    // MARK: -  observe
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "bounds" {
+            dotLineView.updateDashLineSize(dashLayer: dashLineLayer)
+        }
+    }
 }

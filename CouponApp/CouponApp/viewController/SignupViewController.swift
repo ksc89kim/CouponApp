@@ -81,7 +81,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
                 return
             }
             
-            CouponData.getUserData(phoneNumber: phoneNumberText, complete: { [weak self] isSuccessed in
+            CouponData.loadUserData(phoneNumber: phoneNumberText, complete: { [weak self] isSuccessed in
                 if isSuccessed {
                     UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
                     self?.goMain()
