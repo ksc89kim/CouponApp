@@ -20,11 +20,7 @@ struct MerchantInfoModel {
     // 폰트 관련 정보
     var titleFontSize:CGFloat = 30
     var cellFontSize:CGFloat = 17
-    
-    // 제목 비율 (애니메이션과 연계)
-    var titleScaleX:CGFloat = 0
-    var titleScaleY:CGFloat = 0
-    
+
     
     mutating func setData(model:MerchantModel?, topView:UIView, animationY:CGFloat) {
         self.merchantModel = model

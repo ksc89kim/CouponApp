@@ -16,4 +16,18 @@ extension UILabel {
         label.text = self.text
         return label
     }
+    
+    var optimalWidth : CGFloat
+    {
+        get
+        {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: CGFloat.greatestFiniteMagnitude, height:self.frame.size.height))
+            label.numberOfLines = 0
+            label.lineBreakMode = self.lineBreakMode
+            label.font = self.font
+            label.text = self.text
+            label.sizeToFit()
+            return label.frame.height
+        }
+    }
 }

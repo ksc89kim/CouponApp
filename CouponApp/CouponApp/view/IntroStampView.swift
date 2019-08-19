@@ -20,7 +20,6 @@ class IntroStampView: UIView, CAAnimationDelegate{
     }
     
     override func draw(_ rect: CGRect) {
-        
         let originalWidth:CGFloat = 160.08163265306
         let originalHeight:CGFloat = 169.222222222223
         

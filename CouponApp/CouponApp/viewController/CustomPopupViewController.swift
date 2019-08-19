@@ -24,8 +24,8 @@ class CustomPopupViewController: UIViewController {
         contentLabel.text = contentText
         popupView.alpha = 0
         let deadlineTime = DispatchTime.now() + .milliseconds(100)
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: {
-            self.showAnimation()
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: { [weak self] in
+            self?.showAnimation()
         })
     }
     
@@ -40,16 +40,16 @@ class CustomPopupViewController: UIViewController {
     
     func showGiveAnimation() {
         popupView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations:{
-            self.popupView.transform = .identity
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations:{ [weak self] in
+            self?.popupView.transform = .identity
         }, completion: nil)
     }
     
     func showFadeInAnimation() {
         popupCenterYConstraint.constant = 0
-        UIView.animate(withDuration:0.35, animations: {
-            self.popupView.alpha = 1
-            self.view.layoutIfNeeded()
+        UIView.animate(withDuration:0.35, animations: { [weak self] in
+            self?.popupView.alpha = 1
+            self?.view.layoutIfNeeded()
         })
     }
     

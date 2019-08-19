@@ -44,6 +44,8 @@
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
 		59E54C03212AAB7F00D31BD8 /* CPUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */; };
 		A4011F3D229AA17000A3977A /* CPUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4011F3C229AA17000A3977A /* CPUIButton.swift */; };
+		A40398E1230004B800C052FC /* CPUNSLayoutContraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A40398E0230004B800C052FC /* CPUNSLayoutContraint.swift */; };
+		A405815022E9E4D90022A48C /* MerchantTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405814F22E9E4D90022A48C /* MerchantTextLayer.swift */; };
 		A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DB2286A890009403EB /* IntroViewController.swift */; };
 		A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DD2286AC40009403EB /* IntroStampView.swift */; };
 		A407E56A22801FD7007B7C18 /* MerchantInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */; };
@@ -58,6 +60,7 @@
 		A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9ED22D9E37C00093D8E /* TabController.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */; };
+		A479E001230ACF0400EA390D /* MerchantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479E000230ACF0400EA390D /* MerchantLabel.swift */; };
 		A4942E3322632D2800083359 /* CPUImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* CPUImage.swift */; };
 		A4942E35226347E000083359 /* CPUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E34226347E000083359 /* CPUILabel.swift */; };
 		A4DB78852206CE4400EE23D2 /* CPUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB78842206CE4400EE23D2 /* CPUIView.swift */; };
@@ -148,6 +151,8 @@
 		59E54C02212AAB7F00D31BD8 /* CPUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIViewController.swift; sourceTree = "<group>"; };
 		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4011F3C229AA17000A3977A /* CPUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIButton.swift; sourceTree = "<group>"; };
+		A40398E0230004B800C052FC /* CPUNSLayoutContraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUNSLayoutContraint.swift; sourceTree = "<group>"; };
+		A405814F22E9E4D90022A48C /* MerchantTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantTextLayer.swift; sourceTree = "<group>"; };
 		A405C9DB2286A890009403EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A405C9DD2286AC40009403EB /* IntroStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampView.swift; sourceTree = "<group>"; };
 		A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoModel.swift; sourceTree = "<group>"; };
@@ -162,6 +167,7 @@
 		A425C9ED22D9E37C00093D8E /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoViewController.swift; sourceTree = "<group>"; };
 		A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantInfoViewController.xib; sourceTree = "<group>"; };
+		A479E000230ACF0400EA390D /* MerchantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantLabel.swift; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* CPUImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUImage.swift; sourceTree = "<group>"; };
 		A4942E34226347E000083359 /* CPUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUILabel.swift; sourceTree = "<group>"; };
 		A4DB78842206CE4400EE23D2 /* CPUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUIView.swift; sourceTree = "<group>"; };
@@ -328,6 +334,8 @@
 		596303751F431411000E2701 /* CouponApp */ = {
 			isa = PBXGroup;
 			children = (
+				A479DFFF230ACD0600EA390D /* label */,
+				A405814B22E9E4770022A48C /* layer */,
 				A4DB788A220ED44000EE23D2 /* font */,
 				A425C9EC22D9E2C300093D8E /* controller */,
 				59978E032109BAFC001F3A8D /* extensions */,
@@ -347,8 +355,8 @@
 				CCF0CF9A2015CF3600FA3E3B /* Start.storyboard */,
 				CCF0CF972015CF3000FA3E3B /* Merchant.storyboard */,
 				5963037A1F431411000E2701 /* Main.storyboard */,
-				5963037D1F431411000E2701 /* Assets.xcassets */,
 				5963037F1F431411000E2701 /* LaunchScreen.storyboard */,
+				5963037D1F431411000E2701 /* Assets.xcassets */,
 				596303821F431411000E2701 /* Info.plist */,
 			);
 			path = CouponApp;
@@ -395,6 +403,7 @@
 				A4942E3222632D2800083359 /* CPUImage.swift */,
 				A4942E34226347E000083359 /* CPUILabel.swift */,
 				A4011F3C229AA17000A3977A /* CPUIButton.swift */,
+				A40398E0230004B800C052FC /* CPUNSLayoutContraint.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -407,6 +416,14 @@
 				59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */,
 			);
 			path = sqlite3;
+			sourceTree = "<group>";
+		};
+		A405814B22E9E4770022A48C /* layer */ = {
+			isa = PBXGroup;
+			children = (
+				A405814F22E9E4D90022A48C /* MerchantTextLayer.swift */,
+			);
+			path = layer;
 			sourceTree = "<group>";
 		};
 		A415623322DB1B7B00A0551E /* merchant */ = {
@@ -426,6 +443,14 @@
 				A425C9ED22D9E37C00093D8E /* TabController.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		A479DFFF230ACD0600EA390D /* label */ = {
+			isa = PBXGroup;
+			children = (
+				A479E000230ACF0400EA390D /* MerchantLabel.swift */,
+			);
+			path = label;
 			sourceTree = "<group>";
 		};
 		A4DB788A220ED44000EE23D2 /* font */ = {
@@ -733,6 +758,7 @@
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
 				A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */,
 				A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */,
+				A405815022E9E4D90022A48C /* MerchantTextLayer.swift in Sources */,
 				CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */,
 				A4942E35226347E000083359 /* CPUILabel.swift in Sources */,
 				CC047F82200C66170070CC5D /* ImageCouponModel.swift in Sources */,
@@ -742,6 +768,7 @@
 				A407E56A22801FD7007B7C18 /* MerchantInfoModel.swift in Sources */,
 				59BE1D1B21184C0B0082F04E /* CouponData.swift in Sources */,
 				59A43FA4212400D70099581D /* CheckCouponModel.swift in Sources */,
+				A479E001230ACF0400EA390D /* MerchantLabel.swift in Sources */,
 				CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */,
 				A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */,
 				CC88E7442008450E00F48B1C /* DrawCouponModel.swift in Sources */,
@@ -757,6 +784,7 @@
 				A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */,
 				594A011620A825790007503D /* Utils.swift in Sources */,
 				59978E092109BBAB001F3A8D /* CPString.swift in Sources */,
+				A40398E1230004B800C052FC /* CPUNSLayoutContraint.swift in Sources */,
 				59BE1D1F21197E140082F04E /* MerchantProtocol.swift in Sources */,
 				59BE1D1D21184C930082F04E /* CouponDataProtocol.swift in Sources */,
 				59978E072109BB8E001F3A8D /* CPUIImageView.swift in Sources */,

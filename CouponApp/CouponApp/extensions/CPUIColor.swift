@@ -9,6 +9,12 @@
 import UIKit
 
 extension UIColor {
+    
+    static let couponGrayColor1 = UIColor.hexStringToUIColor(hex: "#dedede")
+    static let couponGrayColor2 = UIColor.hexStringToUIColor(hex: "#E6E6E6")
+    static let couponPinkColor = UIColor.hexStringToUIColor(hex: "#F84C4E")
+
+    
     static func hexStringToUIColor (hex:String) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         

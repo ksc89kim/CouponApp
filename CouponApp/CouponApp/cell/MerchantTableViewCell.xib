@@ -46,8 +46,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="orY-AO-iRG" secondAttribute="trailing" constant="15" id="2J9-l5-NR8"/>
+                                    <constraint firstItem="orY-AO-iRG" firstAttribute="top" secondItem="bTc-u8-8c2" secondAttribute="top" constant="20" id="FVP-Re-wxM"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="height" secondItem="bTc-u8-8c2" secondAttribute="height" multiplier="0.6" id="TN2-4q-7KI"/>
-                                    <constraint firstItem="orY-AO-iRG" firstAttribute="top" secondItem="bTc-u8-8c2" secondAttribute="top" constant="20" id="Tiy-ap-pjQ"/>
                                     <constraint firstAttribute="height" constant="81.5" id="ls0-Wc-G9C"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="leading" secondItem="bTc-u8-8c2" secondAttribute="leading" constant="15" id="v86-Iy-fIK"/>
                                     <constraint firstItem="OTu-rQ-ny6" firstAttribute="centerY" secondItem="bTc-u8-8c2" secondAttribute="centerY" id="zWA-Ru-QaF"/>

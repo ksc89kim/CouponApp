@@ -55,12 +55,12 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         myCollectionView.reloadData()
         
         bottomRoundedView.layer.borderWidth = 1
-        bottomRoundedView.layer.borderColor = UIColor.hexStringToUIColor(hex: "#E6E6E6").cgColor
+        bottomRoundedView.layer.borderColor = UIColor.couponGrayColor2.cgColor
         
-        dotLineView.addDashLine(dashLayer: dashLineLayer, color: UIColor.hexStringToUIColor(hex: "#dedede"), lineWidth: 2)
+        dotLineView.addDashLine(dashLayer: dashLineLayer, color: UIColor.couponGrayColor1, lineWidth: 2)
         dotLineView.layer.addObserver(self, forKeyPath: "bounds", options: .new, context:nil)
         
-        let roundedColor = UIColor.hexStringToUIColor(hex: "#dedede")
+        let roundedColor = UIColor.couponGrayColor1
         self.setRoundedView(view:backgroundRoundedView, width: 1, color:roundedColor , radius: 10)
         self.setRoundedView(view: leftRoundedView, width: 1, color: roundedColor, radius:leftRoundedView.frame.size.width/2)
         self.setRoundedView(view: rightRoundedView, width: 1, color: roundedColor, radius:leftRoundedView.frame.size.width/2)

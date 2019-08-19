@@ -21,7 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MerchantInfoViewController" customModule="CouponApp" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="yX7-bb-Poy" id="aC8-gj-Q7D"/>
-                <outlet property="backgroundView" destination="mge-wC-7hf" id="eUa-An-6Ek"/>
+                <outlet property="backgroundView" destination="mge-wC-7hf" id="qhe-oY-Ent"/>
                 <outlet property="contentTopConstraint" destination="uRr-w6-hSl" id="Cfy-pZ-8Jq"/>
                 <outlet property="headerHeightConstraint" destination="SU3-Lc-XxO" id="w5x-sq-jbV"/>
                 <outlet property="headerImageView" destination="6zs-4n-QCc" id="4JL-ak-JlE"/>
