@@ -23,14 +23,33 @@ class MerchantInfoViewController: UIViewController {
     var merchantInfoModel:MerchantInfoModel = MerchantInfoModel()
     var titleLabel:MerchantLabel = MerchantLabel()
     var originalHeaderHeight:CGFloat = 163
-    var originalCompanyLabelHeight:CGFloat = 41
+    
+    var isAnimation:Bool = false
+    var _percent:CGFloat = 0.0
+    var percent:CGFloat {
+        get {
+            return _percent
+        }
+        set(newValue){
+            if newValue > 0 && newValue < 100 {
+                _percent = newValue
+            } else if newValue >= 100 {
+                _percent = 100
+            } else {
+                _percent = 0
+            }
+            
+            if !isAnimation {
+                self.setAnimationPercent(percent: _percent)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe(_:)))
-        downSwipe.direction = .down
-        self.view.addGestureRecognizer(downSwipe)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.view.addGestureRecognizer(panGesture)
         
         setUI()
     }
@@ -91,20 +110,29 @@ class MerchantInfoViewController: UIViewController {
     }
     
     func openAnimation(){
+        isAnimation = true
         self.view.layoutIfNeeded()
-        UIView.animate(withDuration:3.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-            self?.setAnimationPercent(percent: 100)
+        UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+            self?.setAnimationPercent(percent:100)
             self?.view.layoutIfNeeded()
-            }, completion: { (isSuccess) in
+            }, completion: { [weak self] (isSuccess) in
+                if isSuccess {
+                    self?.percent = 100
+                    self?.isAnimation = false
+                }
         })
     }
     
     func closeAnimation(){
-        UIView.animate(withDuration:3.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                self?.setAnimationPercent(percent: 0)
+        isAnimation = true
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                self?.setAnimationPercent(percent:0)
                 self?.view.layoutIfNeeded()
             }, completion: { [weak self] (isSucess) in
                 if isSucess {
+                    self?.percent = 0
+                    self?.isAnimation = false
                     self?.view.removeFromSuperview()
                     self?.willMove(toParentViewController: nil)
                     self?.removeFromParentViewController()
@@ -116,6 +144,36 @@ class MerchantInfoViewController: UIViewController {
         if (sender.direction == .down) {
             closeAnimation()
         }
+    }
+    
+    @objc func handlePan(_ sender:UIPanGestureRecognizer) {
+        guard !isAnimation else {
+            return
+        }
+        
+        switch (sender.direction)! {
+        case PanDirection.down:
+            self.percent -= 1
+            break
+        case PanDirection.up:
+            self.percent += 1
+            break
+        default:
+            break
+        }
+        
+        switch sender.state {
+        case .ended,.cancelled, .failed:
+            if _percent < 90 {
+                closeAnimation()
+            } else {
+                openAnimation()
+            }
+            break
+        default:
+            break
+        }
+
     }
 
     @IBAction func onEvent(_ sender: Any) {

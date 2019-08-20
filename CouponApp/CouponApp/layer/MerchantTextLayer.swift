@@ -51,9 +51,7 @@ class MerchantTextLayer: CATextLayer {
         let percentScaleY = ((1 - scale.y) * percent) / 100
         scalePoint.x = scale.x + percentScaleX
         scalePoint.y = scale.y + percentScaleY
-
-        print("scale \(transform)")
-
+        
         self.setAffineTransform(CGAffineTransform(scaleX:scalePoint.x , y: scalePoint.y))
     }
     

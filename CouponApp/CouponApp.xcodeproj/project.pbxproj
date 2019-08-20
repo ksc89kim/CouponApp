@@ -60,6 +60,7 @@
 		A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425C9ED22D9E37C00093D8E /* TabController.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */; };
+		A46CD74D230C177C0093ED36 /* CUIPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46CD74C230C177C0093ED36 /* CUIPanGestureRecognizer.swift */; };
 		A479E001230ACF0400EA390D /* MerchantLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479E000230ACF0400EA390D /* MerchantLabel.swift */; };
 		A4942E3322632D2800083359 /* CPUImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* CPUImage.swift */; };
 		A4942E35226347E000083359 /* CPUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E34226347E000083359 /* CPUILabel.swift */; };
@@ -167,6 +168,7 @@
 		A425C9ED22D9E37C00093D8E /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		A4349513224FBB6C00B236C6 /* MerchantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantInfoViewController.swift; sourceTree = "<group>"; };
 		A4349514224FBB6C00B236C6 /* MerchantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantInfoViewController.xib; sourceTree = "<group>"; };
+		A46CD74C230C177C0093ED36 /* CUIPanGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		A479E000230ACF0400EA390D /* MerchantLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantLabel.swift; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* CPUImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUImage.swift; sourceTree = "<group>"; };
 		A4942E34226347E000083359 /* CPUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUILabel.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				A4942E34226347E000083359 /* CPUILabel.swift */,
 				A4011F3C229AA17000A3977A /* CPUIButton.swift */,
 				A40398E0230004B800C052FC /* CPUNSLayoutContraint.swift */,
+				A46CD74C230C177C0093ED36 /* CUIPanGestureRecognizer.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				A4349515224FBB6C00B236C6 /* MerchantInfoViewController.swift in Sources */,
 				594A011620A825790007503D /* Utils.swift in Sources */,
 				59978E092109BBAB001F3A8D /* CPString.swift in Sources */,
+				A46CD74D230C177C0093ED36 /* CUIPanGestureRecognizer.swift in Sources */,
 				A40398E1230004B800C052FC /* CPUNSLayoutContraint.swift in Sources */,
 				59BE1D1F21197E140082F04E /* MerchantProtocol.swift in Sources */,
 				59BE1D1D21184C930082F04E /* CouponDataProtocol.swift in Sources */,

@@ -36,7 +36,6 @@ class MerchantLabel: UILabel {
         scalePoint.x = scale.x + percentScaleX
         scalePoint.y = scale.y + percentScaleY
         
-        print("scale \(transform)")
         self.transform = CGAffineTransform(scaleX:scalePoint.x , y: scalePoint.y)
     }
     
