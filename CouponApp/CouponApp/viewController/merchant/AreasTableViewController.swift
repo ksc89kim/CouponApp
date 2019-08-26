@@ -52,18 +52,17 @@ class AreasTableViewController: UITableViewController  {
             return
         }
         
-        guard let model:MerchantModel = merchantList?[indexPath.row] else {
-            return
-        }
-        
         let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: CouponNibName.merchantInfoViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-            let positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
-            customPopupViewController.merchantInfoModel.setData(model: model, topView: cell.topView, animationY: positionY)
+            var merchantInfoModel = customPopupViewController.merchantInfoModel
+            merchantInfoModel.merchantModel = cell.model
+            merchantInfoModel.cellTopView = cell.topView
+            merchantInfoModel.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
+            merchantInfoModel.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
+            customPopupViewController.merchantInfoModel = merchantInfoModel
             customPopupViewController.view.frame = window.frame
-            customPopupViewController.setHeaderImageView(image: cell.logoImageView.image ?? UIImage())
-            
+
             window.addSubview(customPopupViewController.view)
             self.addChildViewController(customPopupViewController)
             customPopupViewController.didMove(toParentViewController: self)

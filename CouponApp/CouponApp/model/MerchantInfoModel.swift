@@ -16,11 +16,11 @@ struct MerchantInfoModel {
 
     // 이전 셀에 대한 정보
     weak var cellTopView:UIView?
-    
+    weak var cellTopLogoImage:UIImage?
+
     // 폰트 관련 정보
     var titleFontSize:CGFloat = 30
     var cellFontSize:CGFloat = 17
-
     
     mutating func setData(model:MerchantModel?, topView:UIView, animationY:CGFloat) {
         self.merchantModel = model

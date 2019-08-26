@@ -47,10 +47,8 @@ class MerchantInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
         self.view.addGestureRecognizer(panGesture)
-        
         setUI()
     }
     
@@ -60,22 +58,20 @@ class MerchantInfoViewController: UIViewController {
         self.openAnimation()
     }
     
-    func setHeaderImageView(image:UIImage) {
-        headerImageView.setCropRoundedImage(image: image)
-    }
-    
     func setUI(){
         titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: merchantInfoModel.titleFontSize)
         titleLabel.textColor = UIColor.white
         titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantInfoModel.cellFontSize)
         headerView.addSubview(titleLabel)
-
+        
+        
         merchantInfoModel.originalHeaderHeight = headerHeightConstraint.constant
         if let merchant = merchantInfoModel.merchantModel {
             titleLabel.text = merchant.name
             titleLabel.sizeToFit()
             
             headerView.backgroundColor = merchantInfoModel.cellTopView?.backgroundColor
+            headerImageView.setCropRoundedImage(image: merchantInfoModel.cellTopLogoImage ?? UIImage())
             introduceLabel.text = merchant.content
             let userId = CouponSignleton.instance.userData?.id
             
