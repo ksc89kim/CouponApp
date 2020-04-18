@@ -16,7 +16,7 @@ class TabController {
     var callback:TabCallBack?
 
     init(buttonArray:[UIButton]){
-        self.tabButtonArray = buttonArray;
+        self.tabButtonArray = buttonArray
         for i in 0 ..< tabButtonArray!.count {
             let button:UIButton = tabButtonArray![i] as UIButton
             button.tag = i

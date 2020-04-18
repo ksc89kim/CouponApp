@@ -95,6 +95,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     // MARK: - Etc Function
     func goMain() {
         let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+        mainViewController.modalPresentationStyle = .fullScreen
         self.present(mainViewController, animated: true, completion: nil)
     }
     

@@ -3,7 +3,34 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
+         contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "headerImageView.image">
+            </PersistentString>
+            <PersistentString
+               value = "merchantModel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantTextLayer.setPosition(x:y:):MerchantTextLayer.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "bounds.width">
+            </PersistentString>
+            <PersistentString
+               value = "scalePoint">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantInfoViewController.openAnimation():MerchantInfoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "textLayer">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "CouponSqlite.checkPassword(phoneNumber:password:complete:):CouponSqlite.swift">
@@ -14,13 +41,16 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
+         contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MerchantInfoViewController.setUI():MerchantInfoViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MerchantInfoViewController.handlePan(_:):MerchantInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "headerImageView.image">
-            </PersistentString>
-            <PersistentString
-               value = "merchantModel">
+               value = "isAnimation">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
