@@ -11,7 +11,7 @@ import UIKit
 typealias InstroStampCallBack = () -> Void
 
 class IntroStampView: UIView, CAAnimationDelegate{
-    var drawLayer:CAShapeLayer = CAShapeLayer()
+    private var drawLayer:CAShapeLayer = CAShapeLayer()
     var completion:InstroStampCallBack?
     
     override func awakeFromNib() {

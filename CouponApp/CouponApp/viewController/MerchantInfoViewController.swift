@@ -22,11 +22,11 @@ class MerchantInfoViewController: UIViewController {
     
     var merchantInfoModel:MerchantInfoModel = MerchantInfoModel()
     var titleLabel:MerchantLabel = MerchantLabel()
-    var originalHeaderHeight:CGFloat = 163
+    private var originalHeaderHeight:CGFloat = 163
     
-    var isAnimation:Bool = false
-    var _percent:CGFloat = 0.0
-    var percent:CGFloat {
+    private var isAnimation:Bool = false
+    private var _percent:CGFloat = 0.0
+    private var percent:CGFloat {
         get {
             return _percent
         }

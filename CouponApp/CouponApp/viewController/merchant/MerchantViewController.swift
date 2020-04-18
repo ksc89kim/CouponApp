@@ -17,9 +17,9 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!
 
-    var currentTabBtn:UIButton? // 현재 등록된 탭 버튼
-    var pageController:UIPageViewController? // 페이지 컨트롤러
-    var tabController:TabController?
+    private var currentTabBtn:UIButton? // 현재 등록된 탭 버튼
+    private var pageController:UIPageViewController? // 페이지 컨트롤러
+    private var tabController:TabController?
     
     lazy var viewControllerArray:[UIViewController] = {
         let areasTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.areasTableViewController.rawValue)

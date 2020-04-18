@@ -13,8 +13,8 @@ import CoreLocation
      주변 가맹점 테이블 뷰 컨트롤러
  */
 class AroundTableViewController: UITableViewController , CLLocationManagerDelegate {
-    var locationManager:CLLocationManager!
-    var merchantModelArray:[MerchantModel?]?
+    private var locationManager:CLLocationManager!
+    private var merchantModelArray:[MerchantModel?]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

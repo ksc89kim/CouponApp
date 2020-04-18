@@ -21,12 +21,13 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var leftRoundedView: UIView!
     @IBOutlet weak var rightRoundedView: UIView!
     
-    var cellSize:CGSize!
+    private var cellSize:CGSize!
+    private var selectCouponIndex:NSInteger?
+    private let dashLineLayer:CAShapeLayer = CAShapeLayer()
+    
     var userMerchantData:UserCouponModel?
     var merchantData:MerchantModel?
-    var selectCouponIndex:NSInteger?
-    let dashLineLayer:CAShapeLayer = CAShapeLayer()
-    
+  
     deinit {
         dotLineView.layer.removeObserver(self, forKeyPath:"bounds")
     }
