@@ -18,13 +18,13 @@ class CouponCollectionViewCell: UICollectionViewCell {
             drawView.isHidden = true
             imageView.isHidden = false
             imageView.model = imageModel
-            imageView.isUseCoupone = isUseCoupon
+            imageView.isUseCoupon = isUseCoupon
         } else {
             drawView.isHidden = false
             imageView.isHidden = true
             drawView.isCheckBoxAnimation = isAnimaton
             drawView.model = couponProtocol as? DrawCouponModel
-            drawView.isUseCoupone = isUseCoupon
+            drawView.isUseCoupon = isUseCoupon
         }
     }
     

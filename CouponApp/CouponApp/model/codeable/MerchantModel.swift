@@ -7,34 +7,23 @@
 //
 
 import Foundation
+import FMDB
 
 /*
-     가맹점 데이터
-*/
+ 가맹점 데이터
+ */
 
-struct MerchantModel:Codable,  MerchantProtocol {
+class MerchantModel:Codable, MerchantProtocol {
     var merchantId:Int // 가맹점 ID
-    var name:String // 가맹점 이름
-    var content:String // 가맹점 소개 내용
-    var logoImageUrl:String //로고 이미지 url
-    var latitude:Double //위도
-    var longitude:Double //경도
-    var isCouponImage:Bool //쿠폰 이미지 여부
+    let name:String // 가맹점 이름
+    let content:String // 가맹점 소개 내용
+    let logoImageUrl:String //로고 이미지 url
+    let latitude:Double //위도
+    let longitude:Double //경도
+    let isCouponImage:Bool //쿠폰 이미지 여부
     var imageCouponList:[ImageCouponModel] //쿠폰 이미지 데이터
     var drawCouponList:[DrawCouponModel] //쿠폰 그리기 데이터
     var cardBackGround:String = "000000"
-    
-    init() {
-        self.merchantId = 0
-        self.name = ""
-        self.content = ""
-        self.logoImageUrl = ""
-        self.latitude = 0
-        self.longitude = 0
-        self.isCouponImage = false
-        self.imageCouponList = []
-        self.drawCouponList = []
-    }
     
     private enum MerchantKeys: String, CodingKey {
         case merchantId = "id"
@@ -48,7 +37,33 @@ struct MerchantModel:Codable,  MerchantProtocol {
         case drawCouponList
     }
     
-    init(from decoder: Decoder) throws {
+    init(merchantId:Int, name:String, content:String, logoImageUrl:String, latitude:Double, longitude:Double,isCouponImage:Bool, cardBackground:String) {
+        self.merchantId = merchantId
+        self.name = name
+        self.content = content
+        self.logoImageUrl = logoImageUrl
+        self.latitude = latitude
+        self.longitude = longitude
+        self.isCouponImage = isCouponImage
+        self.imageCouponList = []
+        self.drawCouponList = []
+        self.cardBackGround = cardBackground
+    }
+    
+    convenience init(resultSet:FMResultSet) {
+        let merchantIdx:Int32 = resultSet.int(forColumnIndex: 0)
+        let name = resultSet.string(forColumnIndex: 1) ?? ""
+        let content = resultSet.string(forColumnIndex: 2) ?? ""
+        let imageUrl = resultSet.string(forColumnIndex: 3) ?? ""
+        let latitude = resultSet.double(forColumnIndex: 4)
+        let longitude = resultSet.double(forColumnIndex: 5)
+        let isCouponImage = resultSet.bool(forColumnIndex: 6)
+        let cardBackground = resultSet.string(forColumnIndex: 7) ?? ""
+        
+        self.init(merchantId:Int(merchantIdx),name:name,content:content,logoImageUrl: imageUrl,latitude:latitude,longitude:longitude,isCouponImage:isCouponImage,cardBackground:cardBackground)
+    }
+    
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: MerchantKeys.self)
         self.merchantId = try container.decode(Int.self, forKey: .merchantId)
         self.name = try container.decode(String.self, forKey: .name)

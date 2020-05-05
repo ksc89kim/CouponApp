@@ -19,8 +19,8 @@ struct CouponSqlite:CouponDataProtocol {
     
     func getUserData(phoneNumber:String, complete: @escaping CouponBaseCallBack) {
         do {
-            CouponSignleton.instance.userData =  UserModel()
-            CouponSignleton.instance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+            let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+            CouponSignleton.instance.userData = UserModel(id:userId)
             if CouponSignleton.instance.userData?.id != 0 {
                 complete(true)
             } else {
@@ -33,7 +33,8 @@ struct CouponSqlite:CouponDataProtocol {
     
     func checkPassword(phoneNumber:String, password:String, complete: @escaping CouponBaseCallBack) {
         do {
-            CouponSignleton.instance.userData?.id = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
+            let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
+            CouponSignleton.instance.userData = UserModel(id:userId)
             if CouponSignleton.instance.userData?.id != nil {
                 complete(true)
             } else {
@@ -52,7 +53,7 @@ struct CouponSqlite:CouponDataProtocol {
             }
             
             for i in  0 ..< merchantList.count {
-                guard var model = merchantList[i] else {
+                guard let model = merchantList[i] else {
                     return
                 }
                 if model.isCouponImage {

@@ -15,7 +15,7 @@ import UIKit
 class CouponDrawView: UIView, CouponViewProtocol {
     var model:DrawCouponModel?
     var isCheckBoxAnimation:Bool = false
-    var isUseCoupone: Bool = false {
+    var isUseCoupon: Bool = false {
         didSet {
             if model != nil {
                 setNeedsDisplay()
@@ -40,7 +40,7 @@ class CouponDrawView: UIView, CouponViewProtocol {
         layer.addSublayer(shapeLayer)
     
         if (model?.isRing)! { drawRingFittingInsideView(rect) }
-        if (isUseCoupone) { drawCheckFittingInsideView(rect) }
+        if (isUseCoupon) { drawCheckFittingInsideView(rect) }
     }
     
     // 링 그리기

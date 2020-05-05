@@ -9,6 +9,6 @@
 import Foundation
 
 protocol CouponProtocol {
-    var couponId:Int { get set }
+    var couponId:Int { get }
     var isEvent:Bool { get set }
 }

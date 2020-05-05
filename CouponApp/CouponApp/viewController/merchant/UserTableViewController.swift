@@ -26,6 +26,7 @@ class UserTableViewController : UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setData()
     }
 
     override func didReceiveMemoryWarning() {

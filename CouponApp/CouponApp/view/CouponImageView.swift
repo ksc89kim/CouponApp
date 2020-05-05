@@ -13,9 +13,9 @@ import UIKit
      - UIImageView를 통한 쿠폰 이미지 뷰
  */
 class CouponImageView: UIView, CouponViewProtocol {
-    var isUseCoupone: Bool = false{
+    var isUseCoupon: Bool = false{
         didSet {
-            if isUseCoupone {
+            if isUseCoupon {
                 couponImage.image = UIImage(named: (model?.selectImage)!)
             } else {
                 couponImage.image = UIImage(named: (model?.normalImage)!)

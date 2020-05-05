@@ -282,15 +282,7 @@
 		594A56381FD8148F005EAA9C /* model */ = {
 			isa = PBXGroup;
 			children = (
-				594A56391FD814AF005EAA9C /* UserCouponModel.swift */,
-				59A43FA5212402760099581D /* UserCouponListModel.swift */,
-				594A563B1FD814EC005EAA9C /* MerchantModel.swift */,
-				59BE1D22211986650082F04E /* MerchantListModel.swift */,
-				CC88E7432008450E00F48B1C /* DrawCouponModel.swift */,
-				CC047F81200C66170070CC5D /* ImageCouponModel.swift */,
-				CCB5C7A5202BE0EF00CBBEB5 /* UserModel.swift */,
-				59A43FA12123FC7A0099581D /* RespCodeModel.swift */,
-				59A43FA3212400D70099581D /* CheckCouponModel.swift */,
+				A4EF22A224613B7800692B61 /* codeable */,
 				A407E56922801FD7007B7C18 /* MerchantInfoModel.swift */,
 			);
 			path = model;
@@ -464,6 +456,22 @@
 				A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */,
 			);
 			path = font;
+			sourceTree = "<group>";
+		};
+		A4EF22A224613B7800692B61 /* codeable */ = {
+			isa = PBXGroup;
+			children = (
+				594A56391FD814AF005EAA9C /* UserCouponModel.swift */,
+				59A43FA5212402760099581D /* UserCouponListModel.swift */,
+				594A563B1FD814EC005EAA9C /* MerchantModel.swift */,
+				59BE1D22211986650082F04E /* MerchantListModel.swift */,
+				CC88E7432008450E00F48B1C /* DrawCouponModel.swift */,
+				CC047F81200C66170070CC5D /* ImageCouponModel.swift */,
+				CCB5C7A5202BE0EF00CBBEB5 /* UserModel.swift */,
+				59A43FA12123FC7A0099581D /* RespCodeModel.swift */,
+				59A43FA3212400D70099581D /* CheckCouponModel.swift */,
+			);
+			path = codeable;
 			sourceTree = "<group>";
 		};
 		CC09A4F8200D969D00B512C0 /* button */ = {

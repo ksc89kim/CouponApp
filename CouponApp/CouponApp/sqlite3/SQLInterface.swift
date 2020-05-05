@@ -182,24 +182,7 @@ class SQLInterface {
             let result = try contactDb.executeQuery(query, values: [])
             var merchatList:MerchantListModel? = MerchantListModel()
             while result.next() {
-                let merchantIdx:Int32 = result.int(forColumnIndex: 0)
-                let name = result.string(forColumnIndex: 1)
-                let content = result.string(forColumnIndex: 2)
-                let imageUrl = result.string(forColumnIndex: 3)
-                let latitude = result.double(forColumnIndex: 4)
-                let longitude = result.double(forColumnIndex: 5)
-                let isCouponImage = result.bool(forColumnIndex: 6)
-                let cardBackground = result.string(forColumnIndex: 7)
-                
-                var merchantModel:MerchantModel = MerchantModel()
-                merchantModel.merchantId = Int(merchantIdx)
-                merchantModel.name = name ?? ""
-                merchantModel.content = content ?? ""
-                merchantModel.isCouponImage = isCouponImage
-                merchantModel.logoImageUrl = imageUrl ?? ""
-                merchantModel.latitude = latitude
-                merchantModel.longitude = longitude
-                merchantModel.cardBackGround = cardBackground ?? ""
+                let merchantModel:MerchantModel = MerchantModel(resultSet: result)
                 merchatList?.list.append(merchantModel)
             }
             return merchatList
@@ -218,26 +201,7 @@ class SQLInterface {
         do {
             let result = try contactDb.executeQuery(query, values: [])
             while result.next() {
-                let merchantIdx:Int32 = result.int(forColumnIndex: 0)
-                let couponIdx:Int32 = result.int(forColumnIndex: 1)
-                let circleColor:String =  result.string(forColumnIndex: 2) ?? ""
-                let ringColor:String = result.string(forColumnIndex: 3) ?? ""
-                let ringThickness:CGFloat = CGFloat(result.double(forColumnIndex: 4))
-                let isRing:Bool = result.bool(forColumnIndex: 5)
-                let checkLineWidth:CGFloat = CGFloat(result.double(forColumnIndex: 6))
-                let checkLineColor:String = result.string(forColumnIndex: 7) ?? ""
-                let isEvent:Bool = result.bool(forColumnIndex: 8)
-                
-                var drawCouponModel:DrawCouponModel = DrawCouponModel()
-                drawCouponModel.merchantId = Int(merchantIdx)
-                drawCouponModel.couponId = Int(couponIdx)
-                drawCouponModel.circleColor = circleColor
-                drawCouponModel.ringColor = ringColor
-                drawCouponModel.ringThickness = ringThickness
-                drawCouponModel.isRing = isRing
-                drawCouponModel.checkLineColor = checkLineColor
-                drawCouponModel.checkLineWidth = checkLineWidth
-                drawCouponModel.isEvent = isEvent
+                let drawCouponModel:DrawCouponModel = DrawCouponModel(resultSet: result)
                 drawCouponList.append(drawCouponModel)
             }
             return drawCouponList
@@ -256,18 +220,7 @@ class SQLInterface {
         do {
             let result = try contactDb.executeQuery(query, values: [])
             while result.next() {
-                let merchantIdx:Int32 = result.int(forColumnIndex: 0)
-                let couponIdx:Int32 = result.int(forColumnIndex: 1)
-                let normalImage:String = result.string(forColumnIndex: 2) ?? ""
-                let selectImage:String = result.string(forColumnIndex: 3) ?? ""
-                let isEvent:Bool = result.bool(forColumnIndex: 4)
-                
-                var imageCouponModel:ImageCouponModel = ImageCouponModel()
-                imageCouponModel.merchantId = Int(merchantIdx)
-                imageCouponModel.normalImage = normalImage
-                imageCouponModel.selectImage = selectImage
-                imageCouponModel.couponId = Int(couponIdx)
-                imageCouponModel.isEvent = isEvent
+                let imageCouponModel:ImageCouponModel = ImageCouponModel(resultSet: result)
                 imageCouponList.append(imageCouponModel)
             }
             return imageCouponList

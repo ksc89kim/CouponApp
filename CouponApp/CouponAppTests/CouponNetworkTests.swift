@@ -40,14 +40,14 @@ class CouponNetworkTests: XCTestCase {
     
     //회원 정보 가져오기
     func testRequestUserData() {
-        var isNetworkSucceed:Bool = false
-        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.getUserData(phoneNumber: self.phoneNumber, complete: { isSucceed in
-            isNetworkSucceed = isSucceed
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-        XCTAssert(isNetworkSucceed)
+//        var isNetworkSucceed:Bool = false
+//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+//        CouponData.getUserData(phoneNumber: self.phoneNumber, complete: { isSucceed in
+//            isNetworkSucceed = isSucceed
+//            expectation.fulfill()
+//        })
+//        wait(for: [expectation], timeout: 10.0)
+//        XCTAssert(isNetworkSucceed)
     }
     
     //패스워드 확인
@@ -64,14 +64,14 @@ class CouponNetworkTests: XCTestCase {
     
     // 가맹점 데이터 가져오기
     func testRequestGetMerchantData() {
-        var isNetworkSucceed:Bool = false
-        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.getMerchantData(complete:{ isSucceed in
-            isNetworkSucceed = isSucceed
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-        XCTAssert(isNetworkSucceed)
+//        var isNetworkSucceed:Bool = false
+//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+//        CouponData.getMerchantData(complete:{ isSucceed in
+//            isNetworkSucceed = isSucceed
+//            expectation.fulfill()
+//        })
+//        wait(for: [expectation], timeout: 10.0)
+//        XCTAssert(isNetworkSucceed)
     }
     
     // 쿠폰 추가하기
@@ -112,16 +112,16 @@ class CouponNetworkTests: XCTestCase {
     
     // 쿠폰 데이터 가져오기
     func testRequestUserCouponData() {
-        var isNetworkSucceed:Bool = false
-        let userCouponList:[UserCouponModel?]? = nil
-        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.getUserCouponData(userId: userId, complete: { isSucceed, userCouponList  in
-            isNetworkSucceed = isSucceed
-            expectation.fulfill()
-        })
-        wait(for: [expectation], timeout: 10.0)
-        XCTAssert(isNetworkSucceed)
-        XCTAssertNil(userCouponList)
+//        var isNetworkSucceed:Bool = false
+//        let userCouponList:[UserCouponModel?]? = nil
+//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+//        CouponData.getUserCouponData(userId: userId, complete: { isSucceed, userCouponList  in
+//            isNetworkSucceed = isSucceed
+//            expectation.fulfill()
+//        })
+//        wait(for: [expectation], timeout: 10.0)
+//        XCTAssert(isNetworkSucceed)
+//        XCTAssertNil(userCouponList)
     }
     
     // 쿠폰 데이터 업데이트하기

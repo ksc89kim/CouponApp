@@ -12,15 +12,19 @@ import Foundation
      회원 데이터
  */
 
-struct UserModel:Codable {
-    var phoneNumber:String
-    var id:Int
-    var name:String
+class UserModel:Codable {
+    let phoneNumber:String
+    let id:Int
+    let name:String
     
-    init() {
-        self.phoneNumber = ""
-        self.id = 0
-        self.name = ""
+    init(phoneNumber:String, id:Int, name:String) {
+        self.phoneNumber = phoneNumber
+        self.id = id
+        self.name = name
+    }
+    
+    convenience init(id:Int) {
+        self.init(phoneNumber:"",id: id,name:"")
     }
     
     private enum UserModelKeys: String, CodingKey {
@@ -29,7 +33,7 @@ struct UserModel:Codable {
         case id = "userId"
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserModelKeys.self)
         self.phoneNumber = (try? container.decode(String.self, forKey: .phoneNumber)) ?? ""
         self.id = try container.decode(Int.self, forKey: .id)

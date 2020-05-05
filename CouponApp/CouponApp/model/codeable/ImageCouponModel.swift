@@ -7,25 +7,18 @@
 //
 
 import Foundation
+import FMDB
 
 /*
      쿠폰 이미지 데이터
 */
 
-struct ImageCouponModel:Codable, MerchantProtocol, CouponProtocol {
+class ImageCouponModel:Codable, MerchantProtocol, CouponProtocol {
     var couponId:Int // 쿠폰 인덱스
     var merchantId:Int // 가맹점 ID
     var isEvent:Bool // 이벤트 여부
-    var normalImage:String // 평소 이미지
-    var selectImage:String // 선택된 이미지
-    
-    init(){
-        self.couponId = 0
-        self.merchantId = 0
-        self.isEvent = false
-        self.normalImage = ""
-        self.selectImage = ""
-    }
+    let normalImage:String // 평소 이미지
+    let selectImage:String // 선택된 이미지
     
     private enum ImageCouponKeys: String, CodingKey {
         case couponId = "coupon_id"
@@ -35,7 +28,25 @@ struct ImageCouponModel:Codable, MerchantProtocol, CouponProtocol {
         case selectImage = "select_image"
     }
     
-    init(from decoder: Decoder) throws {
+    init(couponId:Int,merchantId:Int,isEvent:Bool, normalImage:String, selectImage:String) {
+        self.couponId = couponId
+        self.merchantId = merchantId
+        self.isEvent = isEvent
+        self.normalImage = normalImage
+        self.selectImage = selectImage
+    }
+    
+    convenience init(resultSet:FMResultSet) {
+        let merchantIdx:Int32 = resultSet.int(forColumnIndex: 0)
+        let couponIdx:Int32 = resultSet.int(forColumnIndex: 1)
+        let normalImage:String = resultSet.string(forColumnIndex: 2) ?? ""
+        let selectImage:String = resultSet.string(forColumnIndex: 3) ?? ""
+        let isEvent:Bool = resultSet.bool(forColumnIndex: 4)
+        
+        self.init(couponId: Int(couponIdx), merchantId: Int(merchantIdx), isEvent:isEvent, normalImage:normalImage, selectImage:selectImage)
+    }
+
+    required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ImageCouponKeys.self)
         self.couponId = try container.decode(Int.self, forKey: .couponId)
         self.merchantId = try container.decode(Int.self, forKey: .merchantId)

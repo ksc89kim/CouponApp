@@ -25,6 +25,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "UserTableViewController.viewWillAppear(_:):UserTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userCouponList">
+            </PersistentString>
+            <PersistentString
+               value = "merchantList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MerchantInfoViewController.openAnimation():MerchantInfoViewController.swift">
          <PersistentStrings>
             <PersistentString

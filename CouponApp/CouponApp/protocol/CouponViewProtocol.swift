@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CouponViewProtocol {
-    var isUseCoupone:Bool { get set }
+    var isUseCoupon:Bool { get set }
 }
