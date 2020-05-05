@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 /*
-     쿠폰 이미지 데이터
+     쿠폰 이미지 UI 데이터
 */
 
 class ImageCouponModel:Codable, MerchantProtocol, CouponProtocol {
