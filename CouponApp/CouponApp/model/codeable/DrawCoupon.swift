@@ -13,16 +13,23 @@ import FMDB
     쿠폰 그리기 UI 데이터 
  */
 
-class DrawCoupon:Codable, Merchant, Coupon {
+class DrawCoupon:Codable, Merchant, CouponUI {
+    
+//     CouponUI
     var couponId:Int // 쿠폰 인덱스
+    var isEvent:Bool // 이벤트 여부
+    var isUseCoupon: Bool // 쿠폰 사용 여부
+    var isAnimation: Bool // 애니메이션 사용 여부
+
+//     Merchant
     var merchantId:Int // 가맹점 ID
+    
     let circleColor:String // 원 색상
     let ringColor:String // 테두리 색상
     let ringThickness:CGFloat // 테두리 굵기
     let isRing:Bool // 테두리 여부
     let checkLineWidth:CGFloat // 쿠폰 체크박스 굵기
     let checkLineColor:String // 쿠폰 체크 박스 색상
-    var isEvent:Bool // 이벤트 여부
     
     private enum DrawCouponKeys: String, CodingKey {
         case couponId = "coupon_id"
@@ -46,6 +53,8 @@ class DrawCoupon:Codable, Merchant, Coupon {
         self.checkLineColor = checkLineColor
         self.checkLineWidth = checkLineWidth
         self.isEvent = isEvent
+        self.isUseCoupon = false
+        self.isAnimation = false
     }
     
     convenience init(resultSet:FMResultSet) {
@@ -73,5 +82,7 @@ class DrawCoupon:Codable, Merchant, Coupon {
         self.ringColor = try container.decode(String.self, forKey: .ringColor)
         self.circleColor = try container.decode(String.self, forKey: .circleColor)
         self.checkLineColor = try container.decode(String.self, forKey: .checkLineColor)
+        self.isUseCoupon = false
+        self.isAnimation = false
     }
 }

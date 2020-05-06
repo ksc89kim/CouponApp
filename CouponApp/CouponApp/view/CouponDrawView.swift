@@ -12,10 +12,8 @@ import UIKit
      쿠폰 그리기 뷰
      - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
  */
-class CouponDrawView: UIView, CouponView {
-    var drawCoupon:DrawCoupon?
-    var isCheckBoxAnimation:Bool = false
-    var isUseCoupon: Bool = false {
+class CouponDrawView: UIView {
+    var drawCoupon:DrawCoupon? {
         didSet {
             if drawCoupon != nil {
                 setNeedsDisplay()
@@ -40,7 +38,7 @@ class CouponDrawView: UIView, CouponView {
         layer.addSublayer(shapeLayer)
     
         if (drawCoupon?.isRing)! { drawRingFittingInsideView(rect) }
-        if (isUseCoupon) { drawCheckFittingInsideView(rect) }
+        if (drawCoupon?.isUseCoupon)! { drawCheckFittingInsideView(rect) }
     }
     
     // 링 그리기
@@ -76,13 +74,13 @@ class CouponDrawView: UIView, CouponView {
         shapeLayer.lineWidth = (drawCoupon?.checkLineWidth)!
         shapeLayer.lineCap = "round"
         
-        if isCheckBoxAnimation {
+        if (drawCoupon?.isAnimation)! {
             let animation = CABasicAnimation(keyPath: "strokeEnd")
             animation.fromValue = 0
             animation.toValue = 1
             animation.duration = 0.3
             shapeLayer.add(animation, forKey: "line")
-            isCheckBoxAnimation = false
+            drawCoupon?.isAnimation = false
         }
         
         layer.addSublayer(shapeLayer)

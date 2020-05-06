@@ -60,20 +60,7 @@ class AroundMerchantTableViewController: UITableViewController , CLLocationManag
             return
         }
         
-        let customPopupViewController:MerchantDetailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
-        
-        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-            var merchantDetail = customPopupViewController.merchantDetail
-            merchantDetail.merchant = cell.merchant
-            merchantDetail.cellTopView = cell.topView
-            merchantDetail.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
-            merchantDetail.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + cell.headerTopHeight
-            customPopupViewController.merchantDetail = merchantDetail
-            customPopupViewController.view.frame = window.frame
-            window.addSubview(customPopupViewController.view)
-            self.addChildViewController(customPopupViewController)
-            customPopupViewController.didMove(toParentViewController: self)
-        }
+        cell.showDetail(parentViewController: self, tableView: tableView)
     }
 
     // MARK: - CLLocation delegate

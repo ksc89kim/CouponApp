@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MerchantDetailViewController: UIViewController {
+class MerchantDetailViewController: UIViewController, CouponController{
+
+    
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -63,7 +65,6 @@ class MerchantDetailViewController: UIViewController {
         titleLabel.textColor = UIColor.white
         titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantDetail.cellFontSize)
         headerView.addSubview(titleLabel)
-        
         
         merchantDetail.originalHeaderHeight = headerHeightConstraint.constant
         if let merchant = merchantDetail.merchant {
@@ -178,21 +179,21 @@ class MerchantDetailViewController: UIViewController {
         }
         
         if merchantDetail.isUserCoupon {
-            deleteCoupon(merchant: merchant)
+            deleteCoupon(merchantId: merchant.merchantId)
         } else { //추가하기
-            insertCoupon(merchant: merchant)
+            insertCoupon(merchantId: merchant.merchantId)
         }
     }
     
     //삭제하기
-    func deleteCoupon(merchant:MerchantImpl){
+    func deleteCoupon(merchantId:Int){
         let userId = CouponSignleton.instance.userData?.id
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let deleteCouponSuccessTitle = NSLocalizedString("deleteCouponSuccessTitle", comment: "")
         let deleteCouponSuccessContent = NSLocalizedString("deleteCouponSuccessContent", comment: "")
         
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.showCustomPopup(title: deleteCouponSuccessTitle, message: deleteCouponSuccessContent)
                 self?.merchantDetail.isUserCoupon = false
@@ -203,15 +204,18 @@ class MerchantDetailViewController: UIViewController {
         })
     }
     
+    func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
+    }
+    
     //추가하기
-    func insertCoupon(merchant:MerchantImpl){
+    func insertCoupon(merchantId:Int){
         let userId = CouponSignleton.instance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         let insertCouponSuccessTitle = NSLocalizedString("insertCouponSuccessTitle", comment: "")
         let insertCouponSuccessContent = NSLocalizedString("insertCouponSuccessContent", comment: "")
 
-        CouponData.insertUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
+        CouponData.insertUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
                 self?.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
                 return

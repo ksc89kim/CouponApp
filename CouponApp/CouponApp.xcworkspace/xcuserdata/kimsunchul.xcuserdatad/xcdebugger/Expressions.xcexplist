@@ -14,6 +14,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CouponDrawView.draw(_:):CouponDrawView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "drawCoupon">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MerchantTextLayer.setPosition(x:y:):MerchantTextLayer.swift">
          <PersistentStrings>
             <PersistentString
@@ -28,10 +36,10 @@
          contextName = "UserTableViewController.viewWillAppear(_:):UserTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "userCouponList">
+               value = "merchantList">
             </PersistentString>
             <PersistentString
-               value = "merchantList">
+               value = "userCouponList">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

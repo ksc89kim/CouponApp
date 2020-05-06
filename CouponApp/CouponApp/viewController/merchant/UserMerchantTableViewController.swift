@@ -9,10 +9,10 @@
 import UIKit
 
 /*
-     회원 가맹점(쿠폰) 테이블 뷰
-     - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
+ 회원 가맹점(쿠폰) 테이블 뷰
+ - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
-class UserMerchantTableViewController : UITableViewController {
+class UserMerchantTableViewController : UITableViewController, CouponController{
     var userCouponList:UserCouponList? // 회원 쿠폰 정보
     lazy var merchantList:MerchantImplList? = {
         return CouponSignleton.instance.merchantList
@@ -28,7 +28,7 @@ class UserMerchantTableViewController : UITableViewController {
         super.viewWillAppear(animated)
         setData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -58,7 +58,7 @@ class UserMerchantTableViewController : UITableViewController {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if self.userCouponList == nil {
@@ -67,10 +67,10 @@ class UserMerchantTableViewController : UITableViewController {
             return self.userCouponList!.count
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-
+        
         let userCoupon = self.userCouponList?[indexPath.row]
         let merchant = merchantList?.index(merchantId: userCoupon?.merchantId)
         cell.titleLabel.text = merchant?.name
@@ -87,13 +87,10 @@ class UserMerchantTableViewController : UITableViewController {
     override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
             let userMerchant = userCouponList?[indexPath.row]
-            if(deleteCoupon(merchantId:userMerchant?.merchantId)) {
-                userCouponList?.remove(indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            }
+            deleteCouponForTable(merchantId:(userMerchant?.merchantId)!, tableView: tableView, indexPath: indexPath)
         }
     }
- 
+    
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,22 +108,28 @@ class UserMerchantTableViewController : UITableViewController {
         }
     }
     
-    // MARK - ETC
+    // MARK - CouponController
     //삭제하기
-    func deleteCoupon(merchantId:Int?) -> Bool {
+    
+    func deleteCoupon(merchantId: Int) {
+        
+    }
+    
+    func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
         let deleteCouponFailTitle = "deleteCouponFailTitle".localized
         let deleteCouponFailContent = "deleteCouponFailContent".localized
-
+        
         let userId = CouponSignleton.instance.userData?.id
-        var state = false
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId!, complete: { [weak self] isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
             if isSuccessed {
-               state = isSuccessed
+                self?.userCouponList?.remove(indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             } else {
                 self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
-                state = false
             }
         })
-        return state
+    }
+    
+    func insertCoupon(merchantId:Int) {
     }
 }

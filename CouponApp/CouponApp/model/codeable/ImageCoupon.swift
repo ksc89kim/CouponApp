@@ -13,10 +13,16 @@ import FMDB
      쿠폰 이미지 UI 데이터
 */
 
-class ImageCoupon:Codable, Merchant, Coupon {
+class ImageCoupon:Codable, Merchant, CouponUI {
+//    CouponUI
     var couponId:Int // 쿠폰 인덱스
-    var merchantId:Int // 가맹점 ID
     var isEvent:Bool // 이벤트 여부
+    var isUseCoupon: Bool // 쿠폰 사용 여부
+    var isAnimation: Bool // 애니메이션 사용여부
+    
+//    Merchant
+    var merchantId:Int // 가맹점 ID
+    
     let normalImage:String // 평소 이미지
     let selectImage:String // 선택된 이미지
     
@@ -34,6 +40,8 @@ class ImageCoupon:Codable, Merchant, Coupon {
         self.isEvent = isEvent
         self.normalImage = normalImage
         self.selectImage = selectImage
+        self.isUseCoupon = false
+        self.isAnimation = false
     }
     
     convenience init(resultSet:FMResultSet) {
@@ -53,5 +61,7 @@ class ImageCoupon:Codable, Merchant, Coupon {
         self.isEvent = try container.decode(Bool.self, forKey: .isEvent)
         self.normalImage = try container.decode(String.self, forKey: .normalImage)
         self.selectImage = try container.decode(String.self, forKey: .selectImage)
+        self.isUseCoupon = false
+        self.isAnimation = false
     }
 }

@@ -69,6 +69,19 @@ class MerchantTableViewCell: UITableViewCell {
         self.merchant = merchant
     }
     
+    func showDetail(parentViewController:UIViewController, tableView:UITableView) {
+        let customPopupViewController:MerchantDetailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
+        
+        if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
+            customPopupViewController.merchantDetail.setCellData(cell: self, offsetY: tableView.contentOffset.y)
+            customPopupViewController.view.frame = window.frame
+
+            window.addSubview(customPopupViewController.view)
+            parentViewController.addChildViewController(customPopupViewController)
+            customPopupViewController.didMove(toParentViewController: parentViewController)
+        }
+    }
+    
     // MARK: -  observe
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "bounds" {

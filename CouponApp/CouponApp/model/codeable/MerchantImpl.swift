@@ -76,7 +76,7 @@ class MerchantImpl:Codable, Merchant {
         self.imageCouponList = (try? container.decode([ImageCoupon].self, forKey: .imageCouponList)) ?? []
     }
     
-    func index(_ index:Int) -> Coupon {
+    func index(_ index:Int) -> CouponUI {
         return isCouponImage ? imageCouponList[index] : drawCouponList[index]
     }
     
