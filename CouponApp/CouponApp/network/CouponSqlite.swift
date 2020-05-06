@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct CouponSqlite:CouponDataProtocol {
-    func signup(phoneNumber:String, password:String, name:String, complete: @escaping CouponBaseCallBack) {
+struct CouponSqlite:DataController {
+    func signup(phoneNumber:String, password:String, name:String, complete: @escaping DataCallback) {
         do {
             try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete:complete)
         } catch {
@@ -17,10 +17,10 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func getUserData(phoneNumber:String, complete: @escaping CouponBaseCallBack) {
+    func getUserData(phoneNumber:String, complete: @escaping DataCallback) {
         do {
             let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-            CouponSignleton.instance.userData = UserModel(id:userId)
+            CouponSignleton.instance.userData = User(id:userId)
             if CouponSignleton.instance.userData?.id != 0 {
                 complete(true)
             } else {
@@ -31,10 +31,10 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func checkPassword(phoneNumber:String, password:String, complete: @escaping CouponBaseCallBack) {
+    func checkPassword(phoneNumber:String, password:String, complete: @escaping DataCallback) {
         do {
             let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
-            CouponSignleton.instance.userData = UserModel(id:userId)
+            CouponSignleton.instance.userData = User(id:userId)
             if CouponSignleton.instance.userData?.id != nil {
                 complete(true)
             } else {
@@ -45,7 +45,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func getMerchantData(complete: @escaping CouponBaseCallBack) {
+    func getMerchantData(complete: @escaping DataCallback) {
         do {
             guard var merchantList = try SQLInterface().selectMerchantData() else {
                 complete(false)
@@ -53,15 +53,15 @@ struct CouponSqlite:CouponDataProtocol {
             }
             
             for i in  0 ..< merchantList.count {
-                guard let model = merchantList[i] else {
+                guard let merchant = merchantList[i] else {
                     return
                 }
-                if model.isCouponImage {
-                    model.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: model.merchantId)
+                if merchant.isCouponImage {
+                    merchant.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: merchant.merchantId)
                 } else {
-                    model.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: model.merchantId)
+                    merchant.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: merchant.merchantId)
                 }
-                merchantList[i] = model
+                merchantList[i] = merchant
             }
             CouponSignleton.instance.merchantList = merchantList
             complete(true)
@@ -70,7 +70,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func insertUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func insertUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         do {
             try SQLInterface().insertCoupon(userId, merchantId, complete:complete)
         } catch {
@@ -78,7 +78,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         do {
             let isUserCoupon = try SQLInterface().isUserCoupon(userId,merchantId)
             complete(isUserCoupon)
@@ -87,7 +87,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         do{
             try SQLInterface().deleteCounpon(userId, merchantId, complete:complete)
         } catch {
@@ -95,7 +95,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponListModel?) -> Void) {
+    func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
         do {
             complete(true, try SQLInterface().selectUserCouponData(userId))
         } catch {
@@ -103,7 +103,7 @@ struct CouponSqlite:CouponDataProtocol {
         }
     }
     
-    func updateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping CouponBaseCallBack) {
+    func updateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping DataCallback) {
         do {
             try SQLInterface().updateCouponCount(userId,merchantId,couponCount,complete:complete)
         } catch {

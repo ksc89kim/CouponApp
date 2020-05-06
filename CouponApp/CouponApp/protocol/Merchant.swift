@@ -1,5 +1,5 @@
 //
-//  CouponProtocol.swift
+//  MerchantProtocol.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2018. 8. 7..
@@ -8,7 +8,6 @@
 
 import Foundation
 
-protocol CouponProtocol {
-    var couponId:Int { get }
-    var isEvent:Bool { get set }
+protocol Merchant {
+    var merchantId:Int { get set }
 }

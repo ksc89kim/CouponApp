@@ -16,8 +16,9 @@ class MerchantTableViewCell: UITableViewCell {
     @IBOutlet weak var grayLineView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    let headerTopHeight:CGFloat = 86
     let dashLineLayer:CAShapeLayer = CAShapeLayer()
-    var model:MerchantModel?
+    var merchant:MerchantImpl?
     
     deinit {
         lineView.layer.removeObserver(self, forKeyPath: "bounds")
@@ -56,16 +57,16 @@ class MerchantTableViewCell: UITableViewCell {
         lineView.layer.addObserver(self, forKeyPath:"bounds", options:.new, context: nil)
     }
     
-    func setData(data:MerchantModel?) {
-        guard let marchantModel = data else {
+    func setData(data:MerchantImpl?) {
+        guard let merchant = data else {
             print("merchantModel nil")
             return
         }
         
-        self.titleLabel.text = marchantModel.name
-        self.topView.backgroundColor = UIColor.hexStringToUIColor(hex: marchantModel.cardBackGround)
-        self.logoImageView.downloadedFrom(link:marchantModel.logoImageUrl)
-        self.model = marchantModel
+        self.titleLabel.text = merchant.name
+        self.topView.backgroundColor = UIColor.hexStringToUIColor(hex: merchant.cardBackGround)
+        self.logoImageView.downloadedFrom(link:merchant.logoImageUrl)
+        self.merchant = merchant
     }
     
     // MARK: -  observe

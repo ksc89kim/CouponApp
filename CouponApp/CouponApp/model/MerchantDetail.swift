@@ -8,9 +8,13 @@
 
 import UIKit
 
-struct MerchantInfoModel {
+/*
+    가맹점 상세 데이터
+ */
+
+struct MerchantDetail {
     var originalHeaderHeight:CGFloat = 0     //기존 헤더 높이
-    var merchantModel:MerchantModel? // 가맹점 정보
+    var merchant:MerchantImpl? // 가맹점 정보
     var isUserCoupon:Bool = false // 사용자 쿠폰 여부
     var positionY:CGFloat = 0// 애니메이션 시작점 Y
 
@@ -22,8 +26,8 @@ struct MerchantInfoModel {
     var titleFontSize:CGFloat = 30
     var cellFontSize:CGFloat = 17
     
-    mutating func setData(model:MerchantModel?, topView:UIView, animationY:CGFloat) {
-        self.merchantModel = model
+    mutating func setData(merchant:MerchantImpl?, topView:UIView, animationY:CGFloat) {
+        self.merchant = merchant
         self.cellTopView = topView
         self.positionY = animationY
     }

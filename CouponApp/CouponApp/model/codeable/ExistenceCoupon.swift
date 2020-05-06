@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct CheckCouponModel:Codable {
+struct ExistenceCoupon:Codable {
     let isCouponData:Bool //쿠폰 여부
     
-    private enum CheckCouponKeys: String, CodingKey {
+    private enum ExistenceCouponKeys: String, CodingKey {
         case isCouponData
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CheckCouponKeys.self)
+        let container = try decoder.container(keyedBy: ExistenceCouponKeys.self)
         self.isCouponData = try container.decode(Bool.self, forKey: .isCouponData)
     }
 }

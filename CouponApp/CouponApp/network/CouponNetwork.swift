@@ -13,10 +13,10 @@ import SVProgressHUD
 /*
      쿠폰 네트워크 관리자
  */
-class CouponNetwork : CouponDataProtocol {
+class CouponNetwork : DataController {
     var mainUrl:String = "http://192.168.0.11:8080/CouponProject/"
     
-    func signup(phoneNumber:String, password:String, name:String, complete: @escaping CouponBaseCallBack) {
+    func signup(phoneNumber:String, password:String, name:String, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)user_sign"
         let parameter = ["phone_number":phoneNumber,"password":password,"name":name]
         CouponNetwork.showProgress()
@@ -31,7 +31,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func getUserData(phoneNumber:String, complete: @escaping CouponBaseCallBack) {
+    func getUserData(phoneNumber:String, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)user_data"
         let parameter = ["phone_number":phoneNumber, "mode":"GetUserInfo"]
         CouponNetwork.showProgress()
@@ -40,7 +40,7 @@ class CouponNetwork : CouponDataProtocol {
                 CouponNetwork.closeProgress()
                 if CouponNetwork.checkResponseData(response) {
                     do {
-                        CouponSignleton.instance.userData =  try JSONDecoder().decode(UserModel.self, from: response.data!)
+                        CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
                         complete(true)
                     } catch {
                          complete(false)
@@ -51,7 +51,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func checkPassword(phoneNumber:String, password:String, complete: @escaping CouponBaseCallBack) {
+    func checkPassword(phoneNumber:String, password:String, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)user_data"
         let parameter = ["phone_number":phoneNumber, "password":password, "mode":"CheckUserPassword"]
         CouponNetwork.showProgress()
@@ -60,7 +60,7 @@ class CouponNetwork : CouponDataProtocol {
                 CouponNetwork.closeProgress()
                 if CouponNetwork.checkResponseData(response) {
                     do {
-                        CouponSignleton.instance.userData =  try JSONDecoder().decode(UserModel.self, from: response.data!)
+                        CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
                         complete(true)
                     } catch {
                         complete(false)
@@ -71,7 +71,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func getMerchantData(complete: @escaping CouponBaseCallBack) {
+    func getMerchantData(complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)merchant_data"
         let parameter = ["mode":"GetMerchantData"]
         CouponNetwork.showProgress()
@@ -80,7 +80,7 @@ class CouponNetwork : CouponDataProtocol {
                 CouponNetwork.closeProgress()
                 if CouponNetwork.checkResponseData(response) {
                     do {
-                        CouponSignleton.instance.merchantList = try JSONDecoder().decode(MerchantListModel.self, from: response.data!)
+                        CouponSignleton.instance.merchantList = try JSONDecoder().decode(MerchantImplList.self, from: response.data!)
                         complete(true)
                     } catch {
                         print("error \(error)")
@@ -92,7 +92,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func insertUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func insertUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)coupon_data"
         let parameter = ["mode":"InsertCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
         CouponNetwork.showProgress()
@@ -107,7 +107,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)coupon_data"
         let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
         CouponNetwork.showProgress()
@@ -116,7 +116,7 @@ class CouponNetwork : CouponDataProtocol {
                 CouponNetwork.closeProgress()
                 if CouponNetwork.checkResponseData(response) {
                     do {
-                        let checkCouponData:CheckCouponModel = try JSONDecoder().decode(CheckCouponModel.self, from: response.data!)
+                        let checkCouponData:ExistenceCoupon = try JSONDecoder().decode(ExistenceCoupon.self, from: response.data!)
                         complete(checkCouponData.isCouponData)
                     } catch {
                         complete(false)
@@ -127,7 +127,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping CouponBaseCallBack) {
+    func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)coupon_data"
         let parameter = ["mode":"DeleteCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
         CouponNetwork.showProgress()
@@ -142,14 +142,14 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponListModel?) -> Void) {
+    func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
         let fullUrl = "\(mainUrl)coupon_data"
         let parameter = ["mode":"GetCouponData","user_id":userId] as [String : Any]
         Alamofire.request(fullUrl, method:.post, parameters: parameter)
             .validate().responseJSON(completionHandler: { (response) -> Void in
                 if CouponNetwork.checkResponseData(response) {
                     do {
-                        let userCouponList:UserCouponListModel = try JSONDecoder().decode(UserCouponListModel.self, from: response.data!)
+                        let userCouponList:UserCouponList = try JSONDecoder().decode(UserCouponList.self, from: response.data!)
                         complete(true,userCouponList)
                     } catch {
                         complete(false,nil)
@@ -160,7 +160,7 @@ class CouponNetwork : CouponDataProtocol {
             })
     }
     
-    func updateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping CouponBaseCallBack) {
+    func updateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping DataCallback) {
         let fullUrl = "\(mainUrl)coupon_data"
         let parameter = ["mode":"UpdateCouponData","user_id":userId, "merchant_id":merchantId, "coupon_count":couponCount] as [String : Any]
         CouponNetwork.showProgress()
@@ -180,7 +180,7 @@ class CouponNetwork : CouponDataProtocol {
         switch response.result {
         case .success(_):
             do {
-                let respCode:RespCodeModel = try JSONDecoder().decode(RespCodeModel.self, from: response.data!)
+                let respCode:ResponseCode = try JSONDecoder().decode(ResponseCode.self, from: response.data!)
                 return respCode.isSuccess
             } catch {
                 print("error = \(error.localizedDescription)")

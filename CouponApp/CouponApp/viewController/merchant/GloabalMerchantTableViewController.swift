@@ -11,8 +11,8 @@ import UIKit
 /*
      전체 가맹점 테이블 뷰 컨트롤러
  */
-class AreasTableViewController: UITableViewController  {
-    lazy var merchantList:MerchantListModel? = {
+class GloabalMerchantTableViewController: UITableViewController  {
+    lazy var merchantList:MerchantImplList? = {
         return CouponSignleton.instance.merchantList
     }()
     
@@ -35,10 +35,10 @@ class AreasTableViewController: UITableViewController  {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        guard let model = merchantList else {
+        guard let merchantArray = merchantList else {
             return 0
         }
-        return model.list.count
+        return merchantArray.list.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,15 +52,15 @@ class AreasTableViewController: UITableViewController  {
             return
         }
         
-        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: CouponNibName.merchantInfoViewController.rawValue, bundle: nil)
+        let customPopupViewController:MerchantDetailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-            var merchantInfoModel = customPopupViewController.merchantInfoModel
-            merchantInfoModel.merchantModel = cell.model
-            merchantInfoModel.cellTopView = cell.topView
-            merchantInfoModel.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
-            merchantInfoModel.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
-            customPopupViewController.merchantInfoModel = merchantInfoModel
+            var merchantDetail = customPopupViewController.merchantDetail
+            merchantDetail.merchant = cell.merchant
+            merchantDetail.cellTopView = cell.topView
+            merchantDetail.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
+            merchantDetail.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + cell.headerTopHeight
+            customPopupViewController.merchantDetail = merchantDetail
             customPopupViewController.view.frame = window.frame
 
             window.addSubview(customPopupViewController.view)

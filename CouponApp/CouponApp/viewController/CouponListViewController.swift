@@ -25,8 +25,8 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     private var selectCouponIndex:NSInteger?
     private let dashLineLayer:CAShapeLayer = CAShapeLayer()
     
-    var userMerchantData:UserCouponModel?
-    var merchantData:MerchantModel?
+    var userMerchantData:UserCoupon?
+    var merchantData:MerchantImpl?
   
     deinit {
         dotLineView.layer.removeObserver(self, forKeyPath:"bounds")
@@ -152,7 +152,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         
         let isUseCoupon:Bool = (indexPath.row < couponCount)
         let isAnimation:Bool = (indexPath.row == selectCouponIndex)
-        cell.refreshView(isUseCoupon, isAnimaton:isAnimation,couponProtocol: merchant.index(indexPath.row))
+        cell.refreshView(isUseCoupon, isAnimaton:isAnimation, coupon: merchant.index(indexPath.row))
         return cell
     }
     

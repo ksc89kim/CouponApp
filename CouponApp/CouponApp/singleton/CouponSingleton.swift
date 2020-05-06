@@ -13,6 +13,6 @@ import UIKit
  */
 class CouponSignleton {
     static let instance = CouponSignleton()
-    var userData:UserModel?
-    var merchantList:MerchantListModel?
+    var userData:User?
+    var merchantList:MerchantImplList?
 }

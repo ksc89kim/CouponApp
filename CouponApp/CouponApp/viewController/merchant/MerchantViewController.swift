@@ -22,9 +22,9 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
     private var tabController:TabController?
     
     lazy var viewControllerArray:[UIViewController] = {
-        let areasTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.areasTableViewController.rawValue)
-        let aroundTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.aroundTableViewController.rawValue)
-        return [aroundTableViewController,areasTableViewController]
+        let globalMerchantTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.globalMerchantTableViewController.rawValue)
+        let aroundMerchantTableViewController = self.createViewController(storyboardName: CouponStoryBoardName.merchant.rawValue, withIdentifier: CouponIdentifier.aroundMerchantTableViewController.rawValue)
+        return [aroundMerchantTableViewController,globalMerchantTableViewController]
     }()
 
     override func viewDidLoad() {

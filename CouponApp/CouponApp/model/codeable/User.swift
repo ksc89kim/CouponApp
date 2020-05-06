@@ -12,7 +12,7 @@ import Foundation
      회원 데이터
  */
 
-class UserModel:Codable {
+class User:Codable {
     let phoneNumber:String
     let id:Int
     let name:String
@@ -27,14 +27,14 @@ class UserModel:Codable {
         self.init(phoneNumber:"",id: id,name:"")
     }
     
-    private enum UserModelKeys: String, CodingKey {
+    private enum UserKeys: String, CodingKey {
         case phoneNumber
         case name
         case id = "userId"
     }
     
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: UserModelKeys.self)
+        let container = try decoder.container(keyedBy: UserKeys.self)
         self.phoneNumber = (try? container.decode(String.self, forKey: .phoneNumber)) ?? ""
         self.id = try container.decode(Int.self, forKey: .id)
         self.name = (try? container.decode(String.self, forKey: .name)) ?? ""

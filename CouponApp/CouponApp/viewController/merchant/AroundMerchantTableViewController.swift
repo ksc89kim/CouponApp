@@ -12,13 +12,14 @@ import CoreLocation
 /*
      주변 가맹점 테이블 뷰 컨트롤러
  */
-class AroundTableViewController: UITableViewController , CLLocationManagerDelegate {
+class AroundMerchantTableViewController: UITableViewController , CLLocationManagerDelegate {
     private var locationManager:CLLocationManager!
-    private var merchantModelArray:[MerchantModel?]?
+    private var merchantArray:[MerchantImpl?]?
+    private let maxDistance:Double = 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        merchantModelArray = []
+        merchantArray = []
         setUI()
         setLocationManager()
     }
@@ -44,13 +45,13 @@ class AroundTableViewController: UITableViewController , CLLocationManagerDelega
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (merchantModelArray?.count)!
+        return (merchantArray?.count)!
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-        let merchantModel = merchantModelArray![indexPath.row]
-        cell.setData(data: merchantModel)
+        let merchant = merchantArray![indexPath.row]
+        cell.setData(data: merchant)
         return cell
     }
     
@@ -59,15 +60,15 @@ class AroundTableViewController: UITableViewController , CLLocationManagerDelega
             return
         }
         
-        let customPopupViewController:MerchantInfoViewController = MerchantInfoViewController(nibName: CouponNibName.merchantInfoViewController.rawValue, bundle: nil)
+        let customPopupViewController:MerchantDetailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-            var merchantInfoModel = customPopupViewController.merchantInfoModel
-            merchantInfoModel.merchantModel = cell.model
-            merchantInfoModel.cellTopView = cell.topView
-            merchantInfoModel.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
-            merchantInfoModel.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + 86
-            customPopupViewController.merchantInfoModel = merchantInfoModel
+            var merchantDetail = customPopupViewController.merchantDetail
+            merchantDetail.merchant = cell.merchant
+            merchantDetail.cellTopView = cell.topView
+            merchantDetail.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
+            merchantDetail.positionY = cell.frame.origin.y - (tableView.contentOffset.y) + cell.headerTopHeight
+            customPopupViewController.merchantDetail = merchantDetail
             customPopupViewController.view.frame = window.frame
             window.addSubview(customPopupViewController.view)
             self.addChildViewController(customPopupViewController)
@@ -77,8 +78,8 @@ class AroundTableViewController: UITableViewController , CLLocationManagerDelega
 
     // MARK: - CLLocation delegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let merchantListModel = CouponSignleton.instance.merchantList else {
-            print("merchantListModel nil")
+        guard let merchantList = CouponSignleton.instance.merchantList else {
+            print("merchantList nil")
             return
         }
         
@@ -87,20 +88,21 @@ class AroundTableViewController: UITableViewController , CLLocationManagerDelega
             return
         }
         
-        merchantModelArray?.removeAll()
+        merchantArray?.removeAll()
         let currentLocation = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
         
-        for i in 0 ..< merchantListModel.count {
-            guard let merchantModel = merchantListModel[i] else {
+        for i in 0 ..< merchantList.count {
+            guard let merchant = merchantList[i] else {
                 continue
             }
             
-            let tempLocation = CLLocation(latitude: merchantModel.latitude, longitude: merchantModel.longitude)
+            let tempLocation = CLLocation(latitude: merchant.latitude, longitude: merchant.longitude)
             let diffDistance = currentLocation.distance(from: tempLocation)
-            if  diffDistance < 1000 { // 주변 가맹점인지 여부
-                merchantModelArray?.append(merchantModel)
+            if  diffDistance < maxDistance { // 주변 가맹점인지 여부
+                merchantArray?.append(merchant)
             }
         }
+        
         tableView.reloadData()
     }
     

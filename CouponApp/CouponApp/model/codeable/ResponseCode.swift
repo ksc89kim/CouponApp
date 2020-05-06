@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct RespCodeModel: Codable {
+struct ResponseCode: Codable {
     var isSuccess:Bool
     
-    private enum RespCodeKeys: String, CodingKey {
+    private enum ResponseCodeKeys: String, CodingKey {
         case isSuccess
     }
     
     init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: RespCodeKeys.self)
+        let container = try decoder.container(keyedBy: ResponseCodeKeys.self)
         self.isSuccess = try container.decode(Bool.self, forKey: .isSuccess)
     }
 }

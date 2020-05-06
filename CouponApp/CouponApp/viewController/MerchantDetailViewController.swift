@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantInfoViewController: UIViewController {
+class MerchantDetailViewController: UIViewController {
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
@@ -20,10 +20,10 @@ class MerchantInfoViewController: UIViewController {
     @IBOutlet weak var introduceLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
-    var merchantInfoModel:MerchantInfoModel = MerchantInfoModel()
-    var titleLabel:MerchantLabel = MerchantLabel()
-    private var originalHeaderHeight:CGFloat = 163
+    var merchantDetail:MerchantDetail = MerchantDetail()
+    var titleLabel:MerchantAnimatedLabel = MerchantAnimatedLabel()
     
+    private var originalHeaderHeight:CGFloat = 163
     private var isAnimation:Bool = false
     private var _percent:CGFloat = 0.0
     private var percent:CGFloat {
@@ -59,31 +59,31 @@ class MerchantInfoViewController: UIViewController {
     }
     
     func setUI(){
-        titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: merchantInfoModel.titleFontSize)
+        titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: merchantDetail.titleFontSize)
         titleLabel.textColor = UIColor.white
-        titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantInfoModel.cellFontSize)
+        titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantDetail.cellFontSize)
         headerView.addSubview(titleLabel)
         
         
-        merchantInfoModel.originalHeaderHeight = headerHeightConstraint.constant
-        if let merchant = merchantInfoModel.merchantModel {
+        merchantDetail.originalHeaderHeight = headerHeightConstraint.constant
+        if let merchant = merchantDetail.merchant {
             titleLabel.text = merchant.name
             titleLabel.sizeToFit()
             
-            headerView.backgroundColor = merchantInfoModel.cellTopView?.backgroundColor
-            headerImageView.setCropRoundedImage(image: merchantInfoModel.cellTopLogoImage ?? UIImage())
+            headerView.backgroundColor = merchantDetail.cellTopView?.backgroundColor
+            headerImageView.setCropRoundedImage(image: merchantDetail.cellTopLogoImage ?? UIImage())
             introduceLabel.text = merchant.content
             let userId = CouponSignleton.instance.userData?.id
             
             CouponData.checkUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
-                self?.merchantInfoModel.isUserCoupon = isSuccessed
+                self?.merchantDetail.isUserCoupon = isSuccessed
                 self?.setButtonTitle()
             })
         }
     }
     
     func setButtonTitle() {
-        if merchantInfoModel.isUserCoupon {
+        if merchantDetail.isUserCoupon {
             actionButton.setTitle("삭제하기", for: .normal)
         } else {
             actionButton.setTitle("추가하기", for: .normal)
@@ -91,14 +91,14 @@ class MerchantInfoViewController: UIViewController {
     }
     
     func setAnimationPercent(percent:CGFloat) {
-        let haederMovePosition = (merchantInfoModel.positionY * percent) / 100
-        let headerWidth = ((self.view.frame.width - merchantInfoModel.getCellWidth()) * percent) / 100
-        let headerHeight = ((originalHeaderHeight - merchantInfoModel.getCellHeight()) * percent) / 100
+        let haederMovePosition = (merchantDetail.positionY * percent) / 100
+        let headerWidth = ((self.view.frame.width - merchantDetail.getCellWidth()) * percent) / 100
+        let headerHeight = ((originalHeaderHeight - merchantDetail.getCellHeight()) * percent) / 100
         let contentMovePosition = ((self.view.frame.height - originalHeaderHeight) * percent) / 100
       
-        headerTopConstraint.constant = merchantInfoModel.positionY - haederMovePosition
-        headerWidthConstraint.constant = merchantInfoModel.getCellWidth() + headerWidth
-        headerHeightConstraint.constant = merchantInfoModel.getCellHeight() + headerHeight
+        headerTopConstraint.constant = merchantDetail.positionY - haederMovePosition
+        headerWidthConstraint.constant = merchantDetail.getCellWidth() + headerWidth
+        headerHeightConstraint.constant = merchantDetail.getCellHeight() + headerHeight
         contentTopConstraint.constant = (self.view.frame.height - originalHeaderHeight) - contentMovePosition
         
         titleLabel.setPercent(percent: percent)
@@ -173,29 +173,29 @@ class MerchantInfoViewController: UIViewController {
     }
 
     @IBAction func onEvent(_ sender: Any) {
-        guard let merchant = merchantInfoModel.merchantModel  else {
+        guard let merchant = merchantDetail.merchant  else {
             return
         }
         
-        if merchantInfoModel.isUserCoupon {
-            deleteCoupon(merchantModel: merchant)
+        if merchantDetail.isUserCoupon {
+            deleteCoupon(merchant: merchant)
         } else { //추가하기
-            insertCoupon(merchantModel: merchant)
+            insertCoupon(merchant: merchant)
         }
     }
     
     //삭제하기
-    func deleteCoupon(merchantModel:MerchantModel){
+    func deleteCoupon(merchant:MerchantImpl){
         let userId = CouponSignleton.instance.userData?.id
         let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
         let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
         let deleteCouponSuccessTitle = NSLocalizedString("deleteCouponSuccessTitle", comment: "")
         let deleteCouponSuccessContent = NSLocalizedString("deleteCouponSuccessContent", comment: "")
         
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { [weak self] isSuccessed in
+        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.showCustomPopup(title: deleteCouponSuccessTitle, message: deleteCouponSuccessContent)
-                self?.merchantInfoModel.isUserCoupon = false
+                self?.merchantDetail.isUserCoupon = false
                 self?.setButtonTitle()
             } else {
                 self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
@@ -204,21 +204,21 @@ class MerchantInfoViewController: UIViewController {
     }
     
     //추가하기
-    func insertCoupon(merchantModel:MerchantModel){
+    func insertCoupon(merchant:MerchantImpl){
         let userId = CouponSignleton.instance.userData?.id
         let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
         let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
         let insertCouponSuccessTitle = NSLocalizedString("insertCouponSuccessTitle", comment: "")
         let insertCouponSuccessContent = NSLocalizedString("insertCouponSuccessContent", comment: "")
 
-        CouponData.insertUserCoupon(userId: userId!, merchantId: merchantModel.merchantId, complete: { [weak self] isSuccessed in
+        CouponData.insertUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
                 self?.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
                 return
             }
             
             self?.showCustomPopup(title: insertCouponSuccessTitle, message: insertCouponSuccessContent)
-            self?.merchantInfoModel.isUserCoupon = true
+            self?.merchantDetail.isUserCoupon = true
             self?.setButtonTitle()
         })
     }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantLabel: UILabel {
+class MerchantAnimatedLabel: UILabel {
 
     var cellFont:UIFont?
     var scalePoint:CGPoint = CGPoint(x: 1, y: 1)

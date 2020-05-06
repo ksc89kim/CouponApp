@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantTextLayer: CATextLayer {
+class MerchantAnimatedTextLayer: CATextLayer {
     var uifont:UIFont? {
         didSet {
             font = uifont?.fontName as CFTypeRef

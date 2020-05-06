@@ -8,8 +8,8 @@
 
 import Foundation
 
-class UserCouponListModel:Codable, ListProtocol{
-    var list: [UserCouponModel]
+class UserCouponList:Codable, List{
+    var list: [UserCoupon]
     
     init() {
        list = []
@@ -21,6 +21,6 @@ class UserCouponListModel:Codable, ListProtocol{
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserCouponListKeys.self)
-        self.list = try container.decode([UserCouponModel].self, forKey: .list)
+        self.list = try container.decode([UserCoupon].self, forKey: .list)
     }
 }

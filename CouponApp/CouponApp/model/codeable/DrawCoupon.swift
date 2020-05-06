@@ -13,7 +13,7 @@ import FMDB
     쿠폰 그리기 UI 데이터 
  */
 
-class DrawCouponModel:Codable, MerchantProtocol, CouponProtocol {
+class DrawCoupon:Codable, Merchant, Coupon {
     var couponId:Int // 쿠폰 인덱스
     var merchantId:Int // 가맹점 ID
     let circleColor:String // 원 색상

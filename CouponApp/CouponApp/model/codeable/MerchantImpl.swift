@@ -13,7 +13,7 @@ import FMDB
  가맹점 데이터
  */
 
-class MerchantModel:Codable, MerchantProtocol {
+class MerchantImpl:Codable, Merchant {
     var merchantId:Int // 가맹점 ID
     let name:String // 가맹점 이름
     let content:String // 가맹점 소개 내용
@@ -21,11 +21,11 @@ class MerchantModel:Codable, MerchantProtocol {
     let latitude:Double //위도
     let longitude:Double //경도
     let isCouponImage:Bool //쿠폰 이미지 여부
-    var imageCouponList:[ImageCouponModel] //쿠폰 이미지 데이터
-    var drawCouponList:[DrawCouponModel] //쿠폰 그리기 데이터
+    var imageCouponList:[ImageCoupon] //쿠폰 이미지 데이터
+    var drawCouponList:[DrawCoupon] //쿠폰 그리기 데이터
     var cardBackGround:String = "000000"
     
-    private enum MerchantKeys: String, CodingKey {
+    private enum MerchantImplKeys: String, CodingKey {
         case merchantId = "id"
         case name
         case content
@@ -64,7 +64,7 @@ class MerchantModel:Codable, MerchantProtocol {
     }
     
     required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: MerchantKeys.self)
+        let container = try decoder.container(keyedBy: MerchantImplKeys.self)
         self.merchantId = try container.decode(Int.self, forKey: .merchantId)
         self.name = try container.decode(String.self, forKey: .name)
         self.content = try container.decode(String.self, forKey: .content)
@@ -72,11 +72,11 @@ class MerchantModel:Codable, MerchantProtocol {
         self.latitude = try container.decode(Double.self, forKey: .latitude)
         self.longitude = try container.decode(Double.self, forKey: .longitude)
         self.isCouponImage = try container.decode(Bool.self, forKey: .isCouponImage)
-        self.drawCouponList = (try? container.decode([DrawCouponModel].self, forKey: .drawCouponList)) ?? []
-        self.imageCouponList = (try? container.decode([ImageCouponModel].self, forKey: .imageCouponList)) ?? []
+        self.drawCouponList = (try? container.decode([DrawCoupon].self, forKey: .drawCouponList)) ?? []
+        self.imageCouponList = (try? container.decode([ImageCoupon].self, forKey: .imageCouponList)) ?? []
     }
     
-    func index(_ index:Int) -> CouponProtocol {
+    func index(_ index:Int) -> Coupon {
         return isCouponImage ? imageCouponList[index] : drawCouponList[index]
     }
     

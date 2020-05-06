@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CouponViewProtocol {
+protocol CouponView {
     var isUseCoupon:Bool { get set }
 }

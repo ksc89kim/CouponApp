@@ -12,9 +12,9 @@ import UIKit
      회원 가맹점(쿠폰) 테이블 뷰
      - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
-class UserTableViewController : UITableViewController {
-    var userCouponList:UserCouponListModel? // 회원 쿠폰 정보
-    lazy var merchantList:MerchantListModel? = {
+class UserMerchantTableViewController : UITableViewController {
+    var userCouponList:UserCouponList? // 회원 쿠폰 정보
+    lazy var merchantList:MerchantImplList? = {
         return CouponSignleton.instance.merchantList
     }()
     
@@ -71,11 +71,11 @@ class UserTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
 
-        let userCouponModel = self.userCouponList?[indexPath.row]
-        let merchantModel = merchantList?.index(merchantId: userCouponModel?.merchantId)
-        cell.titleLabel.text = merchantModel?.name
-        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchantModel?.cardBackGround)!)
-        cell.logoImageView.downloadedFrom(link:(merchantModel?.logoImageUrl)!)
+        let userCoupon = self.userCouponList?[indexPath.row]
+        let merchant = merchantList?.index(merchantId: userCoupon?.merchantId)
+        cell.titleLabel.text = merchant?.name
+        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchant?.cardBackGround)!)
+        cell.logoImageView.downloadedFrom(link:(merchant?.logoImageUrl)!)
         
         return cell
     }
@@ -86,8 +86,8 @@ class UserTableViewController : UITableViewController {
     
     override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            let userMerchantModel = userCouponList?[indexPath.row]
-            if(deleteCoupon(merchantId:userMerchantModel?.merchantId)) {
+            let userMerchant = userCouponList?[indexPath.row]
+            if(deleteCoupon(merchantId:userMerchant?.merchantId)) {
                 userCouponList?.remove(indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             }

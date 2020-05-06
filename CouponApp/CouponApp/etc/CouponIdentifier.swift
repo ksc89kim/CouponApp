@@ -11,8 +11,8 @@ import Foundation
 enum CouponIdentifier:String{
     // viewController identifier
     case loginNavigationController = "loginNavigationController"
-    case areasTableViewController = "areasTableViewController"
-    case aroundTableViewController = "aroundTableViewController"
+    case globalMerchantTableViewController = "globalMerchantTableViewController"
+    case aroundMerchantTableViewController = "aroundMerchantTableViewController"
 
     // show segue identifier
     case showSignupViewController = "showSignupViewController"

@@ -12,12 +12,12 @@ import UIKit
      쿠폰 그리기 뷰
      - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
  */
-class CouponDrawView: UIView, CouponViewProtocol {
-    var model:DrawCouponModel?
+class CouponDrawView: UIView, CouponView {
+    var drawCoupon:DrawCoupon?
     var isCheckBoxAnimation:Bool = false
     var isUseCoupon: Bool = false {
         didSet {
-            if model != nil {
+            if drawCoupon != nil {
                 setNeedsDisplay()
             }
         }
@@ -31,28 +31,28 @@ class CouponDrawView: UIView, CouponViewProtocol {
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        guard model != nil else { return }
+        guard drawCoupon != nil else { return }
         
         let dotPath = UIBezierPath(ovalIn: rect)
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = dotPath.cgPath
-        shapeLayer.fillColor = UIColor.hexStringToUIColor(hex: (model?.circleColor)!).cgColor
+        shapeLayer.fillColor = UIColor.hexStringToUIColor(hex: (drawCoupon?.circleColor)!).cgColor
         layer.addSublayer(shapeLayer)
     
-        if (model?.isRing)! { drawRingFittingInsideView(rect) }
+        if (drawCoupon?.isRing)! { drawRingFittingInsideView(rect) }
         if (isUseCoupon) { drawCheckFittingInsideView(rect) }
     }
     
     // 링 그리기
     func drawRingFittingInsideView(_ rect: CGRect) {
-        let hw:CGFloat = (model?.ringThickness)!/2
+        let hw:CGFloat = (drawCoupon?.ringThickness)!/2
         let circlePath = UIBezierPath(ovalIn: rect.insetBy(dx: hw,dy: hw) )
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = circlePath.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.ringColor)!).cgColor
-        shapeLayer.lineWidth = (model?.ringThickness)!
+        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (drawCoupon?.ringColor)!).cgColor
+        shapeLayer.lineWidth = (drawCoupon?.ringThickness)!
         layer.addSublayer(shapeLayer)
     }
     
@@ -72,8 +72,8 @@ class CouponDrawView: UIView, CouponViewProtocol {
         
         let shapeLayer = CAShapeLayer()
         shapeLayer.path = path.cgPath
-        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (model?.checkLineColor)!).cgColor
-        shapeLayer.lineWidth = (model?.checkLineWidth)!
+        shapeLayer.strokeColor = UIColor.hexStringToUIColor(hex: (drawCoupon?.checkLineColor)!).cgColor
+        shapeLayer.lineWidth = (drawCoupon?.checkLineWidth)!
         shapeLayer.lineCap = "round"
         
         if isCheckBoxAnimation {

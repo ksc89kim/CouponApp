@@ -14,5 +14,5 @@ enum CouponNibName:String{
     case merchantTableViewCell = "MerchantTableViewCell"
     
     // viewController
-    case merchantInfoViewController = "MerchantInfoViewController"
+    case merchantDetailViewController = "MerchantDetailViewController"
 }

@@ -12,18 +12,18 @@ class CouponCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var drawView: CouponDrawView!
     @IBOutlet weak var imageView: CouponImageView!
     
-    func refreshView(_ isUseCoupon:Bool, isAnimaton:Bool, couponProtocol:CouponProtocol) {
-        let imageModel:ImageCouponModel? = couponProtocol as? ImageCouponModel
-        if imageModel != nil {
+    func refreshView(_ isUseCoupon:Bool, isAnimaton:Bool, coupon:Coupon) {
+        let imageCoupon:ImageCoupon? = coupon as? ImageCoupon
+        if imageCoupon != nil {
             drawView.isHidden = true
             imageView.isHidden = false
-            imageView.model = imageModel
+            imageView.imageCoupon = imageCoupon
             imageView.isUseCoupon = isUseCoupon
         } else {
             drawView.isHidden = false
             imageView.isHidden = true
             drawView.isCheckBoxAnimation = isAnimaton
-            drawView.model = couponProtocol as? DrawCouponModel
+            drawView.drawCoupon = coupon as? DrawCoupon
             drawView.isUseCoupon = isUseCoupon
         }
     }
