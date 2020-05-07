@@ -18,7 +18,7 @@ class MerchantTableViewCell: UITableViewCell {
     
     let headerTopHeight:CGFloat = 86
     let dashLineLayer:CAShapeLayer = CAShapeLayer()
-    var merchant:MerchantImpl?
+    weak var merchant:MerchantImpl?
     
     deinit {
         lineView.layer.removeObserver(self, forKeyPath: "bounds")

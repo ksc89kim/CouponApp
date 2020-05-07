@@ -14,7 +14,6 @@ import FMDB
  */
 
 class DrawCoupon:Codable, Merchant, CouponUI {
-    
 //     CouponUI
     var couponId:Int // 쿠폰 인덱스
     var isEvent:Bool // 이벤트 여부

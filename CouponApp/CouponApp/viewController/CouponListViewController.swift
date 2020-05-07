@@ -21,7 +21,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var leftRoundedView: UIView!
     @IBOutlet weak var rightRoundedView: UIView!
     
-    private var cellSize:CGSize!
+    private let cellSize:CGSize = CGSize(width: 50 , height:50)
     private var selectCouponIndex:NSInteger?
     private let dashLineLayer:CAShapeLayer = CAShapeLayer()
     
@@ -44,7 +44,6 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     func setUI() {
         self.navigationItem.title = merchantData?.name
-        cellSize = CGSize(width: 50 , height:50)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

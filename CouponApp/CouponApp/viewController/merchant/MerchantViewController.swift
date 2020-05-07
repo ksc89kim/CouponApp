@@ -17,7 +17,6 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!
 
-    private var currentTabBtn:UIButton? // 현재 등록된 탭 버튼
     private var pageController:UIPageViewController? // 페이지 컨트롤러
     private var tabController:TabController?
     

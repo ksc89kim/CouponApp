@@ -14,10 +14,10 @@ import UIKit
 
 struct MerchantDetail {
     var originalHeaderHeight:CGFloat = 0     //기존 헤더 높이
-    var merchant:MerchantImpl? // 가맹점 정보
     var isUserCoupon:Bool = false // 사용자 쿠폰 여부
     var positionY:CGFloat = 0// 애니메이션 시작점 Y
-    
+    var merchant:MerchantImpl? // 가맹점 정보
+
     // 이전 셀에 대한 정보
     weak var cellTopView:UIView?
     weak var cellTopLogoImage:UIImage?
