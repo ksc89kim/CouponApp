@@ -152,7 +152,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         var coupon:CouponUI = merchant.index(indexPath.row)
         coupon.isUseCoupon = (indexPath.row < couponCount)
         coupon.isAnimation = (indexPath.row == selectCouponIndex)
-        cell.refreshView(coupon: coupon)
+        cell.updateUI(coupon: coupon)
         
         return cell
     }

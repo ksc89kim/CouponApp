@@ -9,21 +9,23 @@
 import UIKit
 
 /*
-     쿠폰 이미지 뷰
-     - UIImageView를 통한 쿠폰 이미지 뷰
+ 쿠폰 이미지 뷰
+ - UIImageView를 통한 쿠폰 이미지 뷰
  */
-class CouponImageView: UIView {
-    var imageCoupon:ImageCoupon? {
+class CouponImageView: UIView , CouponView{
+    @IBOutlet var couponImage:UIImageView!
+    var uiData: CouponUI? {
         didSet {
-            if (imageCoupon?.isUseCoupon)! {
-                couponImage.image = UIImage(named: (imageCoupon?.selectImage)!)
-            } else {
-                couponImage.image = UIImage(named: (imageCoupon?.normalImage)!)
-            }
+            updateUI()
         }
     }
     
-    @IBOutlet var couponImage:UIImageView!
+    func updateUI() {
+        if let imageCoupon = uiData as? ImageCoupon {
+            let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage:imageCoupon.normalImage
+            couponImage.image = UIImage(named: imagePath)
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -12,16 +12,15 @@ class CouponCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var drawView: CouponDrawView!
     @IBOutlet weak var imageView: CouponImageView!
     
-    func refreshView(coupon:CouponUI) {
-        let imageCoupon:ImageCoupon? = coupon as? ImageCoupon
-        if imageCoupon != nil {
+    func updateUI(coupon:CouponUI) {
+        if coupon is ImageCoupon {
             drawView.isHidden = true
             imageView.isHidden = false
-            imageView.imageCoupon = imageCoupon
+            imageView.uiData = coupon
         } else {
             drawView.isHidden = false
             imageView.isHidden = true
-            drawView.drawCoupon = coupon as? DrawCoupon
+            drawView.uiData = coupon
         }
     }
     

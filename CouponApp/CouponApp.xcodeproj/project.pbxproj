@@ -70,6 +70,8 @@
 		A4DB788E220ED44000EE23D2 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4DB788B220ED44000EE23D2 /* NotoSansCJKkr-Bold.otf */; };
 		A4DB788F220ED44000EE23D2 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4DB788C220ED44000EE23D2 /* NotoSansCJKkr-Medium.otf */; };
 		A4DB7890220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */; };
+		A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */; };
+		A4EFCE1824692CA3003385D9 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE1724692CA3003385D9 /* CouponView.swift */; };
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC047F82200C66170070CC5D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* LoginViewController.swift */; };
@@ -178,6 +180,8 @@
 		A4DB788B220ED44000EE23D2 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
 		A4DB788C220ED44000EE23D2 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
 		A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampDrawPath.swift; sourceTree = "<group>"; };
+		A4EFCE1724692CA3003385D9 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
 		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +288,7 @@
 			children = (
 				A4EF22A224613B7800692B61 /* codeable */,
 				A407E56922801FD7007B7C18 /* MerchantDetail.swift */,
+				A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				A4B9E79E2462A6A80070A277 /* CouponController.swift */,
 				59BE1D1E21197E140082F04E /* Merchant.swift */,
 				59BE1D20211980570082F04E /* CouponUI.swift */,
+				A4EFCE1724692CA3003385D9 /* CouponView.swift */,
 				59A43FA92124062F0099581D /* List.swift */,
 			);
 			path = protocol;
@@ -758,6 +764,7 @@
 				A425C9E722D9D7AB00093D8E /* CouponNibName.swift in Sources */,
 				CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */,
 				CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */,
+				A4EFCE1824692CA3003385D9 /* CouponView.swift in Sources */,
 				CCB5C7A6202BE0EF00CBBEB5 /* User.swift in Sources */,
 				59A43FA22123FC7A0099581D /* ResponseCode.swift in Sources */,
 				A4DB78852206CE4400EE23D2 /* UIViewExtensions.swift in Sources */,
@@ -805,6 +812,7 @@
 				A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */,
 				59A43FAA2124062F0099581D /* List.swift in Sources */,
 				A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */,
+				A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */,
 				CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */,
 				59BE1D21211980570082F04E /* CouponUI.swift in Sources */,
 				596303A51F4314E3000E2701 /* CouponListViewController.swift in Sources */,
