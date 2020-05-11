@@ -331,11 +331,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundRoundedView" destination="zey-eu-fIC" id="O5X-og-6Hg"/>
-                        <outlet property="bottomRoundedView" destination="fZ1-0Q-ilC" id="3J5-F6-sa0"/>
+                        <outlet property="bottomButtonRoundedView" destination="fZ1-0Q-ilC" id="SyX-hR-CtN"/>
                         <outlet property="dotLineView" destination="Ck5-eM-Ct1" id="SMP-7F-i3P"/>
-                        <outlet property="leftRoundedView" destination="tv8-Gw-Zok" id="neA-a1-a0q"/>
+                        <outlet property="leftHoleView" destination="tv8-Gw-Zok" id="2o7-hF-r5e"/>
                         <outlet property="myCollectionView" destination="ebv-4f-ACv" id="hgV-6Q-eej"/>
-                        <outlet property="rightRoundedView" destination="gY3-iB-ox5" id="xy5-hL-AVB"/>
+                        <outlet property="rightHoleView" destination="gY3-iB-ox5" id="D64-cv-3FZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>
