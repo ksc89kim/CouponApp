@@ -9,7 +9,7 @@
 import UIKit
 
 /*
-    인트로 뷰컨트롤러
+ 인트로 뷰컨트롤러
  */
 class IntroViewController: UIViewController {
     @IBOutlet weak var stampView: IntroStampView!
@@ -17,7 +17,7 @@ class IntroViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setMerchantData()
+        self.loadMerchantData()
         self.stampView.completion = { [weak self] in
             self?.fadeAnimation()
         };
@@ -28,59 +28,73 @@ class IntroViewController: UIViewController {
     }
     
     // MARK: - Animation Function
+    
     func fadeAnimation() {
         self.backgroundView.alpha = 1
         UIView.animate(withDuration: 0.3,
                        animations: { [weak self] in
-                            self?.backgroundView.alpha = 0
-                        },
+                        self?.backgroundView.alpha = 0
+            },
                        completion: { [weak self] finished in
-                            if finished {
-                                self?.backgroundView.isHidden = true
-                            }
+                        if finished {
+                            self?.backgroundView.isHidden = true
                         }
+            }
         )
     }
     
-    // MARK: - Get Data Function
-    func setMerchantData() {
-        guard  let bringSubView = self.backgroundView else {
-             print("backgorundView nil");
-            return
-        }
-        
-        let loginViewController =  self.createViewController(storyboardName:CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
+    // MARK: - Get Data
 
+    func getPhoneNumber() -> String? {
+        return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
+    }
+    
+    // MARK: - Load Data
+    
+    func loadMerchantData() {
         CouponData.loadMerchantData(complete: { [weak self] isSuccessed in
             if isSuccessed {
-                let phoneNumberString = UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
-                if let phoneNumber = phoneNumberString {
-                    self?.setUserData(phoneNumber: phoneNumber)
+                if let phoneNumber = self?.getPhoneNumber() {
+                    self?.loadUserData(phoneNumber: phoneNumber)
                 } else {
-                    self?.addViewController(viewController: loginViewController, bringSubView:bringSubView)
+                    self?.showLoginViewController()
                 }
             } else {
-                self?.addViewController(viewController: loginViewController, bringSubView:bringSubView)
+                self?.showLoginViewController()
             }
         })
     }
     
-    func setUserData(phoneNumber:String) {
+    func loadUserData(phoneNumber:String) {
         CouponData.loadUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
-            guard let bringSubView = self?.backgroundView else {
-                print("backgorundView nil");
-                return;
-            }
-            
             if isSuccessed {
-                let mainViewcontroller =  self?.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
-                self?.addViewController(viewController: mainViewcontroller ?? UIViewController(),bringSubView:bringSubView)
-
+                self?.showMainViewController()
             } else {
-                let loginViewController =  self?.createViewController(storyboardName: CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
-                self?.addViewController(viewController: loginViewController ?? UIViewController(),bringSubView:bringSubView)
+                self?.showLoginViewController()
             }
         })
     }
-
+    
+    // MARK: - Show ViewController
+    
+    func showLoginViewController() {
+        guard let bringSubView = self.backgroundView else {
+            print("showLoginViewController - backgorundView nil")
+            return
+        }
+        
+        let loginViewController =  self.createViewController(storyboardName: CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
+        self.addViewController(viewController: loginViewController,bringSubView:bringSubView)
+    }
+    
+    func showMainViewController() {
+        guard let bringSubView = self.backgroundView else {
+            print("showMainViewController - backgorundView nil")
+            return
+        }
+        
+        let mainViewcontroller =  self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+        self.addViewController(viewController: mainViewcontroller,bringSubView:bringSubView)
+    }
+    
 }
