@@ -10,12 +10,14 @@ import UIKit
 import AnimatedTextInput
 
 /*
-     가입 뷰컨트롤러
+    가입 뷰컨트롤러
  */
 class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     @IBOutlet weak var nameTextInput: AnimatedTextInput!
     @IBOutlet weak var phoneNumberTextInput: AnimatedTextInput!
     @IBOutlet weak var passwordTextInput: AnimatedTextInput!
+    
+    private let maxPhoneNumber:Int = 11
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +27,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
@@ -41,20 +43,35 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     
     // MARK: - Set Function
     func setUI(){
+        setNameTextInput()
+        setPhoneNumberTextInput()
+        setPasswordTextInput()
+    }
+    
+    func setNameTextInput() {
         nameTextInput.placeHolderText  = "UserName"
         nameTextInput.style = CustomTextInputStyle()
-        
+    }
+    
+    func setPhoneNumberTextInput() {
         phoneNumberTextInput.placeHolderText  = "PhoneNumber"
         phoneNumberTextInput.type = .phone;
         phoneNumberTextInput.delegate = self
         phoneNumberTextInput.style = CustomTextInputStyle()
-        
+    }
+    
+    func setPasswordTextInput() {
         passwordTextInput.placeHolderText  = "Password"
         passwordTextInput.type = .password(toggleable: true)
-        phoneNumberTextInput.delegate = self
         passwordTextInput.style = CustomTextInputStyle()
     }
     
+    // MARK: - Get Function
+    
+    func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
+        return animatedTextInput.text?.count ?? 0
+    }
+        
     // MARK: - Event Function
     @IBAction func onSignUp(_ sender: Any) {
         let signupFailTitle = "signupFailTitle".localized
@@ -74,7 +91,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
             self.showCustomPopup(title: signupFailTitle, message:"passwordNeedInput".localized)
             return
         }
-
+        
         CouponData.signup(phoneNumber: phoneNumberText, password: passwordText, name: nameText, complete:{ [weak self] isSuccessed in
             guard isSuccessed else {
                 self?.showCustomPopup(title: signupFailTitle, message: signupFailContent)
@@ -84,7 +101,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
             CouponData.loadUserData(phoneNumber: phoneNumberText, complete: { [weak self] isSuccessed in
                 if isSuccessed {
                     UserDefaults.standard.set(phoneNumberText, forKey: DefaultKey.phoneNumber.rawValue)
-                    self?.goMain()
+                    self?.showMainViewController()
                 } else {
                     self?.showCustomPopup(title: signupFailTitle, message: signupFailContent)
                 }
@@ -93,21 +110,20 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     }
     
     // MARK: - Etc Function
-    func goMain() {
+    func showMainViewController() {
         let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
         mainViewController.modalPresentationStyle = .fullScreen
         self.present(mainViewController, animated: true, completion: nil)
     }
     
     func animatedTextInput(animatedTextInput: AnimatedTextInput, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        let currentCharacterCount = animatedTextInput.text?.count ?? 0
-        if range.length + range.location > currentCharacterCount {
+        if range.length + range.location > getCurrentTextInputCount(animatedTextInput:animatedTextInput) {
             return false
         }
         
         if (animatedTextInput == phoneNumberTextInput) {
-            let newLength = currentCharacterCount + string.count - range.length
-            return newLength <= 11
+            let newLength = getCurrentTextInputCount(animatedTextInput:animatedTextInput) + string.count - range.length
+            return newLength <= maxPhoneNumber
         }
         
         return true
