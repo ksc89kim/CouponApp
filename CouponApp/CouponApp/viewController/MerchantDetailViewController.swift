@@ -25,16 +25,17 @@ class MerchantDetailViewController: UIViewController, CouponController{
     
     private var originalHeaderHeight:CGFloat = 163
     private var isAnimation:Bool = false
+    private let maxPercent:CGFloat = 100
     private var _percent:CGFloat = 0.0
     private var percent:CGFloat {
         get {
             return _percent
         }
         set(newValue){
-            if newValue > 0 && newValue < 100 {
+            if newValue > 0 && newValue < maxPercent {
                 _percent = newValue
-            } else if newValue >= 100 {
-                _percent = 100
+            } else if newValue >= maxPercent {
+                _percent = maxPercent
             } else {
                 _percent = 0
             }
@@ -47,9 +48,19 @@ class MerchantDetailViewController: UIViewController, CouponController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
-        self.view.addGestureRecognizer(panGesture)
+        
         setUI()
+        setPanGesture()
+        
+        guard let merchant = merchantDetail.merchant else {
+            print("merchant nil")
+            return
+        }
+        
+        CouponData.checkUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
+            self?.merchantDetail.isUserCoupon = isSuccessed
+            self?.updateActionButtonUI()
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,30 +69,55 @@ class MerchantDetailViewController: UIViewController, CouponController{
         self.openAnimation()
     }
     
+    // MARK: - 제스처 세팅
+    
+    private func setPanGesture() {
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(_:)))
+        self.view.addGestureRecognizer(panGesture)
+    }
+    
+    // MARK: - UI 세팅
+
     private func setUI(){
+        setHeaderUI()
+        setIntroduceUI()
+    }
+    
+    private func setHeaderUI(){
+        setTitleUI()
+        
+        merchantDetail.originalHeaderHeight = headerHeightConstraint.constant
+        headerView.backgroundColor = merchantDetail.cellBackgroundColor
+        headerImageView.setCropRoundedImage(image: merchantDetail.getCellImage())
+    }
+    
+    private func setTitleUI(){
+        guard let merchant = merchantDetail.merchant else {
+            print("merchant nil")
+            return
+        }
+        
         titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: merchantDetail.titleFontSize)
         titleLabel.textColor = UIColor.white
         titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantDetail.cellFontSize)
         headerView.addSubview(titleLabel)
         
-        merchantDetail.originalHeaderHeight = headerHeightConstraint.constant
-        if let merchant = merchantDetail.merchant {
-            titleLabel.text = merchant.name
-            titleLabel.sizeToFit()
-            
-            headerView.backgroundColor = merchantDetail.cellTopView?.backgroundColor
-            headerImageView.setCropRoundedImage(image: merchantDetail.cellTopLogoImage ?? UIImage())
-            introduceLabel.text = merchant.content
-            let userId = CouponSignleton.instance.userData?.id
-            
-            CouponData.checkUserCoupon(userId: userId!, merchantId: merchant.merchantId, complete: { [weak self] isSuccessed in
-                self?.merchantDetail.isUserCoupon = isSuccessed
-                self?.setButtonTitle()
-            })
-        }
+        titleLabel.text = merchant.name
+        titleLabel.sizeToFit()
     }
     
-    private func setButtonTitle() {
+    private func setIntroduceUI() {
+        guard let merchant = merchantDetail.merchant else {
+            print("merchant nil")
+            return
+        }
+        
+        introduceLabel.text = merchant.content
+    }
+    
+    // MARK: - 하단 버튼 업데이트
+
+    private func updateActionButtonUI() {
         if merchantDetail.isUserCoupon {
             actionButton.setTitle("삭제하기", for: .normal)
         } else {
@@ -89,30 +125,40 @@ class MerchantDetailViewController: UIViewController, CouponController{
         }
     }
     
+    // MARK: - 애니메이션
+
     private func setAnimationPercent(percent:CGFloat) {
+        setHeaderAnimationPercent(percent: percent)
+        setContentAnimationPercent(percent: percent)
+    }
+    
+    private func setHeaderAnimationPercent(percent:CGFloat) {
         let haederMovePosition = (merchantDetail.positionY * percent) / 100
         let headerWidth = ((self.view.frame.width - merchantDetail.getCellWidth()) * percent) / 100
         let headerHeight = ((originalHeaderHeight - merchantDetail.getCellHeight()) * percent) / 100
-        let contentMovePosition = ((self.view.frame.height - originalHeaderHeight) * percent) / 100
-      
+        
         headerTopConstraint.constant = merchantDetail.positionY - haederMovePosition
         headerWidthConstraint.constant = merchantDetail.getCellWidth() + headerWidth
         headerHeightConstraint.constant = merchantDetail.getCellHeight() + headerHeight
-        contentTopConstraint.constant = (self.view.frame.height - originalHeaderHeight) - contentMovePosition
         
         titleLabel.setPercent(percent: percent)
         titleLabel.setPosition(x: headerWidthConstraint.constant - 15, y: 20)
+    }
+    
+    private func setContentAnimationPercent(percent:CGFloat) {
+        let contentMovePosition = ((self.view.frame.height - originalHeaderHeight) * percent) / 100
+        contentTopConstraint.constant = (self.view.frame.height - originalHeaderHeight) - contentMovePosition
     }
     
     private func openAnimation(){
         isAnimation = true
         self.view.layoutIfNeeded()
         UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-            self?.setAnimationPercent(percent:100)
+            self?.setAnimationPercent(percent:self?.maxPercent ?? 100)
             self?.view.layoutIfNeeded()
             }, completion: { [weak self] (isSuccess) in
                 if isSuccess {
-                    self?.percent = 100
+                    self?.percent = self?.maxPercent ?? 100
                     self?.isAnimation = false
                 }
         })
@@ -122,8 +168,8 @@ class MerchantDetailViewController: UIViewController, CouponController{
         isAnimation = true
         self.view.layoutIfNeeded()
         UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-                self?.setAnimationPercent(percent:0)
-                self?.view.layoutIfNeeded()
+            self?.setAnimationPercent(percent:0)
+            self?.view.layoutIfNeeded()
             }, completion: { [weak self] (isSucess) in
                 if isSucess {
                     self?.percent = 0
@@ -135,6 +181,35 @@ class MerchantDetailViewController: UIViewController, CouponController{
         })
     }
     
+    private func moveUI(direction:PanDirection) {
+        switch direction {
+        case PanDirection.down:
+            self.percent -= 1
+            break
+        case PanDirection.up:
+            self.percent += 1
+            break
+        default:
+            break
+        }
+    }
+    
+    private func moveAnimation(state: UIGestureRecognizer.State) {
+        switch state {
+        case .ended,.cancelled, .failed:
+            if _percent < 90 {
+                closeAnimation()
+            } else {
+                openAnimation()
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    // MARK: - 제스처 기능
+
     @objc func handleSwipe(_ sender:UISwipeGestureRecognizer) {
         if (sender.direction == .down) {
             closeAnimation()
@@ -146,31 +221,12 @@ class MerchantDetailViewController: UIViewController, CouponController{
             return
         }
         
-        switch (sender.direction)! {
-        case PanDirection.down:
-            self.percent -= 1
-            break
-        case PanDirection.up:
-            self.percent += 1
-            break
-        default:
-            break
-        }
-        
-        switch sender.state {
-        case .ended,.cancelled, .failed:
-            if _percent < 90 {
-                closeAnimation()
-            } else {
-                openAnimation()
-            }
-            break
-        default:
-            break
-        }
-
+        moveUI(direction: sender.direction!)
+        moveAnimation(state:sender.state)
     }
-
+    
+    // MARK: - 하단 버튼 액션
+    
     @IBAction func onEvent(_ sender: Any) {
         guard let merchant = merchantDetail.merchant  else {
             return
@@ -178,50 +234,39 @@ class MerchantDetailViewController: UIViewController, CouponController{
         
         if merchantDetail.isUserCoupon {
             deleteCoupon(merchantId: merchant.merchantId)
-        } else { //추가하기
+        } else {
             insertCoupon(merchantId: merchant.merchantId)
         }
     }
     
-    //삭제하기
+    // MARK: - CouponController
+    
     func deleteCoupon(merchantId:Int){
-        let userId = CouponSignleton.instance.userData?.id
-        let deleteCouponFailTitle = NSLocalizedString("deleteCouponFailTitle", comment: "")
-        let deleteCouponFailContent = NSLocalizedString("deleteCouponFailContent", comment: "")
-        let deleteCouponSuccessTitle = NSLocalizedString("deleteCouponSuccessTitle", comment: "")
-        let deleteCouponSuccessContent = NSLocalizedString("deleteCouponSuccessContent", comment: "")
-        
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
-            if isSuccessed {
-                self?.showCustomPopup(title: deleteCouponSuccessTitle, message: deleteCouponSuccessContent)
-                self?.merchantDetail.isUserCoupon = false
-                self?.setButtonTitle()
-            } else {
-                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
+        CouponData.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
+            guard isSuccessed else  {
+                self?.showCustomPopup(title: "deleteCouponFailTitle".localized, message: "deleteCouponFailContent".localized)
+                return
             }
+            
+            self?.showCustomPopup(title: "deleteCouponSuccessTitle".localized, message: "deleteCouponSuccessContent".localized)
+            self?.merchantDetail.isUserCoupon = false
+            self?.updateActionButtonUI()
         })
     }
     
     func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
     }
     
-    //추가하기
     func insertCoupon(merchantId:Int){
-        let userId = CouponSignleton.instance.userData?.id
-        let insertCouponFailTitle = NSLocalizedString("insertCouponFailTitle", comment: "")
-        let insertCouponFailContent = NSLocalizedString("insertCouponFailContent", comment: "")
-        let insertCouponSuccessTitle = NSLocalizedString("insertCouponSuccessTitle", comment: "")
-        let insertCouponSuccessContent = NSLocalizedString("insertCouponSuccessContent", comment: "")
-
-        CouponData.insertUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
+        CouponData.insertUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
-                self?.showCustomPopup(title: insertCouponFailTitle, message: insertCouponFailContent)
+                self?.showCustomPopup(title: "insertCouponFailTitle".localized, message: "insertCouponFailContent".localized)
                 return
             }
             
-            self?.showCustomPopup(title: insertCouponSuccessTitle, message: insertCouponSuccessContent)
+            self?.showCustomPopup(title: "insertCouponSuccessTitle".localized, message: "insertCouponSuccessContent".localized)
             self?.merchantDetail.isUserCoupon = true
-            self?.setButtonTitle()
+            self?.updateActionButtonUI()
         })
     }
 }

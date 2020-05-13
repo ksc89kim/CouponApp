@@ -20,18 +20,26 @@ class CustomPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        titleLabel.text = titleText
-        contentLabel.text = contentText
-        popupView.alpha = 0
-        let deadlineTime = DispatchTime.now() + .milliseconds(100)
-        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: { [weak self] in
-            self?.showAnimation()
-        })
+        setUI()
+        delayAnimation()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func setUI() {
+        titleLabel.text = titleText
+        contentLabel.text = contentText
+        popupView.alpha = 0
+    }
+    
+    private func delayAnimation() {
+        let deadlineTime = DispatchTime.now() + .milliseconds(100)
+        DispatchQueue.main.asyncAfter(deadline: deadlineTime, execute: { [weak self] in
+            self?.showAnimation()
+        })
     }
     
     func showAnimation() {
@@ -42,7 +50,7 @@ class CustomPopupViewController: UIViewController {
         popupView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: .curveEaseInOut, animations:{ [weak self] in
             self?.popupView.transform = .identity
-        }, completion: nil)
+            }, completion: nil)
     }
     
     func showFadeInAnimation() {
@@ -57,6 +65,7 @@ class CustomPopupViewController: UIViewController {
         if okCallback != nil {
             okCallback!()
         }
+        
         self.willMove(toParentViewController: nil)
         self.view.removeFromSuperview()
         self.removeFromParentViewController()

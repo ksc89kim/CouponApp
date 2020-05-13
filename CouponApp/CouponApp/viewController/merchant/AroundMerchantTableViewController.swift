@@ -78,6 +78,7 @@ class AroundMerchantTableViewController: UITableViewController , CLLocationManag
         merchantArray?.removeAll()
         let currentLocation = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
         
+        
         for i in 0 ..< merchantList.count {
             guard let merchant = merchantList[i] else {
                 continue

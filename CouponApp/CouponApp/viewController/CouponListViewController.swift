@@ -104,12 +104,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         
-        guard let userId = CouponSignleton.instance.userData?.id else {
-            print("onRequestCoupon - userId error")
-            return
-        }
-        
-        CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
+        CouponData.updateUesrCoupon(userId: CouponSignleton.getUserId(), merchantId: merchant.merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.userCouponData?.addCouponCount()
                 self?.selectCouponIndex = couponCount
@@ -133,12 +128,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
             return
         }
         
-        guard let userId = CouponSignleton.instance.userData?.id else {
-            print("onUseCopon - userId error")
-            return
-        }
-        
-        CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
+        CouponData.updateUesrCoupon(userId: CouponSignleton.getUserId(), merchantId: merchant.merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.showCustomPopup(title: "successUseCouponTitle".localized, message: "successUseCouponContent".localized,callback: nil)
                 self?.userCouponData?.clearCouponCount()

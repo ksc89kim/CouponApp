@@ -42,8 +42,7 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
     
     // MARK: - 유저 쿠폰 리스트 가져오기
     private func setData() {
-        let userId = CouponSignleton.instance.userData?.id
-        CouponData.loadUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
+        CouponData.loadUserCouponData(userId: CouponSignleton.getUserId(), complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
                 self?.userCouponList = userCouponList
                 if self?.userCouponList != nil {
@@ -118,8 +117,7 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
         let deleteCouponFailTitle = "deleteCouponFailTitle".localized
         let deleteCouponFailContent = "deleteCouponFailContent".localized
         
-        let userId = CouponSignleton.instance.userData?.id
-        CouponData.deleteUserCoupon(userId: userId!, merchantId: merchantId, complete: { [weak self] isSuccessed in
+        CouponData.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.userCouponList?.remove(indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)

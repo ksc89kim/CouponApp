@@ -21,11 +21,7 @@ struct CouponSqlite:DataController {
         do {
             let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
             CouponSignleton.instance.userData = User(id:userId)
-            if CouponSignleton.instance.userData?.id != 0 {
-                complete(true)
-            } else {
-                complete(false)
-            }
+            complete(CouponSignleton.isExistUseId())
         } catch {
             complete(false)
         }
@@ -35,11 +31,7 @@ struct CouponSqlite:DataController {
         do {
             let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
             CouponSignleton.instance.userData = User(id:userId)
-            if CouponSignleton.instance.userData?.id != nil {
-                complete(true)
-            } else {
-                complete(false)
-            }
+            complete(CouponSignleton.isExistUseId())
         } catch {
             complete(false)
         }

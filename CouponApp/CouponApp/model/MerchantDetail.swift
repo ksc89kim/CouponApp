@@ -19,31 +19,40 @@ struct MerchantDetail {
     var merchant:MerchantImpl? // 가맹점 정보
 
     // 이전 셀에 대한 정보
-    weak var cellTopView:UIView?
-    weak var cellTopLogoImage:UIImage?
+    var cellTopLogoImage:UIImage?
+    var cellFrame:CGRect?
+    var cellBackgroundColor:UIColor?
     
     // 폰트 관련 정보
-    var titleFontSize:CGFloat = 30
-    var cellFontSize:CGFloat = 17
+    let titleFontSize:CGFloat = 30
+    let cellFontSize:CGFloat = 17
     
     mutating func setCellData(cell:MerchantTableViewCell, offsetY:CGFloat) {
         self.merchant = cell.merchant
-        self.cellTopView = cell.topView
-        self.cellTopLogoImage = cell.logoImageView.image ?? UIImage()
+        self.cellFrame = cell.topView.frame
+        self.cellBackgroundColor = cell.topView.backgroundColor
+        self.cellTopLogoImage = cell.logoImageView.image
         self.positionY = cell.frame.origin.y - offsetY + cell.headerTopHeight
     }
     
     func getCellHeight() -> CGFloat {
-        guard let frame = cellTopView?.frame else {
+        guard let frame = self.cellFrame else {
             return 0
         }
         return frame.size.height
     }
     
     func getCellWidth() -> CGFloat {
-        guard let frame = cellTopView?.frame else {
+        guard let frame = self.cellFrame else {
             return 0
         }
         return frame.size.width
+    }
+    
+    func getCellImage() -> UIImage {
+        guard let image = cellTopLogoImage else {
+            return UIImage()
+        }
+        return image
     }
 }
