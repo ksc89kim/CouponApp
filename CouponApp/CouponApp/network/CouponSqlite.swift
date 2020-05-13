@@ -102,6 +102,4 @@ struct CouponSqlite:DataController {
             complete(false)
         }
     }
-    
-    
 }

@@ -21,12 +21,12 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
-        setData()
+        loadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setData()
+        loadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,7 +41,7 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
     }
     
     // MARK: - 유저 쿠폰 리스트 가져오기
-    private func setData() {
+    private func loadData() {
         CouponData.loadUserCouponData(userId: CouponSignleton.getUserId(), complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
                 self?.userCouponList = userCouponList
