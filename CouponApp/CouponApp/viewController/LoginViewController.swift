@@ -45,19 +45,19 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
     }
     
     // MARK: - Set Function
-    func setUI(){
+    private func setUI(){
         setPhoneNumberTextInput()
         setPasswordTextInput()
     }
     
-    func setPhoneNumberTextInput() {
+    private func setPhoneNumberTextInput() {
         phoneNumberTextInput.placeHolderText  = "PhoneNumber"
         phoneNumberTextInput.type = .phone
         phoneNumberTextInput.delegate = self
         phoneNumberTextInput.style = CustomTextInputStyle()
     }
     
-    func setPasswordTextInput() {
+    private func setPasswordTextInput() {
         passwordTextInput.placeHolderText = "Password"
         passwordTextInput.type = .password(toggleable: true)
         passwordTextInput.delegate = self
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
     }
     
     // MARK: - Get Function
-    func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
+    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
         return animatedTextInput.text?.count ?? 0
     }
     
@@ -105,13 +105,13 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
     }
     
     // MARK: - Show Function
-    func showMainViewController() {
+    private func showMainViewController() {
         let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
         mainViewController.modalPresentationStyle = .fullScreen
         self.present(mainViewController, animated: true, completion: nil)
     }
     
-    func showSignupViewController() {
+    private func showSignupViewController() {
         self.performSegue(withIdentifier:CouponIdentifier.showSignupViewController.rawValue, sender: nil)
     }
     

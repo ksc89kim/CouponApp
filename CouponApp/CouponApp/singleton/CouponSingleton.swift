@@ -11,7 +11,7 @@ import UIKit
 /*
      쿠폰 전체앱 싱글톤 클래스
  */
-class CouponSignleton {
+final class CouponSignleton {
     static let instance = CouponSignleton()
     var userData:User?
     var merchantList:MerchantImplList?

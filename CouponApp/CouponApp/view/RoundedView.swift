@@ -29,7 +29,7 @@ import UIKit
         }
     }
     
-    func updateCornerRadius() {
+    private func updateCornerRadius() {
         layer.cornerRadius = rounded ? cornerRadius : 0
         layer.masksToBounds = rounded ? true : false
     }

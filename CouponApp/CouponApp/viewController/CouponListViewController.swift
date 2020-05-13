@@ -25,7 +25,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     private var selectCouponIndex:NSInteger?
     private let dashLineLayer:CAShapeLayer = CAShapeLayer()
     
-    var userMerchantData:UserCoupon?
+    var userCouponData:UserCoupon?
     var merchantData:MerchantImpl?
     
     deinit {
@@ -42,7 +42,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func setUI() {
+    private func setUI() {
         self.navigationItem.title = merchantData?.name
         
         setBackgroundRoundedView(view:backgroundRoundedView)
@@ -53,29 +53,29 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         addDashLineAndObserver()
     }
     
-    func setBottomButtonRoundedView() {
+    private func setBottomButtonRoundedView() {
         bottomButtonRoundedView.layer.borderWidth = 1
         bottomButtonRoundedView.layer.borderColor = UIColor.couponGrayColor2.cgColor
     }
     
-    func setBackgroundRoundedView(view:UIView) {
+    private func setBackgroundRoundedView(view:UIView) {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.couponGrayColor1.cgColor
         view.layer.cornerRadius = 10
     }
     
-    func setHoleView(view:UIView) {
+    private func setHoleView(view:UIView) {
         view.layer.borderWidth = 1
         view.layer.borderColor = UIColor.couponGrayColor1.cgColor
         view.layer.cornerRadius = view.frame.size.width/2
     }
     
-    func setCollectionView() {
+    private func setCollectionView() {
         myCollectionView.setCollectionViewLayout(getCollectionViewFlowLayout(), animated: true)
         myCollectionView.reloadData()
     }
     
-    func getCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
+    private func getCollectionViewFlowLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = cellSize
@@ -85,14 +85,14 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         return layout
     }
     
-    func addDashLineAndObserver() {
+    private func addDashLineAndObserver() {
         dotLineView.addDashLine(dashLayer: dashLineLayer, color: UIColor.couponGrayColor1, lineWidth: 2)
         dotLineView.layer.addObserver(self, forKeyPath: "bounds", options: .new, context:nil)
     }
     
     // MARK: - 쿠폰 요청하기
     @IBAction func onRequestCoupon(_ sender: Any) {
-        guard let couponCount = userMerchantData?.couponCount, let merchant =  merchantData else {
+        guard let couponCount = userCouponData?.couponCount, let merchant =  merchantData else {
             print("onRequestCoupon - userMerchantData, merchantData error")
             return
         }
@@ -111,7 +111,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         
         CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: couponCount + 1, complete: { [weak self] isSuccessed in
             if isSuccessed {
-                self?.userMerchantData?.couponCount = couponCount + 1
+                self?.userCouponData?.addCouponCount()
                 self?.selectCouponIndex = couponCount
                 self?.myCollectionView.reloadData()
             } else {
@@ -122,7 +122,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     
     // MARK: - 쿠폰 사용하기
     @IBAction func onUseCopon(_ sender: Any) {
-        guard let couponCount = userMerchantData?.couponCount, let merchant = merchantData else {
+        guard let couponCount = userCouponData?.couponCount, let merchant = merchantData else {
             print("onUseCopon - userMerchantData, merchantData error")
             return
         }
@@ -141,7 +141,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
         CouponData.updateUesrCoupon(userId: userId, merchantId: merchant.merchantId, couponCount: 0, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.showCustomPopup(title: "successUseCouponTitle".localized, message: "successUseCouponContent".localized,callback: nil)
-                self?.userMerchantData?.couponCount = 0
+                self?.userCouponData?.clearCouponCount()
                 self?.myCollectionView.reloadData()
             } else {
                 self?.showCustomPopup(title:"useCouponFailTitle".localized, message:"useCouponFailContent".localized)
@@ -162,7 +162,7 @@ class CouponListViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:CouponCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath) as! CouponCollectionViewCell
         
-        guard let merchant = merchantData, let couponCount = userMerchantData?.couponCount else  {
+        guard let merchant = merchantData, let couponCount = userCouponData?.couponCount else  {
             print("collectionView - merchantData error,  couponCount error")
             return cell
         }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserCouponList:Codable, List{
+final class UserCouponList:Codable, List{
     var list: [UserCoupon]
     
     init() {

@@ -13,7 +13,7 @@ import FMDB
      쿠폰 이미지 UI 데이터
 */
 
-class ImageCoupon:Codable, Merchant, CouponUI {
+final class ImageCoupon:Codable, Merchant, CouponUI {
 //    CouponUI
     var couponId:Int // 쿠폰 인덱스
     var isEvent:Bool // 이벤트 여부

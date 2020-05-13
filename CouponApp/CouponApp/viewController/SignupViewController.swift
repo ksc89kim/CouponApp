@@ -42,25 +42,25 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     }
     
     // MARK: - Set Function
-    func setUI(){
+    private func setUI(){
         setNameTextInput()
         setPhoneNumberTextInput()
         setPasswordTextInput()
     }
     
-    func setNameTextInput() {
+    private func setNameTextInput() {
         nameTextInput.placeHolderText  = "UserName"
         nameTextInput.style = CustomTextInputStyle()
     }
     
-    func setPhoneNumberTextInput() {
+    private func setPhoneNumberTextInput() {
         phoneNumberTextInput.placeHolderText  = "PhoneNumber"
         phoneNumberTextInput.type = .phone;
         phoneNumberTextInput.delegate = self
         phoneNumberTextInput.style = CustomTextInputStyle()
     }
     
-    func setPasswordTextInput() {
+    private func setPasswordTextInput() {
         passwordTextInput.placeHolderText  = "Password"
         passwordTextInput.type = .password(toggleable: true)
         passwordTextInput.style = CustomTextInputStyle()
@@ -68,7 +68,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     
     // MARK: - Get Function
     
-    func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
+    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
         return animatedTextInput.text?.count ?? 0
     }
         
@@ -110,7 +110,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     }
     
     // MARK: - Etc Function
-    func showMainViewController() {
+    private func showMainViewController() {
         let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
         mainViewController.modalPresentationStyle = .fullScreen
         self.present(mainViewController, animated: true, completion: nil)

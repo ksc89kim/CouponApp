@@ -10,7 +10,7 @@ import UIKit
 
 typealias TabCallBack = (UIButton) -> Void
 
-class TabController {
+final class TabController {
     let tabButtonArray:[UIButton]?
     var currentIndex:Int = 0
     var callback:TabCallBack?

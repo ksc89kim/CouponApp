@@ -58,7 +58,7 @@ class MerchantDetailViewController: UIViewController, CouponController{
         self.openAnimation()
     }
     
-    func setUI(){
+    private func setUI(){
         titleLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: merchantDetail.titleFontSize)
         titleLabel.textColor = UIColor.white
         titleLabel.cellFont = UIFont(name: "NotoSansCJKkr-Regular", size: merchantDetail.cellFontSize)
@@ -81,7 +81,7 @@ class MerchantDetailViewController: UIViewController, CouponController{
         }
     }
     
-    func setButtonTitle() {
+    private func setButtonTitle() {
         if merchantDetail.isUserCoupon {
             actionButton.setTitle("삭제하기", for: .normal)
         } else {
@@ -89,7 +89,7 @@ class MerchantDetailViewController: UIViewController, CouponController{
         }
     }
     
-    func setAnimationPercent(percent:CGFloat) {
+    private func setAnimationPercent(percent:CGFloat) {
         let haederMovePosition = (merchantDetail.positionY * percent) / 100
         let headerWidth = ((self.view.frame.width - merchantDetail.getCellWidth()) * percent) / 100
         let headerHeight = ((originalHeaderHeight - merchantDetail.getCellHeight()) * percent) / 100
@@ -104,7 +104,7 @@ class MerchantDetailViewController: UIViewController, CouponController{
         titleLabel.setPosition(x: headerWidthConstraint.constant - 15, y: 20)
     }
     
-    func openAnimation(){
+    private func openAnimation(){
         isAnimation = true
         self.view.layoutIfNeeded()
         UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
@@ -118,7 +118,7 @@ class MerchantDetailViewController: UIViewController, CouponController{
         })
     }
     
-    func closeAnimation(){
+    private func closeAnimation(){
         isAnimation = true
         self.view.layoutIfNeeded()
         UIView.animate(withDuration:0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in

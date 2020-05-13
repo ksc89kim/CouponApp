@@ -13,7 +13,7 @@ import SVProgressHUD
 /*
      쿠폰 네트워크 관리자
  */
-class CouponNetwork : DataController {
+final class CouponNetwork : DataController {
     var mainUrl:String = "http://192.168.0.11:8080/CouponProject/"
     
     func signup(phoneNumber:String, password:String, name:String, complete: @escaping DataCallback) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantTableViewCell: UITableViewCell {
+final class MerchantTableViewCell: UITableViewCell {
     @IBOutlet weak var backGroundView: UIView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -17,7 +17,7 @@ class MerchantTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     let headerTopHeight:CGFloat = 86
-    let dashLineLayer:CAShapeLayer = CAShapeLayer()
+    private let dashLineLayer:CAShapeLayer = CAShapeLayer()
     weak var merchant:MerchantImpl?
     
     deinit {
@@ -37,7 +37,7 @@ class MerchantTableViewCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    func setUI() {
+    private func setUI() {
         backGroundView.layer.cornerRadius = 5
         backGroundView.layer.shadowOpacity = 0.18
         backGroundView.layer.shadowOffset = CGSize(width: 0, height: 2)

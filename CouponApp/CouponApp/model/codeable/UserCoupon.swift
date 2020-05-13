@@ -12,7 +12,7 @@ import Foundation
      회원 쿠폰 데이터
  */
 
-class UserCoupon:Codable, Merchant {
+final class UserCoupon:Codable, Merchant {
     var couponCount:Int // 적립된 쿠폰 갯수
     var merchantId:Int // 가맹점 ID
     
@@ -30,5 +30,13 @@ class UserCoupon:Codable, Merchant {
         let container = try decoder.container(keyedBy: UserCouponKeys.self)
         self.merchantId = try container.decode(Int.self, forKey: .merchantId)
         self.couponCount = try container.decode(Int.self, forKey: .couponCount)
+    }
+    
+    func addCouponCount() {
+        couponCount += 1
+    }
+    
+    func clearCouponCount() {
+        couponCount = 0
     }
 }

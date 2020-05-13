@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CouponData {
+final class CouponData {
     static let isSqlite = true
     // MARK: - 회원가입 하기
     static func signup(phoneNumber:String, password:String, name:String, complete: @escaping DataCallback){

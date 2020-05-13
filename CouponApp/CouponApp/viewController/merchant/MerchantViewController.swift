@@ -37,7 +37,7 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
         // Dispose of any resources that can be recreated.
     }
     
-    func setPageViewController() {
+    private func setPageViewController() {
         pageController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         if let firstViewController = viewControllerArray.first {
             pageController!.setViewControllers([firstViewController], direction: .forward, animated: false, completion: nil)
@@ -58,7 +58,7 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
         pageController!.didMove(toParentViewController: self)
     }
     
-    func setTabController() {
+    private func setTabController() {
         tabController = TabController(buttonArray: tabButtonArray)
         tabController?.callback = { [weak self] (button:UIButton) in
             self?.animationMoveTabView(button: button)
@@ -89,13 +89,13 @@ class MerchantViewController: UIViewController, UIPageViewControllerDataSource, 
         }
     }
     
-    func selectPageViewController(button:UIButton) {
+    private func selectPageViewController(button:UIButton) {
         let direction:UIPageViewController.NavigationDirection = (button.tag == 0) ? .reverse : .forward
         pageController!.setViewControllers([viewControllerArray[button.tag]], direction: direction, animated: true, completion: nil)
     }
     
     //MARK - TabView Move Animation
-    func animationMoveTabView(button:UIButton){
+    private func animationMoveTabView(button:UIButton){
         selectLeadingLayout.constant = button.frame.origin.x
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()

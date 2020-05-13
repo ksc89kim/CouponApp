@@ -13,7 +13,7 @@ import FMDB
  가맹점 데이터
  */
 
-class MerchantImpl:Codable, Merchant {
+final class MerchantImpl:Codable, Merchant {
     var merchantId:Int // 가맹점 ID
     let name:String // 가맹점 이름
     let content:String // 가맹점 소개 내용

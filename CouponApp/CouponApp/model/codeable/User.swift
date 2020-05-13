@@ -12,7 +12,7 @@ import Foundation
      회원 데이터
  */
 
-class User:Codable {
+final class User:Codable {
     let phoneNumber:String
     let id:Int
     let name:String

@@ -29,7 +29,7 @@ class IntroViewController: UIViewController {
     
     // MARK: - Animation Function
     
-    func fadeAnimation() {
+    private func fadeAnimation() {
         self.backgroundView.alpha = 1
         UIView.animate(withDuration: 0.3,
                        animations: { [weak self] in
@@ -45,13 +45,13 @@ class IntroViewController: UIViewController {
     
     // MARK: - Get Data
 
-    func getPhoneNumber() -> String? {
+    private func getPhoneNumber() -> String? {
         return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
     }
     
     // MARK: - Load Data
     
-    func loadMerchantData() {
+    private func loadMerchantData() {
         CouponData.loadMerchantData(complete: { [weak self] isSuccessed in
             if isSuccessed {
                 if let phoneNumber = self?.getPhoneNumber() {
@@ -65,7 +65,7 @@ class IntroViewController: UIViewController {
         })
     }
     
-    func loadUserData(phoneNumber:String) {
+    private func loadUserData(phoneNumber:String) {
         CouponData.loadUserData(phoneNumber: phoneNumber, complete: { [weak self] isSuccessed in
             if isSuccessed {
                 self?.showMainViewController()
@@ -77,7 +77,7 @@ class IntroViewController: UIViewController {
     
     // MARK: - Show ViewController
     
-    func showLoginViewController() {
+    private func showLoginViewController() {
         guard let bringSubView = self.backgroundView else {
             print("showLoginViewController - backgorundView nil")
             return
@@ -87,7 +87,7 @@ class IntroViewController: UIViewController {
         self.addViewController(viewController: loginViewController,bringSubView:bringSubView)
     }
     
-    func showMainViewController() {
+    private func showMainViewController() {
         guard let bringSubView = self.backgroundView else {
             print("showMainViewController - backgorundView nil")
             return

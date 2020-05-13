@@ -12,16 +12,16 @@ import UIKit
  쿠폰 그리기 뷰
  - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
  */
-class CouponDrawView: UIView, CouponView{
+final class CouponDrawView: UIView, CouponView{
     var uiData: CouponUI?{
         didSet {
             updateUI()
         }
     }
     
-    let backgroundCircleLayer:CAShapeLayer = CAShapeLayer()
-    let ringThicknessLayer:CAShapeLayer = CAShapeLayer()
-    let checkLayer:CAShapeLayer = CAShapeLayer()
+    private let backgroundCircleLayer:CAShapeLayer = CAShapeLayer()
+    private let ringThicknessLayer:CAShapeLayer = CAShapeLayer()
+    private let checkLayer:CAShapeLayer = CAShapeLayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,15 +31,15 @@ class CouponDrawView: UIView, CouponView{
         setNeedsDisplay()
     }
     
-    func getBackgroundCirclePath(_ rect: CGRect) -> CGPath {
+    private func getBackgroundCirclePath(_ rect: CGRect) -> CGPath {
         return UIBezierPath(ovalIn: rect).cgPath
     }
     
-    func getRingThicknessPath(_ rect: CGRect, _ hw:CGFloat) -> CGPath {
+    private func getRingThicknessPath(_ rect: CGRect, _ hw:CGFloat) -> CGPath {
         return UIBezierPath(ovalIn: rect.insetBy(dx: hw,dy: hw)).cgPath
     }
     
-    func getCheckPath(_ rect: CGRect) -> CGPath {
+    private func getCheckPath(_ rect: CGRect) -> CGPath {
         var start:CGPoint = CGPoint(x: rect.maxX * 0.25, y: rect.maxY * 0.45)
         var end:CGPoint = CGPoint(x: rect.maxX * 0.5, y: rect.maxY * 0.65)
         
@@ -56,7 +56,7 @@ class CouponDrawView: UIView, CouponView{
         return path.cgPath
     }
     
-    func getCheckAnimation() -> CABasicAnimation {
+    private func getCheckAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
@@ -70,7 +70,7 @@ class CouponDrawView: UIView, CouponView{
         drawCheck(rect)
     }
     
-    func drawBackgroundCircle(_ rect: CGRect) {
+    private func drawBackgroundCircle(_ rect: CGRect) {
         guard let drawCoupon = uiData as? DrawCoupon else { return }
         
         backgroundCircleLayer.removeFromSuperlayer()
@@ -79,7 +79,7 @@ class CouponDrawView: UIView, CouponView{
         layer.addSublayer(backgroundCircleLayer)
     }
     
-    func drawRingThickness(_ rect: CGRect) {
+    private func drawRingThickness(_ rect: CGRect) {
         guard let drawCoupon = uiData as? DrawCoupon else { return }
         guard drawCoupon.isRing else { ringThicknessLayer.removeFromSuperlayer(); return }
         
@@ -90,7 +90,7 @@ class CouponDrawView: UIView, CouponView{
         layer.addSublayer(ringThicknessLayer)
     }
     
-    func drawCheck(_ rect:CGRect) {
+    private func drawCheck(_ rect:CGRect) {
         guard let drawCoupon = uiData as? DrawCoupon else { return }
         guard drawCoupon.isUseCoupon else { checkLayer.removeFromSuperlayer(); return }
         

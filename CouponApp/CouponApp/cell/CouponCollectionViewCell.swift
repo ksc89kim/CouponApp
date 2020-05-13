@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CouponCollectionViewCell: UICollectionViewCell {
+final class CouponCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var drawView: CouponDrawView!
     @IBOutlet weak var imageView: CouponImageView!
     

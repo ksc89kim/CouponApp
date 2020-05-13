@@ -34,14 +34,14 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
         // Dispose of any resources that can be recreated.
     }
     
-    func setUI() {
+    private func setUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
         let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
     }
     
     // MARK: - 유저 쿠폰 리스트 가져오기
-    func setData() {
+    private func setData() {
         let userId = CouponSignleton.instance.userData?.id
         CouponData.loadUserCouponData(userId: userId!, complete: { [weak self] isSuccessed, userCouponList in
             if isSuccessed {
@@ -98,8 +98,8 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
         if segue.identifier == CouponIdentifier.showCouponListView.rawValue {
             let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
             let indexPath:IndexPath = sender as! IndexPath
-            couponListView?.userMerchantData = self.userCouponList?[indexPath.row]
-            couponListView?.merchantData = merchantList?.index(merchantId:couponListView?.userMerchantData?.merchantId)
+            couponListView?.userCouponData = self.userCouponList?[indexPath.row]
+            couponListView?.merchantData = merchantList?.index(merchantId:couponListView?.userCouponData?.merchantId)
         }
     }
     
@@ -109,7 +109,6 @@ class UserMerchantTableViewController : UITableViewController, CouponController{
     }
     
     // MARK - CouponController
-    //삭제하기
     
     func deleteCoupon(merchantId: Int) {
         

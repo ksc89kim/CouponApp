@@ -29,13 +29,13 @@ class AroundMerchantTableViewController: UITableViewController , CLLocationManag
         // Dispose of any resources that can be recreated.
     }
     
-    func setUI() {
+    private func setUI() {
         self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
         let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
     }
     
-    func setLocationManager() {
+    private func setLocationManager() {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()

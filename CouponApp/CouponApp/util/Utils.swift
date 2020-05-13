@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Utils {
+final class Utils {
     
     // MARK: - 키보드에 따른 뷰 높이 계산
     static func setUpViewHeight (_ view:UIView, _ notification: Notification) {

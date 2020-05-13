@@ -10,7 +10,7 @@ import UIKit
 
 typealias InstroStampCallBack = () -> Void
 
-class IntroStampView: UIView, CAAnimationDelegate{
+final class IntroStampView: UIView, CAAnimationDelegate{
     private var drawLayer:CAShapeLayer = CAShapeLayer()
     private var introPath:IntroStampDrawPath =
         IntroStampDrawPath(
@@ -32,7 +32,7 @@ class IntroStampView: UIView, CAAnimationDelegate{
         drawLayer.add(getStrokeAnimation(), forKey: "line")
     }
     
-    func setDrawLayer() {
+    private func setDrawLayer() {
         drawLayer.path = introPath.path.cgPath
         drawLayer.strokeEnd = 1
         drawLayer.lineWidth = 1
@@ -40,7 +40,7 @@ class IntroStampView: UIView, CAAnimationDelegate{
         drawLayer.fillColor = UIColor.clear.cgColor
     }
     
-    func getStrokeAnimation() -> CABasicAnimation {
+    private func getStrokeAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = 0
         animation.toValue = 1
