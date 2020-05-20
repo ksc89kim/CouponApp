@@ -33,7 +33,7 @@ final class IntroStampView: UIView, CAAnimationDelegate{
     }
     
     private func setDrawLayer() {
-        drawLayer.path = introPath.path.cgPath
+        drawLayer.path = introPath.getCGPath()
         drawLayer.strokeEnd = 1
         drawLayer.lineWidth = 1
         drawLayer.strokeColor = UIColor.white.cgColor

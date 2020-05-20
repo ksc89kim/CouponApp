@@ -22,10 +22,10 @@ struct MerchantDetail {
     var cellTopLogoImage:UIImage?
     var cellFrame:CGRect?
     var cellBackgroundColor:UIColor?
-    
+    let cellFontSize:CGFloat = 17
+
     // 폰트 관련 정보
     let titleFontSize:CGFloat = 30
-    let cellFontSize:CGFloat = 17
     
     mutating func setCellData(cell:MerchantTableViewCell, offsetY:CGFloat) {
         self.merchant = cell.merchant

@@ -42,13 +42,7 @@ class IntroViewController: UIViewController {
             }
         )
     }
-    
-    // MARK: - Get Data
 
-    private func getPhoneNumber() -> String? {
-        return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
-    }
-    
     // MARK: - Load Data
     
     private func loadMerchantData() {
@@ -73,6 +67,12 @@ class IntroViewController: UIViewController {
                 self?.showLoginViewController()
             }
         })
+    }
+    
+    // MARK: - Get
+
+    private func getPhoneNumber() -> String? {
+        return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
     }
     
     // MARK: - Show ViewController

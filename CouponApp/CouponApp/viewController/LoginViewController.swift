@@ -22,24 +22,7 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
         super.viewDidLoad()
         self.setUI()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -63,12 +46,7 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
         passwordTextInput.delegate = self
         passwordTextInput.style = CustomTextInputStyle()
     }
-    
-    // MARK: - Get Function
-    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
-        return animatedTextInput.text?.count ?? 0
-    }
-    
+        
     // MARK: - Unwind Function
     @IBAction func unwindLoginViewController(segue:UIStoryboardSegue) {
         if segue.identifier == CouponIdentifier.unwindLoginViewController.rawValue {
@@ -126,6 +104,11 @@ class LoginViewController: UIViewController, AnimatedTextInputDelegate{
             return newLength <= maxPhoneNumber
         }
         return true
+    }
+    
+    // MARK: - Get Function
+    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
+        return animatedTextInput.text?.count ?? 0
     }
 }
 

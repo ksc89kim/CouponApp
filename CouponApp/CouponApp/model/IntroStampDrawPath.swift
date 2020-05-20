@@ -9,11 +9,11 @@
 import UIKit
 
 struct IntroStampDrawPath {
-    let width:CGFloat
-    let height:CGFloat
-    var rateX:CGFloat
-    var rateY:CGFloat
-    let path:UIBezierPath = UIBezierPath()
+    private let width:CGFloat
+    private let height:CGFloat
+    private var rateX:CGFloat
+    private var rateY:CGFloat
+    private let path:UIBezierPath = UIBezierPath()
     
     init(drawRect:CGRect, parentRect:CGRect) {
         self.width = drawRect.size.width
@@ -25,6 +25,10 @@ struct IntroStampDrawPath {
     mutating func setRate(parentRect:CGRect) {
         self.rateX = parentRect.size.width/self.width
         self.rateY = parentRect.size.height/self.height
+    }
+    
+    func getCGPath() -> CGPath {
+        return path.cgPath
     }
     
     func draw() {

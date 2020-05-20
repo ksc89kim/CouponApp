@@ -12,11 +12,6 @@ import UIKit
      라운드 뷰
  */
 @IBDesignable class RoundedView: UIView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateCornerRadius()
-    }
-    
     @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
@@ -27,6 +22,11 @@ import UIKit
         didSet {
             updateCornerRadius()
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateCornerRadius()
     }
     
     private func updateCornerRadius() {

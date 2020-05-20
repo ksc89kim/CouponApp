@@ -149,6 +149,33 @@ class MerchantDetailViewController: UIViewController, CouponController{
         let contentMovePosition = ((self.view.frame.height - originalHeaderHeight) * percent) / 100
         contentTopConstraint.constant = (self.view.frame.height - originalHeaderHeight) - contentMovePosition
     }
+        
+    private func moveUI(direction:PanDirection) {
+        switch direction {
+        case PanDirection.down:
+            self.percent -= 1
+            break
+        case PanDirection.up:
+            self.percent += 1
+            break
+        default:
+            break
+        }
+    }
+    
+    private func moveAnimation(state: UIGestureRecognizer.State) {
+        switch state {
+        case .ended,.cancelled, .failed:
+            if _percent < 90 {
+                closeAnimation()
+            } else {
+                openAnimation()
+            }
+            break
+        default:
+            break
+        }
+    }
     
     private func openAnimation(){
         isAnimation = true
@@ -179,33 +206,6 @@ class MerchantDetailViewController: UIViewController, CouponController{
                     self?.removeFromParentViewController()
                 }
         })
-    }
-    
-    private func moveUI(direction:PanDirection) {
-        switch direction {
-        case PanDirection.down:
-            self.percent -= 1
-            break
-        case PanDirection.up:
-            self.percent += 1
-            break
-        default:
-            break
-        }
-    }
-    
-    private func moveAnimation(state: UIGestureRecognizer.State) {
-        switch state {
-        case .ended,.cancelled, .failed:
-            if _percent < 90 {
-                closeAnimation()
-            } else {
-                openAnimation()
-            }
-            break
-        default:
-            break
-        }
     }
     
     // MARK: - 제스처 기능

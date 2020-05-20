@@ -20,14 +20,14 @@ final class CouponImageView: UIView , CouponView{
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
     func updateUI() {
         if let imageCoupon = uiData as? ImageCoupon {
             let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage:imageCoupon.normalImage
             couponImage.image = UIImage(named: imagePath)
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
     }
 }

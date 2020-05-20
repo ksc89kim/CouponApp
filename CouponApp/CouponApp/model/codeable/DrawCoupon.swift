@@ -22,7 +22,7 @@ final class DrawCoupon:Codable, Merchant, CouponUI {
 
 //     Merchant
     var merchantId:Int // 가맹점 ID
-    
+
     let circleColor:String // 원 색상
     let ringColor:String // 테두리 색상
     let ringThickness:CGFloat // 테두리 굵기

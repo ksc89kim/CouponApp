@@ -66,11 +66,6 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
         passwordTextInput.style = CustomTextInputStyle()
     }
     
-    // MARK: - Get Function
-    
-    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
-        return animatedTextInput.text?.count ?? 0
-    }
         
     // MARK: - Event Function
     @IBAction func onSignUp(_ sender: Any) {
@@ -110,12 +105,15 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     }
     
     // MARK: - Etc Function
+    
     private func showMainViewController() {
         let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
         mainViewController.modalPresentationStyle = .fullScreen
         self.present(mainViewController, animated: true, completion: nil)
     }
     
+    // MARK: - AnimatedTextInput Delegate
+
     func animatedTextInput(animatedTextInput: AnimatedTextInput, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if range.length + range.location > getCurrentTextInputCount(animatedTextInput:animatedTextInput) {
             return false
@@ -127,6 +125,12 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
         }
         
         return true
+    }
+    
+    // MARK: - Get Function
+    
+    private func getCurrentTextInputCount(animatedTextInput: AnimatedTextInput) -> Int {
+        return animatedTextInput.text?.count ?? 0
     }
     
 }
