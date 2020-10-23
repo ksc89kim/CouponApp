@@ -1,11 +1,17 @@
 PODS:
-  - Alamofire (4.8.2)
-  - AlamofireImage (3.5.2):
-    - Alamofire (~> 4.8)
+  - Alamofire (5.3.0)
+  - AlamofireImage (4.1.0):
+    - Alamofire (~> 5.1)
   - AnimatedTextInput (0.5.5)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
@@ -13,23 +19,31 @@ DEPENDENCIES:
   - AlamofireImage
   - AnimatedTextInput
   - FMDB
+  - RxCocoa
+  - RxSwift
   - SVProgressHUD (~> 2.2.2)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - AnimatedTextInput
     - FMDB
+    - RxCocoa
+    - RxRelay
+    - RxSwift
     - SVProgressHUD
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
+  Alamofire: 2c792affbdc2f18016e08fdbcacd60aebe1ba593
+  AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   AnimatedTextInput: aadbdfa5a538a03cc9fbea700b43d2bb21a5d132
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 96048bcb856739b07472c3a9ba47387eb2d867ed
+PODFILE CHECKSUM: 0fb0211617fee9f67c4197fada50af8bbb3e0c58
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4

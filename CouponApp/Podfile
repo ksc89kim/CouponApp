@@ -18,6 +18,10 @@ target 'CouponApp' do
  
   # TextInput
     pod 'AnimatedTextInput'
+ 
+  # Rx
+    pod 'RxCocoa'
+    pod 'RxSwift'
 
   target 'CouponAppTests' do
     inherit! :search_paths
