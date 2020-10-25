@@ -12,7 +12,7 @@ import AnimatedTextInput
 /*
     가입 뷰컨트롤러
  */
-class SignupViewController: UIViewController , AnimatedTextInputDelegate{
+final class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     @IBOutlet weak var nameTextInput: AnimatedTextInput!
     @IBOutlet weak var phoneNumberTextInput: AnimatedTextInput!
     @IBOutlet weak var passwordTextInput: AnimatedTextInput!
@@ -42,6 +42,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     }
     
     // MARK: - Set Function
+
     private func setUI(){
         setNameTextInput()
         setPhoneNumberTextInput()
@@ -68,6 +69,7 @@ class SignupViewController: UIViewController , AnimatedTextInputDelegate{
     
         
     // MARK: - Event Function
+
     @IBAction func onSignUp(_ sender: Any) {
         let signupFailTitle = "signupFailTitle".localized
         let signupFailContent = "signupFailContent".localized

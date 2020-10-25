@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MerchantDetailViewController: UIViewController, CouponController{
+final class MerchantDetailViewController: UIViewController, CouponController{
     @IBOutlet weak var headerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!

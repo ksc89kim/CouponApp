@@ -11,7 +11,7 @@ import UIKit
 /*
      전체 가맹점 테이블 뷰 컨트롤러
  */
-class GloabalMerchantTableViewController: UITableViewController  {
+final class GloabalMerchantTableViewController: UITableViewController  {
     lazy var merchantList:MerchantImplList? = {
         return CouponSignleton.instance.merchantList
     }()

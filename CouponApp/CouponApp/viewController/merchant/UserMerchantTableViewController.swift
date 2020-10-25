@@ -12,7 +12,7 @@ import UIKit
  회원 가맹점(쿠폰) 테이블 뷰
  - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
  */
-class UserMerchantTableViewController : UITableViewController, CouponController{
+final class UserMerchantTableViewController : UITableViewController, CouponController{
     var userCouponList:UserCouponList? // 회원 쿠폰 정보
     lazy var merchantList:MerchantImplList? = {
         return CouponSignleton.instance.merchantList

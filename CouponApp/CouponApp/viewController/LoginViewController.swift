@@ -12,7 +12,7 @@ import AnimatedTextInput
 /*
  로그인 뷰컨트롤러
  */
-class LoginViewController: UIViewController, AnimatedTextInputDelegate{
+final class LoginViewController: UIViewController, AnimatedTextInputDelegate{
     @IBOutlet weak var phoneNumberTextInput: AnimatedTextInput!
     @IBOutlet weak var passwordTextInput: AnimatedTextInput!
     

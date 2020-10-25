@@ -12,7 +12,7 @@ import UIKit
      가맹점 찾기 뷰 컨트롤러
      - 주변 가맹점, 전체 가맹점 찾는 뷰 컨트롤러
  */
-class MerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
+final class MerchantViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     @IBOutlet var tabButtonArray:[UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!

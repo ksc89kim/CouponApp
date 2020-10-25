@@ -12,7 +12,7 @@ import CoreLocation
 /*
      주변 가맹점 테이블 뷰 컨트롤러
  */
-class AroundMerchantTableViewController: UITableViewController , CLLocationManagerDelegate {
+final class AroundMerchantTableViewController: UITableViewController , CLLocationManagerDelegate {
     private var locationManager:CLLocationManager!
     private var merchantArray:[MerchantImpl?]?
     private let maxDistance:Double = 1000

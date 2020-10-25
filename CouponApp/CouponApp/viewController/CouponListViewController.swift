@@ -13,7 +13,7 @@ import UIKit
  - 현재 가지고 있는 쿠폰 갯수와, 채울 수 있는 최대 쿠폰 갯수를 보여주는 뷰 컨트롤러
  - 쿠폰 소진하기 및 쿠폰 요청하기 기능이 있음.
  */
-class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+final class CouponListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     @IBOutlet weak var myCollectionView: UICollectionView!
     @IBOutlet weak var backgroundRoundedView: UIView!
     @IBOutlet weak var bottomButtonRoundedView: UIView!

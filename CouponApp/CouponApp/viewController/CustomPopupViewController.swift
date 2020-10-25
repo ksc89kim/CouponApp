@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomPopupViewController: UIViewController {
+final class CustomPopupViewController: UIViewController {
     @IBOutlet weak var popupView: RoundedView!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
