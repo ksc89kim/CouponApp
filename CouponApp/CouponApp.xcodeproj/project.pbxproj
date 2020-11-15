@@ -63,6 +63,8 @@
 		A479E001230ACF0400EA390D /* MerchantAnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A479E000230ACF0400EA390D /* MerchantAnimatedLabel.swift */; };
 		A4942E3322632D2800083359 /* UImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* UImageExtensions.swift */; };
 		A4942E35226347E000083359 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E34226347E000083359 /* UILabelExtensions.swift */; };
+		A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopup.swift */; };
+		A4A0BB8725610F0A006F616D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8625610F0A006F616D /* Alert.swift */; };
 		A4AFCE382545656600E92B92 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE372545656600E92B92 /* ViewModel.swift */; };
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */; };
@@ -75,6 +77,9 @@
 		A4DB7890220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */; };
 		A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */; };
 		A4EFCE1824692CA3003385D9 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE1724692CA3003385D9 /* CouponView.swift */; };
+		A4FB5B5B254EA863006C861D /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5A254EA863006C861D /* CouponViewController.swift */; };
+		A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */; };
+		A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */; };
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC047F82200C66170070CC5D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* LoginViewController.swift */; };
@@ -176,6 +181,8 @@
 		A479E000230ACF0400EA390D /* MerchantAnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedLabel.swift; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* UImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageExtensions.swift; sourceTree = "<group>"; };
 		A4942E34226347E000083359 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
+		A4A0BB8425610C78006F616D /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
+		A4A0BB8625610F0A006F616D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A4AFCE372545656600E92B92 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCouponData.swift; sourceTree = "<group>"; };
@@ -188,6 +195,9 @@
 		A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampDrawPath.swift; sourceTree = "<group>"; };
 		A4EFCE1724692CA3003385D9 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
+		A4FB5B5A254EA863006C861D /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
+		A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAnimatedTextInput.swift; sourceTree = "<group>"; };
 		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +277,7 @@
 				CC81729D2007238A0073E690 /* CouponImageView.swift */,
 				CC32D06C2011B61C003A7422 /* RoundedView.swift */,
 				A405C9DD2286AC40009403EB /* IntroStampView.swift */,
+				A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -296,6 +307,8 @@
 				A4EF22A224613B7800692B61 /* codeable */,
 				A407E56922801FD7007B7C18 /* MerchantDetail.swift */,
 				A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */,
+				A4A0BB8425610C78006F616D /* CustomPopup.swift */,
+				A4A0BB8625610F0A006F616D /* Alert.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -312,6 +325,7 @@
 				CC047F85200C8A290070CC5D /* LoginViewController.swift */,
 				CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */,
 				A405C9DB2286A890009403EB /* IntroViewController.swift */,
+				A4FB5B5A254EA863006C861D /* CouponViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -466,6 +480,7 @@
 			children = (
 				A4AFCE372545656600E92B92 /* ViewModel.swift */,
 				A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */,
+				A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -757,6 +772,7 @@
 				"${BUILT_PRODUCTS_DIR}/AnimatedTextInput/AnimatedTextInput.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
@@ -768,6 +784,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedTextInput.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
@@ -819,6 +836,7 @@
 				59A43FBD212540E80099581D /* CouponCollectionViewCell.swift in Sources */,
 				59BE1D1921184BF40082F04E /* CouponSqlite.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
+				A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				A4942E3322632D2800083359 /* UImageExtensions.swift in Sources */,
 				59A43FA6212402760099581D /* UserCouponList.swift in Sources */,
@@ -828,11 +846,14 @@
 				A46CD74D230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift in Sources */,
 				A40398E1230004B800C052FC /* NSLayoutContraintExtensions.swift in Sources */,
 				59BE1D1F21197E140082F04E /* Merchant.swift in Sources */,
+				A4A0BB8725610F0A006F616D /* Alert.swift in Sources */,
 				A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */,
 				59BE1D1D21184C930082F04E /* DataController.swift in Sources */,
 				59978E072109BB8E001F3A8D /* UIImageViewExtensions.swift in Sources */,
+				A4FB5B5B254EA863006C861D /* CouponViewController.swift in Sources */,
 				CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */,
 				59978E052109BB1E001F3A8D /* UIColorExtensions.swift in Sources */,
+				A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCoupon.swift in Sources */,
 				A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */,
 				59A43FAA2124062F0099581D /* List.swift in Sources */,
@@ -846,6 +867,7 @@
 				59BE1D23211986650082F04E /* MerchantImplList.swift in Sources */,
 				A4B9E79F2462A6A80070A277 /* CouponController.swift in Sources */,
 				A415623F22DB367100A0551E /* UserMerchantTableViewController.swift in Sources */,
+				A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +1001,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/CouponApp-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1037,6 +1060,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/CouponApp-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;

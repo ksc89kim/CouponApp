@@ -8,20 +8,22 @@
 
 import RxSwift
 import RxCocoa
+import RxOptional
 
 final class IntroViewModel: ViewModel {
-
-  // MARK - Action
 
   struct Action {
     let loadMerchantData = PublishSubject<Void>()
   }
 
-  // MARK - State
-
   struct State {
     let showLoginviewcontroller = PublishSubject<Void>()
     let showMainViewController = PublishSubject<Void>()
+  }
+
+  struct Input {
+    let showLoginviewcontroller: Observable<Void>
+    let showMainViewController: Observable<Void>
   }
 
   // MARK - Property
@@ -34,32 +36,17 @@ final class IntroViewModel: ViewModel {
 
   init() {
 
-    let loadedMerchantData = self.action.loadMerchantData
-      .flatMapLatest { _ -> Observable<Bool> in
-        return RxCouponData.loadMerchantData().asObservable()
-    }
-    .share()
+    let loadedMerchant = self.loadMerchant()
 
-    let userPhoneNumber = loadedMerchantData
-      .filter { $0 }
-      .map { [weak self] _ -> String? in
-        return self?.getPhoneNumber()
-    }.share()
+    let loadedPhoneNumber = self.loadPhoneNumber(merchant: loadedMerchant)
 
-    let loadedUserData = userPhoneNumber
-      .filter { $0 != nil }
-      .flatMapLatest { phoneNumber -> Observable<Bool> in
-        guard let phoneNumber = phoneNumber else {
-          return .empty()
-        }
-        return  RxCouponData.loadUserData(phoneNumber: phoneNumber).asObservable()
-    }
+    let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber)
 
     let showLoginviewcontroller = Observable.merge(
-      loadedMerchantData
+      loadedMerchant
         .filter { !$0 }
         .map { _ in },
-      userPhoneNumber
+      loadedPhoneNumber
         .filter { $0 == nil }
         .map { _ in },
       loadedUserData
@@ -71,17 +58,55 @@ final class IntroViewModel: ViewModel {
       .filter { $0 }
       .map { _ in }
 
-    showLoginviewcontroller
+    self.bind(
+      input: .init(
+        showLoginviewcontroller: showLoginviewcontroller,
+        showMainViewController: showMainViewController
+
+      )
+    )
+  }
+
+  // MARK - Bind
+
+  func bind(input: Input) {
+    input.showLoginviewcontroller
       .bind(to: self.state.showLoginviewcontroller)
       .disposed(by: self.disposeBag)
 
-    showMainViewController
+    input.showMainViewController
       .bind(to: self.state.showMainViewController)
       .disposed(by: self.disposeBag)
+  }
 
+  // MARK - Functions
+
+  private func loadMerchant() -> Observable<Bool> {
+    return self.action.loadMerchantData
+      .flatMapLatest { _ -> Observable<Bool> in
+        return RxCouponData.loadMerchantData().asObservable()
+    }
+    .share()
+  }
+
+  private func loadPhoneNumber(merchant: Observable<Bool>) -> Observable<String?> {
+    return merchant
+       .filter { $0 }
+       .map { [weak self] _ -> String? in
+         return self?.getPhoneNumber()
+     }
+    .share()
   }
 
   private func getPhoneNumber() -> String? {
     return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
+  }
+
+  private func loadUserData(phoneNumber: Observable<String?>) -> Observable<Bool> {
+    return phoneNumber
+      .filterNil()
+      .flatMapLatest { phoneNumber -> Observable<Bool> in
+        return  RxCouponData.loadUserData(phoneNumber: phoneNumber).asObservable()
+    }
   }
 }

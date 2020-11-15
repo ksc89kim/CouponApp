@@ -12,7 +12,10 @@ import UIKit
 protocol ViewModel {
   associatedtype Action
   associatedtype State
+  associatedtype Input
 
   var action: Action { get }
   var state: State { get }
+
+  func bind(input: Input)
 }

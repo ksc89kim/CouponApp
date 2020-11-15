@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 /// 인트로 관련 뷰 컨트롤러
-final class IntroViewController: UIViewController {
+final class IntroViewController: CouponViewController {
 
   // MARK: - UI Component
 
@@ -21,14 +21,11 @@ final class IntroViewController: UIViewController {
   // MARK: - Property
 
   let viewModel = IntroViewModel()
-  let disposeBag = DisposeBag()
 
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    self.bind()
 
     self.viewModel.action.loadMerchantData.onNext(())
 
@@ -37,13 +34,11 @@ final class IntroViewController: UIViewController {
     };
   }
 
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-  }
-
   // MARK: - Bind
 
-  private func bind() {
+  override func bind() {
+    super.bind()
+
     self.viewModel.state
       .showLoginviewcontroller
       .asDriver(onErrorDriveWith: .empty())
@@ -61,14 +56,15 @@ final class IntroViewController: UIViewController {
 
   private func fadeAnimation() {
     self.backgroundView.alpha = 1
-    UIView.animate(withDuration: 0.3,
-                   animations: { [weak self] in
-                    self?.backgroundView.alpha = 0
+    UIView.animate(
+      withDuration: 0.3,
+      animations: { [weak self] in
+        self?.backgroundView.alpha = 0
       },
-                   completion: { [weak self] finished in
-                    if finished {
-                      self?.backgroundView.isHidden = true
-                    }
+      completion: { [weak self] finished in
+        if finished {
+          self?.backgroundView.isHidden = true
+        }
       }
     )
   }
