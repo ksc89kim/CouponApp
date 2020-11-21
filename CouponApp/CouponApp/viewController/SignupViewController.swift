@@ -14,10 +14,20 @@ import AnimatedTextInput
 /// 가입 뷰컨트롤러
 final class SignupViewController: CouponViewController {
 
-  enum Text {
+  private enum Text {
     static let namePlaceHolder = "UserName"
     static let phoneNumberPlaceHolder = "PhoneNumber"
     static let passwordPlaceHolder = "Password"
+  }
+
+  private enum Limit {
+    static let phoneNumber = 11
+  }
+
+  private struct CouponAnimatedText {
+    let animatedTextInput: CouponAnimatedTextInput
+    let range: NSRange
+    let replacementString: String
   }
 
   // MARK: - UI Component
@@ -29,7 +39,6 @@ final class SignupViewController: CouponViewController {
 
   // MARK: - Property
 
-  private let maxPhoneNumber: Int = 11
   private let viewModel = SignupViewModel()
 
   // MARK: - Life Cycle
@@ -121,6 +130,23 @@ final class SignupViewController: CouponViewController {
   private func getCurrentTextInputCount(animatedTextInput: CouponAnimatedTextInput) -> Int {
     return animatedTextInput.text?.count ?? 0
   }
+
+  // MARK: - Text Limit
+
+  private func isCurrentLengthLimit(
+    data: CouponAnimatedText
+  ) -> Bool {
+    return data.range.length + data.range.location > self.getCurrentTextInputCount(animatedTextInput: data.animatedTextInput)
+  }
+
+  private func isNewLengthLimit(
+    data: CouponAnimatedText,
+    maxLimit: Int
+  ) -> Bool {
+    var newLength = self.getCurrentTextInputCount(animatedTextInput: data.animatedTextInput) + data.replacementString.count
+    newLength -= data.range.length
+    return newLength <= maxLimit
+  }
 }
 
 extension SignupViewController: CouponAnimatedTextInputDelegate {
@@ -130,12 +156,18 @@ extension SignupViewController: CouponAnimatedTextInputDelegate {
     shouldChangeCharactersInRange range: NSRange,
     replacementString string: String
   ) -> Bool {
-    if range.length + range.location > self.getCurrentTextInputCount(animatedTextInput: animatedTextInput) {
+    let data = CouponAnimatedText(
+      animatedTextInput: animatedTextInput,
+      range: range,
+      replacementString: string
+    )
+
+    if self.isCurrentLengthLimit(data: data) {
       return false
     }
+
     if animatedTextInput == self.phoneNumberTextInput {
-      let newLength = self.getCurrentTextInputCount(animatedTextInput: animatedTextInput) + string.count - range.length
-      return newLength <= self.maxPhoneNumber
+      return self.isNewLengthLimit(data: data, maxLimit: Limit.phoneNumber)
     }
 
     return true
