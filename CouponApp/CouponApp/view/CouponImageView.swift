@@ -8,26 +8,34 @@
 
 import UIKit
 
-/*
- 쿠폰 이미지 뷰
- - UIImageView를 통한 쿠폰 이미지 뷰
- */
-final class CouponImageView: UIView , CouponView{
-    @IBOutlet var couponImage:UIImageView!
-    var uiData: CouponUI? {
-        didSet {
-            updateUI()
-        }
+/// 쿠폰 이미지 뷰
+/// - UIImageView를 통한 쿠폰 이미지 뷰
+final class CouponImageView: UIView , CouponView {
+  
+  // MARK: - UI Component
+
+  @IBOutlet var couponImage: UIImageView!
+
+  // MARK: - Properties
+
+  var uiData: CouponUI? {
+    didSet {
+      self.updateUI()
     }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  }
+
+  // MARK: - LifeCyecle
+
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+
+  // MARK: - Update
+
+  func updateUI() {
+    if let imageCoupon = uiData as? ImageCoupon {
+      let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage:imageCoupon.normalImage
+      self.couponImage.image = UIImage(named: imagePath)
     }
-    
-    func updateUI() {
-        if let imageCoupon = uiData as? ImageCoupon {
-            let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage:imageCoupon.normalImage
-            couponImage.image = UIImage(named: imagePath)
-        }
-    }
+  }
 }

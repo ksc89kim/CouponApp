@@ -8,29 +8,34 @@
 
 import UIKit
 
-/*
-     라운드 뷰
- */
+/// 라운드 뷰
 @IBDesignable class RoundedView: UIView {
-    @IBInspectable var rounded: Bool = false {
-        didSet {
-            updateCornerRadius()
-        }
+
+  // MARK: - Properties
+
+  @IBInspectable var rounded: Bool = false {
+    didSet {
+      self.updateCornerRadius()
     }
-    
-    @IBInspectable var cornerRadius: CGFloat = 0.1 {
-        didSet {
-            updateCornerRadius()
-        }
+  }
+
+  @IBInspectable var cornerRadius: CGFloat = 0.1 {
+    didSet {
+      self.updateCornerRadius()
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateCornerRadius()
-    }
-    
-    private func updateCornerRadius() {
-        layer.cornerRadius = rounded ? cornerRadius : 0
-        layer.masksToBounds = rounded ? true : false
-    }
+  }
+
+  // MARK: - Life Cycle
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    self.updateCornerRadius()
+  }
+
+  // MARK: - Update
+
+  private func updateCornerRadius() {
+    self.layer.cornerRadius = self.rounded ? self.cornerRadius : 0
+    self.layer.masksToBounds = self.rounded ? true : false
+  }
 }

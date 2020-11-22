@@ -83,7 +83,7 @@ class SQLInterface {
     
     func selectUserData(phoneNumber:String, password:String) throws -> Int {
         guard let contactDb = db else { throw SQLError.connectionError }
-        var userId:Int = 0
+        var userId:Int = -1
         let query = "select idx from user where phone_number = '\(phoneNumber)' and user_pwd = '\(password)'"
         do {
             let result = try contactDb.executeQuery(query, values: [])

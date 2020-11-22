@@ -48,6 +48,8 @@ final class SignupViewController: CouponViewController {
     self.setUI()
   }
 
+  // MARK: - Touch
+
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     self.view.endEditing(true)
   }
@@ -117,14 +119,6 @@ final class SignupViewController: CouponViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Etc Function
-
-  fileprivate func showMainViewController() {
-    let mainViewController:UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
-    mainViewController.modalPresentationStyle = .fullScreen
-    self.present(mainViewController, animated: true, completion: nil)
-  }
-
   // MARK: - Get Function
 
   private func getCurrentTextInputCount(animatedTextInput: CouponAnimatedTextInput) -> Int {
@@ -173,13 +167,4 @@ extension SignupViewController: CouponAnimatedTextInputDelegate {
     return true
   }
   
-}
-
-extension Reactive where Base: SignupViewController {
-
-  var showMainViewController: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.showMainViewController()
-    }
-  }
 }

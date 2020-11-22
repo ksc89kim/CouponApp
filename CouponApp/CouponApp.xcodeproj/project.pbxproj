@@ -65,6 +65,7 @@
 		A4942E35226347E000083359 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E34226347E000083359 /* UILabelExtensions.swift */; };
 		A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopup.swift */; };
 		A4A0BB8725610F0A006F616D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8625610F0A006F616D /* Alert.swift */; };
+		A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A614ED256905BC004BF936 /* LoginViewModel.swift */; };
 		A4AFCE382545656600E92B92 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE372545656600E92B92 /* ViewModel.swift */; };
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */; };
@@ -183,6 +184,7 @@
 		A4942E34226347E000083359 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		A4A0BB8425610C78006F616D /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		A4A0BB8625610F0A006F616D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		A4A614ED256905BC004BF936 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE372545656600E92B92 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCouponData.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				A4AFCE372545656600E92B92 /* ViewModel.swift */,
 				A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */,
 				A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */,
+				A4A614ED256905BC004BF936 /* LoginViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -845,6 +848,7 @@
 				59978E092109BBAB001F3A8D /* StringExtensions.swift in Sources */,
 				A46CD74D230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift in Sources */,
 				A40398E1230004B800C052FC /* NSLayoutContraintExtensions.swift in Sources */,
+				A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */,
 				59BE1D1F21197E140082F04E /* Merchant.swift in Sources */,
 				A4A0BB8725610F0A006F616D /* Alert.swift in Sources */,
 				A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */,
@@ -1016,9 +1020,10 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1070,8 +1075,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

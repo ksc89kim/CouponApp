@@ -40,15 +40,15 @@ final class IntroViewController: CouponViewController {
     super.bind()
 
     self.viewModel.state
-      .showLoginviewcontroller
+      .addLoginViewController
       .asDriver(onErrorDriveWith: .empty())
-      .drive(self.rx.showLoginViewController)
+      .drive(self.rx.addLoginViewController)
       .disposed(by: self.disposeBag)
 
     self.viewModel.state
-      .showMainViewController
+      .addMainViewController
       .asDriver(onErrorDriveWith: .empty())
-      .drive(self.rx.showMainViewController)
+      .drive(self.rx.addMainViewController)
       .disposed(by: self.disposeBag)
   }
 
@@ -71,7 +71,7 @@ final class IntroViewController: CouponViewController {
 
   // MARK: - Show ViewController
 
-  fileprivate func showLoginViewController() {
+  fileprivate func addLoginViewController() {
     guard let bringSubView = self.backgroundView else {
       print("showLoginViewController - backgorundView nil")
       return
@@ -81,7 +81,7 @@ final class IntroViewController: CouponViewController {
     self.addViewController(viewController: loginViewController,bringSubView:bringSubView)
   }
 
-  fileprivate func showMainViewController() {
+  fileprivate func addMainViewController() {
     guard let bringSubView = self.backgroundView else {
       print("showMainViewController - backgorundView nil")
       return
@@ -94,15 +94,15 @@ final class IntroViewController: CouponViewController {
 
 
 extension Reactive where Base: IntroViewController {
-  var showLoginViewController: Binder<Void> {
+  var addLoginViewController: Binder<Void> {
     return Binder(self.base) { view, _ in
-      view.showLoginViewController()
+      view.addLoginViewController()
     }
   }
 
-  var showMainViewController: Binder<Void> {
+  var addMainViewController: Binder<Void> {
     return Binder(self.base) { view, _ in
-      view.showMainViewController()
+      view.addMainViewController()
     }
   }
 }

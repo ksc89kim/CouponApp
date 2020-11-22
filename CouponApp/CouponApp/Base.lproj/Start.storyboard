@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8fg-rT-A55">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8fg-rT-A55">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -42,21 +42,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyF-E0-N1w" customClass="AnimatedTextInput" customModule="AnimatedTextInput">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oyF-E0-N1w" customClass="CouponAnimatedTextInput" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="31" y="217" width="313" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7C6-iZ-61S"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSd-ZU-OhJ" customClass="AnimatedTextInput" customModule="AnimatedTextInput">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LSd-ZU-OhJ" customClass="CouponAnimatedTextInput" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="31" y="280" width="313" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="63z-cf-4Ek"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbX-Pu-UG9" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbX-Pu-UG9" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="31" y="380" width="313" height="53.5"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -71,19 +71,13 @@
                                         <real key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="onLogin:" destination="IuN-cd-pBW" eventType="touchUpInside" id="037-el-ZQA"/>
-                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23W-r9-FVw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23W-r9-FVw">
                                 <rect key="frame" x="101.5" y="461" width="172" height="27"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="11"/>
                                 <state key="normal" title="Don't have an account ? Sign up">
                                     <color key="titleColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="onSignup:" destination="IuN-cd-pBW" eventType="touchUpInside" id="dfS-xU-g4V"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -109,8 +103,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="nE6-B4-bll"/>
                     <connections>
+                        <outlet property="loginButton" destination="YbX-Pu-UG9" id="AhJ-ai-HiZ"/>
                         <outlet property="passwordTextInput" destination="LSd-ZU-OhJ" id="ejk-c0-CT7"/>
                         <outlet property="phoneNumberTextInput" destination="oyF-E0-N1w" id="4pi-JY-K8Y"/>
+                        <outlet property="signupButton" destination="23W-r9-FVw" id="DYL-TP-9TY"/>
                         <segue destination="CfA-pA-K9j" kind="show" identifier="showSignupViewController" id="Occ-iN-nvi"/>
                     </connections>
                 </viewController>
@@ -165,7 +161,7 @@
                                     <constraint firstAttribute="height" constant="50" id="oMd-lK-AaR"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8f6-ed-wTr" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8f6-ed-wTr" customClass="RoundedButton" customModule="CouponApp" customModuleProvider="target">
                                 <rect key="frame" x="31" y="401" width="313" height="53.5"/>
                                 <color key="backgroundColor" red="0.97254901959999995" green="0.29803921570000003" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -296,6 +292,14 @@
             <point key="canvasLocation" x="36" y="-725"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="8f6-ed-wTr">
+            <size key="intrinsicContentSize" width="67" height="30"/>
+        </designable>
+        <designable name="YbX-Pu-UG9">
+            <size key="intrinsicContentSize" width="41" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="back" width="22" height="15.5"/>
     </resources>

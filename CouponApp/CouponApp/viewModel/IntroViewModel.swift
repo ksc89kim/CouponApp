@@ -17,13 +17,13 @@ final class IntroViewModel: ViewModel {
   }
 
   struct State {
-    let showLoginviewcontroller = PublishSubject<Void>()
-    let showMainViewController = PublishSubject<Void>()
+    let addLoginViewController = PublishSubject<Void>()
+    let addMainViewController = PublishSubject<Void>()
   }
 
   struct Input {
-    let showLoginviewcontroller: Observable<Void>
-    let showMainViewController: Observable<Void>
+    let addLoginViewController: Observable<Void>
+    let addMainViewController: Observable<Void>
   }
 
   // MARK - Property
@@ -42,7 +42,7 @@ final class IntroViewModel: ViewModel {
 
     let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber)
 
-    let showLoginviewcontroller = Observable.merge(
+    let addLoginViewController = Observable.merge(
       loadedMerchant
         .filter { !$0 }
         .map { _ in },
@@ -54,14 +54,14 @@ final class IntroViewModel: ViewModel {
         .map { _ in }
     )
 
-    let showMainViewController = loadedUserData
+    let addMainViewController = loadedUserData
       .filter { $0 }
       .map { _ in }
 
     self.bind(
       input: .init(
-        showLoginviewcontroller: showLoginviewcontroller,
-        showMainViewController: showMainViewController
+        addLoginViewController: addLoginViewController,
+        addMainViewController: addMainViewController
 
       )
     )
@@ -70,12 +70,12 @@ final class IntroViewModel: ViewModel {
   // MARK - Bind
 
   func bind(input: Input) {
-    input.showLoginviewcontroller
-      .bind(to: self.state.showLoginviewcontroller)
+    input.addLoginViewController
+      .bind(to: self.state.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    input.showMainViewController
-      .bind(to: self.state.showMainViewController)
+    input.addMainViewController
+      .bind(to: self.state.addMainViewController)
       .disposed(by: self.disposeBag)
   }
 
