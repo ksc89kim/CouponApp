@@ -11,14 +11,14 @@ import RxSwift
 import RxCocoa
 
 /// 인트로 관련 뷰 컨트롤러
-final class IntroViewController: CouponViewController {
+final class IntroViewController: BaseViewController {
 
   // MARK: - UI Component
 
   @IBOutlet weak var stampView: IntroStampView!
   @IBOutlet weak var backgroundView: UIView!
 
-  // MARK: - Property
+  // MARK: - Propertys
 
   let viewModel = IntroViewModel()
 
@@ -27,7 +27,7 @@ final class IntroViewController: CouponViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.viewModel.action.loadMerchantData.onNext(())
+    self.viewModel.inputs.loadMerchantData.onNext(())
 
     self.stampView.completion = { [weak self] in
       self?.fadeAnimation()
@@ -36,16 +36,20 @@ final class IntroViewController: CouponViewController {
 
   // MARK: - Bind
 
-  override func bind() {
-    super.bind()
+  override func bindInputs() {
+    super.bindInputs()
+  }
 
-    self.viewModel.state
+  override func bindOutpus() {
+    super.bindOutpus()
+
+    self.viewModel.outputs
       .addLoginViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.state
+    self.viewModel.outputs
       .addMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addMainViewController)

@@ -6,16 +6,14 @@
 //  Copyright © 2020 kim sunchul. All rights reserved.
 //
 
-import RxSwift
 import UIKit
 
 protocol ViewModel {
-  associatedtype Action
-  associatedtype State
-  associatedtype Input
+  associatedtype Inputs
+  associatedtype Outputs
+  associatedtype BindInputs
 
-  var action: Action { get }
-  var state: State { get }
-
-  func bind(input: Input)
+  var inputs: Inputs { get }
+  var outputs: Outputs { get }
+  func bind(inputs: BindInputs)
 }

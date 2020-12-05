@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "CouponDrawView.draw(_:):CouponDrawView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "drawCoupon">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
@@ -10,14 +18,6 @@
             </PersistentString>
             <PersistentString
                value = "merchantModel">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "CouponDrawView.draw(_:):CouponDrawView.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "drawCoupon">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -36,10 +36,10 @@
          contextName = "UserTableViewController.viewWillAppear(_:):UserTableViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "merchantList">
+               value = "userCouponList">
             </PersistentString>
             <PersistentString
-               value = "userCouponList">
+               value = "merchantList">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -61,6 +61,17 @@
       </ContextState>
       <ContextState
          contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "CouponListViewModel.CouponInfo.isAvailableAddCoupon():CouponListViewModel.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.userCoupon.couponCount">
+            </PersistentString>
+            <PersistentString
+               value = "self.merchant.couponCount()">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "MerchantInfoViewController.setUI():MerchantInfoViewController.swift">

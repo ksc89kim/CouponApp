@@ -107,7 +107,7 @@ final class UserMerchantTableViewController : UITableViewController, CouponContr
         }
     }
     
-    // MARK - CouponController
+    // MARK: - CouponController
     
     func deleteCoupon(merchantId: Int) {
         

@@ -12,27 +12,27 @@ import RxOptional
 
 final class IntroViewModel: ViewModel {
 
-  struct Action {
+  struct Inputs {
     let loadMerchantData = PublishSubject<Void>()
   }
 
-  struct State {
+  struct Outputs {
     let addLoginViewController = PublishSubject<Void>()
     let addMainViewController = PublishSubject<Void>()
   }
 
-  struct Input {
+  struct BindInputs {
     let addLoginViewController: Observable<Void>
     let addMainViewController: Observable<Void>
   }
 
-  // MARK - Property
+  // MARK: - Property
 
-  var action = Action()
-  var state = State()
-  var disposeBag = DisposeBag()
+  let inputs = Inputs()
+  let outputs = Outputs()
+  private let disposeBag = DisposeBag()
 
-  // MARK - Init
+  // MARK: - Init
 
   init() {
 
@@ -59,7 +59,7 @@ final class IntroViewModel: ViewModel {
       .map { _ in }
 
     self.bind(
-      input: .init(
+      inputs: .init(
         addLoginViewController: addLoginViewController,
         addMainViewController: addMainViewController
 
@@ -67,22 +67,22 @@ final class IntroViewModel: ViewModel {
     )
   }
 
-  // MARK - Bind
+  // MARK: - Bind
 
-  func bind(input: Input) {
-    input.addLoginViewController
-      .bind(to: self.state.addLoginViewController)
+  func bind(inputs: BindInputs) {
+    inputs.addLoginViewController
+      .bind(to: self.outputs.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    input.addMainViewController
-      .bind(to: self.state.addMainViewController)
+    inputs.addMainViewController
+      .bind(to: self.outputs.addMainViewController)
       .disposed(by: self.disposeBag)
   }
 
-  // MARK - Functions
+  // MARK: - Functions
 
   private func loadMerchant() -> Observable<Bool> {
-    return self.action.loadMerchantData
+    return self.inputs.loadMerchantData
       .flatMapLatest { _ -> Observable<Bool> in
         return RxCouponData.loadMerchantData().asObservable()
     }

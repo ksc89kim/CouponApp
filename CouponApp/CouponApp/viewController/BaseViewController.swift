@@ -1,15 +1,16 @@
 //
-//  CouponViewController.swift
+//  BaseViewController.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2020/11/01.
 //  Copyright © 2020 kim sunchul. All rights reserved.
 //
 
+import UIKit
 import RxCocoa
 import RxSwift
 
-class CouponViewController: UIViewController {
+class BaseViewController: UIViewController {
 
   let disposeBag = DisposeBag()
 
@@ -18,7 +19,16 @@ class CouponViewController: UIViewController {
     self.bind()
   }
 
-  open func bind() {
+  private func bind() {
+    self.bindOutpus()
+    self.bindInputs()
+  }
+
+  open func bindInputs() {
+
+  }
+
+  open func bindOutpus() {
 
   }
 
@@ -35,7 +45,7 @@ class CouponViewController: UIViewController {
   }
 }
 
-extension Reactive where Base: CouponViewController {
+extension Reactive where Base: BaseViewController {
 
   var showMainViewController: Binder<Void> {
     return Binder(self.base) { view, _ in

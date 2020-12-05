@@ -12,7 +12,7 @@ import UIKit
 import AnimatedTextInput
 
 /// 가입 뷰컨트롤러
-final class SignupViewController: CouponViewController {
+final class SignupViewController: BaseViewController {
 
   private enum Text {
     static let namePlaceHolder = "UserName"
@@ -82,37 +82,41 @@ final class SignupViewController: CouponViewController {
 
   // MARK: - Bind
 
-  override func bind() {
-    super.bind()
+  override func bindInputs() {
+    super.bindInputs()
 
     self.nameTextInput.rx.text
-      .bind(to: self.viewModel.state.userName)
+      .bind(to: self.viewModel.inputs.userName)
       .disposed(by: self.disposeBag)
 
     self.phoneNumberTextInput.rx.text
-      .bind(to: self.viewModel.state.userPhoneNumber)
+      .bind(to: self.viewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: self.viewModel.state.userPassword)
+      .bind(to: self.viewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.continueButton.rx.tap
       .asObservable()
-      .bind(to: self.viewModel.action.onSingup)
+      .bind(to: self.viewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
+  }
 
-    self.viewModel.state.showCustomPopup
+  override func bindOutpus() {
+    super.bindOutpus()
+
+    self.viewModel.outputs.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.state.showMainViewController
+    self.viewModel.outputs.showMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.state.savePhoneNumber
+    self.viewModel.outputs.savePhoneNumber
       .subscribe(onNext: { phoneNumber in
         UserDefaults.standard.set(phoneNumber, forKey: DefaultKey.phoneNumber.rawValue)
       })

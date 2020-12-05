@@ -66,7 +66,7 @@ final class MerchantViewController: UIViewController, UIPageViewControllerDataSo
         }
     }
     
-    //MARK - PageViewController
+    //MARK: - PageViewController
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = viewControllerArray.index(of: viewController) else { return nil }
         let previousIndex = vcIndex - 1
@@ -94,7 +94,7 @@ final class MerchantViewController: UIViewController, UIPageViewControllerDataSo
         pageController!.setViewControllers([viewControllerArray[button.tag]], direction: direction, animated: true, completion: nil)
     }
     
-    //MARK - TabView Move Animation
+    //MARK: - TabView Move Animation
     private func animationMoveTabView(button:UIButton){
         selectLeadingLayout.constant = button.frame.origin.x
         UIView.animate(withDuration: 0.2, animations: {

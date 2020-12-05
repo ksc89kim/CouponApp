@@ -70,15 +70,15 @@ final class MerchantTableViewCell: UITableViewCell {
     }
     
     func showDetail(parentViewController:UIViewController, tableView:UITableView) {
-        let customPopupViewController:MerchantDetailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
+        let detailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
         
         if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-            customPopupViewController.merchantDetail.setCellData(cell: self, offsetY: tableView.contentOffset.y)
-            customPopupViewController.view.frame = window.frame
+          detailViewController.merchantDetail.setCellData(cell: self, offsetY: tableView.contentOffset.y)
+          detailViewController.view.frame = window.frame
 
-            window.addSubview(customPopupViewController.view)
-            parentViewController.addChildViewController(customPopupViewController)
-            customPopupViewController.didMove(toParentViewController: parentViewController)
+            window.addSubview(detailViewController.view)
+            parentViewController.addChildViewController(detailViewController)
+          detailViewController.didMove(toParentViewController: parentViewController)
         }
     }
     

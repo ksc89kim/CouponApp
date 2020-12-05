@@ -65,6 +65,7 @@
 		A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopup.swift */; };
 		A4A0BB8725610F0A006F616D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8625610F0A006F616D /* Alert.swift */; };
 		A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A614ED256905BC004BF936 /* LoginViewModel.swift */; };
+		A4A732D2257278A7002F0CFD /* CouponListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A732D1257278A7002F0CFD /* CouponListViewModel.swift */; };
 		A4AFCE382545656600E92B92 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE372545656600E92B92 /* ViewModel.swift */; };
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */; };
@@ -77,7 +78,7 @@
 		A4DB7890220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */; };
 		A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */; };
 		A4EFCE1824692CA3003385D9 /* CouponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE1724692CA3003385D9 /* CouponView.swift */; };
-		A4FB5B5B254EA863006C861D /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5A254EA863006C861D /* CouponViewController.swift */; };
+		A4FB5B5B254EA863006C861D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5A254EA863006C861D /* BaseViewController.swift */; };
 		A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */; };
 		A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */; };
 		B2E94C48D75DCE2B025A3FDF /* Pods_CouponApp_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */; };
@@ -185,6 +186,7 @@
 		A4A0BB8425610C78006F616D /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
 		A4A0BB8625610F0A006F616D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A4A614ED256905BC004BF936 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		A4A732D1257278A7002F0CFD /* CouponListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE372545656600E92B92 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3C25456C6200E92B92 /* RxCouponData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCouponData.swift; sourceTree = "<group>"; };
@@ -197,7 +199,7 @@
 		A4DB788D220ED44000EE23D2 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
 		A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampDrawPath.swift; sourceTree = "<group>"; };
 		A4EFCE1724692CA3003385D9 /* CouponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponView.swift; sourceTree = "<group>"; };
-		A4FB5B5A254EA863006C861D /* CouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponViewController.swift; sourceTree = "<group>"; };
+		A4FB5B5A254EA863006C861D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAnimatedTextInput.swift; sourceTree = "<group>"; };
 		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -329,7 +331,7 @@
 				CC047F85200C8A290070CC5D /* LoginViewController.swift */,
 				CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */,
 				A405C9DB2286A890009403EB /* IntroViewController.swift */,
-				A4FB5B5A254EA863006C861D /* CouponViewController.swift */,
+				A4FB5B5A254EA863006C861D /* BaseViewController.swift */,
 			);
 			path = viewController;
 			sourceTree = "<group>";
@@ -482,10 +484,10 @@
 		A4AFCE362545652800E92B92 /* viewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A4AFCE372545656600E92B92 /* ViewModel.swift */,
 				A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */,
 				A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */,
 				A4A614ED256905BC004BF936 /* LoginViewModel.swift */,
+				A4A732D1257278A7002F0CFD /* CouponListViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -527,6 +529,7 @@
 		CC595CAB2032B5FC007E493E /* protocol */ = {
 			isa = PBXGroup;
 			children = (
+				A4AFCE372545656600E92B92 /* ViewModel.swift */,
 				59BE1D1C21184C930082F04E /* DataController.swift */,
 				A4B9E79E2462A6A80070A277 /* CouponController.swift */,
 				59BE1D1E21197E140082F04E /* Merchant.swift */,
@@ -845,6 +848,7 @@
 			files = (
 				A425C9E722D9D7AB00093D8E /* CouponNibName.swift in Sources */,
 				CC81729E2007238A0073E690 /* CouponImageView.swift in Sources */,
+				A4A732D2257278A7002F0CFD /* CouponListViewModel.swift in Sources */,
 				CC32D06D2011B61C003A7422 /* RoundedView.swift in Sources */,
 				A4EFCE1824692CA3003385D9 /* CouponView.swift in Sources */,
 				CCB5C7A6202BE0EF00CBBEB5 /* User.swift in Sources */,
@@ -893,7 +897,7 @@
 				A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */,
 				59BE1D1D21184C930082F04E /* DataController.swift in Sources */,
 				59978E072109BB8E001F3A8D /* UIImageViewExtensions.swift in Sources */,
-				A4FB5B5B254EA863006C861D /* CouponViewController.swift in Sources */,
+				A4FB5B5B254EA863006C861D /* BaseViewController.swift in Sources */,
 				CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */,
 				59978E052109BB1E001F3A8D /* UIColorExtensions.swift in Sources */,
 				A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */,

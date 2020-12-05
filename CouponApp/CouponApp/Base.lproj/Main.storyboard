@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ZA-pE-Yw8">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,13 +84,13 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="puj-pC-ebx"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SzA-gK-dr1" firstAttribute="trailing" secondItem="puj-pC-ebx" secondAttribute="trailing" id="A51-TN-wCB"/>
                             <constraint firstItem="SzA-gK-dr1" firstAttribute="leading" secondItem="puj-pC-ebx" secondAttribute="leading" id="D3s-J0-ThB"/>
                             <constraint firstItem="SzA-gK-dr1" firstAttribute="top" secondItem="puj-pC-ebx" secondAttribute="top" id="VxI-fR-fxa"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="puj-pC-ebx"/>
                     </view>
                     <navigationItem key="navigationItem" title="가맹점 찾기" id="Uem-2A-wSN"/>
                     <connections>
@@ -231,27 +231,21 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="hb5-s7-HXr">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="40"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acP-iq-DzC">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acP-iq-DzC">
                                                         <rect key="frame" x="0.0" y="0.0" width="167" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <state key="normal" title="쿠폰 요청">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="onRequestCoupon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="wYK-2u-mig"/>
-                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-HD-gP1">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSj-HD-gP1">
                                                         <rect key="frame" x="168" y="0.0" width="167" height="40"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                                         <state key="normal" title="쿠폰 사용">
                                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="onUseCopon:" destination="zt0-fb-j4a" eventType="touchUpInside" id="V6T-Tc-9o1"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -312,6 +306,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="n7M-CV-amP"/>
                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="n7M-CV-amP" firstAttribute="right" secondItem="RyG-f3-Gol" secondAttribute="right" constant="10" id="Iw3-lQ-fHr"/>
@@ -319,7 +314,6 @@
                             <constraint firstItem="RyG-f3-Gol" firstAttribute="left" secondItem="n7M-CV-amP" secondAttribute="left" constant="10" id="TEs-pd-rjE"/>
                             <constraint firstItem="RyG-f3-Gol" firstAttribute="top" secondItem="n7M-CV-amP" secondAttribute="top" constant="15" id="UQi-L6-oRq"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="n7M-CV-amP"/>
                     </view>
                     <navigationItem key="navigationItem" id="aDI-Tz-wQg">
                         <barButtonItem key="leftBarButtonItem" image="back" id="Jnm-pF-E4z">
@@ -335,7 +329,9 @@
                         <outlet property="dotLineView" destination="Ck5-eM-Ct1" id="SMP-7F-i3P"/>
                         <outlet property="leftHoleView" destination="tv8-Gw-Zok" id="2o7-hF-r5e"/>
                         <outlet property="myCollectionView" destination="ebv-4f-ACv" id="hgV-6Q-eej"/>
+                        <outlet property="requestButton" destination="acP-iq-DzC" id="wEt-it-1Jh"/>
                         <outlet property="rightHoleView" destination="gY3-iB-ox5" id="D64-cv-3FZ"/>
+                        <outlet property="useButton" destination="QSj-HD-gP1" id="7YP-jB-3a5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2xa-dB-Ggb" sceneMemberID="firstResponder"/>

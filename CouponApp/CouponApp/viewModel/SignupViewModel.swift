@@ -12,26 +12,26 @@ import RxOptional
 
 final class SignupViewModel: ViewModel {
 
-  struct Action {
+  struct Inputs {
     let onSingup = PublishSubject<Void>()
-  }
-
-  struct State {
     let userName = PublishSubject<String?>()
     let userPhoneNumber = PublishSubject<String?>()
     let userPassword = PublishSubject<String?>()
+  }
+
+  struct Outputs {
     let showCustomPopup = PublishSubject<CustomPopup>()
     let showMainViewController = PublishSubject<Void>()
     let savePhoneNumber = PublishSubject<String>()
   }
 
-  struct Input {
+  struct BindInputs {
     let showCustomPopup: Observable<CustomPopup>
     let showMainViewController: Observable<Void>
     let savePhoneNumber: Observable<String>
   }
 
-  enum Text {
+  private enum Text {
     static let signupFailTitle = "signupFailTitle"
     static let signupFailContent = "signupFailContent"
     static let nameNeedInput = "nameNeedInput"
@@ -39,27 +39,27 @@ final class SignupViewModel: ViewModel {
     static let passwordNeedInput = "passwordNeedInput"
   }
 
-  struct TextInput {
+  private struct TextInput {
     let name: Observable<String?>
     let phoneNumber: Observable<String?>
     let password: Observable<String?>
   }
 
-  struct Response {
+  private struct Response {
     let isSuccess: Bool
     let phoneNumber: String
   }
 
-  // MARK - Property
+  // MARK: - Property
 
-  var action = Action()
-  var state = State()
-  var disposeBag = DisposeBag()
+  let inputs = Inputs()
+  let outputs = Outputs()
+  private let disposeBag = DisposeBag()
 
-  // MARK - Init
+  // MARK: - Init
 
   init() {
-    let onSignup = self.action.onSingup
+    let onSignup = self.inputs.onSingup
       .share()
 
     let textInput = self.getTextInput(onSignup: onSignup)
@@ -79,7 +79,7 @@ final class SignupViewModel: ViewModel {
     let savePhoneNumber = self.savePhoneNumber(loadedUser: loadedUser)
 
     self.bind(
-      input: .init(
+      inputs: .init(
         showCustomPopup: showCustomPopup,
         showMainViewController: showMainViewController,
         savePhoneNumber: savePhoneNumber
@@ -87,30 +87,30 @@ final class SignupViewModel: ViewModel {
     )
   }
 
-  // MARK - Bind
+  // MARK: - Bind
 
-  func bind(input: Input) {
-    input.showCustomPopup
-      .bind(to: self.state.showCustomPopup)
+  func bind(inputs: BindInputs) {
+    inputs.showCustomPopup
+      .bind(to: self.outputs.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    input.showMainViewController
-      .bind(to: self.state.showMainViewController)
+    inputs.showMainViewController
+      .bind(to: self.outputs.showMainViewController)
       .disposed(by: self.disposeBag)
 
-    input.savePhoneNumber
-      .bind(to: self.state.savePhoneNumber)
+    inputs.savePhoneNumber
+      .bind(to: self.outputs.savePhoneNumber)
       .disposed(by: self.disposeBag)
   }
 
-  // MARK - Functions
+  // MARK: - Functions
 
   private func getTextInput(
     onSignup: Observable<Void>
   ) -> TextInput {
-    let userName = self.getStringWhenOnSignup(onSignup: onSignup, text: self.state.userName)
-    let phoneNumber = self.getStringWhenOnSignup(onSignup: onSignup, text: self.state.userPhoneNumber)
-    let password = self.getStringWhenOnSignup(onSignup: onSignup, text: self.state.userPassword)
+    let userName = self.getStringWhenOnSignup(onSignup: onSignup, text: self.inputs.userName)
+    let phoneNumber = self.getStringWhenOnSignup(onSignup: onSignup, text: self.inputs.userPhoneNumber)
+    let password = self.getStringWhenOnSignup(onSignup: onSignup, text: self.inputs.userPassword)
 
     return .init(
       name: userName,
