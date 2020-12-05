@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */; };
 		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
 		590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
 		592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */; };
@@ -81,6 +80,7 @@
 		A4FB5B5B254EA863006C861D /* CouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5A254EA863006C861D /* CouponViewController.swift */; };
 		A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */; };
 		A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */; };
+		B2E94C48D75DCE2B025A3FDF /* Pods_CouponApp_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */; };
 		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC047F82200C66170070CC5D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* LoginViewController.swift */; };
@@ -116,7 +116,6 @@
 
 /* Begin PBXFileReference section */
 		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		590D16E4200202EF008FBA02 /* CouponSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSingleton.swift; sourceTree = "<group>"; };
 		592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponDrawView.swift; sourceTree = "<group>"; };
 		594A011320A825700007503D /* CouponNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponNetwork.swift; sourceTree = "<group>"; };
@@ -180,6 +179,7 @@
 		A4349514224FBB6C00B236C6 /* MerchantDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantDetailViewController.xib; sourceTree = "<group>"; };
 		A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExtensions.swift; sourceTree = "<group>"; };
 		A479E000230ACF0400EA390D /* MerchantAnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedLabel.swift; sourceTree = "<group>"; };
+		A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4942E3222632D2800083359 /* UImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageExtensions.swift; sourceTree = "<group>"; };
 		A4942E34226347E000083359 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		A4A0BB8425610C78006F616D /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
@@ -201,6 +201,7 @@
 		A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAnimatedTextInput.swift; sourceTree = "<group>"; };
 		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CC047F81200C66170070CC5D /* ImageCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCoupon.swift; sourceTree = "<group>"; };
@@ -221,6 +222,7 @@
 		CCF0CFB72015D27300FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponNetworkTests.swift; sourceTree = "<group>"; };
 		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -246,7 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				260F13DCBDE7F4535FE4F8F5 /* Pods_CouponAppUITests.framework in Frameworks */,
+				B2E94C48D75DCE2B025A3FDF /* Pods_CouponApp_CouponAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +261,7 @@
 				59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */,
 				5CD378463054031048ADFA07 /* Pods_CouponApp.framework */,
 				B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */,
-				2445837F14F4C552A413040C /* Pods_CouponAppUITests.framework */,
+				A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -556,6 +558,8 @@
 				FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */,
 				D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */,
 				147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */,
+				AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */,
+				E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -571,7 +575,7 @@
 				5963036F1F431411000E2701 /* Sources */,
 				596303701F431411000E2701 /* Frameworks */,
 				596303711F431411000E2701 /* Resources */,
-				A40B1F91B63B8F66DC6B2AF0 /* [CP] Embed Pods Frameworks */,
+				1F921F37D2662EA041B27AB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -609,6 +613,7 @@
 				5963038E1F431412000E2701 /* Sources */,
 				5963038F1F431412000E2701 /* Frameworks */,
 				596303901F431412000E2701 /* Resources */,
+				DC69B38CC172CCDB955353F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -756,14 +761,14 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CouponAppUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-CouponApp-CouponAppUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A40B1F91B63B8F66DC6B2AF0 /* [CP] Embed Pods Frameworks */ = {
+		1F921F37D2662EA041B27AB4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -795,6 +800,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC69B38CC172CCDB955353F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/AnimatedTextInput/AnimatedTextInput.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedTextInput.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1154,7 +1193,7 @@
 		};
 		596303A21F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */;
+			baseConfigurationReference = AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CouponAppUITests/Info.plist;
@@ -1169,7 +1208,7 @@
 		};
 		596303A31F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */;
+			baseConfigurationReference = E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CouponAppUITests/Info.plist;

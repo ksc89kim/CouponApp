@@ -1,6 +1,0 @@
-framework module Pods_CouponAppUITests {
-  umbrella header "Pods-CouponAppUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

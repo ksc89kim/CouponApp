@@ -65,7 +65,7 @@ open class AnimatedTextInput: UIControl {
     
     open var placeholderAlignment: CATextLayer.Alignment = .natural {
         didSet {
-            placeholderLayer.alignmentMode = CATextLayerAlignmentMode(string: String(describing: placeholderAlignment)) as String
+            placeholderLayer.alignmentMode = CATextLayerAlignmentMode(rawValue: String(describing: placeholderAlignment))
         }
     }
 
@@ -235,7 +235,7 @@ open class AnimatedTextInput: UIControl {
 
     override open var intrinsicContentSize: CGSize {
         let normalHeight = textInput.view.intrinsicContentSize.height
-        return CGSize(width: UIViewNoIntrinsicMetric, height: normalHeight + style.topMargin + style.bottomMargin)
+        return CGSize(width: UIView.noIntrinsicMetric, height: normalHeight + style.topMargin + style.bottomMargin)
     }
 
     open override func updateConstraints() {
