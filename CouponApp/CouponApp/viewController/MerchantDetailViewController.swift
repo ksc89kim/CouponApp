@@ -244,11 +244,11 @@ final class MerchantDetailViewController: UIViewController, CouponController{
     func deleteCoupon(merchantId:Int){
         CouponData.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else  {
-                self?.showCustomPopup(title: "deleteCouponFailTitle".localized, message: "deleteCouponFailContent".localized)
+//                self?.showCustomPopup(title: "deleteCouponFailTitle".localized, message: "deleteCouponFailContent".localized)
                 return
             }
             
-            self?.showCustomPopup(title: "deleteCouponSuccessTitle".localized, message: "deleteCouponSuccessContent".localized)
+//            self?.showCustomPopup(title: "deleteCouponSuccessTitle".localized, message: "deleteCouponSuccessContent".localized)
             self?.merchantDetail.isUserCoupon = false
             self?.updateActionButtonUI()
         })
@@ -260,11 +260,11 @@ final class MerchantDetailViewController: UIViewController, CouponController{
     func insertCoupon(merchantId:Int){
         CouponData.insertUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
             guard isSuccessed else {
-                self?.showCustomPopup(title: "insertCouponFailTitle".localized, message: "insertCouponFailContent".localized)
+//                self?.showCustomPopup(title: "insertCouponFailTitle".localized, message: "insertCouponFailContent".localized)
                 return
             }
             
-            self?.showCustomPopup(title: "insertCouponSuccessTitle".localized, message: "insertCouponSuccessContent".localized)
+//            self?.showCustomPopup(title: "insertCouponSuccessTitle".localized, message: "insertCouponSuccessContent".localized)
             self?.merchantDetail.isUserCoupon = true
             self?.updateActionButtonUI()
         })

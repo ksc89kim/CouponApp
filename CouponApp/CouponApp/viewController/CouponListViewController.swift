@@ -65,6 +65,7 @@ final class CouponListViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.viewModel.inputs.viewDidLoad.onNext(())
     self.setUI()
   }
 
@@ -86,6 +87,12 @@ final class CouponListViewController: BaseViewController {
   }
 
   override func bindOutpus() {
+    self.viewModel.outputs.navigationTitle
+      .debug("##")
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(self.navigationItem.rx.title)
+      .disposed(by: self.disposeBag)
+    
     self.viewModel.outputs.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
@@ -100,8 +107,6 @@ final class CouponListViewController: BaseViewController {
   // MARK: - Set Function
 
   private func setUI() {
-    self.navigationItem.title = merchantData?.name
-
     self.setBackgroundRoundedView(view: self.backgroundRoundedView)
     self.setHoleView(view: self.leftHoleView)
     self.setHoleView(view: self.rightHoleView)

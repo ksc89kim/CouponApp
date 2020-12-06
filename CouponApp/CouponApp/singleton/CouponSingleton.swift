@@ -8,9 +8,7 @@
 
 import UIKit
 
-/*
-     쿠폰 전체앱 싱글톤 클래스
- */
+/// 쿠폰 전체앱 싱글톤 클래스
 final class CouponSignleton {
     static let instance = CouponSignleton()
     var userData:User?

@@ -13,6 +13,7 @@ import RxOptional
 final class CouponListViewModel: ViewModel {
 
   struct Inputs {
+    let viewDidLoad = PublishSubject<Void>()
     let onAddCoupon = PublishSubject<Void>()
     let onUseCoupon = PublishSubject<Void>()
     let userCoupon = PublishSubject<UserCoupon?>()
@@ -20,12 +21,14 @@ final class CouponListViewModel: ViewModel {
   }
 
   struct Outputs {
+    let navigationTitle = PublishSubject<String>()
     let reload = PublishSubject<Void>()
     let showCustomPopup = PublishSubject<CustomPopup>()
     let selectedCouponIndex = BehaviorRelay<Int>(value: 0)
   }
 
   struct BindInputs {
+    let navigationTitle: Observable<String>
     let reload: Observable<Void>
     let showCustomPopup: Observable<CustomPopup>
     let selectedCouponIndex: Observable<Int>
@@ -145,8 +148,11 @@ final class CouponListViewModel: ViewModel {
       )
     )
 
+    let navigationTitle = self.navigationTitle()
+
     self.bind(
       inputs: .init(
+        navigationTitle: navigationTitle,
         reload: reload,
         showCustomPopup: showCustomPopup,
         selectedCouponIndex: selectedCouponIndex
@@ -157,6 +163,10 @@ final class CouponListViewModel: ViewModel {
   // MARK: - Bind
 
   func bind(inputs: BindInputs) {
+    inputs.navigationTitle
+      .bind(to: self.outputs.navigationTitle)
+      .disposed(by: self.disposeBag)
+
     inputs.reload
       .bind(to: self.outputs.reload)
       .disposed(by: self.disposeBag)
@@ -168,6 +178,15 @@ final class CouponListViewModel: ViewModel {
     inputs.selectedCouponIndex
       .bind(to: self.outputs.selectedCouponIndex)
       .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - Navigation Title
+
+  private func navigationTitle() -> Observable<String> {
+    return self.inputs.viewDidLoad
+      .withLatestFrom(self.inputs.merchantCoupon)
+      .map { $0?.name }
+      .filterNil()
   }
 
   // MARK: - CouponInfo Functions
@@ -224,6 +243,7 @@ final class CouponListViewModel: ViewModel {
         return (couponInfo: couponInfo, couponCount: couponCount)
       }
       .flatMapLatest { couponInfo, couponCount -> Observable<Bool> in
+        print("## couponCount \(couponCount)")
         return RxCouponData.updateUesrCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: couponInfo.merchant.merchantId,
@@ -239,10 +259,21 @@ final class CouponListViewModel: ViewModel {
   private func selectedCouponIndex(
     responseAddCoupon: Observable<CouponInfo>
   ) -> Observable<Int> {
-    return responseAddCoupon
+
+    let selectIndexWhenViewDidLoad = self.inputs.viewDidLoad
+      .withLatestFrom(self.inputs.userCoupon)
+      .map { $0?.couponCount }
+      .filterNil()
+
+    let selectIndexWhenResponseAdd = responseAddCoupon
       .filter { $0.isNetworkSuccess }
       .do(onNext: { $0.userCoupon.addCouponCount() })
       .map { $0.userCoupon.couponCount - 1 }
+
+    return Observable.merge(
+      selectIndexWhenViewDidLoad,
+      selectIndexWhenResponseAdd
+    )
   }
 
   // MARK: - Reload

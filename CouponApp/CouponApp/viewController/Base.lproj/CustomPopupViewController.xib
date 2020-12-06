@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,6 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPopupViewController" customModule="CouponApp" customModuleProvider="target">
             <connections>
                 <outlet property="contentLabel" destination="Ybw-yc-yZV" id="U6e-Bn-u8g"/>
+                <outlet property="okButton" destination="i4j-XZ-aIg" id="l3C-MY-Ede"/>
                 <outlet property="popupCenterYConstraint" destination="1ke-tZ-14J" id="hKx-27-lKd"/>
                 <outlet property="popupView" destination="2VO-2I-wp4" id="vVP-r7-XBq"/>
                 <outlet property="titleLabel" destination="8Ve-3b-0pg" id="tgm-Al-P2w"/>
@@ -67,15 +66,12 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="h2S-kN-Ca4">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4j-XZ-aIg">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4j-XZ-aIg">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="40"/>
                                             <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
                                             <state key="normal" title="확인">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
-                                            <connections>
-                                                <action selector="onOk:" destination="-1" eventType="touchUpInside" id="eNQ-7D-Tlb"/>
-                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -114,6 +110,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="2VO-2I-wp4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-30" id="1ke-tZ-14J"/>
                 <constraint firstItem="zQ5-Rs-leS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="7Aa-5c-lFc"/>
@@ -123,7 +120,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zQ5-Rs-leS" secondAttribute="trailing" id="bOY-Fo-IcB"/>
                 <constraint firstItem="zQ5-Rs-leS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="och-vz-Mjl"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="24.5" y="52.5"/>
         </view>
     </objects>

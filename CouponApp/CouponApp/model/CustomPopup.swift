@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RxSwift
 
 struct CustomPopup {
   let title: String
   let message: String
-  let callback: (() -> Void)?
+  let callback: AnyObserver<Void>?
 }

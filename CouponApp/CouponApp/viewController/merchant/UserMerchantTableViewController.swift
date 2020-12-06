@@ -122,7 +122,7 @@ final class UserMerchantTableViewController : UITableViewController, CouponContr
                 self?.userCouponList?.remove(indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             } else {
-                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
+//                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
             }
         })
     }

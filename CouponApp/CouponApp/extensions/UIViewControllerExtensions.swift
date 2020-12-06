@@ -53,7 +53,7 @@ extension UIViewController {
     self.showAlert(title: data.title, message: data.message)
   }
 
-  func showAlert(title:String, message:String) {
+  fileprivate func showAlert(title:String, message:String) {
     DispatchQueue.main.async {
       let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)
@@ -62,16 +62,13 @@ extension UIViewController {
     }
   }
 
-  func showCustomPopup(data: CustomPopup){
-    self.showCustomPopup(title: data.title, message: data.message, callback: data.callback)
-  }
-
-  func showCustomPopup(title:String, message:String, callback:(() -> Void)? = nil){
+  fileprivate func showCustomPopup(data: CustomPopup){
     DispatchQueue.main.async {
-      let customPopupViewController:CustomPopupViewController = CustomPopupViewController(nibName: "CustomPopupViewController", bundle: nil)
-      customPopupViewController.okCallback = callback
-      customPopupViewController.titleText = title
-      customPopupViewController.contentText = message
+      let customPopupViewController = CustomPopupViewController(
+        nibName: "CustomPopupViewController",
+        bundle: nil
+      )
+      customPopupViewController.rx.configure.onNext(data)
       customPopupViewController.view.frame = self.view.frame
       self.addCustomViewController(viewController: customPopupViewController)
     }
