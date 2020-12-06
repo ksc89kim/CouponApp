@@ -243,7 +243,6 @@ final class CouponListViewModel: ViewModel {
         return (couponInfo: couponInfo, couponCount: couponCount)
       }
       .flatMapLatest { couponInfo, couponCount -> Observable<Bool> in
-        print("## couponCount \(couponCount)")
         return RxCouponData.updateUesrCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: couponInfo.merchant.merchantId,

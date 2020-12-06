@@ -88,7 +88,6 @@ final class CouponListViewController: BaseViewController {
 
   override func bindOutpus() {
     self.viewModel.outputs.navigationTitle
-      .debug("##")
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.navigationItem.rx.title)
       .disposed(by: self.disposeBag)
