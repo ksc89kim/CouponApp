@@ -10,18 +10,13 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, BaseBind {
 
   let disposeBag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     self.bind()
-  }
-
-  private func bind() {
-    self.bindOutpus()
-    self.bindInputs()
   }
 
   open func bindInputs() {

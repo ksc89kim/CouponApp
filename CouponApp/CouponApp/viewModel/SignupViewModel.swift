@@ -50,7 +50,7 @@ final class SignupViewModel: ViewModel {
     let phoneNumber: String
   }
 
-  // MARK: - Property
+  // MARK: - Properties
 
   let inputs = Inputs()
   let outputs = Outputs()

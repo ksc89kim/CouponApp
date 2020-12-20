@@ -10,11 +10,11 @@ import XCTest
 @testable import CouponApp
 
 class CouponNetworkTests: XCTestCase {
-    let password:String = "101010"
-    let phoneNumber:String = "01028283032"
-    let userName:String = "SEON"
-    let userId:Int = 1
-    let merchantId:Int = 1
+    let password: String = "101010"
+    let phoneNumber: String = "01028283032"
+    let userName: String = "SEON"
+    let userId: Int = 1
+    let merchantId: Int = 1
     
     override func setUp() {
         super.setUp()

@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class UserCouponList:Codable, List{
+final class UserCouponList: Codable, List {
     var list: [UserCoupon]
     
     init() {
-       list = []
+      self.list = []
     }
     
     private enum UserCouponListKeys: String, CodingKey {

@@ -26,7 +26,7 @@ final class IntroViewModel: ViewModel {
     let addMainViewController: Observable<Void>
   }
 
-  // MARK: - Property
+  // MARK: - Properties
 
   let inputs = Inputs()
   let outputs = Outputs()

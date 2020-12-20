@@ -36,7 +36,7 @@ final class CustomPopupViewModel: ViewModel {
     let popupViewAlpha: Observable<CGFloat>
   }
 
-  // MARK: - Property
+  // MARK: - Properties
 
   let inputs = Inputs()
   let outputs = Outputs()

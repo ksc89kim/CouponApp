@@ -152,7 +152,7 @@ final class CouponNetwork : DataController {
     request.responseJSON { (response) -> Void in
       if CouponNetwork.checkResponseData(response) {
         do {
-          let userCouponList:UserCouponList = try JSONDecoder().decode(UserCouponList.self, from: response.data!)
+          let userCouponList: UserCouponList = try JSONDecoder().decode(UserCouponList.self, from: response.data!)
           complete(true,userCouponList)
         } catch {
           complete(false,nil)

@@ -102,7 +102,7 @@ class SQLInterface {
         let query = "select idx,merchant_idx,coupon_count from coupon where user_idx = \(userId)"
         do {
             let result = try contactDb.executeQuery(query, values: [])
-            var userCouponList:UserCouponList? = UserCouponList()
+            var userCouponList: UserCouponList? = UserCouponList()
             while result.next() {
                 let merchantIdx:Int32 = result.int(forColumnIndex: 1)
                 let couponCount:Int32 = result.int(forColumnIndex: 2)

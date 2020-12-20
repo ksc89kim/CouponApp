@@ -7,126 +7,151 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-/*
- 회원 가맹점(쿠폰) 테이블 뷰
- - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
- */
-final class UserMerchantTableViewController : UITableViewController, CouponController{
-    var userCouponList:UserCouponList? // 회원 쿠폰 정보
-    lazy var merchantList:MerchantImplList? = {
-        return CouponSignleton.instance.merchantList
-    }()
+/// 회원 가맹점(쿠폰) 테이블 뷰
+/// - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
+final class UserMerchantTableViewController : UITableViewController, BaseBind {
+
+  // MARK: - Properties
+
+  lazy var merchantList: MerchantImplList? = {
+    return CouponSignleton.instance.merchantList
+  }()
+
+  let viewModel = UserMerchantTableViewModel()
+  var userCouponList: UserCouponList? // 회원 쿠폰 정보
+  var disposeBag = DisposeBag()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.setUI()
+    self.bind()
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.viewModel.inputs.loadData.onNext(())
+  }
+
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
+
+  private func setUI() {
+    self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
+    let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
+    self.tableView.register(nib, forCellReuseIdentifier: CouponIdentifier.merchantTableViewCell.rawValue)
+  }
+
+  // MARK: - Bind
+
+  func bindInputs() {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setUI()
-        loadData()
+  }
+
+  func bindOutpus() {
+    self.viewModel.outputs.reload
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] list in
+        self?.userCouponList = list
+        self?.tableView.reloadData()
+      })
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.delete
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] indexPath in
+        self?.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+      })
+      .disposed(by: self.disposeBag)
+
+    self.viewModel.outputs.showCustomPopup
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(self.rx.showCustomPopup)
+      .disposed(by: self.disposeBag)
+  }
+
+  // MARK: - TableView Delegate & DataSource
+
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let couponList = self.userCouponList else {
+      return 0
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loadData()
+    return couponList.count
+  }
+
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue,
+      for: indexPath
+    ) as! MerchantTableViewCell
+
+    let userCoupon = self.userCouponList?[indexPath.row]
+    if let merchant = self.merchantList?.index(merchantId: userCoupon?.merchantId) {
+      cell.titleLabel.text = merchant.name
+      cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: merchant.cardBackGround)
+      cell.logoImageView.downloadedFrom(link: merchant.logoImageUrl)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    return cell
+  }
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    self.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: indexPath)
+  }
+
+  override func tableView(
+    _ tableView:UITableView,
+    commit editingStyle:UITableViewCellEditingStyle,
+    forRowAt indexPath:IndexPath
+  ) {
+    if editingStyle == UITableViewCellEditingStyle.delete,
+       let merchant = self.userCouponList?[indexPath.row] {
+      self.deleteCouponForTable(
+        merchantId: merchant.merchantId,
+        tableView: tableView,
+        indexPath: indexPath
+      )
     }
-    
-    private func setUI() {
-        self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
-        let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
+  }
+
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+    // CouponListViewController -> 데이터 전달
+    if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
+       let couponListView = segue.destination as? CouponListViewController,
+       let indexPath = sender as? IndexPath {
+      couponListView.userCouponData = self.userCouponList?[indexPath.row]
+      couponListView.merchantData = self.merchantList?.index(
+        merchantId:couponListView.userCouponData?.merchantId
+      )
     }
-    
-    // MARK: - 유저 쿠폰 리스트 가져오기
-    private func loadData() {
-        CouponData.loadUserCouponData(userId: CouponSignleton.getUserId(), complete: { [weak self] isSuccessed, userCouponList in
-            if isSuccessed {
-                self?.userCouponList = userCouponList
-                if self?.userCouponList != nil {
-                    self?.tableView.reloadData()
-                }
-            }
-        })
-    }
-    
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if self.userCouponList == nil {
-            return 0
-        } else {
-            return self.userCouponList!.count
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-        
-        let userCoupon = self.userCouponList?[indexPath.row]
-        let merchant = merchantList?.index(merchantId: userCoupon?.merchantId)
-        cell.titleLabel.text = merchant?.name
-        cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: (merchant?.cardBackGround)!)
-        cell.logoImageView.downloadedFrom(link:(merchant?.logoImageUrl)!)
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: indexPath)
-    }
-    
-    override func tableView(_ tableView:UITableView, commit editingStyle:UITableViewCellEditingStyle, forRowAt indexPath:IndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.delete {
-            let userMerchant = userCouponList?[indexPath.row]
-            deleteCouponForTable(merchantId:(userMerchant?.merchantId)!, tableView: tableView, indexPath: indexPath)
-        }
-    }
-    
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // CouponListViewController -> 데이터 전달
-        if segue.identifier == CouponIdentifier.showCouponListView.rawValue {
-            let couponListView:CouponListViewController? = segue.destination as? CouponListViewController
-            let indexPath:IndexPath = sender as! IndexPath
-            couponListView?.userCouponData = self.userCouponList?[indexPath.row]
-            couponListView?.merchantData = merchantList?.index(merchantId:couponListView?.userCouponData?.merchantId)
-        }
-    }
-    
-    @IBAction func unwindToUserMercahntTableView(segue:UIStoryboardSegue) {
-        if segue.identifier == CouponIdentifier.unwindUserMerchant.rawValue {
-        }
-    }
-    
-    // MARK: - CouponController
-    
-    func deleteCoupon(merchantId: Int) {
-        
-    }
-    
-    func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
-        let deleteCouponFailTitle = "deleteCouponFailTitle".localized
-        let deleteCouponFailContent = "deleteCouponFailContent".localized
-        
-        CouponData.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId, complete: { [weak self] isSuccessed in
-            if isSuccessed {
-                self?.userCouponList?.remove(indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
-            } else {
-//                self?.showCustomPopup(title: deleteCouponFailTitle, message: deleteCouponFailContent)
-            }
-        })
-    }
-    
-    func insertCoupon(merchantId:Int) {
-    }
+  }
+
+  @IBAction func unwindToUserMercahntTableView(segue: UIStoryboardSegue) {
+  }
+
+}
+
+extension UserMerchantTableViewController: CouponController {
+
+  func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
+    self.viewModel.inputs.deleteCoupon.onNext((merchantId: merchantId, indexPath: indexPath))
+  }
+
+  func deleteCoupon(merchantId: Int) {
+  }
+
+  func insertCoupon(merchantId:Int) {
+  }
+
 }

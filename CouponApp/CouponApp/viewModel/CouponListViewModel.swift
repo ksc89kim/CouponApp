@@ -85,7 +85,7 @@ final class CouponListViewModel: ViewModel {
   }
 
 
-  // MARK: - Property
+  // MARK: - Properties
 
   let inputs = Inputs()
   let outputs = Outputs()
