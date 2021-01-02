@@ -9,14 +9,14 @@
 import Foundation
 
 struct ResponseCode: Codable {
-    var isSuccess:Bool
-    
-    private enum ResponseCodeKeys: String, CodingKey {
-        case isSuccess
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: ResponseCodeKeys.self)
-        self.isSuccess = try container.decode(Bool.self, forKey: .isSuccess)
-    }
+  var isSuccess:Bool
+
+  private enum ResponseCodeKeys: String, CodingKey {
+    case isSuccess
+  }
+
+  init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: ResponseCodeKeys.self)
+    self.isSuccess = try container.decode(Bool.self, forKey: .isSuccess)
+  }
 }

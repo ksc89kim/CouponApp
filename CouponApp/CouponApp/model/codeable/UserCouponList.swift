@@ -9,18 +9,18 @@
 import Foundation
 
 final class UserCouponList: Codable, List {
-    var list: [UserCoupon]
-    
-    init() {
-      self.list = []
-    }
-    
-    private enum UserCouponListKeys: String, CodingKey {
-        case list = "couponInfoArray"
-    }
-    
-    required init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: UserCouponListKeys.self)
-        self.list = try container.decode([UserCoupon].self, forKey: .list)
-    }
+  var list: [UserCoupon]
+
+  init() {
+    self.list = []
+  }
+
+  private enum UserCouponListKeys: String, CodingKey {
+    case list = "couponInfoArray"
+  }
+
+  required init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: UserCouponListKeys.self)
+    self.list = try container.decode([UserCoupon].self, forKey: .list)
+  }
 }

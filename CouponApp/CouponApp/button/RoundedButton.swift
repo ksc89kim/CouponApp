@@ -8,31 +8,31 @@
 
 import UIKit
 
-/*
-     라운드 버튼
- */
-@IBDesignable class RoundedButton: UIButton {
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        updateCornerRadius()
+/// 라운드 버튼
+@IBDesignable
+class RoundedButton: UIButton {
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    self.updateCornerRadius()
+  }
+  
+  @IBInspectable var rounded: Bool = false {
+    didSet {
+      self.updateCornerRadius()
     }
-    
-    @IBInspectable var rounded: Bool = false {
-        didSet {
-            updateCornerRadius()
-        }
+  }
+  
+  @IBInspectable var cornerRadius: CGFloat = 0.1 {
+    didSet {
+      self.updateCornerRadius()
     }
-    
-    @IBInspectable var cornerRadius: CGFloat = 0.1 {
-        didSet {
-            updateCornerRadius()
-        }
-    }
-    
-    func updateCornerRadius() {
-        layer.cornerRadius = rounded ? cornerRadius : 0
-        layer.masksToBounds = rounded ? true : false
-    }
-
+  }
+  
+  func updateCornerRadius() {
+    self.layer.cornerRadius = self.rounded ? self.cornerRadius : 0
+    self.layer.masksToBounds = self.rounded ? true : false
+  }
+  
 }

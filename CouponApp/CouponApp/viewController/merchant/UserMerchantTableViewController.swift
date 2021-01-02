@@ -24,6 +24,8 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
   var userCouponList: UserCouponList? // 회원 쿠폰 정보
   var disposeBag = DisposeBag()
 
+  // MARK: - Life Cycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     self.setUI()
@@ -39,6 +41,8 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+
+  // MARK: - Set
 
   private func setUI() {
     self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)

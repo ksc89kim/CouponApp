@@ -14,29 +14,29 @@ struct IntroStampDrawPath {
   private var rateX: CGFloat
   private var rateY: CGFloat
   private let path = UIBezierPath()
-
+  
   init(drawRect:CGRect, parentRect:CGRect) {
     self.width = drawRect.size.width
     self.height = drawRect.size.height
     self.rateX = parentRect.size.width/drawRect.size.width
     self.rateY = parentRect.size.height/drawRect.size.height
   }
-
+  
   mutating func setRate(parentRect:CGRect) {
     self.rateX = parentRect.size.width/self.width
     self.rateY = parentRect.size.height/self.height
   }
-
+  
   func getCGPath() -> CGPath {
     return self.path.cgPath
   }
-
+  
   func draw() {
     self.path.removeAllPoints()
     self.drawTopStamp()
     self.drawBottomPedestal()
   }
-
+  
   private func drawTopStamp() {
     self.path.move(to: CGPoint(x:53 * self.rateX, y:18 * self.rateY))
     self.path.addCurve(
@@ -145,7 +145,7 @@ struct IntroStampDrawPath {
       controlPoint2: CGPoint(x:53 * self.rateX, y:18 * self.rateY)
     )
   }
-
+  
   private func drawBottomPedestal() {
     self.path.move(
       to: CGPoint(x:88 * self.rateX, y:149 * self.rateY)

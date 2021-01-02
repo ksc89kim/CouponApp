@@ -9,5 +9,5 @@
 import Foundation
 
 protocol Merchant {
-    var merchantId:Int { get set }
+  var merchantId: Int { get set }
 }

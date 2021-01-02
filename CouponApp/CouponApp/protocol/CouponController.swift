@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CouponController {
-    func deleteCoupon(merchantId:Int)
-    func deleteCouponForTable(merchantId:Int, tableView:UITableView, indexPath:IndexPath)
-    func insertCoupon(merchantId:Int)
+  func deleteCoupon(merchantId: Int)
+  func deleteCouponForTable(merchantId :Int, tableView: UITableView, indexPath: IndexPath)
+  func insertCoupon(merchantId: Int)
 }

@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum CouponStoryBoardName:String{
-    case main = "Main"
-    case merchant = "Merchant"
-    case start = "Start"
+enum CouponStoryBoardName: String{
+  case main = "Main"
+  case merchant = "Merchant"
+  case start = "Start"
 }

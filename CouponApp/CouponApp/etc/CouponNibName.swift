@@ -9,10 +9,10 @@
 
 import Foundation
 
-enum CouponNibName:String{
-    // cell
-    case merchantTableViewCell = "MerchantTableViewCell"
-    
-    // viewController
-    case merchantDetailViewController = "MerchantDetailViewController"
+enum CouponNibName: String{
+  // cell
+  case merchantTableViewCell = "MerchantTableViewCell"
+  
+  // viewController
+  case merchantDetailViewController = "MerchantDetailViewController"
 }

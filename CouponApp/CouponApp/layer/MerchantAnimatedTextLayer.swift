@@ -9,71 +9,71 @@
 import UIKit
 
 final class MerchantAnimatedTextLayer: CATextLayer {
-    var uifont:UIFont? {
-        didSet {
-            font = uifont?.fontName as CFTypeRef
-            fontSize = uifont?.pointSize ?? 0
-        }
+  var uifont: UIFont? {
+    didSet {
+      font = self.uifont?.fontName as CFTypeRef
+      fontSize = self.uifont?.pointSize ?? 0
     }
-
-    var text:String? {
-        didSet {
-            string = text
-            let size:CGSize = text?.size(OfFont:uifont!) ?? .zero
-            if size != .zero {
-                frame.size = size
-            }
-        }
+  }
+  
+  var text: String? {
+    didSet {
+      string = self.text
+      let size:CGSize = self.text?.size(OfFont: self.uifont!) ?? .zero
+      if size != .zero {
+        frame.size = size
+      }
+    }
+  }
+  
+  var cellFont: UIFont?
+  var scalePoint = CGPoint(x: 1, y: 1)
+  
+  override func layoutSublayers() {
+    super.layoutSublayers()
+  }
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    self.setUI()
+  }
+  
+  private func setUI() {
+    
+  }
+  
+  func setPercent(percent: CGFloat) {
+    guard let scale = self.getScale() else {
+      return
     }
     
-    var cellFont:UIFont?
-    var scalePoint:CGPoint = CGPoint(x: 1, y: 1)
-
-    override func layoutSublayers() {
-        super.layoutSublayers()
+    let percentScaleX = ((1 - scale.x) * percent) / 100
+    let percentScaleY = ((1 - scale.y) * percent) / 100
+    self.scalePoint.x = scale.x + percentScaleX
+    self.scalePoint.y = scale.y + percentScaleY
+    
+    self.setAffineTransform(CGAffineTransform(scaleX: self.scalePoint.x , y: self.scalePoint.y))
+  }
+  
+  func setPosition(x: CGFloat, y: CGFloat) {
+    self.frame.origin.x = x - (self.bounds.width * self.scalePoint.x);
+    self.frame.origin.y = y;
+  }
+  
+  private func getScale() -> CGPoint? {
+    guard self.frame.size != .zero else {
+      return nil
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setUI()
+    guard let font = self.cellFont else {
+      return nil
     }
     
-    private func setUI() {
-        
+    guard let titleSize = self.text?.size(OfFont: font) else {
+      return nil
     }
     
-    func setPercent(percent:CGFloat) {
-        guard let scale = self.getScale() else {
-            return
-        }
-        
-        let percentScaleX = ((1 - scale.x) * percent) / 100
-        let percentScaleY = ((1 - scale.y) * percent) / 100
-        scalePoint.x = scale.x + percentScaleX
-        scalePoint.y = scale.y + percentScaleY
-        
-        self.setAffineTransform(CGAffineTransform(scaleX:scalePoint.x , y: scalePoint.y))
-    }
-    
-    func setPosition(x:CGFloat, y:CGFloat) {
-        frame.origin.x = x - (bounds.width * scalePoint.x);
-        frame.origin.y = y;        
-    }
-    
-    private func getScale() -> CGPoint? {
-        guard frame.size != .zero else {
-            return nil
-        }
-        
-        guard let font = cellFont else {
-            return nil
-        }
-        
-        guard let titleSize = text?.size(OfFont: font) else {
-            return nil
-        }
-        
-        return CGPoint(x: titleSize.width / bounds.size.width, y: titleSize.height / bounds.size.height)
-    }
-
+    return CGPoint(x: titleSize.width / self.bounds.size.width, y: titleSize.height / self.bounds.size.height)
+  }
+  
 }

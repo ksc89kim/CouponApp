@@ -9,6 +9,6 @@
 import Foundation
 
 protocol CouponView {
-    var uiData: CouponUI? { get set }
-    func updateUI()
+  var uiData: CouponUI? { get set }
+  func updateUI()
 }

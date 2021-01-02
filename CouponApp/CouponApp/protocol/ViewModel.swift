@@ -12,7 +12,7 @@ protocol ViewModel {
   associatedtype Inputs
   associatedtype Outputs
   associatedtype BindInputs
-
+  
   var inputs: Inputs { get }
   var outputs: Outputs { get }
   func bind(inputs: BindInputs)

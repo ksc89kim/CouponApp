@@ -12,26 +12,25 @@ import RxCocoa
 
 extension UIViewController {
 
-  func createViewController(storyboardName:String, withIdentifier:String) -> UIViewController {
+  func createViewController(storyboardName: String, withIdentifier: String) -> UIViewController {
     let storyBoard = UIStoryboard(name:storyboardName, bundle:Bundle.main)
     let viewController = storyBoard.instantiateViewController(withIdentifier: withIdentifier)
     return viewController
   }
 
-  func createViewController(storyboardName:String) -> UIViewController {
+  func createViewController(storyboardName: String) -> UIViewController {
     let storyBoard = UIStoryboard(name:storyboardName, bundle:Bundle.main)
     let mainViewController = storyBoard.instantiateInitialViewController() ?? UIViewController()
     return mainViewController
   }
 
-
-  func addViewController(viewController:UIViewController, bringSubView:UIView) {
+  func addViewController(viewController: UIViewController, bringSubView: UIView) {
     self.addChildViewController(viewController)
     self.view.addSubview(viewController.view)
     self.view.bringSubview(toFront:bringSubView)
   }
 
-  func addCustomViewController(viewController:UIViewController){
+  func addCustomViewController(viewController: UIViewController){
     DispatchQueue.main.async {
       if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
         window.addSubview(viewController.view)
@@ -53,7 +52,7 @@ extension UIViewController {
     self.showAlert(title: data.title, message: data.message)
   }
 
-  fileprivate func showAlert(title:String, message:String) {
+  fileprivate func showAlert(title: String, message: String) {
     DispatchQueue.main.async {
       let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
       let defaultAction = UIAlertAction(title: "확인", style: .default, handler: nil)

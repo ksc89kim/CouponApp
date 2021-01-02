@@ -9,19 +9,24 @@
 import UIKit
 
 final class CouponCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var drawView: CouponDrawView!
-    @IBOutlet weak var imageView: CouponImageView!
-    
-    func updateUI(coupon:CouponUI) {
-        if coupon is ImageCoupon {
-            drawView.isHidden = true
-            imageView.isHidden = false
-            imageView.uiData = coupon
-        } else {
-            drawView.isHidden = false
-            imageView.isHidden = true
-            drawView.uiData = coupon
-        }
+  
+  // MARK: -  UI Components
+  
+  @IBOutlet weak var drawView: CouponDrawView!
+  @IBOutlet weak var imageView: CouponImageView!
+  
+  // MARK: -  Update
+  
+  func updateUI(coupon: CouponUI) {
+    if coupon is ImageCoupon {
+      self.drawView.isHidden = true
+      self.imageView.isHidden = false
+      self.imageView.uiData = coupon
+    } else {
+      self.drawView.isHidden = false
+      self.imageView.isHidden = true
+      self.drawView.uiData = coupon
     }
-    
+  }
+  
 }

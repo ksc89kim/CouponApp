@@ -9,8 +9,8 @@
 import Foundation
 
 protocol CouponUI {
-    var couponId:Int { get }
-    var isEvent:Bool { get set }
-    var isUseCoupon:Bool { get set }
-    var isAnimation:Bool { get set }
+  var couponId: Int { get }
+  var isEvent: Bool { get set }
+  var isUseCoupon: Bool { get set }
+  var isAnimation: Bool { get set }
 }

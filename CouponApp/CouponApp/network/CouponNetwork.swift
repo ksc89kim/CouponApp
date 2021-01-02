@@ -10,15 +10,18 @@ import UIKit
 import Alamofire
 import SVProgressHUD
 
-/*
- 쿠폰 네트워크 관리자
- */
+
+/// 쿠폰 네트워크 관리자
 final class CouponNetwork : DataController {
 
-  var mainUrl:String = "http://192.168.0.11:8080/CouponProject/"
+  // MARK: - Properties
 
-  func signup(phoneNumber:String, password:String, name:String, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)user_sign"
+  var mainUrl = "http://192.168.0.11:8080/CouponProject/"
+
+  // MARK: - Network
+
+  func signup(phoneNumber: String, password: String, name: String, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)user_sign"
     let parameter = ["phone_number":phoneNumber,"password":password,"name":name]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .get, parameters: parameter)
@@ -33,8 +36,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func getUserData(phoneNumber:String, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)user_data"
+  func getUserData(phoneNumber: String, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)user_data"
     let parameter = ["phone_number":phoneNumber, "mode":"GetUserInfo"]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -53,8 +56,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func checkPassword(phoneNumber:String, password:String, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)user_data"
+  func checkPassword(phoneNumber: String, password: String, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)user_data"
     let parameter = ["phone_number":phoneNumber, "password":password, "mode":"CheckUserPassword"]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -74,7 +77,7 @@ final class CouponNetwork : DataController {
   }
 
   func getMerchantData(complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)merchant_data"
+    let fullUrl = "\(self.mainUrl)merchant_data"
     let parameter = ["mode":"GetMerchantData"]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -94,8 +97,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func insertUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)coupon_data"
+  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"InsertCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -109,8 +112,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)coupon_data"
+  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -129,8 +132,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)coupon_data"
+  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"DeleteCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
 
@@ -145,8 +148,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func getUserCouponData(userId:Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
-    let fullUrl = "\(mainUrl)coupon_data"
+  func getUserCouponData(userId: Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
+    let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"GetCouponData","user_id":userId] as [String : Any]
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
     request.responseJSON { (response) -> Void in
@@ -163,8 +166,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func updateUesrCoupon(userId:Int, merchantId:Int, couponCount:Int, complete: @escaping DataCallback) {
-    let fullUrl = "\(mainUrl)coupon_data"
+  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping DataCallback) {
+    let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"UpdateCouponData","user_id":userId, "merchant_id":merchantId, "coupon_count":couponCount] as [String : Any]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -178,7 +181,8 @@ final class CouponNetwork : DataController {
     }
   }
 
-  // MARK: - 기타등등
+  // MARK: - ETC
+
   static func checkResponseData(_ response: AFDataResponse<Any>) -> Bool {
     switch response.result {
     case .success(_):

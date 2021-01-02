@@ -11,6 +11,7 @@ import UIKit
 final class Utils {
 
   // MARK: - 키보드에 따른 뷰 높이 계산
+
   static func setUpViewHeight (_ view:UIView, _ notification: Notification) {
     if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
       let keyboardRectangle = keyboardFrame.cgRectValue
@@ -27,6 +28,7 @@ final class Utils {
   }
 
   // MARK: - 이벤트 리스폰더 응답 첫번째 객체
+  
   static func findFirstResponder(inView view: UIView) -> UIView? {
     for subView in view.subviews {
       if subView.isFirstResponder {
