@@ -23,7 +23,7 @@ class BaseViewController: UIViewController, BaseBind {
 
   }
 
-  open func bindOutpus() {
+  open func bindOutputs() {
 
   }
 

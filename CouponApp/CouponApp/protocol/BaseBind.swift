@@ -16,13 +16,13 @@ protocol BaseBind {
 
   func bind()
   func bindInputs()
-  func bindOutpus()
+  func bindOutputs()
 }
 
 extension BaseBind {
 
   func bind() {
-    self.bindOutpus()
+    self.bindOutputs()
     self.bindInputs()
   }
 

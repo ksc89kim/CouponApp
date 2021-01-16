@@ -15,7 +15,7 @@ enum SQLError: Error {
     case otherError
 }
 
-class SQLInterface {
+final class SQLInterface {
     lazy var db:FMDatabase? = {
         var _db:FMDatabase? = nil
         
@@ -52,7 +52,7 @@ class SQLInterface {
         }
     }
     
-    //회원가입
+    /// 회원가입
     func insertUser(phoneNumber:String, password:String, name:String, complete:@escaping DataCallback) throws {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
@@ -64,7 +64,7 @@ class SQLInterface {
         }
     }
     
-    //회원 데이터 가져 오기
+    /// 회원 데이터 가져 오기
     func selectUserData(phoneNumber:String) throws -> Int {
         guard let contactDb = db else { throw SQLError.connectionError }
         var userId:Int = 0
@@ -96,7 +96,7 @@ class SQLInterface {
         return userId
     }
     
-    // 회원 쿠폰 데이터 가져오기
+    /// 회원 쿠폰 데이터 가져오기
     func selectUserCouponData(_ userId:Int) throws -> UserCouponList?  {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "select idx,merchant_idx,coupon_count from coupon where user_idx = \(userId)"
@@ -118,7 +118,7 @@ class SQLInterface {
         }
     }
     
-    // 회원 쿠폰 횟수 업데이트
+    /// 회원 쿠폰 횟수 업데이트
     func updateCouponCount(_  userId:Int, _ merchantId:Int, _ couponCount:Int, complete:@escaping DataCallback) throws {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -130,7 +130,7 @@ class SQLInterface {
         }
     }
     
-    //회원 쿠폰 삭제
+    /// 회원 쿠폰 삭제
     func deleteCounpon(_  userId:Int, _ merchantId:Int, complete:@escaping DataCallback) throws {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -142,7 +142,7 @@ class SQLInterface {
         }
     }
     
-    //회원 쿠폰 등록
+    /// 회원 쿠폰 등록
     func insertCoupon(_  userId:Int, _ merchantId:Int, complete:@escaping DataCallback) throws {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "insert into coupon (merchant_idx, user_idx, coupon_count) values (\(merchantId),\(userId),0)"
@@ -155,7 +155,7 @@ class SQLInterface {
         }
     }
     
-    //회원 쿠폰 여부
+    /// 회원 쿠폰 여부
     func isUserCoupon(_  userId:Int, _ merchantId:Int) throws -> Bool {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "select COUNT(idx) from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
@@ -174,7 +174,7 @@ class SQLInterface {
         }
     }
     
-    // 가맹점 데이터 가져오기
+    /// 가맹점 데이터 가져오기
     func selectMerchantData() throws -> MerchantImplList?  {
         guard let contactDb = db else { throw SQLError.connectionError }
         let query = "select idx,name,content, image_url, latitude, longitude, is_couponImage, card_background from merchant"
@@ -192,7 +192,7 @@ class SQLInterface {
         }
     }
     
-    // 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
+    /// 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
     func selectDrawCouponData(merchantId:Int) throws -> [DrawCoupon] {
         guard let contactDb = db else { throw SQLError.connectionError }
         var drawCouponList:[DrawCoupon] =  [DrawCoupon]()
@@ -211,7 +211,7 @@ class SQLInterface {
         }
     }
     
-    // 가맹점 - 쿠폰 정보 가져오기 ( Image용 )
+    /// 가맹점 - 쿠폰 정보 가져오기 ( Image용 )
     func selectImageCouponData(merchantId:Int) throws -> [ImageCoupon] {
         guard let contactDb = db else { throw SQLError.connectionError }
         var imageCouponList:[ImageCoupon] =  [ImageCoupon]()

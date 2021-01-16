@@ -39,12 +39,16 @@ final class CustomPopupViewController: BaseViewController {
   // MARK: - Bind
 
   override func bindInputs() {
+    super.bindInputs()
+
     self.okButton.rx.tap
       .bind(to: self.viewModel.inputs.onOk)
       .disposed(by: self.disposeBag)
   }
 
-  override func bindOutpus() {
+  override func bindOutputs() {
+    super.bindOutputs()
+
     self.viewModel.outputs.close
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.close)

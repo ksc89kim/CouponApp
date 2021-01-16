@@ -56,7 +56,7 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     
   }
 
-  func bindOutpus() {
+  func bindOutputs() {
     self.viewModel.outputs.reload
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] list in
@@ -118,11 +118,7 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
   ) {
     if editingStyle == UITableViewCellEditingStyle.delete,
        let merchant = self.userCouponList?[indexPath.row] {
-      self.deleteCouponForTable(
-        merchantId: merchant.merchantId,
-        tableView: tableView,
-        indexPath: indexPath
-      )
+      self.viewModel.inputs.deleteCoupon.onNext((merchantId: merchant.merchantId, indexPath: indexPath))
     }
   }
 
@@ -142,20 +138,6 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
   }
 
   @IBAction func unwindToUserMercahntTableView(segue: UIStoryboardSegue) {
-  }
-
-}
-
-extension UserMerchantTableViewController: CouponController {
-
-  func deleteCouponForTable(merchantId: Int, tableView: UITableView, indexPath: IndexPath) {
-    self.viewModel.inputs.deleteCoupon.onNext((merchantId: merchantId, indexPath: indexPath))
-  }
-
-  func deleteCoupon(merchantId: Int) {
-  }
-
-  func insertCoupon(merchantId:Int) {
   }
 
 }

@@ -40,8 +40,8 @@ final class IntroViewController: BaseViewController {
     super.bindInputs()
   }
 
-  override func bindOutpus() {
-    super.bindOutpus()
+  override func bindOutputs() {
+    super.bindOutputs()
 
     self.viewModel.outputs
       .addLoginViewController

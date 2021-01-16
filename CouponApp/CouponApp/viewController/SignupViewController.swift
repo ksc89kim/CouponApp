@@ -103,8 +103,8 @@ final class SignupViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  override func bindOutpus() {
-    super.bindOutpus()
+  override func bindOutputs() {
+    super.bindOutputs()
 
     self.viewModel.outputs.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())

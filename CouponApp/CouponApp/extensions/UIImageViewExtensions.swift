@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import RxSwift
+import RxCocoa
 
 extension UIImageView {
 
@@ -40,3 +42,11 @@ extension UIImageView {
 
 }
 
+extension Reactive where Base: UIImageView {
+
+  var cropRoundedImage: Binder<UIImage> {
+    return Binder(self.base) { view, image in
+      view.setCropRoundedImage(image: image)
+    }
+  }
+}

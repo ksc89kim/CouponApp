@@ -77,6 +77,8 @@ final class CouponListViewController: BaseViewController {
   // MARK: - Bind
 
   override func bindInputs() {
+    super.bindInputs()
+
     self.requestButton.rx.tap
       .bind(to: self.viewModel.inputs.onAddCoupon)
       .disposed(by: self.disposeBag)
@@ -86,7 +88,9 @@ final class CouponListViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  override func bindOutpus() {
+  override func bindOutputs() {
+    super.bindOutputs()
+
     self.viewModel.outputs.navigationTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.navigationItem.rx.title)
