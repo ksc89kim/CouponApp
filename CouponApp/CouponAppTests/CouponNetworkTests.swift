@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import CouponApp
 
 class CouponNetworkTests: XCTestCase {
     let password: String = "101010"
