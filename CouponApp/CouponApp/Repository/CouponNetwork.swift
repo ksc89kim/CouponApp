@@ -11,7 +11,7 @@ import Alamofire
 import SVProgressHUD
 
 /// 쿠폰 네트워크 관리자
-final class CouponNetwork : DataController {
+final class CouponNetwork : Repository {
 
   // MARK: - Property
 
@@ -19,7 +19,7 @@ final class CouponNetwork : DataController {
 
   // MARK: - Network
 
-  func signup(phoneNumber: String, password: String, name: String, complete: @escaping DataCallback) {
+  func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_sign"
     let parameter = ["phone_number":phoneNumber,"password":password,"name":name]
     CouponNetwork.showProgress()
@@ -35,7 +35,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func getUserData(phoneNumber: String, complete: @escaping DataCallback) {
+  func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_data"
     let parameter = ["phone_number":phoneNumber, "mode":"GetUserInfo"]
     CouponNetwork.showProgress()
@@ -55,7 +55,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func checkPassword(phoneNumber: String, password: String, complete: @escaping DataCallback) {
+  func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_data"
     let parameter = ["phone_number":phoneNumber, "password":password, "mode":"CheckUserPassword"]
     CouponNetwork.showProgress()
@@ -75,7 +75,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func getMerchantData(complete: @escaping DataCallback) {
+  func getMerchantData(complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)merchant_data"
     let parameter = ["mode":"GetMerchantData"]
     CouponNetwork.showProgress()
@@ -96,7 +96,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"InsertCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
@@ -111,7 +111,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
@@ -131,7 +131,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"DeleteCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
     CouponNetwork.showProgress()
@@ -165,7 +165,7 @@ final class CouponNetwork : DataController {
     }
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping DataCallback) {
+  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = ["mode":"UpdateCouponData","user_id":userId, "merchant_id":merchantId, "coupon_count":couponCount] as [String : Any]
     CouponNetwork.showProgress()

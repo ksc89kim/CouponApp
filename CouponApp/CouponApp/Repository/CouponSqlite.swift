@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct CouponSqlite: DataController {
-  func signup(phoneNumber: String, password: String, name: String, complete: @escaping DataCallback) {
+struct CouponSqlite: Repository {
+  func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     do {
       try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete:complete)
     } catch {
@@ -17,7 +17,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func getUserData(phoneNumber: String, complete: @escaping DataCallback) {
+  func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     do {
       let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
       CouponSignleton.instance.userData = User(id:userId)
@@ -27,7 +27,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func checkPassword(phoneNumber: String, password: String, complete: @escaping DataCallback) {
+  func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     do {
       let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
       CouponSignleton.instance.userData = User(id:userId)
@@ -37,7 +37,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func getMerchantData(complete: @escaping DataCallback) {
+  func getMerchantData(complete: @escaping RepositoryCompletion) {
     do {
       guard var merchantList = try SQLInterface().selectMerchantData() else {
         complete(false)
@@ -62,7 +62,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
       try SQLInterface().insertCoupon(userId, merchantId, complete:complete)
     } catch {
@@ -70,7 +70,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping DataCallback) {
+  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
       let isUserCoupon = try SQLInterface().isUserCoupon(userId,merchantId)
       complete(isUserCoupon)
@@ -79,7 +79,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping DataCallback) {
+  func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping RepositoryCompletion) {
     do{
       try SQLInterface().deleteCounpon(userId, merchantId, complete:complete)
     } catch {
@@ -95,7 +95,7 @@ struct CouponSqlite: DataController {
     }
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping DataCallback) {
+  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     do {
       try SQLInterface().updateCouponCount(userId,merchantId,couponCount,complete:complete)
     } catch {

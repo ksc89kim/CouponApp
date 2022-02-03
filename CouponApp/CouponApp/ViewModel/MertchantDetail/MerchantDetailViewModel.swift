@@ -117,7 +117,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       guard let merchant = data.merchant else {
         return .empty()
       }
-      return RxCouponData.checkUserCoupon(
+      return RxCouponRepository.checkUserCoupon(
         userId: CouponSignleton.getUserId(),
         merchantId: merchant.merchantId
       )
@@ -141,7 +141,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
           return .empty()
         }
 
-        return RxCouponData.deleteUserCoupon(
+        return RxCouponRepository.deleteUserCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: merchant.merchantId
         )
@@ -159,7 +159,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
           return .empty()
         }
 
-        return RxCouponData.insertUserCoupon(
+        return RxCouponRepository.insertUserCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: merchant.merchantId
         )

@@ -67,7 +67,7 @@ final class IntroViewModel: IntroViewModelType {
   private func loadMerchant(subject: Subject) -> Observable<Bool> {
     return subject.loadMertchant
       .flatMapLatest { _ -> Observable<Bool> in
-        return RxCouponData.loadMerchantData().asObservable()
+        return RxCouponRepository.loadMerchantData().asObservable()
     }
     .share()
   }
@@ -89,7 +89,7 @@ final class IntroViewModel: IntroViewModelType {
     return phoneNumber
       .filterNil()
       .flatMapLatest { phoneNumber -> Observable<Bool> in
-        return  RxCouponData.loadUserData(phoneNumber: phoneNumber).asObservable()
+        return  RxCouponRepository.loadUserData(phoneNumber: phoneNumber).asObservable()
     }
   }
 }

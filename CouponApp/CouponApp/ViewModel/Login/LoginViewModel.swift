@@ -175,7 +175,7 @@ final class LoginViewModel: LoginViewModelType {
       password
     )
     .flatMapLatest { phoneNumber, password -> Observable<Bool> in
-      return RxCouponData.checkPassword(phoneNumber: phoneNumber, password: password)
+      return RxCouponRepository.checkPassword(phoneNumber: phoneNumber, password: password)
         .asObservable()
     }
     .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }

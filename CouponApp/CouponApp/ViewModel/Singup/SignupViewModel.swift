@@ -198,7 +198,7 @@ final class SignupViewModel: SignupViewModelType {
       password
     )
     .flatMapLatest { name, phoneNumber, password -> Observable<Bool> in
-      return RxCouponData.signup(
+      return RxCouponRepository.signup(
         phoneNumber: phoneNumber,
         password: password,
         name: name
@@ -213,7 +213,7 @@ final class SignupViewModel: SignupViewModelType {
     return afterSignup
       .filter { $0.isSuccess }
       .flatMapLatest { signup -> Observable<Bool> in
-        return RxCouponData.loadUserData(phoneNumber: signup.phoneNumber)
+        return RxCouponRepository.loadUserData(phoneNumber: signup.phoneNumber)
           .asObservable()
       }
       .withLatestFrom(afterSignup) { .init(isSuccess: $0, phoneNumber: $1.phoneNumber) }
