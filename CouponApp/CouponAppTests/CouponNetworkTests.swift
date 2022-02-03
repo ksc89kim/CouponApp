@@ -27,9 +27,9 @@ class CouponNetworkTests: XCTestCase {
     
     // 회원 가입하기
     func testRequestSignup() {
-        var isNetworkSucceed:Bool = false
+        var isNetworkSucceed: Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.signup(phoneNumber: self.phoneNumber, password: self.password, name:self.userName, complete: { isSucceed in
+        CouponRepository.signup(phoneNumber: self.phoneNumber, password: self.password, name:self.userName, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
@@ -39,21 +39,21 @@ class CouponNetworkTests: XCTestCase {
     
     //회원 정보 가져오기
     func testRequestUserData() {
-//        var isNetworkSucceed:Bool = false
-//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-//        CouponData.getUserData(phoneNumber: self.phoneNumber, complete: { isSucceed in
-//            isNetworkSucceed = isSucceed
-//            expectation.fulfill()
-//        })
-//        wait(for: [expectation], timeout: 10.0)
-//        XCTAssert(isNetworkSucceed)
+        var isNetworkSucceed: Bool = false
+        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+        CouponRepository.loadUserData(phoneNumber: self.phoneNumber, complete: { isSucceed in
+            isNetworkSucceed = isSucceed
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssert(isNetworkSucceed)
     }
     
     //패스워드 확인
     func testRequestCheckPassword() {
-        var isNetworkSucceed:Bool = false
+        var isNetworkSucceed: Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.checkPassword(phoneNumber: self.phoneNumber, password: self.password, complete: { isSucceed in
+        CouponRepository.checkPassword(phoneNumber: self.phoneNumber, password: self.password, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
@@ -63,21 +63,21 @@ class CouponNetworkTests: XCTestCase {
     
     // 가맹점 데이터 가져오기
     func testRequestGetMerchantData() {
-//        var isNetworkSucceed:Bool = false
-//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-//        CouponData.getMerchantData(complete:{ isSucceed in
-//            isNetworkSucceed = isSucceed
-//            expectation.fulfill()
-//        })
-//        wait(for: [expectation], timeout: 10.0)
-//        XCTAssert(isNetworkSucceed)
+        var isNetworkSucceed: Bool = false
+        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+        CouponRepository.loadMerchantData(complete:{ isSucceed in
+            isNetworkSucceed = isSucceed
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssert(isNetworkSucceed)
     }
     
     // 쿠폰 추가하기
     func testRequestInsertUserCoupon() {
-        var isNetworkSucceed:Bool = false
+        var isNetworkSucceed: Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.insertUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
+        CouponRepository.insertUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
@@ -87,9 +87,9 @@ class CouponNetworkTests: XCTestCase {
     
     // 쿠폰 확인하기
     func testRequestCheckUserCoupon() {
-        var isNetworkSucceed:Bool = false
+        var isNetworkSucceed: Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.checkUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
+        CouponRepository.checkUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
@@ -101,7 +101,7 @@ class CouponNetworkTests: XCTestCase {
     func testRequestDeleteUserCoupon() {
         var isNetworkSucceed:Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.deleteUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
+        CouponRepository.deleteUserCoupon(userId: userId, merchantId: merchantId, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
@@ -111,23 +111,23 @@ class CouponNetworkTests: XCTestCase {
     
     // 쿠폰 데이터 가져오기
     func testRequestUserCouponData() {
-//        var isNetworkSucceed:Bool = false
-//        let userCouponList:[UserCouponModel?]? = nil
-//        let expectation = XCTestExpectation(description: "NETWORK ERROR")
-//        CouponData.getUserCouponData(userId: userId, complete: { isSucceed, userCouponList  in
-//            isNetworkSucceed = isSucceed
-//            expectation.fulfill()
-//        })
-//        wait(for: [expectation], timeout: 10.0)
-//        XCTAssert(isNetworkSucceed)
-//        XCTAssertNil(userCouponList)
+        var isNetworkSucceed: Bool = false
+        let userCouponList: [UserCoupon?]? = nil
+        let expectation = XCTestExpectation(description: "NETWORK ERROR")
+        CouponRepository.loadUserCouponData(userId: userId, complete: { isSucceed, userCouponList  in
+            isNetworkSucceed = isSucceed
+            expectation.fulfill()
+        })
+        wait(for: [expectation], timeout: 10.0)
+        XCTAssert(isNetworkSucceed)
+        XCTAssertNil(userCouponList)
     }
     
     // 쿠폰 데이터 업데이트하기
     func testRequestUpdateUesrCoupon() {
-        var isNetworkSucceed:Bool = false
+        var isNetworkSucceed: Bool = false
         let expectation = XCTestExpectation(description: "NETWORK ERROR")
-        CouponData.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: 1, complete: { isSucceed in
+        CouponRepository.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: 1, complete: { isSucceed in
             isNetworkSucceed = isSucceed
             expectation.fulfill()
         })
