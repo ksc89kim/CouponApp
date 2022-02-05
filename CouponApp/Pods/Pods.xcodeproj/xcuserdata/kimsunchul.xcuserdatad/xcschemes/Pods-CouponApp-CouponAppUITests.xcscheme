@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B6F9C23C035E62C976DAB69F21E97DE3"
-               BuildableName = "Pods_CouponAppUITests.framework"
-               BlueprintName = "Pods-CouponAppUITests"
+               BlueprintIdentifier = "1C0ADA045DA490A680D1F56E453B4BB2"
+               BuildableName = "Pods_CouponApp_CouponAppUITests.framework"
+               BlueprintName = "Pods-CouponApp-CouponAppUITests"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
