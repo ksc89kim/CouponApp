@@ -21,35 +21,39 @@ final class CouponNetwork : Repository {
 
   func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_sign"
-    let parameter = ["phone_number":phoneNumber,"password":password,"name":name]
+    let parameter = [
+      "phone_number": phoneNumber,
+      "password": password,
+      "name": name
+    ]
+
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .get, parameters: parameter)
-
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) { (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        complete(true)
-      } else {
-        complete(false)
-      }
+      complete(CouponNetwork.checkResponseData(response))
     }
   }
 
   func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_data"
-    let parameter = ["phone_number":phoneNumber, "mode":"GetUserInfo"]
+    let parameter = [
+      "phone_number": phoneNumber,
+      "mode": "GetUserInfo"
+    ]
+
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) { (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        do {
-          CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
-          complete(true)
-        } catch {
-          complete(false)
-        }
-      } else {
+      guard CouponNetwork.checkResponseData(response) else {
+        complete(false)
+        return
+      }
+      do {
+        CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
+        complete(true)
+      } catch {
         complete(false)
       }
     }
@@ -57,19 +61,24 @@ final class CouponNetwork : Repository {
 
   func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)user_data"
-    let parameter = ["phone_number":phoneNumber, "password":password, "mode":"CheckUserPassword"]
+    let parameter = [
+      "phone_number":phoneNumber,
+      "password":password,
+      "mode":"CheckUserPassword"
+    ]
+
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON {  (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        do {
-          CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
-          complete(true)
-        } catch {
-          complete(false)
-        }
-      } else {
+      guard CouponNetwork.checkResponseData(response) else {
+        complete(false)
+        return
+      }
+      do {
+        CouponSignleton.instance.userData =  try JSONDecoder().decode(User.self, from: response.data!)
+        complete(true)
+      } catch {
         complete(false)
       }
     }
@@ -77,20 +86,20 @@ final class CouponNetwork : Repository {
 
   func getMerchantData(complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)merchant_data"
-    let parameter = ["mode":"GetMerchantData"]
+    let parameter = ["mode": "GetMerchantData"]
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        do {
-          CouponSignleton.instance.merchantList = try JSONDecoder().decode(MerchantImplList.self, from: response.data!)
-          complete(true)
-        } catch {
-          print("error \(error)")
-          complete(false)
-        }
-      } else {
+      guard CouponNetwork.checkResponseData(response) else {
+        complete(false)
+        return
+      }
+      do {
+        CouponSignleton.instance.merchantList = try JSONDecoder().decode(MerchantImplList.self, from: response.data!)
+        complete(true)
+      } catch {
+        print("error \(error)")
         complete(false)
       }
     }
@@ -98,34 +107,41 @@ final class CouponNetwork : Repository {
 
   func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
-    let parameter = ["mode":"InsertCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
+    let parameter = [
+      "mode": "InsertCouponData",
+      "user_id": userId,
+      "merchant_id": merchantId
+    ] as [String : Any]
+
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        complete(true)
-      } else {
-        complete(false)
-      }
+      complete(CouponNetwork.checkResponseData(response))
     }
   }
 
   func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
-    let parameter = ["mode":"CheckCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
+    let parameter = [
+      "mode": "CheckCouponData",
+      "user_id":userId,
+      "merchant_id": merchantId
+    ] as [String : Any]
+
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        do {
-          let checkCouponData:ExistenceCoupon = try JSONDecoder().decode(ExistenceCoupon.self, from: response.data!)
-          complete(checkCouponData.isCouponData)
-        } catch {
-          complete(false)
-        }
-      } else {
+      guard CouponNetwork.checkResponseData(response) else {
+        complete(false)
+        return
+      }
+
+      do {
+        let checkCouponData = try JSONDecoder().decode(ExistenceCoupon.self, from: response.data!)
+        complete(checkCouponData.isCouponData)
+      } catch {
         complete(false)
       }
     }
@@ -133,33 +149,39 @@ final class CouponNetwork : Repository {
 
   func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
-    let parameter = ["mode":"DeleteCouponData","user_id":userId, "merchant_id":merchantId] as [String : Any]
-    CouponNetwork.showProgress()
+    let parameter = [
+      "mode":"DeleteCouponData",
+      "user_id":userId,
+      "merchant_id":merchantId
+    ] as [String : Any]
 
+    CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        complete(true)
-      } else {
-        complete(false)
-      }
+      complete(CouponNetwork.checkResponseData(response))
     }
   }
 
   func getUserCouponData(userId: Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
     let fullUrl = "\(self.mainUrl)coupon_data"
-    let parameter = ["mode":"GetCouponData","user_id":userId] as [String : Any]
+    let parameter = [
+      "mode": "GetCouponData",
+      "user_id": userId
+    ] as [String : Any]
+
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON { (response) -> Void in
-      if CouponNetwork.checkResponseData(response) {
-        do {
-          let userCouponList: UserCouponList = try JSONDecoder().decode(UserCouponList.self, from: response.data!)
-          complete(true,userCouponList)
-        } catch {
-          complete(false,nil)
-        }
-      } else {
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
+      CouponNetwork.closeProgress()
+      guard CouponNetwork.checkResponseData(response) else {
+        complete(false, nil)
+        return
+      }
+
+      do {
+        let userCouponList = try JSONDecoder().decode(UserCouponList.self, from: response.data!)
+        complete(true, userCouponList)
+      } catch {
         complete(false,nil)
       }
     }
@@ -167,32 +189,27 @@ final class CouponNetwork : Repository {
 
   func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
-    let parameter = ["mode":"UpdateCouponData","user_id":userId, "merchant_id":merchantId, "coupon_count":couponCount] as [String : Any]
+    let parameter = [
+      "mode": "UpdateCouponData",
+      "user_id": userId,
+      "merchant_id": merchantId,
+      "coupon_count": couponCount
+    ] as [String : Any]
+    
     CouponNetwork.showProgress()
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
-    request.responseJSON{ (response) -> Void in
+    request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      if CouponNetwork.checkResponseData(response) {
-        complete(true)
-      } else {
-        complete(false)
-      }
+      complete(CouponNetwork.checkResponseData(response))
     }
   }
 
   // MARK: - ETC
 
-  static func checkResponseData(_ response: AFDataResponse<Any>) -> Bool {
+  static func checkResponseData(_ response: AFDataResponse<ResponseCode>) -> Bool {
     switch response.result {
-    case .success(_):
-      do {
-        let respCode:ResponseCode = try JSONDecoder().decode(ResponseCode.self, from: response.data!)
-        return respCode.isSuccess
-      } catch {
-        print("error = \(error.localizedDescription)")
-        print("response = \(response)")
-        return false
-      }
+    case .success(let respCode):
+      return respCode.isSuccess
     case .failure(let error):
       print("error = \(error.localizedDescription)")
       print("response = \(response)")
