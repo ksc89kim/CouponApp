@@ -12,37 +12,37 @@ import RxCocoa
 
 extension UIViewController {
   func createViewController(storyboardName: String, withIdentifier: String) -> UIViewController {
-    let storyBoard = UIStoryboard(name:storyboardName, bundle:Bundle.main)
+    let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
     let viewController = storyBoard.instantiateViewController(withIdentifier: withIdentifier)
     return viewController
   }
 
   func createViewController(storyboardName: String) -> UIViewController {
-    let storyBoard = UIStoryboard(name:storyboardName, bundle:Bundle.main)
+    let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
     let mainViewController = storyBoard.instantiateInitialViewController() ?? UIViewController()
     return mainViewController
   }
 
   func addViewController(viewController: UIViewController, bringSubView: UIView) {
-    self.addChildViewController(viewController)
+    self.addChild(viewController)
     self.view.addSubview(viewController.view)
-    self.view.bringSubview(toFront:bringSubView)
+    self.view.bringSubviewToFront(bringSubView)
   }
 
   func addCustomViewController(viewController: UIViewController){
     DispatchQueue.main.async {
       if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
         window.addSubview(viewController.view)
-        self.addChildViewController(viewController)
-        viewController.didMove(toParentViewController: self)
+        self.addChild(viewController)
+        viewController.didMove(toParent: self)
       } else if let navigationController =  self.navigationController{
         navigationController.view.addSubview(viewController.view)
-        navigationController.addChildViewController(viewController)
-        viewController.didMove(toParentViewController: navigationController)
+        navigationController.addChild(viewController)
+        viewController.didMove(toParent: navigationController)
       } else {
         self.view.addSubview(viewController.view)
-        self.addChildViewController(viewController)
-        viewController.didMove(toParentViewController: self)
+        self.addChild(viewController)
+        viewController.didMove(toParent: self)
       }
     }
   }

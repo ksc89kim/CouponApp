@@ -13,7 +13,7 @@ import RxSwift
 import RxCocoa
 
 extension UIImageView {
-  func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+  func downloadedFrom(link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
     contentMode = mode
     AF.request(URL(fileURLWithPath: link)).responseImage { [weak self] response in
       guard let image = response.value else {

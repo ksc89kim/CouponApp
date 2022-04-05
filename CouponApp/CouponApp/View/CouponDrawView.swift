@@ -19,10 +19,6 @@ final class CouponDrawView: UIView, CouponView {
     static let strokeEnd = "strokeEnd"
   }
 
-  private enum LineCap {
-    static let round = "round"
-  }
-
   // MARK: - UI Component
 
   private let backgroundCircleLayer = CAShapeLayer()
@@ -82,7 +78,7 @@ final class CouponDrawView: UIView, CouponView {
     self.checkLayer.path = getCheckPath(rect)
     self.checkLayer.strokeColor = UIColor.hexStringToUIColor(hex: drawCoupon.checkLineColor).cgColor
     self.checkLayer.lineWidth = drawCoupon.checkLineWidth
-    self.checkLayer.lineCap = LineCap.round
+    self.checkLayer.lineCap = .round
 
     if drawCoupon.isAnimation{
       self.checkLayer.add(getCheckAnimation(), forKey: AnimationKey.line)

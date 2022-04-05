@@ -112,9 +112,9 @@ final class CustomPopupViewController: BaseViewController {
   // MARK: - Close
 
   fileprivate func close() {
-    self.willMove(toParentViewController: nil)
+    self.willMove(toParent: nil)
     self.view.removeFromSuperview()
-    self.removeFromParentViewController()
+    self.removeFromParent()
   }
 }
 

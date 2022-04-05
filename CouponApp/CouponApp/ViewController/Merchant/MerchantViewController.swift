@@ -69,14 +69,14 @@ final class MerchantViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
-  //MARK: - Set Function
+  //MARK: - Set Method
 
   private func setPageViewController() {
     let pageView = self.pageController.view
     pageView?.translatesAutoresizingMaskIntoConstraints = false
-    self.addChildViewController(self.pageController)
+    self.addChild(self.pageController)
     self.view.addSubview(pageView!)
-    self.pageController.didMove(toParentViewController: self)
+    self.pageController.didMove(toParent: self)
 
     pageView?.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
     pageView?.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true

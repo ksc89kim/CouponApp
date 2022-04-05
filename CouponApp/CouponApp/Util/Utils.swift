@@ -13,7 +13,7 @@ final class Utils {
   // MARK: - 키보드에 따른 뷰 높이 계산
 
   static func setUpViewHeight (_ view:UIView, _ notification: Notification) {
-    if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+    if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
       let keyboardRectangle = keyboardFrame.cgRectValue
       let keyboardHeight = keyboardRectangle.height
       let keyboardMaxY = (view.frame.origin.y + view.frame.height) - keyboardHeight

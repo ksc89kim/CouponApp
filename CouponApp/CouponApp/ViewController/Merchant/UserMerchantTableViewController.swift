@@ -68,7 +68,7 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     self.viewModel.outputs?.delete
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] indexPath in
-        self?.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        self?.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
       })
       .disposed(by: self.disposeBag)
 
@@ -113,10 +113,10 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
 
   override func tableView(
     _ tableView:UITableView,
-    commit editingStyle:UITableViewCellEditingStyle,
+    commit editingStyle :UITableViewCell.EditingStyle,
     forRowAt indexPath:IndexPath
   ) {
-    if editingStyle == UITableViewCellEditingStyle.delete,
+    if editingStyle == UITableViewCell.EditingStyle.delete,
        let merchant = self.userCouponList?[indexPath.row] {
       self.viewModel.inputs.deleteCoupon.onNext((merchantId: merchant.merchantId, indexPath: indexPath))
     }
