@@ -3,32 +3,37 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CouponDrawView.draw(_:):CouponDrawView.swift">
+         contextName = "MerchantImpl.init(merchantId:name:content:logoImageUrl:latitude:longitude:isCouponImage:cardBackground:):MerchantImpl.swift">
          <PersistentStrings>
             <PersistentString
-               value = "drawCoupon">
+               value = "self.logoImageUrl">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
+         contextName = "CouponListViewModel.CouponInfo.isAvailableAddCoupon():CouponListViewModel.swift">
          <PersistentStrings>
             <PersistentString
-               value = "headerImageView.image">
+               value = "self.userCoupon.couponCount">
             </PersistentString>
             <PersistentString
-               value = "merchantModel">
+               value = "self.merchant.couponCount()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MerchantTextLayer.setPosition(x:y:):MerchantTextLayer.swift">
+         contextName = "MerchantInfoViewController.handlePan(_:):MerchantInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "bounds.width">
+               value = "isAnimation">
             </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CouponSqlite.checkPassword(phoneNumber:password:complete:):CouponSqlite.swift">
+         <PersistentStrings>
             <PersistentString
-               value = "scalePoint">
+               value = "db">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -52,24 +57,13 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "CouponSqlite.checkPassword(phoneNumber:password:complete:):CouponSqlite.swift">
+         contextName = "MerchantInfoViewController.viewDidLoad():MerchantInfoViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "db">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
-      </ContextState>
-      <ContextState
-         contextName = "CouponListViewModel.CouponInfo.isAvailableAddCoupon():CouponListViewModel.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.userCoupon.couponCount">
+               value = "headerImageView.image">
             </PersistentString>
             <PersistentString
-               value = "self.merchant.couponCount()">
+               value = "merchantModel">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -77,10 +71,62 @@
          contextName = "MerchantInfoViewController.setUI():MerchantInfoViewController.swift">
       </ContextState>
       <ContextState
-         contextName = "MerchantInfoViewController.handlePan(_:):MerchantInfoViewController.swift">
+         contextName = "MerchantTableViewCell.setMerchant(_:):MerchantTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MerchantTextLayer.setPosition(x:y:):MerchantTextLayer.swift">
          <PersistentStrings>
             <PersistentString
-               value = "isAnimation">
+               value = "bounds.width">
+            </PersistentString>
+            <PersistentString
+               value = "scalePoint">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantDetailViewController.setScaleForCell():MerchantDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.headerView.bounds.width">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantDetailTransition.animationForPresent(using:):MerchantDetailTransition.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fromViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CouponDrawView.draw(_:):CouponDrawView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "drawCoupon">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UIImageView.cropRoundedImage(radius:):CPUIImageView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MerchantDetailViewController.setHeaderAnimationPercent(percent:):MerchantDetailViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.cellCornerRadius">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantTableViewController.showMerchantDetail(selectedCell:):MerchantTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedCell.topView.frame">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCell.topView.layer.cornerRadius">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

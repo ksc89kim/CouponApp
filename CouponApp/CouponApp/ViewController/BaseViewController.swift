@@ -33,7 +33,7 @@ open class BaseViewController: UIViewController, BaseBind {
 
   }
 
-  // MARK: - Etc Function
+  // MARK: - Etc Method
 
   fileprivate func showMainViewController() {
     let mainViewController: UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)

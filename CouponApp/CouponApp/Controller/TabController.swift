@@ -33,7 +33,7 @@ final class TabController {
     self.executeCallBack(button: buttonArray[self.currentIndex])
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   @objc func onTab(button: UIButton) {
     self.selectTab(button: button)

@@ -21,16 +21,14 @@ final class IntroViewModel: IntroViewModelType {
 
   // MARK: - Property
 
-  var inputs: IntroInputType { return self.introInputs }
-  var outputs: IntroOutputType? { return self.introOutputs }
-  private let introInputs: IntroInputs
-  private var introOutputs: IntroOutputs?
+  var inputs: IntroInputType
+  var outputs: IntroOutputType?
 
   // MARK: - Init
 
   init() {
     let subject = Subject()
-    self.introInputs = .init(
+    self.inputs = IntroInputs(
       loadMerchantData: subject.loadMertchant.asObserver()
     )
 
@@ -56,13 +54,13 @@ final class IntroViewModel: IntroViewModelType {
       .filter { $0 }
       .map { _ in }
 
-    self.introOutputs = .init(
+    self.outputs = IntroOutputs(
       addLoginViewController: addLoginViewController,
       addMainViewController: addMainViewController
     )
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   private func loadMerchant(subject: Subject) -> Observable<Bool> {
     return subject.loadMertchant

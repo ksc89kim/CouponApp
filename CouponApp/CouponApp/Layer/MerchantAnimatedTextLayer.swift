@@ -42,7 +42,7 @@ final class MerchantAnimatedTextLayer: CATextLayer {
     super.awakeFromNib()
   }
 
-  //MARK: - Set Function
+  //MARK: - Set Method
 
   func setPercent(percent: CGFloat) {
     guard let scale = self.getScale() else {

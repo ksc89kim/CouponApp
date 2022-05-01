@@ -10,7 +10,13 @@ import UIKit
 import CoreLocation
 
 /// 주변 가맹점 테이블 뷰 컨트롤러
-final class AroundMerchantTableViewController: UITableViewController  {
+final class AroundMerchantTableViewController: MerchantTableViewController  {
+
+  // MARK: - Define
+
+  enum Metric {
+    static let contentInset: UIEdgeInsets = .init(top: 15, left: 0, bottom: 10, right: 0)
+  }
 
   // MARK: - Property
 
@@ -32,10 +38,10 @@ final class AroundMerchantTableViewController: UITableViewController  {
     // Dispose of any resources that can be recreated.
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI() {
-    self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
+    self.tableView.contentInset = Metric.contentInset
     let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
     self.tableView.register(nib, forCellReuseIdentifier:CouponIdentifier.merchantTableViewCell.rawValue)
   }
@@ -48,25 +54,24 @@ final class AroundMerchantTableViewController: UITableViewController  {
     self.locationManager.startUpdatingLocation()
   }
 
-  // MARK: - Table view data source
+  // MARK: - TableView DataSource
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return (merchantArray?.count)!
+    return (self.merchantArray?.count)!
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-    let merchant = merchantArray![indexPath.row]
-    cell.setData(data: merchant)
+    cell.setMerchant(self.merchantArray![indexPath.row])
     return cell
   }
 
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let cell:MerchantTableViewCell = tableView.cellForRow(at: indexPath) as? MerchantTableViewCell  else {
+    guard let cell: MerchantTableViewCell = tableView.cellForRow(at: indexPath) as? MerchantTableViewCell  else {
       return
     }
 
-    cell.showDetail(parentViewController: self, tableView: tableView)
+    self.showMerchantDetail(selectedCell: cell)
   }
 
   // MARK: - Navigation

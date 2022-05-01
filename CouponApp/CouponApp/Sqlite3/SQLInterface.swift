@@ -59,7 +59,7 @@ final class SQLInterface {
     }
   }
 
-  //MARK: - Function
+  //MARK: - Method
 
   /// 회원가입
   func insertUser(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) throws {

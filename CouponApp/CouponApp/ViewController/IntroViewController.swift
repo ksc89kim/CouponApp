@@ -56,7 +56,7 @@ final class IntroViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Animation Function
+  // MARK: - Animation Method
 
   private func fadeAnimation() {
     self.backgroundView.alpha = 1
@@ -81,8 +81,12 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let loginViewController =  self.createViewController(storyboardName: CouponStoryBoardName.start.rawValue, withIdentifier:CouponIdentifier.loginNavigationController.rawValue)
-    self.addViewController(viewController: loginViewController,bringSubView:bringSubView)
+    let loginViewController =  self.createViewController(
+      storyboardName: CouponStoryBoardName.start.rawValue,
+      withIdentifier: CouponIdentifier.loginNavigationController.rawValue
+    )
+
+    self.addViewController(viewController: loginViewController, bringSubView: bringSubView)
   }
 
   fileprivate func addMainViewController() {
@@ -92,7 +96,7 @@ final class IntroViewController: BaseViewController {
     }
 
     let mainViewcontroller =  self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
-    self.addViewController(viewController: mainViewcontroller,bringSubView:bringSubView)
+    self.addViewController(viewController: mainViewcontroller, bringSubView: bringSubView)
   }
 }
 

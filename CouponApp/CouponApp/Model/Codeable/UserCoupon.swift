@@ -38,7 +38,7 @@ final class UserCoupon: Codable, Merchant {
     self.couponCount = try container.decode(Int.self, forKey: .couponCount)
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   func addCouponCount() {
     self.couponCount += 1

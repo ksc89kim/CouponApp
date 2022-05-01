@@ -81,7 +81,7 @@ final class CustomPopupViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Animation Function
+  // MARK: - Animation Method
 
   fileprivate func showAnimation() {
     self.showFadeInAnimation()

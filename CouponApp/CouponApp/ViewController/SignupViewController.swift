@@ -56,7 +56,7 @@ final class SignupViewController: BaseViewController {
     self.view.endEditing(true)
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI(){
     self.setNameTextInput()
@@ -125,7 +125,7 @@ final class SignupViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Get Function
+  // MARK: - Get Method
 
   private func getCurrentTextInputCount(animatedTextInput: CouponAnimatedTextInput) -> Int {
     return animatedTextInput.text?.count ?? 0

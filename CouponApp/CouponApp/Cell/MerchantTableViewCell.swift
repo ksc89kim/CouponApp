@@ -7,31 +7,41 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class MerchantTableViewCell: UITableViewCell {
 
-  // MARK: -  UI Component
+  // MARK: - Define
 
-  @IBOutlet weak var backGroundView: UIView!
+  enum Metric {
+    static let headerTopHeight: CGFloat = 86
+    static let cornerRadius: CGFloat = 5
+    static let lineWidth: CGFloat = 3
+    static let shadowOffset: CGSize = .init(width: 0, height: 2)
+    static let shadowRadius: CGFloat = 2
+  }
+
+  // MARK: - UI Component
+
+  @IBOutlet weak var containerView: UIView!
   @IBOutlet weak var topView: UIView!
   @IBOutlet weak var logoImageView: UIImageView!
   @IBOutlet weak var lineView: UIView!
   @IBOutlet weak var grayLineView: UIView!
   @IBOutlet weak var titleLabel: UILabel!
 
-  // MARK: -  Property
+  // MARK: - Property
 
-  let headerTopHeight: CGFloat = 86
   private let dashLineLayer = CAShapeLayer()
   weak var merchant: MerchantImpl?
 
-  // MARK: -  Deinit
+  // MARK: - Deinit
 
   deinit {
     self.lineView.layer.removeObserver(self, forKeyPath: "bounds")
   }
 
-  // MARK: -  Life Cycle
+  // MARK: - Life Cycle
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -46,53 +56,36 @@ final class MerchantTableViewCell: UITableViewCell {
     super.layoutSubviews()
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI() {
-    self.backGroundView.layer.cornerRadius = 5
-    self.backGroundView.layer.shadowOpacity = 0.18
-    self.backGroundView.layer.shadowOffset = CGSize(width: 0, height: 2)
-    self.backGroundView.layer.shadowRadius = 2
-    self.backGroundView.layer.shadowColor = UIColor.black.cgColor
-    self.backGroundView.layer.masksToBounds = false
+    self.containerView.layer.cornerRadius = Metric.cornerRadius
+    self.containerView.layer.shadowOpacity = 0.18
+    self.containerView.layer.shadowOffset = Metric.shadowOffset
+    self.containerView.layer.shadowRadius = Metric.shadowRadius
+    self.containerView.layer.shadowColor = UIColor.black.cgColor
+    self.containerView.layer.masksToBounds = false
 
-    self.topView.layer.cornerRadius = 5
-    if #available(iOS 11.0, *) {
-      self.topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
+    self.topView.layer.cornerRadius = Metric.cornerRadius
+    self.topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
 
-    self.logoImageView.layer.cornerRadius = self.logoImageView.bounds.width/2
-    self.grayLineView.layer.cornerRadius = 5
+    self.logoImageView.layer.cornerRadius = self.logoImageView.bounds.width / 2
+    self.grayLineView.layer.cornerRadius = Metric.cornerRadius
 
-    self.lineView.addDashLine(dashLayer: self.dashLineLayer,color: UIColor.white, lineWidth: 3)
-    self.lineView.layer.addObserver(self, forKeyPath:"bounds", options:.new, context: nil)
+    self.lineView.addDashLine(dashLayer: self.dashLineLayer,color: UIColor.white, lineWidth: Metric.lineWidth)
+    self.lineView.layer.addObserver(self, forKeyPath: "bounds", options: .new, context: nil)
   }
 
-  func setData(data: MerchantImpl?) {
-    guard let merchant = data else {
+  func setMerchant(_ merchantImpl: MerchantImpl?) {
+    guard let merchant = merchantImpl else {
       print("merchantModel nil")
       return
     }
 
     self.titleLabel.text = merchant.name
     self.topView.backgroundColor = UIColor.hexStringToUIColor(hex: merchant.cardBackGround)
-    self.logoImageView.downloadedFrom(link:merchant.logoImageUrl)
+    self.logoImageView.kf.setImage(with: merchant.logoImageUrl)
     self.merchant = merchant
-  }
-
-  // MARK: -  Show Function
-
-  func showDetail(parentViewController: UIViewController, tableView: UITableView) {
-    let detailViewController = MerchantDetailViewController(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
-
-    if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-      detailViewController.merchantDetail.setCellData(cell: self, offsetY: tableView.contentOffset.y)
-      detailViewController.view.frame = window.frame
-
-      window.addSubview(detailViewController.view)
-      parentViewController.addChildViewController(detailViewController)
-      detailViewController.didMove(toParentViewController: parentViewController)
-    }
   }
 
   // MARK: -  Observe
@@ -104,7 +97,7 @@ final class MerchantTableViewCell: UITableViewCell {
     context: UnsafeMutableRawPointer?
   ) {
     if keyPath == "bounds" {
-      self.lineView.updateDashLineSize(dashLayer: dashLineLayer)
+      self.lineView.updateDashLineSize(dashLayer: self.dashLineLayer)
     }
   }
 }

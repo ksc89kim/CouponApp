@@ -53,7 +53,7 @@ final class LoginViewController: BaseViewController {
     self.view.endEditing(true)
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI(){
     self.setPhoneNumberTextInput()
@@ -74,7 +74,7 @@ final class LoginViewController: BaseViewController {
     self.passwordTextInput.style = CustomTextInputStyle()
   }
 
-  // MARK: - Unwind Function
+  // MARK: - Unwind Method
 
   @IBAction func unwindLoginViewController(segue:UIStoryboardSegue) {
     if segue.identifier == CouponIdentifier.unwindLoginViewController.rawValue {
@@ -130,7 +130,7 @@ final class LoginViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Get Function
+  // MARK: - Get Method
 
   private func getCurrentTextInputCount(animatedTextInput: CouponAnimatedTextInput) -> Int {
     return animatedTextInput.text?.count ?? 0

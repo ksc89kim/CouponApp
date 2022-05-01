@@ -17,7 +17,7 @@ final class CouponSignleton {
   var userData: User?
   var merchantList: MerchantImplList?
   
-  // MARK: -  Function
+  // MARK: -  Method
   
   static func getUserId() -> Int {
     if let userId = CouponSignleton.instance.userData?.id {

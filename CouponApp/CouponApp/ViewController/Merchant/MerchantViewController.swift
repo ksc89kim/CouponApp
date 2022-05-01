@@ -101,7 +101,7 @@ final class MerchantViewController: UIViewController {
     })
   }
 
-  //MARK: - Selct Function
+  //MARK: - Selct Method
 
   private func selectPageViewController(button: UIButton) {
     let direction: UIPageViewController.NavigationDirection = (button.tag == 0) ? .reverse : .forward

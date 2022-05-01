@@ -11,12 +11,14 @@ import RxSwift
 import RxCocoa
 
 protocol MerchantDetailInputType: InputType {
-  var loadData: AnyObserver<MerchantDetail> { get }
+  var merchantDetail: AnyObserver<MerchantDetail?> { get }
   var actionFromBottom: AnyObserver<Void> { get }
+  var headerViewSize: AnyObserver<CGSize> { get }
 }
 
 
 struct MerchantDetailInputs: MerchantDetailInputType {
-  let loadData: AnyObserver<MerchantDetail>
+  let merchantDetail: AnyObserver<MerchantDetail?>
   let actionFromBottom: AnyObserver<Void>
+  let headerViewSize: AnyObserver<CGSize>
 }

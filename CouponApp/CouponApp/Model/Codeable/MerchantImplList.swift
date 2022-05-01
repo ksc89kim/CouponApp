@@ -31,7 +31,7 @@ struct MerchantImplList: Codable, List {
     self.list = try container.decode([MerchantImpl].self, forKey: .list)
   }
 
-  //MARK: - Function
+  //MARK: - Method
 
   func index(merchantId: Int?) -> MerchantImpl? {
     var indexMerchant: MerchantImpl? = nil;

@@ -42,10 +42,8 @@ final class SignupViewModel: SignupViewModelType {
 
   // MARK: - Property
 
-  var inputs: SignupInputType { return self.signupInputs }
-  var outputs: SignupOutputType? { return self.signupOutputs }
-  private let signupInputs: SignupInputs
-  private var signupOutputs: SignupOutputs?
+  var inputs: SignupInputType
+  var outputs: SignupOutputType?
 
   // MARK: - Init
 
@@ -53,7 +51,7 @@ final class SignupViewModel: SignupViewModelType {
 
     let subject = Subject()
 
-    self.signupInputs = .init(
+    self.inputs = SignupInputs(
       onSingup: subject.onSingup.asObserver(),
       userName: subject.userName.asObserver(),
       userPhoneNumber: subject.userPhoneNumber.asObserver(),
@@ -77,7 +75,7 @@ final class SignupViewModel: SignupViewModelType {
 
     let savePhoneNumber = self.savePhoneNumber(loadedUser: loadedUser)
 
-    self.signupOutputs = .init(
+    self.outputs = SignupOutputs(
       showCustomPopup: showCustomPopup,
       showMainViewController: showMainViewController,
       savePhoneNumber: savePhoneNumber
@@ -85,7 +83,7 @@ final class SignupViewModel: SignupViewModelType {
   }
 
 
-  // MARK: - Function
+  // MARK: - Method
 
   private func getTextInput(onSignup: Observable<Void>, subject: Subject) -> TextInput {
     let userName = self.getStringWhenOnSignup(onSignup: onSignup, text: subject.userName.asObservable())

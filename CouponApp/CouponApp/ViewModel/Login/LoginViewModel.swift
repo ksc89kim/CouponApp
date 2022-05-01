@@ -40,10 +40,8 @@ final class LoginViewModel: LoginViewModelType {
 
   // MARK: - Property
 
-  var inputs: LoginInputType { return self.loginInputs }
-  var outputs: LoginOutputType? { return self.loginOutputs }
-  private let loginInputs: LoginInputs
-  private var loginOutputs: LoginOutputs?
+  var inputs: LoginInputType
+  var outputs: LoginOutputType?
 
   // MARK: - Init
 
@@ -51,7 +49,7 @@ final class LoginViewModel: LoginViewModelType {
 
     let subject = Subject()
 
-    self.loginInputs = .init(
+    self.inputs = LoginInputs(
       onSingup: subject.onSingup.asObserver(),
       onLogin: subject.onLogin.asObserver(),
       userPhoneNumber: subject.userPhoneNumber.asObserver(),
@@ -73,7 +71,7 @@ final class LoginViewModel: LoginViewModelType {
 
     let savePhoneNumber = self.savePhoneNumber(afterLogin: afterLogin)
 
-    self.loginOutputs = .init(
+    self.outputs = LoginOutputs(
       showCustomPopup: showCustomPopup,
       showMainViewController: showMainViewController,
       savePhoneNumber: savePhoneNumber,
@@ -81,7 +79,7 @@ final class LoginViewModel: LoginViewModelType {
     )
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   private func getTextInput(subject: Subject) -> TextInput {
     let onLogin = subject.onLogin.share()
@@ -101,7 +99,6 @@ final class LoginViewModel: LoginViewModelType {
   }
 
   private func showCustomPopup(textInput: TextInput, afterLogin: Observable<Response>) -> Observable<CustomPopup> {
-
     return Observable.merge(
       self.inputFaileMessage(textInput: textInput),
       self.networkFailMessage(afterLogin: afterLogin)
@@ -161,7 +158,6 @@ final class LoginViewModel: LoginViewModelType {
   }
 
   private func login(textInput: TextInput) -> Observable<Response> {
-
     let phoneNumber = textInput.phoneNumber
       .filterNil()
       .filter { $0.isNotEmpty }

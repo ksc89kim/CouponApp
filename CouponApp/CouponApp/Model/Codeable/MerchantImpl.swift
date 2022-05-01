@@ -35,7 +35,7 @@ final class MerchantImpl: Codable, Merchant {
   /// 가맹점 소개 내용
   let content: String
   /// 로고 이미지 url
-  let logoImageUrl: String
+  let logoImageUrl: URL?
   /// 위도
   let latitude: Double
   /// 경도
@@ -64,7 +64,7 @@ final class MerchantImpl: Codable, Merchant {
     self.merchantId = merchantId
     self.name = name
     self.content = content
-    self.logoImageUrl = logoImageUrl
+    self.logoImageUrl = URL(string: logoImageUrl) 
     self.latitude = latitude
     self.longitude = longitude
     self.isCouponImage = isCouponImage
@@ -100,7 +100,7 @@ final class MerchantImpl: Codable, Merchant {
     self.merchantId = try container.decode(Int.self, forKey: .merchantId)
     self.name = try container.decode(String.self, forKey: .name)
     self.content = try container.decode(String.self, forKey: .content)
-    self.logoImageUrl = try container.decode(String.self, forKey: .logoImageUrl)
+    self.logoImageUrl = try container.decode(URL.self, forKey: .logoImageUrl)
     self.latitude = try container.decode(Double.self, forKey: .latitude)
     self.longitude = try container.decode(Double.self, forKey: .longitude)
     self.isCouponImage = try container.decode(Bool.self, forKey: .isCouponImage)
@@ -108,7 +108,7 @@ final class MerchantImpl: Codable, Merchant {
     self.imageCouponList = (try? container.decode([ImageCoupon].self, forKey: .imageCouponList)) ?? []
   }
 
-  //MARK: - Function
+  //MARK: - Method
 
   func index(_ index:Int) -> CouponUI {
     return self.isCouponImage ? self.imageCouponList[index] : self.drawCouponList[index]

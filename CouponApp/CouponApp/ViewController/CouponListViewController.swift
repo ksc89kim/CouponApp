@@ -18,7 +18,15 @@ final class CouponListViewController: BaseViewController {
   // MARK: - Define
 
   private enum Metric {
-    static let cellSize = CGSize(width: 50 , height:50)
+    static let cellSize = CGSize(width: 50 , height: 50)
+    static let sectionInset: UIEdgeInsets = .zero
+    static let minimumLineSpacing: CGFloat = 5.0
+    static let minimumInteritemSpacing: CGFloat = 5.0
+    static let bottomButtonRoundedViewBorder: CGFloat = 1.0
+    static let backgroundViewBorder: CGFloat = 1.0
+    static let backgroundViewCornerRadius: CGFloat = 10.0
+    static let holeViewBorder: CGFloat = 1.0
+    static let lineWidth: CGFloat = 2.0
   }
 
   // MARK: - UI Component
@@ -27,9 +35,9 @@ final class CouponListViewController: BaseViewController {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     layout.itemSize = Metric.cellSize
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    layout.minimumLineSpacing = 5.0
-    layout.minimumInteritemSpacing = 5.0
+    layout.sectionInset = Metric.sectionInset
+    layout.minimumLineSpacing = Metric.minimumLineSpacing
+    layout.minimumInteritemSpacing = Metric.minimumInteritemSpacing
     return layout
   }()
 
@@ -117,7 +125,7 @@ final class CouponListViewController: BaseViewController {
       .disposed(by: self.disposeBag)
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI() {
     self.setBackgroundRoundedView(view: self.backgroundRoundedView)
@@ -129,20 +137,20 @@ final class CouponListViewController: BaseViewController {
   }
 
   private func setBottomButtonRoundedView() {
-    self.bottomButtonRoundedView.layer.borderWidth = 1
+    self.bottomButtonRoundedView.layer.borderWidth = Metric.bottomButtonRoundedViewBorder
     self.bottomButtonRoundedView.layer.borderColor = UIColor.couponGrayColor2.cgColor
   }
 
   private func setBackgroundRoundedView(view: UIView) {
-    view.layer.borderWidth = 1
+    view.layer.borderWidth = Metric.backgroundViewBorder
     view.layer.borderColor = UIColor.couponGrayColor1.cgColor
-    view.layer.cornerRadius = 10
+    view.layer.cornerRadius = Metric.backgroundViewCornerRadius
   }
 
   private func setHoleView(view: UIView) {
-    view.layer.borderWidth = 1
+    view.layer.borderWidth = Metric.holeViewBorder
     view.layer.borderColor = UIColor.couponGrayColor1.cgColor
-    view.layer.cornerRadius = view.frame.size.width/2
+    view.layer.cornerRadius = view.frame.size.width / 2
   }
 
   private func setCollectionView() {
@@ -150,13 +158,13 @@ final class CouponListViewController: BaseViewController {
     self.myCollectionView.reloadData()
   }
 
-  // MARK: - Add Function
+  // MARK: - Add Method
 
   private func addDashLineAndObserver() {
     self.dotLineView.addDashLine(
       dashLayer: self.dashLineLayer,
       color: UIColor.couponGrayColor1,
-      lineWidth: 2
+      lineWidth: Metric.lineWidth
     )
 
     self.dotLineView.layer.addObserver(

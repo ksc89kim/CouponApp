@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxOptional
 
 extension UIView {
   func addDashLine(dashLayer: CAShapeLayer, color: UIColor, lineWidth: CGFloat) {
@@ -24,3 +27,10 @@ extension UIView {
     dashLayer.path = path
   }
 }
+
+extension Reactive where Base: UIView {
+  var boundsDidChange: Observable<CGRect> {
+    return self.base.rx.observe(CGRect.self, #keyPath(UIView.bounds)).filterNil()
+  }
+}
+

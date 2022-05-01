@@ -9,10 +9,17 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Kingfisher
 
 /// 회원 가맹점(쿠폰) 테이블 뷰
 /// - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
 final class UserMerchantTableViewController : UITableViewController, BaseBind {
+
+  // MARK: - Define
+
+  private enum Metric {
+    static let contentInset: UIEdgeInsets = .init(top: 15, left: 0, bottom: 10, right: 0)
+  }
 
   // MARK: - Property
 
@@ -42,10 +49,10 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     // Dispose of any resources that can be recreated.
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setUI() {
-    self.tableView.contentInset = UIEdgeInsets(top: 15, left: 0, bottom: 10, right: 0)
+    self.tableView.contentInset = Metric.contentInset
     let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
     self.tableView.register(nib, forCellReuseIdentifier: CouponIdentifier.merchantTableViewCell.rawValue)
   }
@@ -98,11 +105,7 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     ) as! MerchantTableViewCell
 
     let userCoupon = self.userCouponList?[indexPath.row]
-    if let merchant = self.merchantList?.index(merchantId: userCoupon?.merchantId) {
-      cell.titleLabel.text = merchant.name
-      cell.topView.backgroundColor = UIColor.hexStringToUIColor(hex: merchant.cardBackGround)
-      cell.logoImageView.downloadedFrom(link: merchant.logoImageUrl)
-    }
+    cell.setMerchant(self.merchantList?.index(merchantId: userCoupon?.merchantId))
 
     return cell
   }

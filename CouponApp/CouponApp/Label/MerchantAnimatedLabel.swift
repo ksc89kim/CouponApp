@@ -25,9 +25,9 @@ final class MerchantAnimatedLabel: UILabel {
     super.awakeFromNib()
   }
 
-  //MARK: - Set Function
+  //MARK: - Set Method
   
-  func setPercent(percent: CGFloat) {
+  func setPercent(_ percent: CGFloat) {
     guard let scale = self.getScale() else {
       return
     }
@@ -40,11 +40,13 @@ final class MerchantAnimatedLabel: UILabel {
     self.transform = CGAffineTransform(scaleX: self.scalePoint.x , y: self.scalePoint.y)
   }
   
-  func setPosition(x: CGFloat, y: CGFloat) {
-    self.frame.origin.x = x - (self.bounds.width * self.scalePoint.x);
-    self.frame.origin.y = y;
+  func setPosition(_ position: CGPoint) {
+    self.frame.origin.x = position.x - (self.bounds.width * self.scalePoint.x);
+    self.frame.origin.y = position.y;
   }
-  
+
+  //MARK: - Get Method
+
   private func getScale() -> CGPoint? {
     guard self.frame.size != .zero else {
       return nil

@@ -27,7 +27,7 @@ struct IntroStampDrawPath {
     self.rateY = parentRect.size.height/drawRect.size.height
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   mutating func setRate(parentRect:CGRect) {
     self.rateX = parentRect.size.width/self.width

@@ -33,7 +33,7 @@ class RoundedButton: UIButton {
     }
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   func updateCornerRadius() {
     self.layer.cornerRadius = self.rounded ? self.cornerRadius : 0

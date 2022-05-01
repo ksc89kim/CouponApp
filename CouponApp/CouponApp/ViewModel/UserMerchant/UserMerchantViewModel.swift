@@ -26,17 +26,15 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
 
   // MARK: - Property
 
-  var inputs: UserMerchantInputType { return self.userMerchantInputs }
-  var outputs: UserMerchantOutputType? { return self.userMerchantOutputs }
-  private let userMerchantInputs: UserMerchantInputs
-  private var userMerchantOutputs: UserMerchantOutputs?
+  var inputs: UserMerchantInputType
+  var outputs: UserMerchantOutputType?
 
   // MARK: - Init
 
   init() {
     let subject = Subject()
 
-    self.userMerchantInputs = .init(
+    self.inputs = UserMerchantInputs(
       loadData: subject.loadData.asObserver(),
       deleteCoupon: subject.deleteCoupon.asObserver()
     )
@@ -54,14 +52,14 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
       deleteCoupon: deleteCoupon
     )
 
-    self.userMerchantOutputs = .init(
+    self.outputs = UserMerchantOutputs(
       reload: reload,
       delete: delete,
       showCustomPopup: showCustomPopup
     )
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   private func loadData(subject: Subject) -> Observable<(isSuccessed: Bool, list: UserCouponList?)> {
     return subject.loadData

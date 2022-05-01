@@ -74,10 +74,9 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - Property
 
-  var inputs: CouponListInputType { return self.couponListInputs }
-  var outputs: CouponListOutputType? { return self.couponListOutputs }
-  private let couponListInputs: CouponListInputs
-  private var couponListOutputs: CouponListOutputs?
+  var inputs: CouponListInputType
+  var outputs: CouponListOutputType?
+
 
   // MARK: - Init
 
@@ -85,7 +84,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
     let subject = Subject()
 
-    self.couponListInputs = .init(
+    self.inputs = CouponListInputs(
       viewDidLoad: subject.viewDidLoad.asObserver(),
       onAddCoupon: subject.onAddCoupon.asObserver(),
       onUseCoupon: subject.onUseCoupon.asObserver(),
@@ -150,7 +149,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
     let navigationTitle = self.navigationTitle(subject: subject)
 
-    self.couponListOutputs = .init(
+    self.outputs = CouponListOutputs(
       navigationTitle: navigationTitle,
       reload: reload,
       showCustomPopup: showCustomPopup,
@@ -167,7 +166,7 @@ final class CouponListViewModel: CouponListViewModelType {
       .filterNil()
   }
 
-  // MARK: - CouponInfo Function
+  // MARK: - CouponInfo Method
 
   private func couponInfo(subject: Subject) -> Observable<CouponInfo> {
     let userCoupon = subject.userCoupon

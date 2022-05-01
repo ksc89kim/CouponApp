@@ -52,7 +52,7 @@ final class IntroStampView: UIView {
     self.drawLayer.add(self.getStrokeAnimation(), forKey: AnimationKey.line)
   }
 
-  // MARK: - Set Function
+  // MARK: - Set Method
 
   private func setDrawLayer() {
     self.drawLayer.path = self.introPath.getCGPath()
@@ -62,7 +62,7 @@ final class IntroStampView: UIView {
     self.drawLayer.fillColor = UIColor.clear.cgColor
   }
 
-  // MARK: - Get Function
+  // MARK: - Get Method
 
   private func getStrokeAnimation() -> CABasicAnimation {
     let animation = CABasicAnimation(keyPath: AnimationKey.strokeEnd)

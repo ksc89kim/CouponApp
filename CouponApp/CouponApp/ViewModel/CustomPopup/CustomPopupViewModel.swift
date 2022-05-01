@@ -22,17 +22,16 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
 
   // MARK: - Property
 
-  var inputs: CustomPopupInputType { return self.customPopupInputs }
-  var outputs: CustomPopupOutputType? { return self.customPopupOutputs }
-  private let customPopupInputs: CustomPopupInputs
-  private var customPopupOutputs: CustomPopupOutputs?
+  var inputs: CustomPopupInputType
+  var outputs: CustomPopupOutputType?
+
 
   // MARK: - Init
 
   init() {
     let subject = Subject()
 
-    self.customPopupInputs = .init(
+    self.inputs = CustomPopupInputs(
       configure: subject.configure.asObserver(),
       onOk: subject.onOk.asObserver(),
       viewDidLoad: subject.viewDidLoad.asObserver()
@@ -50,7 +49,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
       close: close
     )
 
-    self.customPopupOutputs = .init(
+    self.outputs = CustomPopupOutputs(
       content: content,
       callback: callback,
       showAnimation: showAnimation,
@@ -60,7 +59,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
     )
   }
 
-  // MARK: - Function
+  // MARK: - Method
 
   private func close(subject: Subject) -> Observable<Void> {
     return subject.onOk.share()

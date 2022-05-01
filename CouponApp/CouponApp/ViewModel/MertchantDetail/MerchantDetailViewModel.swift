@@ -15,8 +15,9 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   // MARK: - Define
 
   private struct Subject {
-    let loadData = PublishSubject<MerchantDetail>()
+    let merchantDetail = BehaviorSubject<MerchantDetail?>(value: nil)
     let actionFromBottom = PublishSubject<Void>()
+    let headerViewSize = PublishSubject<CGSize>()
   }
 
   private enum Text {
@@ -34,10 +35,8 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
 
   //MARK: - Property
 
-  var inputs: MerchantDetailInputType { return self.merchantDetailInputs }
-  var outputs: MerchantDetailOutputType? { return self.merchantDetailOutputs }
-  private let merchantDetailInputs: MerchantDetailInputs
-  private var merchantDetailOutputs: MerchantDetailOutputs?
+  var inputs: MerchantDetailInputType
+  var outputs: MerchantDetailOutputType?
   private let disposeBag = DisposeBag()
   private let isUserCoupon = BehaviorRelay<Bool>(value: false)
 
@@ -46,12 +45,13 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   init() {
     let subject = Subject()
 
-    self.merchantDetailInputs = .init(
-      loadData: subject.loadData.asObserver(),
-      actionFromBottom: subject.actionFromBottom.asObserver()
+    self.inputs = MerchantDetailInputs(
+      merchantDetail: subject.merchantDetail.asObserver(),
+      actionFromBottom: subject.actionFromBottom.asObserver(),
+      headerViewSize: subject.headerViewSize.asObserver()
     )
 
-    let loadData = self.loadData(subject: subject)
+    let checkUser = self.checkUser(subject: subject)
 
     let onBottomButton = self.onBottomButton(subject: subject)
 
@@ -59,70 +59,73 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     let deleteCoupon = self.deleteCoupon(onBottomButton: onBottomButton, subject: subject)
 
     self.isUserCoupon(
-      loadData: loadData,
+      checkUser: checkUser,
       insertCoupon: insertCoupon,
       deleteCoupon: deleteCoupon
     )
     .bind(to: self.isUserCoupon)
     .disposed(by: self.disposeBag)
-    
 
-    let title = self.title(subject: subject)
-    let introduce = self.introduce(subject: subject)
-    let buttonTitle = self.buttonTitle(subject: subject)
-    let headerBackgroundColor = self.headerBackgroundColor(subject: subject)
-    let headerImage = self.headerImage(subject: subject)
     let showCustomPopup = self.showCustomPopup(
       insertCoupon: insertCoupon,
       deleteCoupon: deleteCoupon
     )
 
-    self.merchantDetailOutputs = .init(
-      title: title,
-      buttonTitle: buttonTitle,
-      introduce: introduce,
-      headerBackgroundColor: headerBackgroundColor,
-      headerImage: headerImage,
+    self.outputs = MerchantDetailOutputs(
+      cellTopViewFrame: self.cellTopViewFrame(subject: subject),
+      cellCornerRadius: self.cellCornerRadius(subject: subject),
+      title: self.title(subject: subject),
+      buttonTitle: self.buttonTitle(subject: subject),
+      introduce: self.introduce(subject: subject),
+      headerBackgroundColor:  self.headerBackgroundColor(subject: subject),
+      headerImageURL: self.headerImageURL(subject: subject),
       showCustomPopup: showCustomPopup
     )
   }
 
-  // MARK: - Function
+  // MARK: - Method
+
+  private func merchantDetail(subject: Subject) -> Observable<MerchantDetail> {
+    return subject.merchantDetail.filterNil()
+  }
+
+  private func cellTopViewFrame(subject: Subject) -> Observable<CGRect> {
+    return self.merchantDetail(subject: subject).map { $0.cellTopViewFrame }
+  }
+
+  private func cellCornerRadius(subject: Subject) -> Observable<CGFloat> {
+    return self.merchantDetail(subject: subject).map { $0.cellCornerRadius }
+  }
 
   private func title(subject: Subject) -> Observable<String> {
-    return subject.loadData.map { $0.merchant?.name }
-    .filterNil()
+    return self.merchantDetail(subject: subject).map { $0.merchant.name }
   }
 
   private func introduce(subject: Subject) -> Observable<String> {
-    return subject.loadData.map { $0.merchant?.content }
-    .filterNil()
+    return self.merchantDetail(subject: subject).map { $0.merchant.content }
   }
 
   private func headerBackgroundColor(subject: Subject) -> Observable<UIColor?> {
-    return subject.loadData.map { $0.cellBackgroundColor }
+    return self.merchantDetail(subject: subject).map { UIColor.hexStringToUIColor(hex: $0.merchant.cardBackGround) }
   }
 
-  private func headerImage(subject: Subject) -> Observable<UIImage> {
-    return subject.loadData.map { $0.getCellImage() }
+  private func headerImageURL(subject: Subject) -> Observable<URL?> {
+    return self.merchantDetail(subject: subject).map { $0.merchant.logoImageUrl }
   }
 
   private func buttonTitle(subject: Subject) -> Observable<String> {
     return self.isUserCoupon.map { $0 ? Text.delete : Text.insert }
   }
 
-  private func loadData(subject: Subject) -> Observable<Bool> {
-    return subject.loadData
-      .flatMapLatest { data -> Observable<Bool> in
-      guard let merchant = data.merchant else {
-        return .empty()
+  private func checkUser(subject: Subject) -> Observable<Bool> {
+    return self.merchantDetail(subject: subject)
+      .flatMapLatest { merchantDetail -> Observable<Bool> in
+        return RxCouponRepository.checkUserCoupon(
+          userId: CouponSignleton.getUserId(),
+          merchantId: merchantDetail.merchant.merchantId
+        )
+          .asObservable()
       }
-      return RxCouponRepository.checkUserCoupon(
-        userId: CouponSignleton.getUserId(),
-        merchantId: merchant.merchantId
-      )
-      .asObservable()
-    }
       .share()
   }
 
@@ -135,15 +138,11 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   private func deleteCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Bool> {
     return onBottomButton
       .filter { $0 }
-      .withLatestFrom(subject.loadData)
-      .flatMapLatest { data -> Observable<Bool> in
-        guard let merchant = data.merchant else {
-          return .empty()
-        }
-
+      .withLatestFrom(self.merchantDetail(subject: subject))
+      .flatMapLatest { merchantDetail -> Observable<Bool> in
         return RxCouponRepository.deleteUserCoupon(
           userId: CouponSignleton.getUserId(),
-          merchantId: merchant.merchantId
+          merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
       }
@@ -153,15 +152,11 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   private func insertCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Bool> {
     return onBottomButton
       .filter { !$0 }
-      .withLatestFrom(subject.loadData)
-      .flatMapLatest { data -> Observable<Bool> in
-        guard let merchant = data.merchant else {
-          return .empty()
-        }
-
+      .withLatestFrom(self.merchantDetail(subject: subject))
+      .flatMapLatest { merchantDetail -> Observable<Bool> in
         return RxCouponRepository.insertUserCoupon(
           userId: CouponSignleton.getUserId(),
-          merchantId: merchant.merchantId
+          merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
       }
@@ -169,7 +164,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   }
 
   private func isUserCoupon(
-    loadData: Observable<Bool>,
+    checkUser: Observable<Bool>,
     insertCoupon: Observable<Bool>,
     deleteCoupon: Observable<Bool>
   ) -> Observable<Bool> {
@@ -181,7 +176,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .map { !$0 }
 
     return Observable.merge(
-      loadData,
+      checkUser,
       isUserCouponFromInsert,
       isUserCouponFromDelete
     )

@@ -8,22 +8,24 @@ target 'CouponApp' do
   # Pods for CouponApp
 
   # Network 
-    pod 'Alamofire'
-    pod 'AlamofireImage'
-    
+    pod 'Alamofire', '5.5.0'
+
+  # Kingfisher
+    pod 'Kingfisher', '~> 7.0'
+
   # FMDB
-    pod 'FMDB'
+    pod 'FMDB', '2.7.5'
 
   # Progress
    pod 'SVProgressHUD', '~> 2.2.2' 
  
   # TextInput
-    pod 'AnimatedTextInput'
+    pod 'AnimatedTextInput', '0.5.5'
  
   # Rx
-    pod 'RxCocoa'
-    pod 'RxSwift'
-    pod 'RxOptional'
+    pod 'RxCocoa', '6.5.0'
+    pod 'RxSwift', '6.5.0'
+    pod 'RxOptional', '5.0.2'
 
   target 'CouponAppTests' do
     inherit! :search_paths

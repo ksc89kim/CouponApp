@@ -88,7 +88,7 @@ final class CouponDrawView: UIView, CouponView {
     self.layer.addSublayer(self.checkLayer)
   }
 
-  // MARK: - Get Function
+  // MARK: - Get Method
 
   private func getBackgroundCirclePath(_ rect: CGRect) -> CGPath {
     return UIBezierPath(ovalIn: rect).cgPath
