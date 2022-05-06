@@ -117,6 +117,8 @@
 		A4A9FEFC26BD556B0074FC93 /* SignupViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9FEFB26BD556B0074FC93 /* SignupViewModelType.swift */; };
 		A4A9FEFE26BD55790074FC93 /* SignupInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9FEFD26BD55790074FC93 /* SignupInputs.swift */; };
 		A4A9FF0026BD55880074FC93 /* SignupOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A9FEFF26BD55880074FC93 /* SignupOutputs.swift */; };
+		A4AD39DE28255BE20083E5C4 /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */; };
+		A4AD39E028255EF50083E5C4 /* UINibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD39DF28255EF50083E5C4 /* UINibExtensions.swift */; };
 		A4AFCE382545656600E92B92 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE372545656600E92B92 /* ViewModelType.swift */; };
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponRepository.swift */; };
@@ -265,6 +267,8 @@
 		A4A9FEFB26BD556B0074FC93 /* SignupViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModelType.swift; sourceTree = "<group>"; };
 		A4A9FEFD26BD55790074FC93 /* SignupInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupInputs.swift; sourceTree = "<group>"; };
 		A4A9FEFF26BD55880074FC93 /* SignupOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOutputs.swift; sourceTree = "<group>"; };
+		A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponInfo.swift; sourceTree = "<group>"; };
+		A4AD39DF28255EF50083E5C4 /* UINibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINibExtensions.swift; sourceTree = "<group>"; };
 		A4AFCE372545656600E92B92 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3C25456C6200E92B92 /* RxCouponRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCouponRepository.swift; sourceTree = "<group>"; };
@@ -400,6 +404,7 @@
 				A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */,
 				A4A0BB8425610C78006F616D /* CustomPopup.swift */,
 				A4A0BB8625610F0A006F616D /* Alert.swift */,
+				A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -516,6 +521,7 @@
 				A4011F3C229AA17000A3977A /* UIButtonExtensions.swift */,
 				A40398E0230004B800C052FC /* NSLayoutContraintExtensions.swift */,
 				A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */,
+				A4AD39DF28255EF50083E5C4 /* UINibExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1065,6 +1071,7 @@
 				A4A61FA026C24ABE00809A44 /* MerchantDetailViewModelType.swift in Sources */,
 				A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */,
 				CC88E7442008450E00F48B1C /* DrawCoupon.swift in Sources */,
+				A4AD39E028255EF50083E5C4 /* UINibExtensions.swift in Sources */,
 				A4A61F9926C2418100809A44 /* CustomPopupViewModelType.swift in Sources */,
 				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
 				A4B7749326C16EFD000954B9 /* CouponListViewModelType.swift in Sources */,
@@ -1102,6 +1109,7 @@
 				A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */,
 				A4B4C8F727DF38BD00C3B058 /* MerchantDetailPresentationController.swift in Sources */,
 				594A563A1FD814AF005EAA9C /* UserCoupon.swift in Sources */,
+				A4AD39DE28255BE20083E5C4 /* CouponInfo.swift in Sources */,
 				A425C9EE22D9E37C00093D8E /* TabController.swift in Sources */,
 				59A43FAA2124062F0099581D /* List.swift in Sources */,
 				A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */,

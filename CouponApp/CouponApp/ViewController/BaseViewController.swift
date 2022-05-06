@@ -16,6 +16,16 @@ open class BaseViewController: UIViewController, BaseBind {
 
   let disposeBag = DisposeBag()
 
+  // MARK: - Init
+
+  init(nibType: CouponNibName) {
+    super.init(nibName: nibType.rawValue, bundle: nil)
+  }
+
+  public required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+  
   // MARK: - Life Cycle
 
   open override func viewDidLoad() {
@@ -36,13 +46,13 @@ open class BaseViewController: UIViewController, BaseBind {
   // MARK: - Etc Method
 
   fileprivate func showMainViewController() {
-    let mainViewController: UIViewController = self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+    let mainViewController: UIViewController = self.createViewController(storyboardType: .main)
     mainViewController.modalPresentationStyle = .fullScreen
     self.present(mainViewController, animated: true, completion: nil)
   }
 
   fileprivate func showSignupViewController() {
-    self.performSegue(withIdentifier:CouponIdentifier.showSignupViewController.rawValue, sender: nil)
+    self.performSegue(withIdentifier: CouponIdentifier.showSignupViewController.rawValue, sender: nil)
   }
 }
 

@@ -83,7 +83,7 @@ final class MerchantDetailViewController: BaseViewController {
 
   init(viewModel: MerchantDetailViewModelType) {
     self.viewModel = viewModel
-    super.init(nibName: CouponNibName.merchantDetailViewController.rawValue, bundle: nil)
+    super.init(nibType: .merchantDetailViewController)
     self.modalPresentationStyle = .custom
     self.transitioningDelegate = self
   }

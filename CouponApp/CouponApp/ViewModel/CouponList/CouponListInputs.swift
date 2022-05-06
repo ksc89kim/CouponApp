@@ -11,18 +11,14 @@ import RxSwift
 import RxCocoa
 
 protocol CouponListInputType: InputType {
-  var viewDidLoad: AnyObserver<Void> { get }
+  var loadCoupon: AnyObserver<CouponInfo> { get }
   var onAddCoupon: AnyObserver<Void> { get }
   var onUseCoupon: AnyObserver<Void> { get }
-  var userCoupon: AnyObserver<UserCoupon?> { get }
-  var merchantCoupon: AnyObserver<MerchantImpl?> { get }
 }
 
 
 struct CouponListInputs: CouponListInputType {
-  let viewDidLoad: AnyObserver<Void>
+  let loadCoupon: AnyObserver<CouponInfo>
   let onAddCoupon: AnyObserver<Void>
   let onUseCoupon: AnyObserver<Void>
-  let userCoupon: AnyObserver<UserCoupon?>
-  let merchantCoupon: AnyObserver<MerchantImpl?>
 }

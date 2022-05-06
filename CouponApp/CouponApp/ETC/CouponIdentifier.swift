@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CouponIdentifier: String{
+enum CouponIdentifier: String {
 
   // MARK: - ViewController identifier
 
@@ -22,9 +22,11 @@ enum CouponIdentifier: String{
   case showCouponListView = "showCouponListView"
   
   // MARK: - Unwind segue identifier
+  
   case unwindLoginViewController = "unwindLoginViewController"
   case unwindUserMerchant = "unwindUserMerchant"
   
   // MARK: - Cell identifier
+
   case merchantTableViewCell = "MerchantTableViewCell"
 }

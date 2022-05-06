@@ -39,7 +39,7 @@ final class GloabalMerchantTableViewController: MerchantTableViewController {
 
   func setUI() {
     self.tableView.contentInset = Metric.contentInset
-    let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
+    let nib = UINib(type: .merchantTableViewCell)
     self.tableView.register(nib, forCellReuseIdentifier: CouponIdentifier.merchantTableViewCell.rawValue)
   }
 

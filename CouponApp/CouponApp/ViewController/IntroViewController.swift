@@ -82,8 +82,8 @@ final class IntroViewController: BaseViewController {
     }
 
     let loginViewController =  self.createViewController(
-      storyboardName: CouponStoryBoardName.start.rawValue,
-      withIdentifier: CouponIdentifier.loginNavigationController.rawValue
+      storyboardType: .start,
+      identifierType: .loginNavigationController
     )
 
     self.addViewController(viewController: loginViewController, bringSubView: bringSubView)
@@ -95,7 +95,7 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let mainViewcontroller =  self.createViewController(storyboardName: CouponStoryBoardName.main.rawValue)
+    let mainViewcontroller = self.createViewController(storyboardType: .main)
     self.addViewController(viewController: mainViewcontroller, bringSubView: bringSubView)
   }
 }

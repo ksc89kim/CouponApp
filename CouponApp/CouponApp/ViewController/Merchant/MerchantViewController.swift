@@ -42,12 +42,12 @@ final class MerchantViewController: UIViewController {
 
   lazy var viewControllerArray:[UIViewController] = {
     let globalMerchantTableViewController = self.createViewController(
-      storyboardName: CouponStoryBoardName.merchant.rawValue,
-      withIdentifier: CouponIdentifier.globalMerchantTableViewController.rawValue
+      storyboardType: .merchant,
+      identifierType: .globalMerchantTableViewController
     )
     let aroundMerchantTableViewController = self.createViewController(
-      storyboardName: CouponStoryBoardName.merchant.rawValue,
-      withIdentifier: CouponIdentifier.aroundMerchantTableViewController.rawValue
+      storyboardType: .merchant,
+      identifierType: .aroundMerchantTableViewController
     )
     return [aroundMerchantTableViewController, globalMerchantTableViewController]
   }()

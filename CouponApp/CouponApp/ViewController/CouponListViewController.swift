@@ -55,17 +55,8 @@ final class CouponListViewController: BaseViewController {
   private let viewModel = CouponListViewModel()
   private var selectedCouponIndex: Int = 0
   private let dashLineLayer = CAShapeLayer()
-  var userCouponData: UserCoupon? {
-    didSet {
-      self.viewModel.inputs.userCoupon.onNext(self.userCouponData)
-    }
-  }
-
-  var merchantData: MerchantImpl? {
-    didSet {
-      self.viewModel.inputs.merchantCoupon.onNext(self.merchantData)
-    }
-  }
+  var userCoupon: UserCoupon?
+  var merchant: MerchantImpl?
 
   // MARK: - Deinit
 
@@ -77,7 +68,10 @@ final class CouponListViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewModel.inputs.viewDidLoad.onNext(())
+
+    if let userCoupon = self.userCoupon, let merchant = self.merchant {
+      self.viewModel.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
+    }
     self.setUI()
   }
 
@@ -194,7 +188,7 @@ extension CouponListViewController: UICollectionViewDataSource {
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int
   ) -> Int {
-    guard let merchant = self.merchantData else {
+    guard let merchant = self.merchant else {
       print("collectionView - merchantData error")
       return 0
     }
@@ -207,7 +201,7 @@ extension CouponListViewController: UICollectionViewDataSource {
   ) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath) as! CouponCollectionViewCell
 
-    guard let merchant = self.merchantData, let couponCount = self.userCouponData?.couponCount else  {
+    guard let merchant = self.merchant, let couponCount = self.userCoupon?.couponCount else  {
       print("collectionView - merchantData error,  couponCount error")
       return cell
     }

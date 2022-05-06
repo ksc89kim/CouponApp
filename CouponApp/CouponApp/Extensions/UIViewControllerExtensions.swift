@@ -11,16 +11,19 @@ import RxSwift
 import RxCocoa
 
 extension UIViewController {
-  func createViewController(storyboardName: String, withIdentifier: String) -> UIViewController {
-    let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-    let viewController = storyBoard.instantiateViewController(withIdentifier: withIdentifier)
-    return viewController
+  func createViewController(storyboardType: CouponStoryBoardName, identifierType: CouponIdentifier? = nil) -> UIViewController {
+    return self.createViewController(storyboardName: storyboardType.rawValue, withIdentifier: identifierType?.rawValue)
   }
 
-  func createViewController(storyboardName: String) -> UIViewController {
+  func createViewController(storyboardName: String, withIdentifier: String? = nil) -> UIViewController {
     let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-    let mainViewController = storyBoard.instantiateInitialViewController() ?? UIViewController()
-    return mainViewController
+    let viewController: UIViewController
+    if let identifier = withIdentifier {
+      viewController = storyBoard.instantiateViewController(withIdentifier: identifier)
+    } else {
+      viewController = storyBoard.instantiateInitialViewController() ?? .init()
+    }
+    return viewController
   }
 
   func addViewController(viewController: UIViewController, bringSubView: UIView) {
@@ -35,7 +38,7 @@ extension UIViewController {
         window.addSubview(viewController.view)
         self.addChild(viewController)
         viewController.didMove(toParent: self)
-      } else if let navigationController =  self.navigationController{
+      } else if let navigationController =  self.navigationController {
         navigationController.view.addSubview(viewController.view)
         navigationController.addChild(viewController)
         viewController.didMove(toParent: navigationController)
@@ -62,11 +65,9 @@ extension UIViewController {
 
   fileprivate func showCustomPopup(data: CustomPopup){
     DispatchQueue.main.async {
-      let customPopupViewController = CustomPopupViewController(
-        nibName: "CustomPopupViewController",
-        bundle: nil
-      )
-      customPopupViewController.rx.configure.onNext(data)
+      let viewModel: CustomPopupViewModelType = CustomPopupViewModel()
+      let customPopupViewController = CustomPopupViewController(viewModel: viewModel)
+      viewModel.inputs.configure.onNext(data)
       customPopupViewController.view.frame = self.view.frame
       self.addCustomViewController(viewController: customPopupViewController)
     }

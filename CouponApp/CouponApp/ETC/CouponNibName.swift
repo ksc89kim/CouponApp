@@ -9,10 +9,14 @@
 
 import Foundation
 
-enum CouponNibName: String{
+enum CouponNibName: String {
+  
   // MARK: - Cell
+
   case merchantTableViewCell = "MerchantTableViewCell"
   
   // MARK: - ViewController
+
   case merchantDetailViewController = "MerchantDetailViewController"
+  case customPopupViewController = "CustomPopupViewController"
 }

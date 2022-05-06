@@ -9,6 +9,6 @@
 import UIKit
 
 /// 디폴트 키
-enum DefaultKey:String {
+enum DefaultKey: String {
   case phoneNumber = "phoneNumber"
 }

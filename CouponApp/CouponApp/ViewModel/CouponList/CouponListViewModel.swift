@@ -15,11 +15,9 @@ final class CouponListViewModel: CouponListViewModelType {
   // MARK: - Define
 
   private struct Subject {
-    let viewDidLoad = PublishSubject<Void>()
+    let loadCoupon = PublishSubject<CouponInfo>()
     let onAddCoupon = PublishSubject<Void>()
     let onUseCoupon = PublishSubject<Void>()
-    let userCoupon = PublishSubject<UserCoupon?>()
-    let merchantCoupon = PublishSubject<MerchantImpl?>()
   }
 
   private enum Text {
@@ -31,32 +29,6 @@ final class CouponListViewModel: CouponListViewModelType {
     static let lackCouponContent = "lackCouponContent"
     static let successUseCouponTitle = "successUseCouponTitle"
     static let successUseCouponContent = "successUseCouponContent"
-  }
-
-  private struct CouponInfo {
-    let userCoupon: UserCoupon
-    let merchant: MerchantImpl
-    let isNetworkSuccess: Bool
-
-    init(userCoupon: UserCoupon, merchant: MerchantImpl) {
-      self.userCoupon = userCoupon
-      self.merchant = merchant
-      self.isNetworkSuccess = false
-    }
-
-    init(couponInfo: CouponInfo, isNetworkSuccess: Bool) {
-      self.userCoupon = couponInfo.userCoupon
-      self.merchant = couponInfo.merchant
-      self.isNetworkSuccess = isNetworkSuccess
-    }
-
-    func isAvailableAddCoupon() -> Bool {
-      return self.userCoupon.couponCount < self.merchant.couponCount()
-    }
-
-    func isAvailableUseCoupon() -> Bool {
-      return self.userCoupon.couponCount >= self.merchant.couponCount()
-    }
   }
 
   private struct CouponParameter {
@@ -85,14 +57,12 @@ final class CouponListViewModel: CouponListViewModelType {
     let subject = Subject()
 
     self.inputs = CouponListInputs(
-      viewDidLoad: subject.viewDidLoad.asObserver(),
+      loadCoupon: subject.loadCoupon.asObserver(),
       onAddCoupon: subject.onAddCoupon.asObserver(),
-      onUseCoupon: subject.onUseCoupon.asObserver(),
-      userCoupon: subject.userCoupon.asObserver(),
-      merchantCoupon: subject.merchantCoupon.asObserver()
+      onUseCoupon: subject.onUseCoupon.asObserver()
     )
 
-    let couponInfo = self.couponInfo(subject: subject)
+    let couponInfo = subject.loadCoupon.asObservable()
 
     let couponInfoWhenOnAdd = self.couponInfoWhenActionAfter(
       onAction: subject.onAddCoupon.asObservable(),
@@ -160,27 +130,8 @@ final class CouponListViewModel: CouponListViewModelType {
   // MARK: - Navigation Title
 
   private func navigationTitle(subject: Subject) -> Observable<String> {
-    return subject.viewDidLoad
-      .withLatestFrom(subject.merchantCoupon)
-      .map { $0?.name }
-      .filterNil()
-  }
-
-  // MARK: - CouponInfo Method
-
-  private func couponInfo(subject: Subject) -> Observable<CouponInfo> {
-    let userCoupon = subject.userCoupon
-      .filterNil()
-
-    let merchantCoupon = subject.merchantCoupon
-      .filterNil()
-
-    return Observable.combineLatest(
-      userCoupon,
-      merchantCoupon
-    )
-    .map { CouponInfo(userCoupon: $0.0, merchant: $0.1) }
-    .share()
+    return subject.loadCoupon
+      .map { $0.merchant.name }
   }
 
   // MARK: - Request Network
@@ -226,10 +177,8 @@ final class CouponListViewModel: CouponListViewModelType {
 
   private func selectedCouponIndex(responseAddCoupon: Observable<CouponInfo>, subject: Subject) -> Observable<Int> {
 
-    let selectIndexWhenViewDidLoad = subject.viewDidLoad
-      .withLatestFrom(subject.userCoupon)
-      .map { $0?.couponCount }
-      .filterNil()
+    let selectIndexWhenViewDidLoad = subject.loadCoupon
+      .map { $0.userCoupon.couponCount }
 
     let selectIndexWhenResponseAdd = responseAddCoupon
       .filter { $0.isNetworkSuccess }

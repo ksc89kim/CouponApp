@@ -53,7 +53,7 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
 
   private func setUI() {
     self.tableView.contentInset = Metric.contentInset
-    let nib = UINib(nibName: CouponNibName.merchantTableViewCell.rawValue, bundle: nil)
+    let nib = UINib(type: .merchantTableViewCell)
     self.tableView.register(nib, forCellReuseIdentifier: CouponIdentifier.merchantTableViewCell.rawValue)
   }
 
@@ -133,9 +133,9 @@ final class UserMerchantTableViewController : UITableViewController, BaseBind {
     if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
        let couponListView = segue.destination as? CouponListViewController,
        let indexPath = sender as? IndexPath {
-      couponListView.userCouponData = self.userCouponList?[indexPath.row]
-      couponListView.merchantData = self.merchantList?.index(
-        merchantId:couponListView.userCouponData?.merchantId
+      couponListView.userCoupon = self.userCouponList?[indexPath.row]
+      couponListView.merchant = self.merchantList?.index(
+        merchantId: couponListView.userCoupon?.merchantId
       )
     }
   }
