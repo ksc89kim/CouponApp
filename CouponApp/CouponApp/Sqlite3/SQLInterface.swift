@@ -20,7 +20,7 @@ final class SQLInterface {
   //MARK: - Property
 
   lazy var db: FMDatabase? = {
-    var _db:FMDatabase? = nil
+    var _db: FMDatabase? = nil
 
     let fileMgr = FileManager.default
     let dirPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
@@ -113,9 +113,9 @@ final class SQLInterface {
       let result = try contactDb.executeQuery(query, values: [])
       var userCouponList: UserCouponList? = UserCouponList()
       while result.next() {
-        let merchantIdx:Int32 = result.int(forColumnIndex: 1)
-        let couponCount:Int32 = result.int(forColumnIndex: 2)
-        let userCoupon:UserCoupon = UserCoupon()
+        let merchantIdx: Int32 = result.int(forColumnIndex: 1)
+        let couponCount: Int32 = result.int(forColumnIndex: 2)
+        let userCoupon: UserCoupon = UserCoupon()
         userCoupon.merchantId = Int(merchantIdx)
         userCoupon.couponCount = Int(couponCount)
         userCouponList?.append(userCoupon)
@@ -189,9 +189,9 @@ final class SQLInterface {
     let query = "select idx,name,content, image_url, latitude, longitude, is_couponImage, card_background from merchant"
     do {
       let result = try contactDb.executeQuery(query, values: [])
-      var merchatList:MerchantImplList? = MerchantImplList()
+      var merchatList: MerchantImplList? = MerchantImplList()
       while result.next() {
-        let merchant:MerchantImpl = MerchantImpl(resultSet: result)
+        let merchant: MerchantImpl = MerchantImpl(resultSet: result)
         merchatList?.list.append(merchant)
       }
       return merchatList
@@ -204,13 +204,13 @@ final class SQLInterface {
   /// 가맹점 - 쿠폰 정보 가져오기 ( DRAW용 )
   func selectDrawCouponData(merchantId: Int) throws -> [DrawCoupon] {
     guard let contactDb = db else { throw SQLError.connectionError }
-    var drawCouponList:[DrawCoupon] =  [DrawCoupon]()
+    var drawCouponList: [DrawCoupon] =  [DrawCoupon]()
     var query = "select merchant_idx, coupon_idx, circle_color, ring_color,ring_thickness, is_ring, checkline_width, checkline_color, is_event"
     query.append(" from merchant_draw_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
     do {
       let result = try contactDb.executeQuery(query, values: [])
       while result.next() {
-        let drawCoupon:DrawCoupon = DrawCoupon(resultSet: result)
+        let drawCoupon: DrawCoupon = DrawCoupon(resultSet: result)
         drawCouponList.append(drawCoupon)
       }
       return drawCouponList
@@ -223,13 +223,13 @@ final class SQLInterface {
   /// 가맹점 - 쿠폰 정보 가져오기 ( Image용 )
   func selectImageCouponData(merchantId: Int) throws -> [ImageCoupon] {
     guard let contactDb = db else { throw SQLError.connectionError }
-    var imageCouponList:[ImageCoupon] =  [ImageCoupon]()
+    var imageCouponList: [ImageCoupon] =  [ImageCoupon]()
     var query = "select merchant_idx, coupon_idx, normal_image, select_image, is_event"
     query.append(" from merchant_image_coupon where merchant_idx = \(merchantId) order by coupon_idx asc")
     do {
       let result = try contactDb.executeQuery(query, values: [])
       while result.next() {
-        let imageCoupon:ImageCoupon = ImageCoupon(resultSet: result)
+        let imageCoupon: ImageCoupon = ImageCoupon(resultSet: result)
         imageCouponList.append(imageCoupon)
       }
       return imageCouponList
