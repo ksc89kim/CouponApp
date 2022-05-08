@@ -37,21 +37,17 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
       viewDidLoad: subject.viewDidLoad.asObserver()
     )
 
-    let close = self.close(subject: subject)
     let showAnimation = self.delayShowAnimation(subject: subject)
     let configure = self.configre(subject: subject)
+    let close = self.close(subject: subject, configure: configure)
 
     let title = self.title(configure: configure)
     let content = self.content(configure: configure)
     let popupViewAlpha = self.popupViewAlpha(configure: configure)
-    let callback = self.callback(
-      configure: configure,
-      close: close
-    )
+
 
     self.outputs = CustomPopupOutputs(
       content: content,
-      callback: callback,
       showAnimation: showAnimation,
       close: close,
       title: title,
@@ -61,8 +57,9 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
 
   // MARK: - Method
 
-  private func close(subject: Subject) -> Observable<Void> {
-    return subject.onOk.share()
+  private func close(subject: Subject, configure: Observable<CustomPopup>) -> Observable<CustomPopup> {
+    return subject.onOk
+      .withLatestFrom(configure)
   }
 
   private func delayShowAnimation(subject: Subject) -> Observable<Void> {
@@ -87,10 +84,5 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
 
   private func popupViewAlpha(configure: Observable<CustomPopup>) -> Observable<CGFloat> {
     return configure.map { _ in 0 }
-  }
-
-  private func callback(configure: Observable<CustomPopup>, close: Observable<Void>) -> Observable<CustomPopup> {
-    return close
-      .withLatestFrom(configure)
   }
 }

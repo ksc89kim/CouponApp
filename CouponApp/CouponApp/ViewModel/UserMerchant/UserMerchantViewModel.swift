@@ -111,7 +111,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
         return CustomPopup(
           title: Text.deleteCouponFailTitle,
           message: Text.deleteCouponFailContent,
-          callback: nil
+          completion: nil
         )
       }
   }

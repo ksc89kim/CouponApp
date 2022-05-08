@@ -120,7 +120,7 @@ final class SignupViewModel: SignupViewModelType {
       .init(
         title: Text.signupFailTitle.localized,
         message: message,
-        callback: nil
+        completion: nil
       )
     }
   }

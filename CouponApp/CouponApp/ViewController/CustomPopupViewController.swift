@@ -29,6 +29,8 @@ final class CustomPopupViewController: BaseViewController {
   init(viewModel: CustomPopupViewModelType) {
     self.viewModel = viewModel
     super.init(nibType: .customPopupViewController)
+    self.modalPresentationStyle = .overCurrentContext
+    self.modalTransitionStyle = .crossDissolve
   }
 
   required init?(coder: NSCoder) {
@@ -85,32 +87,12 @@ final class CustomPopupViewController: BaseViewController {
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.popupView.rx.alpha)
       .disposed(by: self.disposeBag)
-
-    self.viewModel.outputs?.callback
-      .subscribe(onNext: { configrue in
-        configrue.callback?.onNext(())
-      })
-      .disposed(by: self.disposeBag)
   }
 
   // MARK: - Animation Method
 
   fileprivate func showAnimation() {
     self.showFadeInAnimation()
-  }
-
-  private func showGiveAnimation() {
-    self.popupView.transform = CGAffineTransform(scaleX: 0.3, y: 0.3)
-    UIView.animate(
-      withDuration: 1.0,
-      delay: 0,
-      usingSpringWithDamping: 0.3,
-      initialSpringVelocity: 0,
-      options: .curveEaseInOut,
-      animations: { [weak self] in
-        self?.popupView.transform = .identity
-      }, completion: nil
-    )
   }
 
   private func showFadeInAnimation() {
@@ -123,18 +105,18 @@ final class CustomPopupViewController: BaseViewController {
 
   // MARK: - Close
 
-  fileprivate func close() {
-    self.willMove(toParent: nil)
-    self.view.removeFromSuperview()
-    self.removeFromParent()
+  fileprivate func close(configure: CustomPopup) {
+    self.dismiss(animated: true) {
+      configure.completion?.onNext(())
+    }
   }
 }
 
 
-extension Reactive where Base: CustomPopupViewController {
-  var close: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.close()
+private extension Reactive where Base: CustomPopupViewController {
+  var close: Binder<CustomPopup> {
+    return Binder(self.base) { view, configure in
+      view.close(configure: configure)
     }
   }
 

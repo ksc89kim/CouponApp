@@ -11,9 +11,8 @@ import RxSwift
 import RxCocoa
 
 protocol CustomPopupOutputType: OutputType {
-  var callback: Observable<CustomPopup> { get }
   var showAnimation: Observable<Void> { get }
-  var close: Observable<Void> { get }
+  var close: Observable<CustomPopup> { get }
   var title: Observable<String> { get }
   var content: Observable<String> { get }
   var popupViewAlpha: Observable<CGFloat> { get }
@@ -22,9 +21,8 @@ protocol CustomPopupOutputType: OutputType {
 
 struct CustomPopupOutputs: CustomPopupOutputType {
   let content: Observable<String>
-  let callback: Observable<CustomPopup>
   let showAnimation: Observable<Void>
-  let close: Observable<Void>
+  let close: Observable<CustomPopup>
   let title: Observable<String>
   let popupViewAlpha: Observable<CGFloat>
 }

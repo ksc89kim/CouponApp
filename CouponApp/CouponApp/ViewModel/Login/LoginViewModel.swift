@@ -107,7 +107,7 @@ final class LoginViewModel: LoginViewModelType {
       .init(
         title: Text.signupFailTitle.localized,
         message: message,
-        callback: nil
+        completion: nil
       )
     }
   }

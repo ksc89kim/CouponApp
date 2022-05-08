@@ -15,5 +15,5 @@ struct CustomPopup {
 
   let title: String
   let message: String
-  let callback: AnyObserver<Void>?
+  let completion: AnyObserver<Void>?
 }

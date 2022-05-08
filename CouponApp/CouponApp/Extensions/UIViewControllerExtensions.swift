@@ -32,24 +32,6 @@ extension UIViewController {
     self.view.bringSubviewToFront(bringSubView)
   }
 
-  func addCustomViewController(viewController: UIViewController){
-    DispatchQueue.main.async {
-      if let app = UIApplication.shared.delegate as? AppDelegate, let window = app.window {
-        window.addSubview(viewController.view)
-        self.addChild(viewController)
-        viewController.didMove(toParent: self)
-      } else if let navigationController =  self.navigationController {
-        navigationController.view.addSubview(viewController.view)
-        navigationController.addChild(viewController)
-        viewController.didMove(toParent: navigationController)
-      } else {
-        self.view.addSubview(viewController.view)
-        self.addChild(viewController)
-        viewController.didMove(toParent: self)
-      }
-    }
-  }
-
   func showAlert(data: Alert){
     self.showAlert(title: data.title, message: data.message)
   }
@@ -68,8 +50,7 @@ extension UIViewController {
       let viewModel: CustomPopupViewModelType = CustomPopupViewModel()
       let customPopupViewController = CustomPopupViewController(viewModel: viewModel)
       viewModel.inputs.configure.onNext(data)
-      customPopupViewController.view.frame = self.view.frame
-      self.addCustomViewController(viewController: customPopupViewController)
+      self.present(customPopupViewController, animated: true, completion: nil)
     }
   }
 

@@ -193,7 +193,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          CustomPopup(
           title: Text.insertCouponSuccessTitle.localized,
           message: Text.insertCouponSuccessContent.localized,
-          callback: nil
+          completion: nil
          )
       }
 
@@ -203,7 +203,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          CustomPopup(
           title: Text.insertCouponFailTitle.localized,
           message: Text.insertCouponFailContent.localized,
-          callback: nil
+          completion: nil
          )
       }
 
@@ -213,7 +213,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          CustomPopup(
           title: Text.deleteCouponSuccessTitle.localized,
           message: Text.deleteCouponSuccessContent.localized,
-          callback: nil
+          completion: nil
          )
       }
 
@@ -223,7 +223,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          CustomPopup(
           title: Text.deleteCouponFailTitle.localized,
           message: Text.deleteCouponFailContent.localized,
-          callback: nil
+          completion: nil
          )
       }
 

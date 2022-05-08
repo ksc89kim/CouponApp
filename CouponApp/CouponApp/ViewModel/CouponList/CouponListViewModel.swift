@@ -244,7 +244,7 @@ final class CouponListViewModel: CouponListViewModelType {
         CustomPopup(
           title: Text.requestFailCouponTitle.localized,
           message: Text.requestFailCouponContent.localized,
-          callback: nil
+          completion: nil
         )
       }
   }
@@ -256,7 +256,7 @@ final class CouponListViewModel: CouponListViewModelType {
         CustomPopup(
           title: Text.maxCouponTitle.localized,
           message: Text.maxCouponContent.localized,
-          callback: nil
+          completion: nil
         )
       }
   }
@@ -268,7 +268,7 @@ final class CouponListViewModel: CouponListViewModelType {
         CustomPopup(
           title: Text.lackCouponTitle.localized,
           message: Text.lackCouponContent.localized,
-          callback: nil
+          completion: nil
         )
       }
   }
@@ -280,13 +280,13 @@ final class CouponListViewModel: CouponListViewModelType {
           return CustomPopup(
             title: Text.successUseCouponTitle.localized,
             message: Text.successUseCouponContent.localized,
-            callback: nil
+            completion: nil
           )
         }
         return CustomPopup(
           title: Text.requestFailCouponTitle.localized,
           message: Text.requestFailCouponContent.localized,
-          callback: nil
+          completion: nil
         )
       }
   }
