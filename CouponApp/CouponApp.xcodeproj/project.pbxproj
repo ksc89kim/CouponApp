@@ -73,6 +73,8 @@
 		A4453B0926BCDFEE000CBB3D /* IntroOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0826BCDFEE000CBB3D /* IntroOutputs.swift */; };
 		A46A574425A9C05C001251EE /* MerchantDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A574325A9C05C001251EE /* MerchantDetailViewModel.swift */; };
 		A46CD74D230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */; };
+		A48829D82864A47E0029B3E0 /* AnimatedTextInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; platformFilter = ios; };
+		A48829D92864A47E0029B3E0 /* AnimatedTextInput.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A48C12FB27ABEC1A00C03E8D /* CouponRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D1A21184C0B0082F04E /* CouponRepository.swift */; };
 		A48C12FC27ABEC3200C03E8D /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D1C21184C930082F04E /* Repository.swift */; };
 		A48C12FD27ABEC5000C03E8D /* UserCouponList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A43FA5212402760099581D /* UserCouponList.swift */; };
@@ -128,8 +130,6 @@
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponRepository.swift */; };
 		A4B4C8F727DF38BD00C3B058 /* MerchantDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B4C8F627DF38BC00C3B058 /* MerchantDetailPresentationController.swift */; };
-		A4B672952864A12600E03EFC /* AnimatedTextInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; platformFilter = ios; };
-		A4B672962864A12600E03EFC /* AnimatedTextInput.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4B7748826C16BA1000954B9 /* LoginInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748726C16BA1000954B9 /* LoginInputs.swift */; };
 		A4B7748A26C16BAA000954B9 /* LoginOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748926C16BAA000954B9 /* LoginOutputs.swift */; };
 		A4B7748C26C16BB5000954B9 /* LoginViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748B26C16BB5000954B9 /* LoginViewModelType.swift */; };
@@ -195,13 +195,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A4B672972864A12600E03EFC /* Embed Frameworks */ = {
+		A48829DA2864A47E0029B3E0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A4B672962864A12600E03EFC /* AnimatedTextInput.framework in Embed Frameworks */,
+				A48829D92864A47E0029B3E0 /* AnimatedTextInput.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,7 +350,7 @@
 				A440BB1D286497EA00972C4C /* Alamofire in Frameworks */,
 				59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */,
 				A440BB28286498E400972C4C /* RxSwift in Frameworks */,
-				A4B672952864A12600E03EFC /* AnimatedTextInput.framework in Frameworks */,
+				A48829D82864A47E0029B3E0 /* AnimatedTextInput.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -773,7 +773,7 @@
 				5963036F1F431411000E2701 /* Sources */,
 				596303701F431411000E2701 /* Frameworks */,
 				596303711F431411000E2701 /* Resources */,
-				A4B672972864A12600E03EFC /* Embed Frameworks */,
+				A48829DA2864A47E0029B3E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -840,7 +840,6 @@
 				TargetAttributes = {
 					596303721F431411000E2701 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = VN8EE7NPXV;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -1295,7 +1294,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VN8EE7NPXV;
+				DEVELOPMENT_TEAM = "";
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -1316,7 +1315,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = VN8EE7NPXV;
+				DEVELOPMENT_TEAM = "";
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
