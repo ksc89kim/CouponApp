@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A4B6726328649F5900E03EFC /* AnimatedTextInput.docc in Sources */ = {isa = PBXBuildFile; fileRef = A4B6726228649F5900E03EFC /* AnimatedTextInput.docc */; };
+		A4B6726928649F5A00E03EFC /* AnimatedTextInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6725E28649F5900E03EFC /* AnimatedTextInput.framework */; };
+		A4B6726E28649F5A00E03EFC /* AnimatedTextInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6726D28649F5A00E03EFC /* AnimatedTextInputTests.swift */; };
+		A4B6726F28649F5A00E03EFC /* AnimatedTextInput.h in Headers */ = {isa = PBXBuildFile; fileRef = A4B6726128649F5900E03EFC /* AnimatedTextInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A4B6728B28649FC700E03EFC /* AnimatedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728428649FC700E03EFC /* AnimatedTextField.swift */; };
+		A4B6728C28649FC700E03EFC /* AnimatedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728528649FC700E03EFC /* AnimatedLine.swift */; };
+		A4B6728D28649FC700E03EFC /* UIView+AnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728628649FC700E03EFC /* UIView+AnimatedTextInput.swift */; };
+		A4B6728E28649FC700E03EFC /* AnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728728649FC700E03EFC /* AnimatedTextInput.swift */; };
+		A4B6728F28649FC700E03EFC /* AnimatedTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728828649FC700E03EFC /* AnimatedTextView.swift */; };
+		A4B6729028649FC700E03EFC /* AnimatedTextInputFieldConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728928649FC700E03EFC /* AnimatedTextInputFieldConfigurator.swift */; };
+		A4B6729128649FC700E03EFC /* AnimatedTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B6728A28649FC700E03EFC /* AnimatedTextInputStyle.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A4B6726A28649F5A00E03EFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4B6725528649F5900E03EFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A4B6725D28649F5900E03EFC;
+			remoteInfo = AnimatedTextInput;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A4B6725E28649F5900E03EFC /* AnimatedTextInput.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnimatedTextInput.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4B6726128649F5900E03EFC /* AnimatedTextInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimatedTextInput.h; sourceTree = "<group>"; };
+		A4B6726228649F5900E03EFC /* AnimatedTextInput.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AnimatedTextInput.docc; sourceTree = "<group>"; };
+		A4B6726828649F5A00E03EFC /* AnimatedTextInputTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimatedTextInputTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4B6726D28649F5A00E03EFC /* AnimatedTextInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTextInputTests.swift; sourceTree = "<group>"; };
+		A4B6728428649FC700E03EFC /* AnimatedTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextField.swift; sourceTree = "<group>"; };
+		A4B6728528649FC700E03EFC /* AnimatedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedLine.swift; sourceTree = "<group>"; };
+		A4B6728628649FC700E03EFC /* UIView+AnimatedTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AnimatedTextInput.swift"; sourceTree = "<group>"; };
+		A4B6728728649FC700E03EFC /* AnimatedTextInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextInput.swift; sourceTree = "<group>"; };
+		A4B6728828649FC700E03EFC /* AnimatedTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextView.swift; sourceTree = "<group>"; };
+		A4B6728928649FC700E03EFC /* AnimatedTextInputFieldConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextInputFieldConfigurator.swift; sourceTree = "<group>"; };
+		A4B6728A28649FC700E03EFC /* AnimatedTextInputStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedTextInputStyle.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A4B6725B28649F5900E03EFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4B6726528649F5A00E03EFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B6726928649F5A00E03EFC /* AnimatedTextInput.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A4B6725428649F5900E03EFC = {
+			isa = PBXGroup;
+			children = (
+				A4B6726028649F5900E03EFC /* AnimatedTextInput */,
+				A4B6726C28649F5A00E03EFC /* AnimatedTextInputTests */,
+				A4B6725F28649F5900E03EFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A4B6725F28649F5900E03EFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6725E28649F5900E03EFC /* AnimatedTextInput.framework */,
+				A4B6726828649F5A00E03EFC /* AnimatedTextInputTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A4B6726028649F5900E03EFC /* AnimatedTextInput */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6728528649FC700E03EFC /* AnimatedLine.swift */,
+				A4B6728428649FC700E03EFC /* AnimatedTextField.swift */,
+				A4B6728728649FC700E03EFC /* AnimatedTextInput.swift */,
+				A4B6728928649FC700E03EFC /* AnimatedTextInputFieldConfigurator.swift */,
+				A4B6728A28649FC700E03EFC /* AnimatedTextInputStyle.swift */,
+				A4B6728828649FC700E03EFC /* AnimatedTextView.swift */,
+				A4B6728628649FC700E03EFC /* UIView+AnimatedTextInput.swift */,
+				A4B6726128649F5900E03EFC /* AnimatedTextInput.h */,
+				A4B6726228649F5900E03EFC /* AnimatedTextInput.docc */,
+			);
+			path = AnimatedTextInput;
+			sourceTree = "<group>";
+		};
+		A4B6726C28649F5A00E03EFC /* AnimatedTextInputTests */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6726D28649F5A00E03EFC /* AnimatedTextInputTests.swift */,
+			);
+			path = AnimatedTextInputTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A4B6725928649F5900E03EFC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B6726F28649F5A00E03EFC /* AnimatedTextInput.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A4B6725D28649F5900E03EFC /* AnimatedTextInput */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4B6727228649F5A00E03EFC /* Build configuration list for PBXNativeTarget "AnimatedTextInput" */;
+			buildPhases = (
+				A4B6725928649F5900E03EFC /* Headers */,
+				A4B6725A28649F5900E03EFC /* Sources */,
+				A4B6725B28649F5900E03EFC /* Frameworks */,
+				A4B6725C28649F5900E03EFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AnimatedTextInput;
+			productName = AnimatedTextInput;
+			productReference = A4B6725E28649F5900E03EFC /* AnimatedTextInput.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A4B6726728649F5A00E03EFC /* AnimatedTextInputTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A4B6727528649F5A00E03EFC /* Build configuration list for PBXNativeTarget "AnimatedTextInputTests" */;
+			buildPhases = (
+				A4B6726428649F5A00E03EFC /* Sources */,
+				A4B6726528649F5A00E03EFC /* Frameworks */,
+				A4B6726628649F5A00E03EFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A4B6726B28649F5A00E03EFC /* PBXTargetDependency */,
+			);
+			name = AnimatedTextInputTests;
+			productName = AnimatedTextInputTests;
+			productReference = A4B6726828649F5A00E03EFC /* AnimatedTextInputTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A4B6725528649F5900E03EFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					A4B6725D28649F5900E03EFC = {
+						CreatedOnToolsVersion = 13.4;
+					};
+					A4B6726728649F5A00E03EFC = {
+						CreatedOnToolsVersion = 13.4;
+					};
+				};
+			};
+			buildConfigurationList = A4B6725828649F5900E03EFC /* Build configuration list for PBXProject "AnimatedTextInput" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A4B6725428649F5900E03EFC;
+			productRefGroup = A4B6725F28649F5900E03EFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A4B6725D28649F5900E03EFC /* AnimatedTextInput */,
+				A4B6726728649F5A00E03EFC /* AnimatedTextInputTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A4B6725C28649F5900E03EFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4B6726628649F5A00E03EFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A4B6725A28649F5900E03EFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B6729128649FC700E03EFC /* AnimatedTextInputStyle.swift in Sources */,
+				A4B6728F28649FC700E03EFC /* AnimatedTextView.swift in Sources */,
+				A4B6729028649FC700E03EFC /* AnimatedTextInputFieldConfigurator.swift in Sources */,
+				A4B6728B28649FC700E03EFC /* AnimatedTextField.swift in Sources */,
+				A4B6728D28649FC700E03EFC /* UIView+AnimatedTextInput.swift in Sources */,
+				A4B6726328649F5900E03EFC /* AnimatedTextInput.docc in Sources */,
+				A4B6728C28649FC700E03EFC /* AnimatedLine.swift in Sources */,
+				A4B6728E28649FC700E03EFC /* AnimatedTextInput.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A4B6726428649F5A00E03EFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A4B6726E28649F5A00E03EFC /* AnimatedTextInputTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A4B6726B28649F5A00E03EFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A4B6725D28649F5900E03EFC /* AnimatedTextInput */;
+			targetProxy = A4B6726A28649F5A00E03EFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A4B6727028649F5A00E03EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A4B6727128649F5A00E03EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A4B6727328649F5A00E03EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.AnimatedTextInput;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4B6727428649F5A00E03EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.AnimatedTextInput;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A4B6727628649F5A00E03EFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.AnimatedTextInputTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A4B6727728649F5A00E03EFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.AnimatedTextInputTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A4B6725828649F5900E03EFC /* Build configuration list for PBXProject "AnimatedTextInput" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4B6727028649F5A00E03EFC /* Debug */,
+				A4B6727128649F5A00E03EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4B6727228649F5A00E03EFC /* Build configuration list for PBXNativeTarget "AnimatedTextInput" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4B6727328649F5A00E03EFC /* Debug */,
+				A4B6727428649F5A00E03EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A4B6727528649F5A00E03EFC /* Build configuration list for PBXNativeTarget "AnimatedTextInputTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A4B6727628649F5A00E03EFC /* Debug */,
+				A4B6727728649F5A00E03EFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A4B6725528649F5900E03EFC /* Project object */;
+}

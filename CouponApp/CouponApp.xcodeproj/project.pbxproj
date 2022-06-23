@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */; };
 		590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
 		592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */; };
 		594A011420A825700007503D /* CouponNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A011320A825700007503D /* CouponNetwork.swift */; };
@@ -63,6 +62,12 @@
 		A4308904258F442B00689866 /* BaseBind.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4308903258F442B00689866 /* BaseBind.swift */; };
 		A4349515224FBB6C00B236C6 /* MerchantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4349513224FBB6C00B236C6 /* MerchantDetailViewController.swift */; };
 		A4349516224FBB6C00B236C6 /* MerchantDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4349514224FBB6C00B236C6 /* MerchantDetailViewController.xib */; };
+		A440BB1D286497EA00972C4C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB1C286497EA00972C4C /* Alamofire */; };
+		A440BB202864981300972C4C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB1F2864981300972C4C /* Kingfisher */; };
+		A440BB232864984800972C4C /* FMDB in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB222864984800972C4C /* FMDB */; };
+		A440BB26286498E400972C4C /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB25286498E400972C4C /* RxCocoa */; };
+		A440BB28286498E400972C4C /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB27286498E400972C4C /* RxSwift */; };
+		A440BB2B2864994000972C4C /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = A440BB2A2864994000972C4C /* RxOptional */; };
 		A4453B0326BCDD48000CBB3D /* IntroViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0226BCDD48000CBB3D /* IntroViewModelType.swift */; };
 		A4453B0726BCDFE5000CBB3D /* IntroInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0626BCDFE5000CBB3D /* IntroInputs.swift */; };
 		A4453B0926BCDFEE000CBB3D /* IntroOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0826BCDFEE000CBB3D /* IntroOutputs.swift */; };
@@ -123,6 +128,8 @@
 		A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */; };
 		A4AFCE3D25456C6200E92B92 /* RxCouponRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AFCE3C25456C6200E92B92 /* RxCouponRepository.swift */; };
 		A4B4C8F727DF38BD00C3B058 /* MerchantDetailPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B4C8F627DF38BC00C3B058 /* MerchantDetailPresentationController.swift */; };
+		A4B672952864A12600E03EFC /* AnimatedTextInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; platformFilter = ios; };
+		A4B672962864A12600E03EFC /* AnimatedTextInput.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A4B7748826C16BA1000954B9 /* LoginInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748726C16BA1000954B9 /* LoginInputs.swift */; };
 		A4B7748A26C16BAA000954B9 /* LoginOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748926C16BAA000954B9 /* LoginOutputs.swift */; };
 		A4B7748C26C16BB5000954B9 /* LoginViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7748B26C16BB5000954B9 /* LoginViewModelType.swift */; };
@@ -140,9 +147,7 @@
 		A4FB5B5B254EA863006C861D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5A254EA863006C861D /* BaseViewController.swift */; };
 		A4FB5B5D254EADCF006C861D /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */; };
 		A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */; };
-		B2E94C48D75DCE2B025A3FDF /* Pods_CouponApp_CouponAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */; };
 		B323BBC1257CC9E00060E7BF /* CustomPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B323BBC0257CC9E00060E7BF /* CustomPopupViewModel.swift */; };
-		C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CD378463054031048ADFA07 /* Pods_CouponApp.framework */; };
 		CC047F82200C66170070CC5D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F85200C8A290070CC5D /* LoginViewController.swift */; };
 		CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC09A4F9200D96B600B512C0 /* RoundedButton.swift */; };
@@ -173,10 +178,37 @@
 			remoteGlobalIDString = 596303721F431411000E2701;
 			remoteInfo = CouponApp;
 		};
+		A4B6727D28649F5A00E03EFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4B6727828649F5A00E03EFC /* AnimatedTextInput.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4B6725E28649F5900E03EFC;
+			remoteInfo = AnimatedTextInput;
+		};
+		A4B6727F28649F5A00E03EFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A4B6727828649F5A00E03EFC /* AnimatedTextInput.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A4B6726828649F5A00E03EFC;
+			remoteInfo = AnimatedTextInputTests;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A4B672972864A12600E03EFC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A4B672962864A12600E03EFC /* AnimatedTextInput.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		590D16E4200202EF008FBA02 /* CouponSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSingleton.swift; sourceTree = "<group>"; };
 		592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponDrawView.swift; sourceTree = "<group>"; };
 		594A011320A825700007503D /* CouponNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponNetwork.swift; sourceTree = "<group>"; };
@@ -191,12 +223,9 @@
 		596303821F431411000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303871F431412000E2701 /* CouponAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouponAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5963038B1F431412000E2701 /* CouponAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppTests.swift; sourceTree = "<group>"; };
-		5963038D1F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303921F431412000E2701 /* CouponAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CouponAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303961F431412000E2701 /* CouponAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAppUITests.swift; sourceTree = "<group>"; };
-		596303981F431412000E2701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		596303A41F4314E3000E2701 /* CouponListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponListViewController.swift; sourceTree = "<group>"; };
-		59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.release.xcconfig"; sourceTree = "<group>"; };
 		59978E042109BB1E001F3A8D /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		59978E062109BB8E001F3A8D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		59978E082109BBAB001F3A8D /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -220,7 +249,6 @@
 		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLInterface.swift; sourceTree = "<group>"; };
 		59E54C02212AAB7F00D31BD8 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
-		5CD378463054031048ADFA07 /* Pods_CouponApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4011F3C229AA17000A3977A /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		A40398E0230004B800C052FC /* NSLayoutContraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutContraintExtensions.swift; sourceTree = "<group>"; };
 		A405814F22E9E4D90022A48C /* MerchantAnimatedTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedTextLayer.swift; sourceTree = "<group>"; };
@@ -248,7 +276,6 @@
 		A4453B0826BCDFEE000CBB3D /* IntroOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroOutputs.swift; sourceTree = "<group>"; };
 		A46A574325A9C05C001251EE /* MerchantDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetailViewModel.swift; sourceTree = "<group>"; };
 		A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExtensions.swift; sourceTree = "<group>"; };
-		A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponApp_CouponAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A492268A281E772000CB5218 /* MerchantAnimatedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedLabel.swift; sourceTree = "<group>"; };
 		A4936FA327E0B69800A62AC4 /* MerchantDetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetailTransition.swift; sourceTree = "<group>"; };
 		A4942E3222632D2800083359 /* UImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageExtensions.swift; sourceTree = "<group>"; };
@@ -273,6 +300,7 @@
 		A4AFCE3A254568AB00E92B92 /* IntroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewModel.swift; sourceTree = "<group>"; };
 		A4AFCE3C25456C6200E92B92 /* RxCouponRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxCouponRepository.swift; sourceTree = "<group>"; };
 		A4B4C8F627DF38BC00C3B058 /* MerchantDetailPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetailPresentationController.swift; sourceTree = "<group>"; };
+		A4B6727828649F5A00E03EFC /* AnimatedTextInput.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AnimatedTextInput.xcodeproj; path = AnimatedTextInput/AnimatedTextInput.xcodeproj; sourceTree = "<group>"; };
 		A4B7748726C16BA1000954B9 /* LoginInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputs.swift; sourceTree = "<group>"; };
 		A4B7748926C16BAA000954B9 /* LoginOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOutputs.swift; sourceTree = "<group>"; };
 		A4B7748B26C16BB5000954B9 /* LoginViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModelType.swift; sourceTree = "<group>"; };
@@ -290,11 +318,7 @@
 		A4FB5B5A254EA863006C861D /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		A4FB5B5C254EADCF006C861D /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		A4FB5B5E254EB58D006C861D /* CouponAnimatedTextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponAnimatedTextInput.swift; sourceTree = "<group>"; };
-		A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B323BBC0257CC9E00060E7BF /* CustomPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupViewModel.swift; sourceTree = "<group>"; };
-		B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CouponAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp/Pods-CouponApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CC047F81200C66170070CC5D /* ImageCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCoupon.swift; sourceTree = "<group>"; };
 		CC047F85200C8A290070CC5D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		CC09A4F9200D96B600B512C0 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
@@ -312,9 +336,6 @@
 		CCF0CFB62015D26C00FA3E3B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CCF0CFB72015D27300FA3E3B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponNetworkTests.swift; sourceTree = "<group>"; };
-		D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppUITests/Pods-CouponAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponApp-CouponAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CouponAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CouponAppTests/Pods-CouponAppTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,8 +343,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A440BB26286498E400972C4C /* RxCocoa in Frameworks */,
+				A440BB232864984800972C4C /* FMDB in Frameworks */,
+				A440BB2B2864994000972C4C /* RxOptional in Frameworks */,
+				A440BB202864981300972C4C /* Kingfisher in Frameworks */,
+				A440BB1D286497EA00972C4C /* Alamofire in Frameworks */,
 				59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */,
-				C12782B3A01E2A91AC6D9A8B /* Pods_CouponApp.framework in Frameworks */,
+				A440BB28286498E400972C4C /* RxSwift in Frameworks */,
+				A4B672952864A12600E03EFC /* AnimatedTextInput.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +358,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34BDB49FA1CA0C668CE2C305 /* Pods_CouponAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +365,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2E94C48D75DCE2B025A3FDF /* Pods_CouponApp_CouponAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,9 +375,6 @@
 			isa = PBXGroup;
 			children = (
 				59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */,
-				5CD378463054031048ADFA07 /* Pods_CouponApp.framework */,
-				B3A5133BABC5E582B8DD83BF /* Pods_CouponAppTests.framework */,
-				A48581B2331F3A686357871A /* Pods_CouponApp_CouponAppUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -428,11 +450,11 @@
 		5963036A1F431411000E2701 = {
 			isa = PBXGroup;
 			children = (
+				A4B6727828649F5A00E03EFC /* AnimatedTextInput.xcodeproj */,
 				596303751F431411000E2701 /* CouponApp */,
 				5963038A1F431412000E2701 /* CouponAppTests */,
 				596303951F431412000E2701 /* CouponAppUITests */,
 				596303741F431411000E2701 /* Products */,
-				F9E87BFC1C800E97B09616A5 /* Pods */,
 				33A44ABBBF1E814232951653 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -484,7 +506,6 @@
 			children = (
 				5963038B1F431412000E2701 /* CouponAppTests.swift */,
 				CCFA662C207AFFEF00EE0477 /* CouponNetworkTests.swift */,
-				5963038D1F431412000E2701 /* Info.plist */,
 			);
 			path = CouponAppTests;
 			sourceTree = "<group>";
@@ -493,7 +514,6 @@
 			isa = PBXGroup;
 			children = (
 				596303961F431412000E2701 /* CouponAppUITests.swift */,
-				596303981F431412000E2701 /* Info.plist */,
 			);
 			path = CouponAppUITests;
 			sourceTree = "<group>";
@@ -652,6 +672,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		A4B6727928649F5A00E03EFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */,
+				A4B6728028649F5A00E03EFC /* AnimatedTextInputTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		A4B7748626C16B81000954B9 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,21 +763,6 @@
 			path = ETC;
 			sourceTree = "<group>";
 		};
-		F9E87BFC1C800E97B09616A5 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */,
-				59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */,
-				A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */,
-				FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */,
-				D3BAB4F2F2BAAA4889813215 /* Pods-CouponAppUITests.debug.xcconfig */,
-				147FDE59F9F30C0EF2E0F3D7 /* Pods-CouponAppUITests.release.xcconfig */,
-				AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */,
-				E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -756,17 +770,24 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5963039B1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponApp" */;
 			buildPhases = (
-				12689F67A374BBAD2B41BE1E /* [CP] Check Pods Manifest.lock */,
 				5963036F1F431411000E2701 /* Sources */,
 				596303701F431411000E2701 /* Frameworks */,
 				596303711F431411000E2701 /* Resources */,
-				1F921F37D2662EA041B27AB4 /* [CP] Embed Pods Frameworks */,
+				A4B672972864A12600E03EFC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = CouponApp;
+			packageProductDependencies = (
+				A440BB1C286497EA00972C4C /* Alamofire */,
+				A440BB1F2864981300972C4C /* Kingfisher */,
+				A440BB222864984800972C4C /* FMDB */,
+				A440BB25286498E400972C4C /* RxCocoa */,
+				A440BB27286498E400972C4C /* RxSwift */,
+				A440BB2A2864994000972C4C /* RxOptional */,
+			);
 			productName = CouponApp;
 			productReference = 596303731F431411000E2701 /* CouponApp.app */;
 			productType = "com.apple.product-type.application";
@@ -775,7 +796,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5963039E1F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppTests" */;
 			buildPhases = (
-				192FFF75A27D3EDA75D8536F /* [CP] Check Pods Manifest.lock */,
 				596303831F431412000E2701 /* Sources */,
 				596303841F431412000E2701 /* Frameworks */,
 				596303851F431412000E2701 /* Resources */,
@@ -794,11 +814,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 596303A11F431412000E2701 /* Build configuration list for PBXNativeTarget "CouponAppUITests" */;
 			buildPhases = (
-				1EFA6BAD1C5BB7FCCF30D4DC /* [CP] Check Pods Manifest.lock */,
 				5963038E1F431412000E2701 /* Sources */,
 				5963038F1F431412000E2701 /* Frameworks */,
 				596303901F431412000E2701 /* Resources */,
-				DC69B38CC172CCDB955353F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -850,8 +868,21 @@
 				ko,
 			);
 			mainGroup = 5963036A1F431411000E2701;
+			packageReferences = (
+				A440BB1B286497EA00972C4C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				A440BB1E2864981300972C4C /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A440BB212864984800972C4C /* XCRemoteSwiftPackageReference "fmdb" */,
+				A440BB24286498E400972C4C /* XCRemoteSwiftPackageReference "RxSwift" */,
+				A440BB292864994000972C4C /* XCRemoteSwiftPackageReference "RxOptional" */,
+			);
 			productRefGroup = 596303741F431411000E2701 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A4B6727928649F5A00E03EFC /* Products */;
+					ProjectRef = A4B6727828649F5A00E03EFC /* AnimatedTextInput.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				596303721F431411000E2701 /* CouponApp */,
@@ -860,6 +891,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AnimatedTextInput.framework;
+			remoteRef = A4B6727D28649F5A00E03EFC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A4B6728028649F5A00E03EFC /* AnimatedTextInputTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = AnimatedTextInputTests.xctest;
+			remoteRef = A4B6727F28649F5A00E03EFC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		596303711F431411000E2701 /* Resources */ = {
@@ -897,131 +945,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		12689F67A374BBAD2B41BE1E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CouponApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		192FFF75A27D3EDA75D8536F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CouponAppTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1EFA6BAD1C5BB7FCCF30D4DC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CouponApp-CouponAppUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		1F921F37D2662EA041B27AB4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AnimatedTextInput/AnimatedTextInput.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedTextInput.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CouponApp/Pods-CouponApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DC69B38CC172CCDB955353F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/AnimatedTextInput/AnimatedTextInput.framework",
-				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxOptional/RxOptional.framework",
-				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AnimatedTextInput.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxOptional.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CouponApp-CouponAppUITests/Pods-CouponApp-CouponAppUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5963036F1F431411000E2701 /* Sources */ = {
@@ -1361,7 +1284,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1369,14 +1293,16 @@
 		};
 		5963039C1F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4E91D97CC703791789EE5F7 /* Pods-CouponApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VN8EE7NPXV;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1388,14 +1314,16 @@
 		};
 		5963039D1F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59864E9F59AE114B7BD338A5 /* Pods-CouponApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VN8EE7NPXV;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				INFOPLIST_FILE = CouponApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1407,12 +1335,15 @@
 		};
 		5963039F1F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9CB625640CD127D29FA30C7 /* Pods-CouponAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CouponAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1423,12 +1354,15 @@
 		};
 		596303A01F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FF3AEACDD981EAA9CE137BBC /* Pods-CouponAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = CouponAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1439,11 +1373,14 @@
 		};
 		596303A21F431412000E2701 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC07AB2B3CDC7DE2C365BC32 /* Pods-CouponApp-CouponAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = CouponAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1454,11 +1391,14 @@
 		};
 		596303A31F431412000E2701 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E152FC8984D1280BE8450809 /* Pods-CouponApp-CouponAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = CouponAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tronplay.tronplay.CouponAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1507,6 +1447,82 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A440BB1B286497EA00972C4C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.5.0;
+			};
+		};
+		A440BB1E2864981300972C4C /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		A440BB212864984800972C4C /* XCRemoteSwiftPackageReference "fmdb" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ccgus/fmdb.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.7.7;
+			};
+		};
+		A440BB24286498E400972C4C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
+		A440BB292864994000972C4C /* XCRemoteSwiftPackageReference "RxOptional" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A440BB1C286497EA00972C4C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB1B286497EA00972C4C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		A440BB1F2864981300972C4C /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB1E2864981300972C4C /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		A440BB222864984800972C4C /* FMDB */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB212864984800972C4C /* XCRemoteSwiftPackageReference "fmdb" */;
+			productName = FMDB;
+		};
+		A440BB25286498E400972C4C /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB24286498E400972C4C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		A440BB27286498E400972C4C /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB24286498E400972C4C /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		A440BB2A2864994000972C4C /* RxOptional */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A440BB292864994000972C4C /* XCRemoteSwiftPackageReference "RxOptional" */;
+			productName = RxOptional;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5963036B1F431411000E2701 /* Project object */;
 }

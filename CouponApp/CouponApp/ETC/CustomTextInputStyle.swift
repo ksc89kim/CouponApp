@@ -6,7 +6,7 @@
 //  Copyright © 2019 kim sunchul. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import AnimatedTextInput
 
 struct CustomTextInputStyle: AnimatedTextInputStyle {

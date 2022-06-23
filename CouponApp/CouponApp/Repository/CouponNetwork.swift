@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import SVProgressHUD
 
 /// 쿠폰 네트워크 관리자
 final class CouponNetwork : Repository {
@@ -219,11 +218,9 @@ final class CouponNetwork : Repository {
 
   static func showProgress() {
     UIApplication.shared.beginIgnoringInteractionEvents()
-    SVProgressHUD.show()
   }
 
   static func closeProgress() {
     UIApplication.shared.endIgnoringInteractionEvents()
-    SVProgressHUD.dismiss()
   }
 }

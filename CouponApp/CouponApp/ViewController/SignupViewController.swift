@@ -9,7 +9,6 @@
 import RxCocoa
 import RxSwift
 import UIKit
-import AnimatedTextInput
 
 /// 가입 뷰컨트롤러
 final class SignupViewController: BaseViewController {

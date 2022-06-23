@@ -246,11 +246,15 @@ final class MerchantDetailViewController: BaseViewController {
       return
     }
 
-    self.moveUI(direction: sender.direction!)
+    self.moveUI(direction: sender.direction)
     self.endGesture(state: sender.state)
   }
 
-  private func moveUI(direction: PanDirection) {
+  private func moveUI(direction: PanDirection?) {
+    guard let direction = direction else {
+      return
+    }
+
     switch direction {
     case PanDirection.down:
       self.percent -= 1
