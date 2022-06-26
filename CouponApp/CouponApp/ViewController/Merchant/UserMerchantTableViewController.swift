@@ -13,7 +13,7 @@ import Kingfisher
 
 /// 회원 가맹점(쿠폰) 테이블 뷰
 /// - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
-final class UserMerchantTableViewController : UITableViewController, BaseBind {
+final class UserMerchantTableViewController : UITableViewController, Bindable {
 
   // MARK: - Define
 

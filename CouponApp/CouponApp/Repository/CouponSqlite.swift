@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CouponSqlite: Repository {
+struct CouponSqlite: RepositoryType {
   func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     do {
       try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete:complete)

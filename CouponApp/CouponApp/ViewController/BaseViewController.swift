@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-open class BaseViewController: UIViewController, BaseBind {
+open class BaseViewController: UIViewController, Bindable {
 
   // MARK: - Property
 

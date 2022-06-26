@@ -68,7 +68,7 @@ final class CouponRepository {
     self.getRepository().updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount, complete: complete)
   }
 
-  static func getRepository() -> Repository {
+  static func getRepository() -> RepositoryType {
     return (self.isSqlite) ? CouponSqlite() : CouponNetwork()
   }
 }

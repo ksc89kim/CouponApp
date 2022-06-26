@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CouponView {
-  var uiData: CouponUI? { get set }
+protocol CouponViewType {
+  var uiData: CouponUIType? { get set }
   func updateUI()
 }

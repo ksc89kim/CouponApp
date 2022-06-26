@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 /// 가맹점 데이터
-final class MerchantImpl: Codable, Merchant {
+final class MerchantImpl: Codable, MerchantType {
 
   //MARK: - Define
 
@@ -110,7 +110,7 @@ final class MerchantImpl: Codable, Merchant {
 
   //MARK: - Method
 
-  func index(_ index:Int) -> CouponUI {
+  func index(_ index:Int) -> CouponUIType {
     return self.isCouponImage ? self.imageCouponList[index] : self.drawCouponList[index]
   }
 

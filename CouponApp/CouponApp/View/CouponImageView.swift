@@ -10,7 +10,7 @@ import UIKit
 
 /// 쿠폰 이미지 뷰
 /// - UIImageView를 통한 쿠폰 이미지 뷰
-final class CouponImageView: UIView , CouponView {
+final class CouponImageView: UIView , CouponViewType {
   
   // MARK: - UI Component
 
@@ -18,7 +18,7 @@ final class CouponImageView: UIView , CouponView {
 
   // MARK: - Property
 
-  var uiData: CouponUI? {
+  var uiData: CouponUIType? {
     didSet {
       self.updateUI()
     }

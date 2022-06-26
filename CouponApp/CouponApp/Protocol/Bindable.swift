@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol BaseBind {
+protocol Bindable {
   var disposeBag: DisposeBag { get }
   func bind()
   func bindInputs()
@@ -18,7 +18,7 @@ protocol BaseBind {
 }
 
 
-extension BaseBind {
+extension Bindable {
   func bind() {
     self.bindOutputs()
     self.bindInputs()

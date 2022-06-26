@@ -10,7 +10,7 @@ import UIKit
 import FMDB
 
 /// 쿠폰 그리기 UI 데이터
-final class DrawCoupon:Codable, Merchant, CouponUI {
+final class DrawCoupon:Codable, MerchantType, CouponUIType {
 
   // MARK: - Define
 

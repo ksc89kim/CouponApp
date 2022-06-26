@@ -206,7 +206,7 @@ extension CouponListViewController: UICollectionViewDataSource {
       return cell
     }
 
-    var coupon: CouponUI = merchant.index(indexPath.row)
+    var coupon: CouponUIType = merchant.index(indexPath.row)
     coupon.isUseCoupon = (indexPath.row < couponCount)
     coupon.isAnimation = (indexPath.row == self.selectedCouponIndex)
     cell.updateUI(coupon: coupon)

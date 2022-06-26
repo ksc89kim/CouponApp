@@ -17,7 +17,7 @@ final class CouponCollectionViewCell: UICollectionViewCell {
   
   // MARK: -  Update
   
-  func updateUI(coupon: CouponUI) {
+  func updateUI(coupon: CouponUIType) {
     if coupon is ImageCoupon {
       self.drawView.isHidden = true
       self.imageView.isHidden = false

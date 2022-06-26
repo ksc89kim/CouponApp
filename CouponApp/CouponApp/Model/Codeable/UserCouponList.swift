@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class UserCouponList: Codable, List {
+final class UserCouponList: Codable, Listable {
 
   // MARK: - Define
 

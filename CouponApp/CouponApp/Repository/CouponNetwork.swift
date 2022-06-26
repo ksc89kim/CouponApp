@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 /// 쿠폰 네트워크 관리자
-final class CouponNetwork : Repository {
+final class CouponNetwork : RepositoryType {
 
   // MARK: - Property
 

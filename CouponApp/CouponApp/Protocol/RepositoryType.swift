@@ -1,5 +1,5 @@
 //
-//  Repository.swift
+//  RepositoryType.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2018. 8. 6..
@@ -10,7 +10,7 @@ import Foundation
 
 typealias RepositoryCompletion = (Bool) -> Void
 
-protocol Repository {
+protocol RepositoryType {
   func signup(phoneNumber:String, password:String, name:String, complete: @escaping RepositoryCompletion)
   func getUserData(phoneNumber:String, complete: @escaping RepositoryCompletion)
   func checkPassword(phoneNumber:String, password:String, complete: @escaping RepositoryCompletion)

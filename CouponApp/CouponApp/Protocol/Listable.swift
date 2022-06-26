@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol List {
+protocol Listable {
   associatedtype ListType
   var list: [ListType] { get set }
   var count: Int { get }
@@ -17,7 +17,8 @@ protocol List {
   subscript(index: Int) -> ListType? { get set }
 }
 
-extension List {
+
+extension Listable {
   var count:Int {
     return self.list.count
   }

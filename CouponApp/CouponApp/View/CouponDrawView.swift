@@ -10,7 +10,7 @@ import UIKit
 
 /// 쿠폰 그리기 뷰
 /// - Draw를 통해 쿠폰을 그림, 원형 형태의 쿠폰.
-final class CouponDrawView: UIView, CouponView {
+final class CouponDrawView: UIView, CouponViewType {
   
   // MARK: - Define
 
@@ -27,7 +27,7 @@ final class CouponDrawView: UIView, CouponView {
 
   // MARK: - Property
 
-  var uiData: CouponUI? {
+  var uiData: CouponUIType? {
     didSet {
       self.updateUI()
     }

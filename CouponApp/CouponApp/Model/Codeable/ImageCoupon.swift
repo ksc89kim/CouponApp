@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 /// 쿠폰 이미지 UI 데이터
-final class ImageCoupon:Codable, Merchant, CouponUI {
+final class ImageCoupon:Codable, MerchantType, CouponUIType {
 
   // MARK: - Define
 

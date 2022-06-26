@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Merchant {
+protocol MerchantType {
   var merchantId: Int { get set }
 }

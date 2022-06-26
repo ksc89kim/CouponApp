@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MerchantImplList: Codable, List {
+struct MerchantImplList: Codable, Listable {
 
   //MARK: - Define
 

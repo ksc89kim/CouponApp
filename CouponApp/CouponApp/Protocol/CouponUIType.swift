@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CouponUI {
+protocol CouponUIType {
   var couponId: Int { get }
   var isEvent: Bool { get set }
   var isUseCoupon: Bool { get set }

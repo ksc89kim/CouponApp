@@ -9,7 +9,7 @@
 import Foundation
 
 /// 회원 쿠폰 데이터
-final class UserCoupon: Codable, Merchant {
+final class UserCoupon: Codable, MerchantType {
 
   // MARK: - Define
 
