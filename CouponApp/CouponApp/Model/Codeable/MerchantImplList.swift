@@ -38,7 +38,7 @@ struct MerchantImplList: Codable, List {
     for merchant in list {
       if merchant.merchantId == merchantId {
         indexMerchant = merchant
-        break;
+        break
       }
     }
     return indexMerchant

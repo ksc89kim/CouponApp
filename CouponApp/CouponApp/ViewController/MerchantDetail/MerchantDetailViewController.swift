@@ -258,10 +258,8 @@ final class MerchantDetailViewController: BaseViewController {
     switch direction {
     case PanDirection.down:
       self.percent -= 1
-      break
     case PanDirection.up:
       self.percent += 1
-      break
     default:
       break
     }
@@ -275,7 +273,6 @@ final class MerchantDetailViewController: BaseViewController {
       } else {
         self.showAnimation()
       }
-      break
     default:
       break
     }
