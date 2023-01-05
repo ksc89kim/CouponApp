@@ -120,7 +120,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   private func checkUser(subject: Subject) -> Observable<Bool> {
     return self.merchantDetail(subject: subject)
       .flatMapLatest { merchantDetail -> Observable<Bool> in
-        return RxCouponRepository.checkUserCoupon(
+        return CouponRepository.instance.rx.checkUserCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: merchantDetail.merchant.merchantId
         )
@@ -140,7 +140,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .filter { $0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
       .flatMapLatest { merchantDetail -> Observable<Bool> in
-        return RxCouponRepository.deleteUserCoupon(
+        return CouponRepository.instance.rx.deleteUserCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: merchantDetail.merchant.merchantId
         )
@@ -154,7 +154,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .filter { !$0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
       .flatMapLatest { merchantDetail -> Observable<Bool> in
-        return RxCouponRepository.insertUserCoupon(
+        return CouponRepository.instance.rx.insertUserCoupon(
           userId: CouponSignleton.getUserId(),
           merchantId: merchantDetail.merchant.merchantId
         )

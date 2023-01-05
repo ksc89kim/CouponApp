@@ -9,7 +9,7 @@
 import Foundation
 
 /// 회원 데이터
-final class User:Codable {
+final class User: Codable {
 
   // MARK: - Define
 

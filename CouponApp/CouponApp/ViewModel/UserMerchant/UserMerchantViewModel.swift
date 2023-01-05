@@ -64,7 +64,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   private func loadData(subject: Subject) -> Observable<(isSuccessed: Bool, list: UserCouponList?)> {
     return subject.loadData
       .flatMapLatest { _ -> Observable<(isSuccessed: Bool, list: UserCouponList?)> in
-        return RxCouponRepository.loadUserCouponData(userId: CouponSignleton.getUserId())
+        return CouponRepository.instance.rx.loadUserCouponData(userId: CouponSignleton.getUserId())
           .asObservable()
           .map { (isSuccessed: $0.0, list: $0.1) }
       }
@@ -83,7 +83,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   private func deleteCoupon(subject: Subject) -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> {
     return subject.deleteCoupon
       .flatMapLatest { merchantId, indexPath -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> in
-         return RxCouponRepository.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId)
+         return CouponRepository.instance.rx.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId)
         .asObservable()
         .map { (isSuccessed: $0, indexPath: indexPath) }
       }

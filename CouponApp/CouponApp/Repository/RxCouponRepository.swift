@@ -8,92 +8,85 @@
 
 import RxSwift
 
-final class RxCouponRepository {
+extension CouponRepository: ReactiveCompatible {
+}
 
-  /// 회원가입 하기
-  static func signup(phoneNumber: String, password: String, name: String) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.signup(phoneNumber: phoneNumber, password: password, name: name) { isSuccessed in
+extension Reactive where Base: CouponRepository {
+  func signup(phoneNumber: String, password: String, name: String) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.signup(phoneNumber: phoneNumber, password: password, name: name) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 회원 정보 가져오기
-  static func loadUserData(phoneNumber: String) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.loadUserData(phoneNumber: phoneNumber) { isSuccessed in
+  func loadUserData(phoneNumber: String) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.loadUserData(phoneNumber: phoneNumber) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 패스워드 확인
-  static func checkPassword(phoneNumber: String, password: String) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.checkPassword(phoneNumber: phoneNumber, password: password) { isSuccessed in
+  func checkPassword(phoneNumber: String, password: String) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.checkPassword(phoneNumber: phoneNumber, password: password) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 가맹점 데이터 가져오기
-  static func loadMerchantData() -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.loadMerchantData() { isSuccessed in
+  func loadMerchantData() -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.loadMerchantData() { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 유저 쿠폰 추가하기
-  static func insertUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.insertUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
+  func insertUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.insertUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 유저 쿠폰 확인하기
-  static func checkUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.checkUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
+  func checkUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.checkUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 유저 쿠폰 삭제하기
-  static func deleteUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.deleteUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
+  func deleteUserCoupon(userId: Int, merchantId: Int) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.deleteUserCoupon(userId: userId, merchantId: merchantId) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
     }
   }
 
-  /// 유저 쿠폰 데이터 요청하기
-  static func loadUserCouponData(userId: Int) -> Single<(Bool, UserCouponList?)> {
-    return Single.create { single in
-      CouponRepository.loadUserCouponData(userId: userId) { isSuccessed, userCouponList in
+  func loadUserCouponData(userId: Int) -> Single<(Bool, UserCouponList?)> {
+    return Single.create { [weak base] single in
+      base?.loadUserCouponData(userId: userId) { isSuccessed, userCouponList in
         single(.success((isSuccessed, userCouponList)))
       }
       return Disposables.create()
     }
   }
 
-  /// 유저 쿠폰 카운트 업데이트 하기.
-  static func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int) -> Single<Bool> {
-    return Single.create { single in
-      CouponRepository.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount) { isSuccessed in
+  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int) -> Single<Bool> {
+    return Single.create { [weak base] single in
+      base?.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount) { isSuccessed in
         single(.success(isSuccessed))
       }
       return Disposables.create()
