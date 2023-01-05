@@ -45,6 +45,8 @@ final class MerchantDetailViewController: BaseViewController {
   @IBOutlet weak var backgroundView: UIView!
   @IBOutlet weak var introduceLabel: UILabel!
   @IBOutlet weak var actionButton: UIButton!
+  @IBOutlet weak var closeButton: UIButton!
+
   fileprivate let titleLabel: MerchantAnimatedLabel = {
     let label = MerchantAnimatedLabel()
     label.font = UIFont(name: Font.bold, size: Metric.titleFontSize)
@@ -152,6 +154,13 @@ final class MerchantDetailViewController: BaseViewController {
     self.viewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
+      .disposed(by: self.disposeBag)
+
+    self.closeButton.rx.tap
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] _ in
+        self?.dismiss(animated: true)
+      })
       .disposed(by: self.disposeBag)
   }
 

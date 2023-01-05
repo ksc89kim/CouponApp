@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +19,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MerchantDetailViewController" customModule="CouponApp" customModuleProvider="target">
             <connections>
                 <outlet property="actionButton" destination="yX7-bb-Poy" id="aC8-gj-Q7D"/>
+                <outlet property="closeButton" destination="gvL-IJ-OaK" id="Kka-4O-egZ"/>
                 <outlet property="contentTopConstraint" destination="uRr-w6-hSl" id="Cfy-pZ-8Jq"/>
                 <outlet property="headerHeightConstraint" destination="SU3-Lc-XxO" id="w5x-sq-jbV"/>
                 <outlet property="headerImageView" destination="6zs-4n-QCc" id="4JL-ak-JlE"/>
@@ -41,7 +42,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="504"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQD-Mw-exj">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="233"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="업체 소개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCA-no-6IH">
                                             <rect key="frame" x="13" y="13" width="62.5" height="21.5"/>
@@ -82,19 +83,33 @@
                                         <constraint firstItem="yX7-bb-Poy" firstAttribute="leading" secondItem="aQD-Mw-exj" secondAttribute="leading" constant="13" id="gxX-1s-ZcO"/>
                                         <constraint firstAttribute="trailing" secondItem="mGe-ZA-M6h" secondAttribute="trailing" constant="13" id="hZ5-Em-mHr"/>
                                         <constraint firstItem="mGe-ZA-M6h" firstAttribute="top" secondItem="tCA-no-6IH" secondAttribute="bottom" constant="13" id="j60-Q5-89h"/>
-                                        <constraint firstAttribute="bottom" secondItem="yX7-bb-Poy" secondAttribute="bottom" constant="15" id="pOb-uy-Vb0"/>
                                         <constraint firstItem="yX7-bb-Poy" firstAttribute="top" secondItem="MMb-w4-get" secondAttribute="bottom" constant="20" id="qJg-m9-cKj"/>
                                         <constraint firstItem="tCA-no-6IH" firstAttribute="leading" secondItem="aQD-Mw-exj" secondAttribute="leading" constant="13" id="rUB-Zk-Y2I"/>
                                         <constraint firstItem="MMb-w4-get" firstAttribute="leading" secondItem="aQD-Mw-exj" secondAttribute="leading" constant="13" id="rsm-Fj-XGV"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gvL-IJ-OaK">
+                                    <rect key="frame" x="13" y="166" width="349" height="52"/>
+                                    <color key="backgroundColor" systemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
+                                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="15" maxY="15"/>
+                                    <state key="normal" title="닫기">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="aQD-Mw-exj" secondAttribute="bottom" id="0ij-X5-EYj"/>
+                                <constraint firstItem="gvL-IJ-OaK" firstAttribute="leading" secondItem="yX7-bb-Poy" secondAttribute="leading" id="Egn-fq-fE3"/>
                                 <constraint firstAttribute="trailing" secondItem="aQD-Mw-exj" secondAttribute="trailing" id="LT9-ec-zGD"/>
+                                <constraint firstItem="gvL-IJ-OaK" firstAttribute="top" secondItem="yX7-bb-Poy" secondAttribute="bottom" constant="15" id="R1B-Uk-sgT"/>
                                 <constraint firstItem="aQD-Mw-exj" firstAttribute="top" secondItem="XXq-UO-XTn" secondAttribute="top" id="YdI-nU-2T7"/>
+                                <constraint firstItem="gvL-IJ-OaK" firstAttribute="leading" secondItem="XXq-UO-XTn" secondAttribute="leading" constant="13" id="h0g-Ju-Yzt"/>
+                                <constraint firstItem="aQD-Mw-exj" firstAttribute="bottom" secondItem="gvL-IJ-OaK" secondAttribute="bottom" constant="15" id="ikk-br-cjQ"/>
                                 <constraint firstItem="aQD-Mw-exj" firstAttribute="width" secondItem="XXq-UO-XTn" secondAttribute="width" id="nua-1P-h4E"/>
                                 <constraint firstItem="aQD-Mw-exj" firstAttribute="leading" secondItem="XXq-UO-XTn" secondAttribute="leading" id="oV9-ba-wQJ"/>
+                                <constraint firstAttribute="trailing" secondItem="gvL-IJ-OaK" secondAttribute="trailing" constant="13" id="r8o-sj-Cup"/>
+                                <constraint firstItem="gvL-IJ-OaK" firstAttribute="trailing" secondItem="yX7-bb-Poy" secondAttribute="trailing" id="ugL-EH-h1w"/>
                             </constraints>
                         </scrollView>
                     </subviews>
