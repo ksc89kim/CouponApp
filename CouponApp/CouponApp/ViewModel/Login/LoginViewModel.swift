@@ -173,6 +173,7 @@ final class LoginViewModel: LoginViewModelType {
     .flatMapLatest { phoneNumber, password -> Observable<Bool> in
       return CouponRepository.instance.rx.checkPassword(phoneNumber: phoneNumber, password: password)
         .asObservable()
+        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
     }
     .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }
     .share()

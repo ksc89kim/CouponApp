@@ -9,7 +9,7 @@
 import Foundation
 
 /// 회원 데이터
-final class User: Codable {
+struct User: Codable {
 
   // MARK: - Define
 
@@ -27,7 +27,11 @@ final class User: Codable {
   let id: Int
   /// 유저 이름
   let name: String
-
+  /// 유효한 id 여부
+  var isVaildID: Bool {
+    return self.id != -1
+  }
+  
   // MARK: - Init
 
   init(phoneNumber: String, id: Int, name: String) {
@@ -36,11 +40,11 @@ final class User: Codable {
     self.name = name
   }
 
-  convenience init(id: Int) {
+  init(id: Int) {
     self.init(phoneNumber: "",id: id, name: "")
   }
 
-  required init(from decoder: Decoder) throws {
+  init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: UserKeys.self)
     self.phoneNumber = (try? container.decode(String.self, forKey: .phoneNumber)) ?? ""
     self.id = try container.decode(Int.self, forKey: .id)

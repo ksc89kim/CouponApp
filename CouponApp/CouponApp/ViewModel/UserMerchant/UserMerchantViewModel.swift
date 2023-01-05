@@ -63,10 +63,11 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
 
   private func loadData(subject: Subject) -> Observable<(isSuccessed: Bool, list: UserCouponList?)> {
     return subject.loadData
-      .flatMapLatest { _ -> Observable<(isSuccessed: Bool, list: UserCouponList?)> in
-        return CouponRepository.instance.rx.loadUserCouponData(userId: CouponSignleton.getUserId())
+      .withLatestFrom(Me.instance.rx.userID)
+      .flatMapLatest { id -> Observable<(isSuccessed: Bool, list: UserCouponList?)> in
+        return CouponRepository.instance.rx.loadUserCouponData(userId: id)
           .asObservable()
-          .map { (isSuccessed: $0.0, list: $0.1) }
+          .map { (isSuccessed: $0.isSuccessed, list: $0.data as? UserCouponList) }
       }
   }
 
@@ -82,10 +83,13 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
 
   private func deleteCoupon(subject: Subject) -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> {
     return subject.deleteCoupon
-      .flatMapLatest { merchantId, indexPath -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> in
-         return CouponRepository.instance.rx.deleteUserCoupon(userId: CouponSignleton.getUserId(), merchantId: merchantId)
+      .withLatestFrom(Me.instance.rx.userID) { value, id in
+        return (value.merchantId, value.indexPath, id)
+      }
+      .flatMapLatest { merchantId, indexPath, id -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> in
+         return CouponRepository.instance.rx.deleteUserCoupon(userId: id, merchantId: merchantId)
         .asObservable()
-        .map { (isSuccessed: $0, indexPath: indexPath) }
+        .map { (isSuccessed: $0.isSuccessed, indexPath: indexPath) }
       }
       .share()
   }

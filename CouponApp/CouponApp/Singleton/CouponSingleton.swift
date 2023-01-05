@@ -14,19 +14,5 @@ final class CouponSignleton {
   // MARK: -  Property
   
   static let instance = CouponSignleton()
-  var userData: User?
   var merchantList: MerchantImplList?
-  
-  // MARK: -  Method
-  
-  static func getUserId() -> Int {
-    if let userId = CouponSignleton.instance.userData?.id {
-      return userId
-    }
-    return -1
-  }
-  
-  static func isExistUseId() -> Bool {
-    return CouponSignleton.getUserId() != -1
-  }
 }

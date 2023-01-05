@@ -11,36 +11,36 @@ import Foundation
 struct CouponSqlite: RepositoryType {
   func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete:complete)
+      try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete: complete)
     } catch {
-      complete(false);
+      self.fail(complete: complete)
     }
   }
 
   func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     do {
       let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-      CouponSignleton.instance.userData = User(id:userId)
-      complete(CouponSignleton.isExistUseId())
+      let user = User(id: userId)
+      complete(.init(isSuccessed: user.isVaildID, data: user))
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 
   func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     do {
-      let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password:password)
-      CouponSignleton.instance.userData = User(id:userId)
-      complete(CouponSignleton.isExistUseId())
+      let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
+      let user = User(id: userId)
+      complete(.init(isSuccessed: user.isVaildID, data: user))
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 
   func getMerchantData(complete: @escaping RepositoryCompletion) {
     do {
       guard var merchantList = try SQLInterface().selectMerchantData() else {
-        complete(false)
+        self.fail(complete: complete)
         return
       }
 
@@ -56,50 +56,50 @@ struct CouponSqlite: RepositoryType {
         merchantList[i] = merchant
       }
       CouponSignleton.instance.merchantList = merchantList
-      complete(true)
+      complete(.init(isSuccessed: true, data: merchantList))
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 
   func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().insertCoupon(userId, merchantId, complete:complete)
+      try SQLInterface().insertCoupon(userId, merchantId, complete: complete)
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 
   func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
-      let isUserCoupon = try SQLInterface().isUserCoupon(userId,merchantId)
-      complete(isUserCoupon)
+      let isUserCoupon = try SQLInterface().isUserCoupon(userId, merchantId)
+      complete(.init(isSuccessed: isUserCoupon, data: nil))
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 
   func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping RepositoryCompletion) {
     do{
-      try SQLInterface().deleteCounpon(userId, merchantId, complete:complete)
+      try SQLInterface().deleteCounpon(userId, merchantId, complete: complete)
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
   
-  func getUserCouponData(userId: Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
+  func getUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
     do {
-      complete(true, try SQLInterface().selectUserCouponData(userId))
+      complete(.init(isSuccessed: true, data: try SQLInterface().selectUserCouponData(userId)))
     } catch {
-      complete(false, nil)
+      self.fail(complete: complete)
     }
   }
 
   func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().updateCouponCount(userId,merchantId,couponCount,complete:complete)
+      try SQLInterface().updateCouponCount(userId, merchantId, couponCount, complete: complete)
     } catch {
-      complete(false)
+      self.fail(complete: complete)
     }
   }
 }

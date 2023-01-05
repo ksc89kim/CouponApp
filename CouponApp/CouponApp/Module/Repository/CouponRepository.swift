@@ -54,7 +54,7 @@ final class CouponRepository {
     self.repository.deleteUserCoupon(userId: userId, merchantId: merchantId, complete: complete)
   }
 
-  func loadUserCouponData(userId: Int, complete: @escaping (Bool, UserCouponList?) -> Void) {
+  func loadUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
     self.repository.getUserCouponData(userId: userId, complete: complete)
   }
 

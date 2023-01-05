@@ -119,12 +119,16 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
 
   private func checkUser(subject: Subject) -> Observable<Bool> {
     return self.merchantDetail(subject: subject)
-      .flatMapLatest { merchantDetail -> Observable<Bool> in
+      .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
+        return (merchantDetail, id)
+      }
+      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
         return CouponRepository.instance.rx.checkUserCoupon(
-          userId: CouponSignleton.getUserId(),
+          userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
-          .asObservable()
+        .asObservable()
+        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
       }
       .share()
   }
@@ -139,12 +143,16 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     return onBottomButton
       .filter { $0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
-      .flatMapLatest { merchantDetail -> Observable<Bool> in
+      .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
+        return (merchantDetail, id)
+      }
+      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
         return CouponRepository.instance.rx.deleteUserCoupon(
-          userId: CouponSignleton.getUserId(),
+          userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
+        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
       }
       .share()
   }
@@ -153,12 +161,16 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     return onBottomButton
       .filter { !$0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
-      .flatMapLatest { merchantDetail -> Observable<Bool> in
+      .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
+        return (merchantDetail, id)
+      }
+      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
         return CouponRepository.instance.rx.insertUserCoupon(
-          userId: CouponSignleton.getUserId(),
+          userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
+        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
       }
       .share()
   }

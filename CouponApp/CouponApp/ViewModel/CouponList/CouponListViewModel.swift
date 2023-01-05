@@ -162,12 +162,16 @@ final class CouponListViewModel: CouponListViewModelType {
       .withLatestFrom(parameter.couponCount) { couponInfo, couponCount in
         return (couponInfo: couponInfo, couponCount: couponCount)
       }
-      .flatMapLatest { couponInfo, couponCount -> Observable<Bool> in
+      .withLatestFrom(Me.instance.rx.userID) { value, id in
+        return (couponInfo: value.couponInfo, couponCount: value.couponCount, userID: id)
+      }
+      .flatMapLatest { couponInfo, couponCount, id -> Observable<Bool> in
         return CouponRepository.instance.rx.updateUesrCoupon(
-          userId: CouponSignleton.getUserId(),
+          userId: id,
           merchantId: couponInfo.merchant.merchantId,
           couponCount: couponCount
         )
+        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
         .asObservable()
       }
       .share()

@@ -202,6 +202,7 @@ final class SignupViewModel: SignupViewModelType {
         name: name
       )
       .asObservable()
+      .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
     }
     .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }
     .share()
@@ -213,6 +214,11 @@ final class SignupViewModel: SignupViewModelType {
       .flatMapLatest { signup -> Observable<Bool> in
         return CouponRepository.instance.rx.loadUserData(phoneNumber: signup.phoneNumber)
           .asObservable()
+          .do(onNext: { (response: RepositoryResponse) in
+            guard let user = response.data as? User else { return }
+            Me.instance.update(user: user)
+          })
+          .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
       }
       .withLatestFrom(afterSignup) { .init(isSuccess: $0, phoneNumber: $1.phoneNumber) }
       .share()

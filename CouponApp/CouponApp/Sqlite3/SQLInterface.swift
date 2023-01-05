@@ -67,9 +67,9 @@ final class SQLInterface {
     let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
     let result = contactDb.executeUpdate(query, withArgumentsIn: [])
     if result {
-      complete(true)
+      complete(.init(isSuccessed: true, data: nil))
     } else {
-      complete(false)
+      complete(.init(isSuccessed: false, data: nil))
     }
   }
 
@@ -133,9 +133,9 @@ final class SQLInterface {
     let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
     let result = contactDb.executeUpdate(query, withArgumentsIn: [])
     if result {
-      complete(true)
+      complete(.init(isSuccessed: true, data: nil))
     } else {
-      complete(false)
+      complete(.init(isSuccessed: false, data: nil))
     }
   }
 
@@ -145,9 +145,9 @@ final class SQLInterface {
     let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
     let result = contactDb.executeUpdate(query, withArgumentsIn: [])
     if result {
-      complete(true)
+      complete(.init(isSuccessed: true, data: nil))
     } else {
-      complete(false)
+      complete(.init(isSuccessed: false, data: nil))
     }
   }
 
@@ -158,9 +158,9 @@ final class SQLInterface {
     let result = contactDb.executeUpdate(query, withArgumentsIn: [])
 
     if result {
-      complete(true)
+      complete(.init(isSuccessed: true, data: nil))
     } else {
-      complete(false)
+      complete(.init(isSuccessed: false, data: nil))
     }
   }
 
