@@ -42,8 +42,8 @@ final class MerchantDetailPresentationController: UIPresentationController {
     NSLayoutConstraint.activate([
       self.presentedViewController.view.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 0),
       self.presentedViewController.view.rightAnchor.constraint(equalTo: containerView.rightAnchor, constant: 0),
-      self.presentedViewController.view.topAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.topAnchor, constant: 0),
-      self.presentedViewController.view.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+      self.presentedViewController.view.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0),
+      self.presentedViewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0)
     ])
 
     containerView.layoutIfNeeded()

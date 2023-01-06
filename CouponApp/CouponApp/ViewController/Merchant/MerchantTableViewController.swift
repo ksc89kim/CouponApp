@@ -9,13 +9,7 @@
 import UIKit
 
 class MerchantTableViewController: UITableViewController {
-
-  // MARK: - Define
-
-  enum Metric {
-    static let statusDifferentOffset: CGFloat = 20
-  }
-
+  
   // MARK: - Method
 
   func showMerchantDetail(selectedCell: MerchantTableViewCell) {

@@ -14,7 +14,7 @@ final class MerchantTableViewCell: UITableViewCell {
   // MARK: - Define
 
   enum Metric {
-    static let headerTopHeight: CGFloat = 86
+    static let headerTopHeight: CGFloat = 81.5
     static let cornerRadius: CGFloat = 5
     static let lineWidth: CGFloat = 3
     static let shadowOffset: CGSize = .init(width: 0, height: 2)

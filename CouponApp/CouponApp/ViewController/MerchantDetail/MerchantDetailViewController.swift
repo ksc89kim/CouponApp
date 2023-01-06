@@ -215,13 +215,13 @@ final class MerchantDetailViewController: BaseViewController {
   func showAnimation(transitionContext: UIViewControllerContextTransitioning? = nil) {
     self.isAnimation = true
     self.view.layoutIfNeeded()
-    UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-      self?.setAnimationPercent(percent: Constant.maxPercent)
-      self?.view.layoutIfNeeded()
-    }, completion: { [weak self] (finished: Bool) in
+    UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
+      self.setAnimationPercent(percent: Constant.maxPercent)
+      self.view.layoutIfNeeded()
+    }, completion: { (finished: Bool) in
       if finished {
-        self?.percent = Constant.maxPercent
-        self?.isAnimation = false
+        self.percent = Constant.maxPercent
+        self.isAnimation = false
       }
       transitionContext?.completeTransition(finished)
     })
@@ -230,13 +230,13 @@ final class MerchantDetailViewController: BaseViewController {
   func hideAnimation(transitionContext: UIViewControllerContextTransitioning? = nil) {
     self.isAnimation = true
     self.view.layoutIfNeeded()
-    UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-      self?.setAnimationPercent(percent: 0)
-      self?.view.layoutIfNeeded()
-    }, completion: { [weak self] (finished: Bool) in
+    UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: {
+      self.setAnimationPercent(percent: 0)
+      self.view.layoutIfNeeded()
+    }, completion: { (finished: Bool) in
       if finished {
-        self?.percent = .zero
-        self?.isAnimation = false
+        self.percent = .zero
+        self.isAnimation = false
       }
       transitionContext?.completeTransition(finished)
     })
