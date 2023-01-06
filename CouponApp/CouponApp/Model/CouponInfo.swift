@@ -10,10 +10,10 @@ import Foundation
 
 struct CouponInfo {
   let userCoupon: UserCoupon
-  let merchant: MerchantImpl
+  let merchant: Merchant
   let isNetworkSuccess: Bool
 
-  init(userCoupon: UserCoupon, merchant: MerchantImpl) {
+  init(userCoupon: UserCoupon, merchant: Merchant) {
     self.userCoupon = userCoupon
     self.merchant = merchant
     self.isNetworkSuccess = false

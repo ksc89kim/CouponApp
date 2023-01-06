@@ -21,7 +21,7 @@ final class AroundMerchantTableViewController: MerchantTableViewController  {
   // MARK: - Property
 
   private var locationManager: CLLocationManager!
-  private var merchantArray: [MerchantImpl?]?
+  private var merchantArray: [Merchant?]?
   fileprivate let maxDistance: Double = 1000
 
   // MARK: - Life Cycle
@@ -84,7 +84,7 @@ final class AroundMerchantTableViewController: MerchantTableViewController  {
 
 extension AroundMerchantTableViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let merchantList = CouponSignleton.instance.merchantList else {
+    guard let merchantList = MerchantController.instance.merchantList else {
       print("merchantList nil")
       return
     }

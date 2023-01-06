@@ -93,8 +93,7 @@ final class CouponNetwork : RepositoryType {
         return
       }
       do {
-        let merchantList = try JSONDecoder().decode(MerchantImplList.self, from: responseData)
-        CouponSignleton.instance.merchantList = merchantList
+        let merchantList = try JSONDecoder().decode(MerchantList.self, from: responseData)
         complete(.init(isSuccessed: true, data: merchantList))
       } catch {
         print("error \(error)")

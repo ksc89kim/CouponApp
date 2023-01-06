@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		273B8B302966AF8300C86502 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B8B2F2966AF8300C86502 /* Me.swift */; };
 		2776F64E2966BEEC00165550 /* RepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776F64D2966BEEC00165550 /* RepositoryResponse.swift */; };
-		590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
+		27EECA4B2967A17100067AAD /* MerchantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EECA4A2967A17100067AAD /* MerchantController.swift */; };
+		27EECA4D2967A1C400067AAD /* Merchant+FMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */; };
 		592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */; };
 		594A011420A825700007503D /* CouponNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A011320A825700007503D /* CouponNetwork.swift */; };
 		594A011620A825790007503D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A011520A825790007503D /* Utils.swift */; };
 		594A563A1FD814AF005EAA9C /* UserCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A56391FD814AF005EAA9C /* UserCoupon.swift */; };
-		594A563C1FD814EC005EAA9C /* MerchantImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A563B1FD814EC005EAA9C /* MerchantImpl.swift */; };
+		594A563C1FD814EC005EAA9C /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A563B1FD814EC005EAA9C /* Merchant.swift */; };
 		596303771F431411000E2701 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596303761F431411000E2701 /* AppDelegate.swift */; };
 		5963037C1F431411000E2701 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5963037A1F431411000E2701 /* Main.storyboard */; };
 		5963037E1F431411000E2701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5963037D1F431411000E2701 /* Assets.xcassets */; };
@@ -37,7 +38,7 @@
 		59BE1D1D21184C930082F04E /* RepositoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D1C21184C930082F04E /* RepositoryType.swift */; };
 		59BE1D1F21197E140082F04E /* MerchantType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D1E21197E140082F04E /* MerchantType.swift */; };
 		59BE1D21211980570082F04E /* CouponUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D20211980570082F04E /* CouponUIType.swift */; };
-		59BE1D23211986650082F04E /* MerchantImplList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D22211986650082F04E /* MerchantImplList.swift */; };
+		59BE1D23211986650082F04E /* MerchantList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D22211986650082F04E /* MerchantList.swift */; };
 		59D9AB891FCAD0D000A1F78E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */; };
 		59D9ABA01FCAD79600A1F78E /* coupon.db in Resources */ = {isa = PBXBuildFile; fileRef = 59D9AB9D1FCAD79600A1F78E /* coupon.db */; };
 		59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D9AB9F1FCAD79600A1F78E /* SQLInterface.swift */; };
@@ -86,10 +87,7 @@
 		A48C130127ABECC200C03E8D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB5C7A5202BE0EF00CBBEB5 /* User.swift */; };
 		A48C130227ABECC500C03E8D /* ResponseCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A43FA12123FC7A0099581D /* ResponseCode.swift */; };
 		A48C130327ABECC700C03E8D /* ExistenceCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A43FA3212400D70099581D /* ExistenceCoupon.swift */; };
-		A48C130427ABECD200C03E8D /* MerchantImplList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D22211986650082F04E /* MerchantImplList.swift */; };
-		A48C130527ABECD900C03E8D /* CouponSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590D16E4200202EF008FBA02 /* CouponSingleton.swift */; };
 		A48C130627ABECF800C03E8D /* UserCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A56391FD814AF005EAA9C /* UserCoupon.swift */; };
-		A48C130727ABECFB00C03E8D /* MerchantImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A563B1FD814EC005EAA9C /* MerchantImpl.swift */; };
 		A48C130827ABECFF00C03E8D /* DrawCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88E7432008450E00F48B1C /* DrawCoupon.swift */; };
 		A48C130927ABED0200C03E8D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		A48C130B27ABED0900C03E8D /* IntroStampDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */; };
@@ -212,12 +210,13 @@
 /* Begin PBXFileReference section */
 		273B8B2F2966AF8300C86502 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
 		2776F64D2966BEEC00165550 /* RepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResponse.swift; sourceTree = "<group>"; };
-		590D16E4200202EF008FBA02 /* CouponSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponSingleton.swift; sourceTree = "<group>"; };
+		27EECA4A2967A17100067AAD /* MerchantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantController.swift; sourceTree = "<group>"; };
+		27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Merchant+FMDB.swift"; sourceTree = "<group>"; };
 		592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponDrawView.swift; sourceTree = "<group>"; };
 		594A011320A825700007503D /* CouponNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponNetwork.swift; sourceTree = "<group>"; };
 		594A011520A825790007503D /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		594A56391FD814AF005EAA9C /* UserCoupon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoupon.swift; sourceTree = "<group>"; };
-		594A563B1FD814EC005EAA9C /* MerchantImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantImpl.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		594A563B1FD814EC005EAA9C /* Merchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		596303731F431411000E2701 /* CouponApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CouponApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		596303761F431411000E2701 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5963037B1F431411000E2701 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -246,7 +245,7 @@
 		59BE1D1C21184C930082F04E /* RepositoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryType.swift; sourceTree = "<group>"; };
 		59BE1D1E21197E140082F04E /* MerchantType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantType.swift; sourceTree = "<group>"; };
 		59BE1D20211980570082F04E /* CouponUIType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponUIType.swift; sourceTree = "<group>"; };
-		59BE1D22211986650082F04E /* MerchantImplList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantImplList.swift; sourceTree = "<group>"; };
+		59BE1D22211986650082F04E /* MerchantList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantList.swift; sourceTree = "<group>"; };
 		59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		59D9AB9D1FCAD79600A1F78E /* coupon.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = coupon.db; sourceTree = "<group>"; };
 		59D9AB9E1FCAD79600A1F78E /* CouponApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CouponApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -376,6 +375,7 @@
 		273B8B2C2966AEBB00C86502 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				27EECA4329679E2900067AAD /* Merchant */,
 				594A011120A825020007503D /* Repository */,
 				273B8B2D2966AEC200C86502 /* User */,
 			);
@@ -393,20 +393,71 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		27EECA4329679E2900067AAD /* Merchant */ = {
+			isa = PBXGroup;
+			children = (
+				27EECA4529679E3F00067AAD /* Component */,
+			);
+			path = Merchant;
+			sourceTree = "<group>";
+		};
+		27EECA4529679E3F00067AAD /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				27EECA4929679F1B00067AAD /* ViewController */,
+				27EECA4829679EDA00067AAD /* View */,
+				27EECA4629679E5C00067AAD /* Model */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		27EECA4629679E5C00067AAD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27EECA4729679E6200067AAD /* Protocol */,
+				594A563B1FD814EC005EAA9C /* Merchant.swift */,
+				27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */,
+				27EECA4A2967A17100067AAD /* MerchantController.swift */,
+				59BE1D22211986650082F04E /* MerchantList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27EECA4729679E6200067AAD /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				59BE1D1E21197E140082F04E /* MerchantType.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		27EECA4829679EDA00067AAD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A4DB7886220EB0C800EE23D2 /* MerchantTableViewCell.xib */,
+				A4DB7888220EB0DD00EE23D2 /* MerchantTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		27EECA4929679F1B00067AAD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A415623522DB1B7B00A0551E /* AroundMerchantTableViewController.swift */,
+				A415623622DB1B7B00A0551E /* GloabalMerchantTableViewController.swift */,
+				A49C686327ED648200BB97AF /* MerchantTableViewController.swift */,
+				A415623422DB1B7B00A0551E /* MerchantViewController.swift */,
+				A415623E22DB367100A0551E /* UserMerchantTableViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		33A44ABBBF1E814232951653 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				59D9AB881FCAD0D000A1F78E /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		590D16E320020282008FBA02 /* Singleton */ = {
-			isa = PBXGroup;
-			children = (
-				590D16E4200202EF008FBA02 /* CouponSingleton.swift */,
-			);
-			path = Singleton;
 			sourceTree = "<group>";
 		};
 		592FE2141FCAD9FB00C07C84 /* View */ = {
@@ -459,7 +510,6 @@
 			isa = PBXGroup;
 			children = (
 				A4936FA227E0B60B00A62AC4 /* MerchantDetail */,
-				A415623322DB1B7B00A0551E /* Merchant */,
 				59A43FB721244FC10099581D /* CustomPopupViewController.xib */,
 				59A43FAB2124460D0099581D /* CustomPopupViewController.swift */,
 				596303A41F4314E3000E2701 /* CouponListViewController.swift */,
@@ -507,7 +557,6 @@
 				CC595CAB2032B5FC007E493E /* Protocol */,
 				CC7BE8CA200F199100DB8E09 /* ETC */,
 				CC09A4F8200D969D00B512C0 /* Button */,
-				590D16E320020282008FBA02 /* Singleton */,
 				596714111FEA89770009D73A /* Cell */,
 				594A56381FD8148F005EAA9C /* Model */,
 				5960FA301FCEE1FF00135CA4 /* ViewController */,
@@ -545,8 +594,6 @@
 			isa = PBXGroup;
 			children = (
 				59A43FBC212540E80099581D /* CouponCollectionViewCell.swift */,
-				A4DB7886220EB0C800EE23D2 /* MerchantTableViewCell.xib */,
-				A4DB7888220EB0DD00EE23D2 /* MerchantTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -585,18 +632,6 @@
 				A405814F22E9E4D90022A48C /* MerchantAnimatedTextLayer.swift */,
 			);
 			path = Layer;
-			sourceTree = "<group>";
-		};
-		A415623322DB1B7B00A0551E /* Merchant */ = {
-			isa = PBXGroup;
-			children = (
-				A415623E22DB367100A0551E /* UserMerchantTableViewController.swift */,
-				A415623422DB1B7B00A0551E /* MerchantViewController.swift */,
-				A415623522DB1B7B00A0551E /* AroundMerchantTableViewController.swift */,
-				A415623622DB1B7B00A0551E /* GloabalMerchantTableViewController.swift */,
-				A49C686327ED648200BB97AF /* MerchantTableViewController.swift */,
-			);
-			path = Merchant;
 			sourceTree = "<group>";
 		};
 		A425C9EC22D9E2C300093D8E /* Controller */ = {
@@ -739,8 +774,6 @@
 		A4EF22A224613B7800692B61 /* Codeable */ = {
 			isa = PBXGroup;
 			children = (
-				594A563B1FD814EC005EAA9C /* MerchantImpl.swift */,
-				59BE1D22211986650082F04E /* MerchantImplList.swift */,
 				CC88E7432008450E00F48B1C /* DrawCoupon.swift */,
 				CC047F81200C66170070CC5D /* ImageCoupon.swift */,
 				59A43FA12123FC7A0099581D /* ResponseCode.swift */,
@@ -761,7 +794,6 @@
 			isa = PBXGroup;
 			children = (
 				A4AFCE372545656600E92B92 /* ViewModelType.swift */,
-				59BE1D1E21197E140082F04E /* MerchantType.swift */,
 				59BE1D20211980570082F04E /* CouponUIType.swift */,
 				A4EFCE1724692CA3003385D9 /* CouponViewType.swift */,
 				59A43FA92124062F0099581D /* Listable.swift */,
@@ -984,7 +1016,7 @@
 				B323BBC1257CC9E00060E7BF /* CustomPopupViewModel.swift in Sources */,
 				A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */,
 				A4A61F9C26C24A6900809A44 /* MerchantDetailInputs.swift in Sources */,
-				594A563C1FD814EC005EAA9C /* MerchantImpl.swift in Sources */,
+				594A563C1FD814EC005EAA9C /* Merchant.swift in Sources */,
 				A4DB7889220EB0DD00EE23D2 /* MerchantTableViewCell.swift in Sources */,
 				A4AFCE382545656600E92B92 /* ViewModelType.swift in Sources */,
 				A42A329826C3F9F90062B7CB /* UserMerchantOutputs.swift in Sources */,
@@ -1015,7 +1047,7 @@
 				CC88E7442008450E00F48B1C /* DrawCoupon.swift in Sources */,
 				A4AD39E028255EF50083E5C4 /* UINibExtensions.swift in Sources */,
 				A4A61F9926C2418100809A44 /* CustomPopupViewModelType.swift in Sources */,
-				590D16E5200202EF008FBA02 /* CouponSingleton.swift in Sources */,
+				27EECA4D2967A1C400067AAD /* Merchant+FMDB.swift in Sources */,
 				A4B7749326C16EFD000954B9 /* CouponListViewModelType.swift in Sources */,
 				59E54C03212AAB7F00D31BD8 /* UIViewControllerExtensions.swift in Sources */,
 				594A011420A825700007503D /* CouponNetwork.swift in Sources */,
@@ -1039,6 +1071,7 @@
 				A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */,
 				59BE1D1F21197E140082F04E /* MerchantType.swift in Sources */,
 				A4A0BB8725610F0A006F616D /* Alert.swift in Sources */,
+				27EECA4B2967A17100067AAD /* MerchantController.swift in Sources */,
 				A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */,
 				A4936FA427E0B69800A62AC4 /* MerchantDetailTransition.swift in Sources */,
 				59BE1D1D21184C930082F04E /* RepositoryType.swift in Sources */,
@@ -1066,7 +1099,7 @@
 				A4B7748A26C16BAA000954B9 /* LoginOutputs.swift in Sources */,
 				A415623922DB1B7B00A0551E /* GloabalMerchantTableViewController.swift in Sources */,
 				A4A9FEFC26BD556B0074FC93 /* SignupViewModelType.swift in Sources */,
-				59BE1D23211986650082F04E /* MerchantImplList.swift in Sources */,
+				59BE1D23211986650082F04E /* MerchantList.swift in Sources */,
 				A415623F22DB367100A0551E /* UserMerchantTableViewController.swift in Sources */,
 				A4FB5B5F254EB58D006C861D /* CouponAnimatedTextInput.swift in Sources */,
 			);
@@ -1080,7 +1113,6 @@
 				A490B82E27ABFD26003DA962 /* CouponNibName.swift in Sources */,
 				A490B82727ABFCF0003DA962 /* UIColorExtensions.swift in Sources */,
 				A48C12FB27ABEC1A00C03E8D /* CouponRepository.swift in Sources */,
-				A48C130527ABECD900C03E8D /* CouponSingleton.swift in Sources */,
 				A48C12FE27ABEC8600C03E8D /* CouponSqlite.swift in Sources */,
 				A490B82D27ABFD03003DA962 /* UIPanGestureRecognizerExtensions.swift in Sources */,
 				A48C130327ABECC700C03E8D /* ExistenceCoupon.swift in Sources */,
@@ -1093,13 +1125,11 @@
 				A48C130C27ABED0C00C03E8D /* CustomPopup.swift in Sources */,
 				A48C130B27ABED0900C03E8D /* IntroStampDrawPath.swift in Sources */,
 				A490B82B27ABFCFE003DA962 /* UIButtonExtensions.swift in Sources */,
-				A48C130727ABECFB00C03E8D /* MerchantImpl.swift in Sources */,
 				A48C12FC27ABEC3200C03E8D /* RepositoryType.swift in Sources */,
 				A48C130127ABECC200C03E8D /* User.swift in Sources */,
 				A48C12FD27ABEC5000C03E8D /* UserCouponList.swift in Sources */,
 				A48C130227ABECC500C03E8D /* ResponseCode.swift in Sources */,
 				A48C131027ABED4400C03E8D /* Listable.swift in Sources */,
-				A48C130427ABECD200C03E8D /* MerchantImplList.swift in Sources */,
 				A490B82C27ABFD00003DA962 /* NSLayoutContraintExtensions.swift in Sources */,
 				A48C130827ABECFF00C03E8D /* DrawCoupon.swift in Sources */,
 				A48C130927ABED0200C03E8D /* ImageCoupon.swift in Sources */,

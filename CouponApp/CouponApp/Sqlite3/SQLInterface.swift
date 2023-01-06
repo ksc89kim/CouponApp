@@ -184,14 +184,14 @@ final class SQLInterface {
   }
 
   /// 가맹점 데이터 가져오기
-  func selectMerchantData() throws -> MerchantImplList?  {
+  func selectMerchantData() throws -> MerchantList?  {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "select idx,name,content, image_url, latitude, longitude, is_couponImage, card_background from merchant"
     do {
       let result = try contactDb.executeQuery(query, values: [])
-      var merchatList: MerchantImplList? = MerchantImplList()
+      var merchatList: MerchantList? = MerchantList()
       while result.next() {
-        let merchant: MerchantImpl = MerchantImpl(resultSet: result)
+        let merchant: Merchant = Merchant(resultSet: result)
         merchatList?.list.append(merchant)
       }
       return merchatList

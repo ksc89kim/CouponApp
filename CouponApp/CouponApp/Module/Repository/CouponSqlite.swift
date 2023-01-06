@@ -45,7 +45,7 @@ struct CouponSqlite: RepositoryType {
       }
 
       for i in  0 ..< merchantList.count {
-        guard let merchant = merchantList[i] else {
+        guard var merchant = merchantList[i] else {
           return
         }
         if merchant.isCouponImage {
@@ -55,7 +55,6 @@ struct CouponSqlite: RepositoryType {
         }
         merchantList[i] = merchant
       }
-      CouponSignleton.instance.merchantList = merchantList
       complete(.init(isSuccessed: true, data: merchantList))
     } catch {
       self.fail(complete: complete)

@@ -56,7 +56,7 @@ final class CouponListViewController: BaseViewController {
   private var selectedCouponIndex: Int = 0
   private let dashLineLayer = CAShapeLayer()
   var userCoupon: UserCoupon?
-  var merchant: MerchantImpl?
+  var merchant: Merchant?
 
   // MARK: - Deinit
 

@@ -23,8 +23,8 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
 
   // MARK: - Property
 
-  var merchantList: MerchantImplList? {
-    return CouponSignleton.instance.merchantList
+  var merchantList: MerchantList? {
+    return MerchantController.instance.merchantList
   }
 
   let viewModel = UserMerchantViewModel()

@@ -19,8 +19,8 @@ final class GloabalMerchantTableViewController: MerchantTableViewController {
 
   // MARK: - Property
 
-  var merchantList: MerchantImplList? {
-    return CouponSignleton.instance.merchantList
+  var merchantList: MerchantList? {
+    return MerchantController.instance.merchantList
   }
 
   // MARK: - Life Cycle

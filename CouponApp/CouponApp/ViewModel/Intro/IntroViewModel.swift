@@ -67,6 +67,9 @@ final class IntroViewModel: IntroViewModelType {
       .flatMapLatest { _ -> Observable<Bool> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
+          .do(onNext: { (response: RepositoryResponse) in
+            MerchantController.instance.merchantList = response.data as? MerchantList
+          })
           .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
     }
     .share()

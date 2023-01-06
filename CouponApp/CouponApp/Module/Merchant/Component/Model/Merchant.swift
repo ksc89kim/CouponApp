@@ -1,5 +1,5 @@
 //
-//  MerchantModel.swift
+//  Merchant.swift
 //  CouponApp
 //
 //  Created by kim sunchul on 2017. 12. 6..
@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import FMDB
 
 /// 가맹점 데이터
-final class MerchantImpl: Codable, MerchantType {
+struct Merchant: Codable, MerchantType {
 
   //MARK: - Define
 
@@ -73,29 +72,7 @@ final class MerchantImpl: Codable, MerchantType {
     self.cardBackGround = cardBackground
   }
 
-  convenience init(resultSet: FMResultSet) {
-    let merchantIdx:Int32 = resultSet.int(forColumnIndex: 0)
-    let name = resultSet.string(forColumnIndex: 1) ?? ""
-    let content = resultSet.string(forColumnIndex: 2) ?? ""
-    let imageUrl = resultSet.string(forColumnIndex: 3) ?? ""
-    let latitude = resultSet.double(forColumnIndex: 4)
-    let longitude = resultSet.double(forColumnIndex: 5)
-    let isCouponImage = resultSet.bool(forColumnIndex: 6)
-    let cardBackground = resultSet.string(forColumnIndex: 7) ?? ""
-
-    self.init(
-      merchantId: Int(merchantIdx),
-      name: name,
-      content: content,
-      logoImageUrl: imageUrl,
-      latitude: latitude,
-      longitude: longitude,
-      isCouponImage: isCouponImage,
-      cardBackground: cardBackground
-    )
-  }
-
-  required init(from decoder: Decoder) throws {
+  init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: MerchantImplKeys.self)
     self.merchantId = try container.decode(Int.self, forKey: .merchantId)
     self.name = try container.decode(String.self, forKey: .name)

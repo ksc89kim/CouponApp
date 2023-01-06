@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "UIPanGestureRecognizer.direction.getter:UIPanGestureRecognizerExtensions.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantTableViewController.showMerchantDetail(selectedCell:):MerchantTableViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView.contentInset.top">
+            </PersistentString>
+            <PersistentString
+               value = "selectedCell.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "self.tableView.contentOffset.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
