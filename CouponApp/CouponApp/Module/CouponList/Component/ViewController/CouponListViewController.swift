@@ -18,7 +18,7 @@ final class CouponListViewController: BaseViewController {
   // MARK: - Define
 
   private enum Metric {
-    static let cellSize = CGSize(width: 50 , height: 50)
+    static let cellSize: CGSize = .init(width: 50 , height: 50)
     static let sectionInset: UIEdgeInsets = .zero
     static let minimumLineSpacing: CGFloat = 5.0
     static let minimumInteritemSpacing: CGFloat = 5.0
