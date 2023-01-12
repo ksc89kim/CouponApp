@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 ///  로그인 뷰컨트롤러
 final class LoginViewController: BaseViewController {
@@ -37,7 +38,9 @@ final class LoginViewController: BaseViewController {
 
   // MARK: - Property
 
-  private let viewModel = LoginViewModel()
+  private var loginViewModel: LoginViewModelType? {
+    return self.viewModel as? LoginViewModelType
+  }
 
   // MARK: - Life Cycle
 
@@ -85,39 +88,43 @@ final class LoginViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
+    guard let loginViewModel = self.loginViewModel else {
+      return
+    }
+
     self.phoneNumberTextInput.rx.text
-      .bind(to: self.viewModel.inputs.userPhoneNumber)
+      .bind(to: loginViewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: self.viewModel.inputs.userPassword)
+      .bind(to: loginViewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.loginButton.rx.tap
       .asObservable()
-      .bind(to: self.viewModel.inputs.onLogin)
+      .bind(to: loginViewModel.inputs.onLogin)
       .disposed(by: self.disposeBag)
 
     self.signupButton.rx.tap
       .asObservable()
-      .bind(to: self.viewModel.inputs.onSingup)
+      .bind(to: loginViewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?.showCustomPopup
+    self.loginViewModel?.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showMainViewController
+    self.loginViewModel?.outputs?.showMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showSignupViewController
+    self.loginViewModel?.outputs?.showSignupViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showSignupViewController)
       .disposed(by: self.disposeBag)
@@ -145,6 +152,19 @@ final class LoginViewController: BaseViewController {
     newLength -= data.range.length
     return newLength <= maxLimit
   }
+
+  // MARK: - Navigation
+
+  fileprivate func showSignupViewController() {
+    self.performSegue(withIdentifier: CouponIdentifier.showSignupViewController.rawValue, sender: nil)
+  }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == CouponIdentifier.showSignupViewController.rawValue,
+       let signupViewController = segue.destination as? SignupViewController {
+      signupViewController.viewModel = SignupViewModel()
+    }
+  }
 }
 
 
@@ -169,5 +189,14 @@ extension LoginViewController: CouponAnimatedTextInputDelegate {
     }
 
     return true
+  }
+}
+
+
+extension Reactive where Base: LoginViewController {
+  var showSignupViewController: Binder<Void> {
+    return Binder(self.base) { view, _ in
+      view.showSignupViewController()
+    }
   }
 }

@@ -11,6 +11,11 @@ import RxSwift
 import RxCocoa
 
 extension UIViewController {
+
+  func createBaseViewController(storyboardType: CouponStoryBoardName, identifierType: CouponIdentifier? = nil) -> BaseViewController? {
+    return self.createViewController(storyboardType: storyboardType, identifierType: identifierType) as? BaseViewController
+  }
+
   func createViewController(storyboardType: CouponStoryBoardName, identifierType: CouponIdentifier? = nil) -> UIViewController {
     return self.createViewController(storyboardName: storyboardType.rawValue, withIdentifier: identifierType?.rawValue)
   }
@@ -48,7 +53,8 @@ extension UIViewController {
   fileprivate func showCustomPopup(data: CustomPopup){
     DispatchQueue.main.async {
       let viewModel: CustomPopupViewModelType = CustomPopupViewModel()
-      let customPopupViewController = CustomPopupViewController(viewModel: viewModel)
+      let customPopupViewController = CustomPopupViewController()
+      customPopupViewController.viewModel = viewModel
       viewModel.inputs.configure.onNext(data)
       self.present(customPopupViewController, animated: true, completion: nil)
     }

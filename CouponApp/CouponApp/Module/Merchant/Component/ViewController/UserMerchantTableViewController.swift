@@ -23,12 +23,11 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
 
   // MARK: - Property
 
-  var merchantList: MerchantList? {
+  private var merchantList: MerchantList? {
     return MerchantController.instance.merchantList
   }
-
-  let viewModel = UserMerchantViewModel()
-  var userCouponList: UserCouponList? // 회원 쿠폰 정보
+  var viewModel: UserMerchantViewModelType?
+  private var userCouponList: UserCouponList? // 회원 쿠폰 정보
   var disposeBag = DisposeBag()
 
   // MARK: - Life Cycle
@@ -41,7 +40,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    self.viewModel.inputs.loadData.onNext(())
+    self.viewModel?.inputs.loadData.onNext(())
   }
 
   override func didReceiveMemoryWarning() {
@@ -64,7 +63,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   }
 
   func bindOutputs() {
-    self.viewModel.outputs?.reload
+    self.viewModel?.outputs?.reload
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] list in
         self?.userCouponList = list
@@ -72,14 +71,14 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
       })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.delete
+    self.viewModel?.outputs?.delete
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] indexPath in
         self?.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
       })
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showCustomPopup
+    self.viewModel?.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
@@ -121,7 +120,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   ) {
     if editingStyle == UITableViewCell.EditingStyle.delete,
        let merchant = self.userCouponList?[indexPath.row] {
-      self.viewModel.inputs.deleteCoupon.onNext((merchantId: merchant.merchantId, indexPath: indexPath))
+      self.viewModel?.inputs.deleteCoupon.onNext((merchantId: merchant.merchantId, indexPath: indexPath))
     }
   }
 
@@ -133,6 +132,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
     if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
        let couponListView = segue.destination as? CouponListViewController,
        let indexPath = sender as? IndexPath {
+      couponListView.viewModel = CouponListViewModel()
       couponListView.userCoupon = self.userCouponList?[indexPath.row]
       couponListView.merchant = self.merchantList?.index(
         merchantId: couponListView.userCoupon?.merchantId

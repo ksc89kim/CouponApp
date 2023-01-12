@@ -16,8 +16,8 @@ class MerchantTableViewController: UITableViewController {
     guard let merchant = selectedCell.merchant else { return }
 
     let viewModel = MerchantDetailViewModel()
-    let detailViewController = MerchantDetailViewController(viewModel: viewModel)
-
+    let detailViewController = MerchantDetailViewController()
+    detailViewController.viewModel = viewModel
     var cellTopViewFrame = selectedCell.topView.frame
     cellTopViewFrame.origin.y = selectedCell.frame.origin.y - self.tableView.contentOffset.y + MerchantTableViewCell.Metric.headerTopHeight
 

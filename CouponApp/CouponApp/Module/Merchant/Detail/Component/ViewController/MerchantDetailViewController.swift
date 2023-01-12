@@ -79,12 +79,13 @@ final class MerchantDetailViewController: BaseViewController {
       }
     }
   }
-  private let viewModel: MerchantDetailViewModelType
+  private var merchantDetailViewModel: MerchantDetailViewModelType? {
+    return self.viewModel as? MerchantDetailViewModelType
+  }
 
   //MARK: - Init
 
-  init(viewModel: MerchantDetailViewModelType) {
-    self.viewModel = viewModel
+  init() {
     super.init(nibType: .merchantDetailViewController)
     self.modalPresentationStyle = .custom
     self.transitioningDelegate = self
@@ -108,50 +109,54 @@ final class MerchantDetailViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
+    guard let merchantDetailViewModel = self.merchantDetailViewModel else {
+      return
+    }
+
     self.actionButton.rx.tap
-      .bind(to: self.viewModel.inputs.actionFromBottom)
+      .bind(to: merchantDetailViewModel.inputs.actionFromBottom)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?.cellTopViewFrame
+    self.merchantDetailViewModel?.outputs?.cellTopViewFrame
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.cellTopViewFrame)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.cellCornerRadius
+    self.merchantDetailViewModel?.outputs?.cellCornerRadius
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.cellCornerRadius)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.title
+    self.merchantDetailViewModel?.outputs?.title
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.title)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.buttonTitle
+    self.merchantDetailViewModel?.outputs?.buttonTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.actionButton.rx.title(for: .normal))
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.introduce
+    self.merchantDetailViewModel?.outputs?.introduce
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.introduceLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.headerBackgroundColor
+    self.merchantDetailViewModel?.outputs?.headerBackgroundColor
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.headerView.rx.backgroundColor)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.headerImageURL
+    self.merchantDetailViewModel?.outputs?.headerImageURL
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.headerImageURL)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showCustomPopup
+    self.merchantDetailViewModel?.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)

@@ -40,7 +40,9 @@ final class SignupViewController: BaseViewController {
 
   // MARK: - Property
 
-  private let viewModel = SignupViewModel()
+  private var signupViewModel: SignupViewModelType? {
+    return self.viewModel as? SignupViewModelType
+  }
 
   // MARK: - Life Cycle
 
@@ -86,33 +88,37 @@ final class SignupViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
+    guard let signupViewModel = self.signupViewModel else {
+      return
+    }
+
     self.nameTextInput.rx.text
-      .bind(to: self.viewModel.inputs.userName)
+      .bind(to: signupViewModel.inputs.userName)
       .disposed(by: self.disposeBag)
 
     self.phoneNumberTextInput.rx.text
-      .bind(to: self.viewModel.inputs.userPhoneNumber)
+      .bind(to: signupViewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: self.viewModel.inputs.userPassword)
+      .bind(to: signupViewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.continueButton.rx.tap
       .asObservable()
-      .bind(to: self.viewModel.inputs.onSingup)
+      .bind(to: signupViewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?.showCustomPopup
+    self.signupViewModel?.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showMainViewController
+    self.signupViewModel?.outputs?.showMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)

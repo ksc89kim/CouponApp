@@ -16,6 +16,9 @@ open class BaseViewController: UIViewController, Bindable {
 
   let disposeBag = DisposeBag()
 
+  var viewModel: ViewModelType?
+
+
   // MARK: - Init
 
   init(nibType: CouponNibName) {
@@ -25,7 +28,7 @@ open class BaseViewController: UIViewController, Bindable {
   public required init?(coder: NSCoder) {
     super.init(coder: coder)
   }
-  
+
   // MARK: - Life Cycle
 
   open override func viewDidLoad() {
@@ -36,37 +39,33 @@ open class BaseViewController: UIViewController, Bindable {
   // MARK: - Bind
 
   open func bindInputs() {
-
   }
 
   open func bindOutputs() {
-
   }
 
   // MARK: - Etc Method
 
   fileprivate func showMainViewController() {
-    let mainViewController: UIViewController = self.createViewController(storyboardType: .main)
+    let mainViewController = self.createViewController(storyboardType: .main)
     mainViewController.modalPresentationStyle = .fullScreen
+    mainViewController.children.forEach { (viewController: UIViewController) in
+      viewController.children.forEach { (viewController: UIViewController) in
+        if let userMerchantViewController = viewController as?  UserMerchantTableViewController {
+          userMerchantViewController.viewModel = UserMerchantViewModel()
+        }
+      }
+    }
     self.present(mainViewController, animated: true, completion: nil)
-  }
-
-  fileprivate func showSignupViewController() {
-    self.performSegue(withIdentifier: CouponIdentifier.showSignupViewController.rawValue, sender: nil)
   }
 }
 
 
 extension Reactive where Base: BaseViewController {
+
   var showMainViewController: Binder<Void> {
     return Binder(self.base) { view, _ in
       view.showMainViewController()
-    }
-  }
-
-  var showSignupViewController: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.showSignupViewController()
     }
   }
 }

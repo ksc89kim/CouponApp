@@ -22,12 +22,13 @@ final class CustomPopupViewController: BaseViewController {
 
   // MARK: - Property
 
-  private let viewModel: CustomPopupViewModelType
+  private var customPopupViewModel: CustomPopupViewModelType? {
+    return self.viewModel as? CustomPopupViewModelType
+  }
 
   // MARK: - Init
 
-  init(viewModel: CustomPopupViewModelType) {
-    self.viewModel = viewModel
+  init() {
     super.init(nibType: .customPopupViewController)
     self.modalPresentationStyle = .overCurrentContext
     self.modalTransitionStyle = .crossDissolve
@@ -42,7 +43,7 @@ final class CustomPopupViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewModel.inputs.viewDidLoad.onNext(())
+    self.customPopupViewModel?.inputs.viewDidLoad.onNext(())
   }
 
   override func didReceiveMemoryWarning() {
@@ -55,35 +56,39 @@ final class CustomPopupViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
+    guard let customPopupViewModel = self.customPopupViewModel else {
+      return
+    }
+
     self.okButton.rx.tap
-      .bind(to: self.viewModel.inputs.onOk)
+      .bind(to: customPopupViewModel.inputs.onOk)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?.close
+    self.customPopupViewModel?.outputs?.close
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.close)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.showAnimation
+    self.customPopupViewModel?.outputs?.showAnimation
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showAnimation)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.title
+    self.customPopupViewModel?.outputs?.title
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.titleLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.content
+    self.customPopupViewModel?.outputs?.content
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.contentLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.popupViewAlpha
+    self.customPopupViewModel?.outputs?.popupViewAlpha
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.popupView.rx.alpha)
       .disposed(by: self.disposeBag)

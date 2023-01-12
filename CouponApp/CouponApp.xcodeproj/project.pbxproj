@@ -540,7 +540,7 @@
 		27E88110296CF4210096AE76 /* Component */ = {
 			isa = PBXGroup;
 			children = (
-				27E88112296CF4400096AE76 /* View */,
+				27E88112296CF4400096AE76 /* ViewController */,
 				27E88111296CF42B0096AE76 /* ViewModel */,
 			);
 			path = Component;
@@ -557,12 +557,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		27E88112296CF4400096AE76 /* View */ = {
+		27E88112296CF4400096AE76 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				CC09A4FB200DBF5100B512C0 /* SignupViewController.swift */,
 			);
-			path = View;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		27E88113296CF4A00096AE76 /* CustomPopup */ = {

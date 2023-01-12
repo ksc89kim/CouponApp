@@ -18,16 +18,17 @@ final class IntroViewController: BaseViewController {
   @IBOutlet weak var stampView: IntroStampView!
   @IBOutlet weak var backgroundView: UIView!
 
-  // MARK: - Property
-
-  let viewModel = IntroViewModel()
+  private var introViewModel: IntroViewModelType? {
+    return self.viewModel as? IntroViewModelType
+  }
 
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.viewModel.inputs.loadMerchantData.onNext(())
+
+    self.introViewModel?.inputs.loadMerchantData.onNext(())
 
     self.stampView.completion = { [weak self] in
       self?.fadeAnimation()
@@ -43,13 +44,13 @@ final class IntroViewController: BaseViewController {
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?
+    self.introViewModel?.outputs?
       .addLoginViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?
+    self.introViewModel?.outputs?
       .addMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addMainViewController)
@@ -81,12 +82,14 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let loginViewController =  self.createViewController(
+    let loginViewController = self.createBaseViewController(
       storyboardType: .start,
       identifierType: .loginNavigationController
     )
-
-    self.addViewController(viewController: loginViewController, bringSubView: bringSubView)
+    loginViewController?.viewModel = LoginViewModel()
+    if let viewController = loginViewController {
+      self.addViewController(viewController: viewController, bringSubView: bringSubView)
+    }
   }
 
   fileprivate func addMainViewController() {
@@ -95,8 +98,15 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let mainViewcontroller = self.createViewController(storyboardType: .main)
-    self.addViewController(viewController: mainViewcontroller, bringSubView: bringSubView)
+    let mainViewController = self.createViewController(storyboardType: .main)
+    mainViewController.children.forEach { (viewController: UIViewController) in
+      viewController.children.forEach { (viewController: UIViewController) in
+        if let userMerchantViewController = viewController as?  UserMerchantTableViewController {
+          userMerchantViewController.viewModel = UserMerchantViewModel()
+        }
+      }
+    }
+    self.addViewController(viewController: mainViewController, bringSubView: bringSubView)
   }
 }
 

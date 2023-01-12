@@ -52,7 +52,9 @@ final class CouponListViewController: BaseViewController {
 
   // MARK: - Property
 
-  private let viewModel = CouponListViewModel()
+  private var couponListViewModel: CouponListViewModelType? {
+    return self.viewModel as? CouponListViewModelType
+  }
   private var selectedCouponIndex: Int = 0
   private let dashLineLayer = CAShapeLayer()
   var userCoupon: UserCoupon?
@@ -70,7 +72,7 @@ final class CouponListViewController: BaseViewController {
     super.viewDidLoad()
 
     if let userCoupon = self.userCoupon, let merchant = self.merchant {
-      self.viewModel.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
+      self.couponListViewModel?.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
     }
     self.setUI()
   }
@@ -85,34 +87,38 @@ final class CouponListViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
+    guard let couponListViewModel = self.couponListViewModel else {
+      return
+    }
+
     self.requestButton.rx.tap
-      .bind(to: self.viewModel.inputs.onAddCoupon)
+      .bind(to: couponListViewModel.inputs.onAddCoupon)
       .disposed(by: self.disposeBag)
 
     self.useButton.rx.tap
-      .bind(to: self.viewModel.inputs.onUseCoupon)
+      .bind(to: couponListViewModel.inputs.onUseCoupon)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.viewModel.outputs?.navigationTitle
+    self.couponListViewModel?.outputs?.navigationTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.navigationItem.rx.title)
       .disposed(by: self.disposeBag)
     
-    self.viewModel.outputs?.showCustomPopup
+    self.couponListViewModel?.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.reload
+    self.couponListViewModel?.outputs?.reload
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.reload)
       .disposed(by: self.disposeBag)
 
-    self.viewModel.outputs?.selectedCouponIndex
+    self.couponListViewModel?.outputs?.selectedCouponIndex
       .subscribe(onNext: { [weak self] (index: Int) in
         self?.selectedCouponIndex = index
       })
