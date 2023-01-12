@@ -73,12 +73,9 @@ final class SignupViewModel: SignupViewModelType {
 
     let showMainViewController = self.showMainViewController(loadedUser: loadedUser)
 
-    let savePhoneNumber = self.savePhoneNumber(loadedUser: loadedUser)
-
     self.outputs = SignupOutputs(
       showCustomPopup: showCustomPopup,
-      showMainViewController: showMainViewController,
-      savePhoneNumber: savePhoneNumber
+      showMainViewController: showMainViewController
     )
   }
 
@@ -170,12 +167,6 @@ final class SignupViewModel: SignupViewModelType {
       .map { _ in }
   }
 
-  private func savePhoneNumber(loadedUser: Observable<Response>) -> Observable<String> {
-    return loadedUser
-      .filter { $0.isSuccess }
-      .map { $0.phoneNumber }
-  }
-
   private func signup(textInput: TextInput) -> Observable<Response> {
     let userName = textInput.name
       .filterNil()
@@ -188,7 +179,6 @@ final class SignupViewModel: SignupViewModelType {
     let password = textInput.password
       .filterNil()
       .filter { $0.isNotEmpty }
-
 
     return Observable.zip(
       userName,
@@ -221,6 +211,9 @@ final class SignupViewModel: SignupViewModelType {
           .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
       }
       .withLatestFrom(afterSignup) { .init(isSuccess: $0, phoneNumber: $1.phoneNumber) }
+      .do(onNext: { (response: Response) in
+        Phone().saveNumber(response.phoneNumber)
+      })
       .share()
   }
 

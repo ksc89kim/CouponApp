@@ -69,12 +69,9 @@ final class LoginViewModel: LoginViewModelType {
 
     let showSignupViewController = self.showSignupViewController(onSignup: subject.onSingup)
 
-    let savePhoneNumber = self.savePhoneNumber(afterLogin: afterLogin)
-
     self.outputs = LoginOutputs(
       showCustomPopup: showCustomPopup,
       showMainViewController: showMainViewController,
-      savePhoneNumber: savePhoneNumber,
       showSignupViewController: showSignupViewController
     )
   }
@@ -151,12 +148,6 @@ final class LoginViewModel: LoginViewModelType {
       .map { _ in }
   }
 
-  private func savePhoneNumber(afterLogin: Observable<Response>) -> Observable<String> {
-    return afterLogin
-      .filter { $0.isSuccess }
-      .map { $0.phoneNumber }
-  }
-
   private func login(textInput: TextInput) -> Observable<Response> {
     let phoneNumber = textInput.phoneNumber
       .filterNil()
@@ -176,6 +167,9 @@ final class LoginViewModel: LoginViewModelType {
         .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
     }
     .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }
+    .do(onNext: { (response: Response) in
+      Phone().saveNumber(response.phoneNumber)
+    })
     .share()
   }
 

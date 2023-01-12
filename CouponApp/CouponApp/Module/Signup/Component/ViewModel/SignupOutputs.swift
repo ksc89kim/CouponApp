@@ -13,12 +13,10 @@ import RxCocoa
 protocol SignupOutputType: OutputType {
   var showCustomPopup: Observable<CustomPopup> { get }
   var showMainViewController: Observable<Void> { get }
-  var savePhoneNumber: Observable<String> { get }
 }
 
 
 struct SignupOutputs: SignupOutputType {
   let showCustomPopup: Observable<CustomPopup>
   let showMainViewController: Observable<Void>
-  let savePhoneNumber: Observable<String>
 }

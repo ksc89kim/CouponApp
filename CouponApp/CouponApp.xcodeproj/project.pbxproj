@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		273B8B302966AF8300C86502 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B8B2F2966AF8300C86502 /* Me.swift */; };
+		2760F65A296FA37D001990A6 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760F659296FA37D001990A6 /* Phone.swift */; };
 		2776F64E2966BEEC00165550 /* RepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776F64D2966BEEC00165550 /* RepositoryResponse.swift */; };
 		278EC51A296BD1FF0075344A /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */; };
 		27E88109296CF2D90096AE76 /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
@@ -210,6 +211,7 @@
 
 /* Begin PBXFileReference section */
 		273B8B2F2966AF8300C86502 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		2760F659296FA37D001990A6 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		2776F64D2966BEEC00165550 /* RepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResponse.swift; sourceTree = "<group>"; };
 		27EECA4A2967A17100067AAD /* MerchantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantController.swift; sourceTree = "<group>"; };
 		27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Merchant+FMDB.swift"; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 		273B8B2C2966AEBB00C86502 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				2760F657296FA364001990A6 /* Phone */,
 				27E88113296CF4A00096AE76 /* CustomPopup */,
 				27E8810F296CF3D10096AE76 /* Signup */,
 				27E8810A296CF2E70096AE76 /* Login */,
@@ -397,6 +400,14 @@
 				273B8B2F2966AF8300C86502 /* Me.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		2760F657296FA364001990A6 /* Phone */ = {
+			isa = PBXGroup;
+			children = (
+				2760F659296FA37D001990A6 /* Phone.swift */,
+			);
+			path = Phone;
 			sourceTree = "<group>";
 		};
 		278EC519296BD1D10075344A /* Model */ = {
@@ -1174,6 +1185,7 @@
 				A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */,
 				A46A574425A9C05C001251EE /* MerchantDetailViewModel.swift in Sources */,
 				A4A61F9726C2415500809A44 /* CustomPopupOutputs.swift in Sources */,
+				2760F65A296FA37D001990A6 /* Phone.swift in Sources */,
 				A405815022E9E4D90022A48C /* MerchantAnimatedTextLayer.swift in Sources */,
 				A4B7748C26C16BB5000954B9 /* LoginViewModelType.swift in Sources */,
 				CC7BE8CC200F19D900DB8E09 /* DefualtKey.swift in Sources */,

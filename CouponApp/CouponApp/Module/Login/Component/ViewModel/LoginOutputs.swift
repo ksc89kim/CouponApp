@@ -13,7 +13,6 @@ import RxCocoa
 protocol LoginOutputType: OutputType {
   var showCustomPopup: Observable<CustomPopup> { get }
   var showMainViewController: Observable<Void> { get }
-  var savePhoneNumber: Observable<String> { get }
   var showSignupViewController: Observable<Void> { get }
 }
 
@@ -21,6 +20,5 @@ protocol LoginOutputType: OutputType {
 struct LoginOutputs: LoginOutputType {
   let showCustomPopup: Observable<CustomPopup>
   let showMainViewController: Observable<Void>
-  let savePhoneNumber: Observable<String>
   let showSignupViewController: Observable<Void>
 }

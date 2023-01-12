@@ -78,14 +78,10 @@ final class IntroViewModel: IntroViewModelType {
   private func loadPhoneNumber(merchant: Observable<Bool>) -> Observable<String?> {
     return merchant
        .filter { $0 }
-       .map { [weak self] _ -> String? in
-         return self?.getPhoneNumber()
+       .map { _ -> String? in
+         return Phone().loadNumber()
      }
     .share()
-  }
-
-  private func getPhoneNumber() -> String? {
-    return UserDefaults.standard.string(forKey: DefaultKey.phoneNumber.rawValue)
   }
 
   private func loadUserData(phoneNumber: Observable<String?>) -> Observable<Bool> {

@@ -121,12 +121,6 @@ final class LoginViewController: BaseViewController {
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showSignupViewController)
       .disposed(by: self.disposeBag)
-
-    self.viewModel.outputs?.savePhoneNumber
-      .subscribe(onNext: { phoneNumber in
-        UserDefaults.standard.set(phoneNumber, forKey: DefaultKey.phoneNumber.rawValue)
-      })
-      .disposed(by: self.disposeBag)
   }
 
   // MARK: - Get Method
