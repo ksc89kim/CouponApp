@@ -11,9 +11,14 @@ import Foundation
 struct CouponSqlite: RepositoryType {
   func signup(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name, complete: complete)
+      let isSuccessed = try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.networkError))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
@@ -21,9 +26,13 @@ struct CouponSqlite: RepositoryType {
     do {
       let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
       let user = User(id: userId)
-      complete(.init(isSuccessed: user.isVaildID, data: user))
+      if user.isVaildID {
+        complete(.success(.init(data: user)))
+      } else {
+        complete(.failure(DefaultError.notVaildUser))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
@@ -31,16 +40,20 @@ struct CouponSqlite: RepositoryType {
     do {
       let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
       let user = User(id: userId)
-      complete(.init(isSuccessed: user.isVaildID, data: user))
+      if user.isVaildID {
+        complete(.success(.init(data: user)))
+      } else {
+        complete(.failure(DefaultError.notVaildUser))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
   func getMerchantData(complete: @escaping RepositoryCompletion) {
     do {
       guard var merchantList = try SQLInterface().selectMerchantData() else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
 
@@ -55,50 +68,71 @@ struct CouponSqlite: RepositoryType {
         }
         merchantList[i] = merchant
       }
-      complete(.init(isSuccessed: true, data: merchantList))
+
+      complete(.success(.init(data: merchantList)))
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
   func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().insertCoupon(userId, merchantId, complete: complete)
+      let isSuccessed = try SQLInterface().insertCoupon(userId, merchantId)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.insertError))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
   func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
     do {
       let isUserCoupon = try SQLInterface().isUserCoupon(userId, merchantId)
-      complete(.init(isSuccessed: isUserCoupon, data: nil))
+      if isUserCoupon {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.noCouponError))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
   func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping RepositoryCompletion) {
     do{
-      try SQLInterface().deleteCounpon(userId, merchantId, complete: complete)
+      let isSuccessed = try SQLInterface().deleteCounpon(userId, merchantId)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.deleteError))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
   
   func getUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
     do {
-      complete(.init(isSuccessed: true, data: try SQLInterface().selectUserCouponData(userId)))
+      let data = try SQLInterface().selectUserCouponData(userId)
+      complete(.success(.init(data: data)))
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 
   func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     do {
-      try SQLInterface().updateCouponCount(userId, merchantId, couponCount, complete: complete)
+      let isSuccessed = try SQLInterface().updateCouponCount(userId, merchantId, couponCount)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.networkError))
+      }
     } catch {
-      self.fail(complete: complete)
+      complete(.failure(error))
     }
   }
 }

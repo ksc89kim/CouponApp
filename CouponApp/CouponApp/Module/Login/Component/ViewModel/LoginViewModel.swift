@@ -19,6 +19,7 @@ final class LoginViewModel: LoginViewModelType {
     let onLogin = PublishSubject<Void>()
     let userPhoneNumber = PublishSubject<String?>()
     let userPassword = PublishSubject<String?>()
+    let error = PublishSubject<Error>()
   }
 
   private enum Text {
@@ -31,11 +32,6 @@ final class LoginViewModel: LoginViewModelType {
   private struct TextInput {
     let phoneNumber: Observable<String?>
     let password: Observable<String?>
-  }
-
-  private struct Response {
-    let isSuccess: Bool
-    let phoneNumber: String
   }
 
   // MARK: - Property
@@ -58,11 +54,11 @@ final class LoginViewModel: LoginViewModelType {
 
     let textInput = self.getTextInput(subject: subject)
 
-    let afterLogin = self.login(textInput: textInput)
+    let afterLogin = self.login(textInput: textInput, errorObserver: subject.error.asObserver())
 
     let showCustomPopup = self.showCustomPopup(
       textInput: textInput,
-      afterLogin: afterLogin
+      error: subject.error
     )
 
     let showMainViewController = self.showMainViewController(afterLogin: afterLogin)
@@ -95,10 +91,10 @@ final class LoginViewModel: LoginViewModelType {
       .share()
   }
 
-  private func showCustomPopup(textInput: TextInput, afterLogin: Observable<Response>) -> Observable<CustomPopup> {
+  private func showCustomPopup(textInput: TextInput, error: Observable<Error>) -> Observable<CustomPopup> {
     return Observable.merge(
       self.inputFaileMessage(textInput: textInput),
-      self.networkFailMessage(afterLogin: afterLogin)
+      self.networkFailMessage(error: error)
     )
     .map { message in
       .init(
@@ -128,18 +124,13 @@ final class LoginViewModel: LoginViewModelType {
     }
   }
 
-  private func networkFailMessage(afterLogin: Observable<Response>) -> Observable<String> {
-    let loginFail = afterLogin
-      .filter { !$0.isSuccess }
-      .map { _ in }
-
-    return loginFail
-    .map { _ in Text.phoneNumberOrPasswordFail.localized }
+  private func networkFailMessage(error: Observable<Error>) -> Observable<String> {
+    return error
+      .map { _ in Text.phoneNumberOrPasswordFail.localized }
   }
 
-  private func showMainViewController(afterLogin: Observable<Response>) -> Observable<Void> {
+  private func showMainViewController(afterLogin: Observable<String>) -> Observable<Void> {
     return afterLogin
-      .filter { $0.isSuccess }
       .map { _ in }
   }
 
@@ -148,7 +139,7 @@ final class LoginViewModel: LoginViewModelType {
       .map { _ in }
   }
 
-  private func login(textInput: TextInput) -> Observable<Response> {
+  private func login(textInput: TextInput, errorObserver: AnyObserver<Error>) -> Observable<String> {
     let phoneNumber = textInput.phoneNumber
       .filterNil()
       .filter { $0.isNotEmpty }
@@ -161,14 +152,14 @@ final class LoginViewModel: LoginViewModelType {
       phoneNumber,
       password
     )
-    .flatMapLatest { phoneNumber, password -> Observable<Bool> in
+    .flatMapLatest { phoneNumber, password -> Observable<String> in
       return CouponRepository.instance.rx.checkPassword(phoneNumber: phoneNumber, password: password)
         .asObservable()
-        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+        .suppressAndFeedError(into: errorObserver)
+        .map { _ in phoneNumber }
     }
-    .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }
-    .do(onNext: { (response: Response) in
-      Phone().saveNumber(response.phoneNumber)
+    .do(onNext: { (phoneNumber: String) in
+      Phone().saveNumber(phoneNumber)
     })
     .share()
   }

@@ -17,6 +17,7 @@ final class IntroViewModel: IntroViewModelType {
 
   private struct Subject {
     let loadMertchant = PublishSubject<Void>()
+    let error = PublishSubject<Error>()
   }
 
   // MARK: - Property
@@ -36,22 +37,17 @@ final class IntroViewModel: IntroViewModelType {
 
     let loadedPhoneNumber = self.loadPhoneNumber(merchant: loadedMerchant)
 
-    let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber)
+    let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber, errorObserver: subject.error.asObserver())
 
     let addLoginViewController = Observable.merge(
-      loadedMerchant
-        .filter { !$0 }
+      subject.error
         .map { _ in },
       loadedPhoneNumber
         .filter { $0 == nil }
-        .map { _ in },
-      loadedUserData
-        .filter { !$0 }
         .map { _ in }
     )
 
     let addMainViewController = loadedUserData
-      .filter { $0 }
       .map { _ in }
 
     self.outputs = IntroOutputs(
@@ -62,39 +58,38 @@ final class IntroViewModel: IntroViewModelType {
 
   // MARK: - Method
 
-  private func loadMerchant(subject: Subject) -> Observable<Bool> {
+  private func loadMerchant(subject: Subject) -> Observable<RepositoryResponse> {
     return subject.loadMertchant
-      .flatMapLatest { _ -> Observable<Bool> in
+      .flatMapLatest { _ -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
           .do(onNext: { (response: RepositoryResponse) in
             MerchantController.instance.merchantList = response.data as? MerchantList
           })
-          .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+          .suppressAndFeedError(into: subject.error)
     }
     .share()
   }
 
-  private func loadPhoneNumber(merchant: Observable<Bool>) -> Observable<String?> {
+  private func loadPhoneNumber(merchant: Observable<RepositoryResponse>) -> Observable<String?> {
     return merchant
-       .filter { $0 }
        .map { _ -> String? in
          return Phone().loadNumber()
      }
     .share()
   }
 
-  private func loadUserData(phoneNumber: Observable<String?>) -> Observable<Bool> {
+  private func loadUserData(phoneNumber: Observable<String?>, errorObserver: AnyObserver<Error>) -> Observable<RepositoryResponse> {
     return phoneNumber
       .filterNil()
-      .flatMapLatest { phoneNumber -> Observable<Bool> in
+      .flatMapLatest { phoneNumber -> Observable<RepositoryResponse> in
         return  CouponRepository.instance.rx.loadUserData(phoneNumber: phoneNumber)
           .asObservable()
           .do(onNext: { (response: RepositoryResponse) in
             guard let user = response.data as? User else { return }
             Me.instance.update(user: user)
           })
-          .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
-    }
+          .suppressAndFeedError(into: errorObserver)
+      }
   }
 }

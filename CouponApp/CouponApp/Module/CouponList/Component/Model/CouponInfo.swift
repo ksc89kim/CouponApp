@@ -11,18 +11,15 @@ import Foundation
 struct CouponInfo {
   let userCoupon: UserCoupon
   let merchant: Merchant
-  let isNetworkSuccess: Bool
 
   init(userCoupon: UserCoupon, merchant: Merchant) {
     self.userCoupon = userCoupon
     self.merchant = merchant
-    self.isNetworkSuccess = false
   }
 
-  init(couponInfo: CouponInfo, isNetworkSuccess: Bool) {
+  init(couponInfo: CouponInfo) {
     self.userCoupon = couponInfo.userCoupon
     self.merchant = couponInfo.merchant
-    self.isNetworkSuccess = isNetworkSuccess
   }
 
   func isAvailableAddCoupon() -> Bool {

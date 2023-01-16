@@ -17,6 +17,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   private struct Subject {
     let loadData = PublishSubject<Void>()
     let deleteCoupon = PublishSubject<(merchantId: Int, indexPath: IndexPath)>()
+    let error = PublishSubject<Error>()
   }
 
   enum Text {
@@ -40,20 +41,19 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
     )
 
     let loadedData = self.loadData(subject: subject)
-    let reload = self.reload(loadedData: loadedData)
 
     let deleteCoupon = self.deleteCoupon(subject: subject)
     let delete = self.delete(
-      reload: reload,
+      loadedData: loadedData,
       deleteCoupon: deleteCoupon
     )
 
     let showCustomPopup = self.showCustomPopup(
-      deleteCoupon: deleteCoupon
+      error: subject.error.asObservable()
     )
 
     self.outputs = UserMerchantOutputs(
-      reload: reload,
+      reload: loadedData,
       delete: delete,
       showCustomPopup: showCustomPopup
     )
@@ -61,46 +61,38 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
 
   // MARK: - Method
 
-  private func loadData(subject: Subject) -> Observable<(isSuccessed: Bool, list: UserCouponList?)> {
+  private func loadData(subject: Subject) -> Observable<UserCouponList> {
     return subject.loadData
       .withLatestFrom(Me.instance.rx.userID)
-      .flatMapLatest { id -> Observable<(isSuccessed: Bool, list: UserCouponList?)> in
+      .flatMapLatest { id -> Observable<UserCouponList> in
         return CouponRepository.instance.rx.loadUserCouponData(userId: id)
           .asObservable()
-          .map { (isSuccessed: $0.isSuccessed, list: $0.data as? UserCouponList) }
+          .suppressAndFeedError(into: subject.error)
+          .compactMap { $0.data as? UserCouponList }
       }
-  }
-
-  private func reload(
-    loadedData: Observable<(isSuccessed: Bool, list: UserCouponList?)>
-  ) -> Observable<UserCouponList> {
-    return loadedData
-      .filter{ $0.isSuccessed }
-      .map { $0.list }
-      .filterNil()
       .share()
   }
 
-  private func deleteCoupon(subject: Subject) -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> {
+  private func deleteCoupon(subject: Subject) -> Observable<IndexPath> {
     return subject.deleteCoupon
       .withLatestFrom(Me.instance.rx.userID) { value, id in
         return (value.merchantId, value.indexPath, id)
       }
-      .flatMapLatest { merchantId, indexPath, id -> Observable<(isSuccessed: Bool, indexPath: IndexPath)> in
+      .flatMapLatest { merchantId, indexPath, id -> Observable<IndexPath> in
          return CouponRepository.instance.rx.deleteUserCoupon(userId: id, merchantId: merchantId)
         .asObservable()
-        .map { (isSuccessed: $0.isSuccessed, indexPath: indexPath) }
+        .suppressAndFeedError(into: subject.error)
+        .map { _ in indexPath }
       }
       .share()
   }
 
   private func delete(
-    reload: Observable<UserCouponList>,
-    deleteCoupon: Observable<(isSuccessed: Bool, indexPath: IndexPath)>
+    loadedData: Observable<UserCouponList>,
+    deleteCoupon: Observable<IndexPath>
   ) -> Observable<IndexPath> {
     return deleteCoupon
-      .filter { $0.isSuccessed }
-      .withLatestFrom(reload) { (list: $1, indexPath: $0.indexPath) }
+      .withLatestFrom(loadedData) { (list: $1, indexPath: $0) }
       .do(onNext: { list, indexPath in
         var list = list
         list.remove(indexPath.row)
@@ -108,9 +100,8 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
       .map { $0.indexPath }
   }
 
-  private func showCustomPopup(deleteCoupon: Observable<(isSuccessed: Bool, indexPath: IndexPath)>) -> Observable<CustomPopup> {
-    return deleteCoupon
-      .filter { !$0.isSuccessed }
+  private func showCustomPopup(error: Observable<Error>) -> Observable<CustomPopup> {
+    return error
       .map { _ in
         return CustomPopup(
           title: Text.deleteCouponFailTitle,

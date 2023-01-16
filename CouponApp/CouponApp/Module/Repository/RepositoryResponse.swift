@@ -12,7 +12,5 @@ struct RepositoryResponse {
 
   // MARK: - Property
 
-  let isSuccessed: Bool
-
   let data: Codable?
 }

@@ -19,6 +19,7 @@ final class SignupViewModel: SignupViewModelType {
     let userName = PublishSubject<String?>()
     let userPhoneNumber = PublishSubject<String?>()
     let userPassword = PublishSubject<String?>()
+    let error = PublishSubject<Error>()
   }
 
   private enum Text {
@@ -33,11 +34,6 @@ final class SignupViewModel: SignupViewModelType {
     let name: Observable<String?>
     let phoneNumber: Observable<String?>
     let password: Observable<String?>
-  }
-
-  private struct Response {
-    let isSuccess: Bool
-    let phoneNumber: String
   }
 
   // MARK: - Property
@@ -61,14 +57,13 @@ final class SignupViewModel: SignupViewModelType {
 
     let textInput = self.getTextInput(onSignup: subject.onSingup.asObservable(), subject: subject)
 
-    let afterSignup = self.signup(textInput: textInput)
+    let afterSignup = self.signup(textInput: textInput, errorObserver: subject.error.asObserver())
 
-    let loadedUser = self.loadUser(afterSignup: afterSignup)
+    let loadedUser = self.loadUser(afterSignup: afterSignup, errorObserver: subject.error.asObserver())
 
     let showCustomPopup = self.showCustomPopup(
       textInput: textInput,
-      afterSignup: afterSignup,
-      loadedUser: loadedUser
+      error: subject.error.asObservable()
     )
 
     let showMainViewController = self.showMainViewController(loadedUser: loadedUser)
@@ -102,16 +97,12 @@ final class SignupViewModel: SignupViewModelType {
 
   private func showCustomPopup(
     textInput: TextInput,
-    afterSignup: Observable<Response>,
-    loadedUser: Observable<Response>
+    error: Observable<Error>
   ) -> Observable<CustomPopup> {
 
     return Observable.merge(
       self.inputFaileMessage(textInput: textInput),
-      self.networkFailMessage(
-        afterSignup: afterSignup,
-        loadedUser: loadedUser
-      )
+      self.networkFailMessage(error: error)
     )
     .map { message in
       .init(
@@ -145,29 +136,17 @@ final class SignupViewModel: SignupViewModelType {
     }
   }
 
-  private func networkFailMessage(afterSignup: Observable<Response>, loadedUser: Observable<Response>) -> Observable<String> {
-    let signupFail = afterSignup
-      .filter { !$0.isSuccess }
-      .map { _ in }
-
-    let loadedUserFail = loadedUser
-      .filter { !$0.isSuccess }
-      .map { _ in }
-
-    return Observable.merge(
-      signupFail,
-      loadedUserFail
-    )
+  private func networkFailMessage(error: Observable<Error>) -> Observable<String> {
+    return error
     .map { _ in Text.signupFailContent.localized }
   }
 
-  private func showMainViewController(loadedUser: Observable<Response>) -> Observable<Void> {
+  private func showMainViewController(loadedUser: Observable<String>) -> Observable<Void> {
     return loadedUser
-      .filter { $0.isSuccess }
       .map { _ in }
   }
 
-  private func signup(textInput: TextInput) -> Observable<Response> {
+  private func signup(textInput: TextInput, errorObserver: AnyObserver<Error>) -> Observable<String> {
     let userName = textInput.name
       .filterNil()
       .filter { $0.isNotEmpty }
@@ -185,34 +164,33 @@ final class SignupViewModel: SignupViewModelType {
       phoneNumber,
       password
     )
-    .flatMapLatest { name, phoneNumber, password -> Observable<Bool> in
+    .flatMapLatest { name, phoneNumber, password -> Observable<String> in
       return CouponRepository.instance.rx.signup(
         phoneNumber: phoneNumber,
         password: password,
         name: name
       )
       .asObservable()
-      .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+      .suppressAndFeedError(into: errorObserver)
+      .map { _ in  phoneNumber}
     }
-    .withLatestFrom(phoneNumber) { .init(isSuccess: $0, phoneNumber: $1) }
     .share()
   }
 
-  private func loadUser(afterSignup: Observable<Response>) -> Observable<Response> {
+  private func loadUser(afterSignup: Observable<String>, errorObserver: AnyObserver<Error>) -> Observable<String> {
     return afterSignup
-      .filter { $0.isSuccess }
-      .flatMapLatest { signup -> Observable<Bool> in
-        return CouponRepository.instance.rx.loadUserData(phoneNumber: signup.phoneNumber)
+      .flatMapLatest { phoneNumber -> Observable<String> in
+        return CouponRepository.instance.rx.loadUserData(phoneNumber: phoneNumber)
           .asObservable()
           .do(onNext: { (response: RepositoryResponse) in
             guard let user = response.data as? User else { return }
             Me.instance.update(user: user)
           })
-          .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+          .suppressAndFeedError(into: errorObserver)
+          .map { _ in phoneNumber }
       }
-      .withLatestFrom(afterSignup) { .init(isSuccess: $0, phoneNumber: $1.phoneNumber) }
-      .do(onNext: { (response: Response) in
-        Phone().saveNumber(response.phoneNumber)
+      .do(onNext: { (phoneNumber: String) in
+        Phone().saveNumber(phoneNumber)
       })
       .share()
   }

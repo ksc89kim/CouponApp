@@ -18,6 +18,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     let merchantDetail = BehaviorSubject<MerchantDetail?>(value: nil)
     let actionFromBottom = PublishSubject<Void>()
     let headerViewSize = PublishSubject<CGSize>()
+    let error = PublishSubject<Error>()
   }
 
   private enum Text {
@@ -68,7 +69,8 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
 
     let showCustomPopup = self.showCustomPopup(
       insertCoupon: insertCoupon,
-      deleteCoupon: deleteCoupon
+      deleteCoupon: deleteCoupon,
+      error: subject.error
     )
 
     self.outputs = MerchantDetailOutputs(
@@ -117,18 +119,19 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     return self.isUserCoupon.map { $0 ? Text.delete : Text.insert }
   }
 
-  private func checkUser(subject: Subject) -> Observable<Bool> {
+  private func checkUser(subject: Subject) -> Observable<Void> {
     return self.merchantDetail(subject: subject)
       .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
         return (merchantDetail, id)
       }
-      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
+      .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.checkUserCoupon(
           userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
-        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+        .suppressAndFeedError(into: subject.error)
+        .map { _ in }
       }
       .share()
   }
@@ -139,68 +142,73 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .share()
   }
 
-  private func deleteCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Bool> {
+  private func deleteCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Void> {
     return onBottomButton
       .filter { $0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
       .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
         return (merchantDetail, id)
       }
-      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
+      .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.deleteUserCoupon(
           userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
-        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+        .suppressAndFeedError(into: subject.error)
+        .map { _ in }
       }
       .share()
   }
 
-  private func insertCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Bool> {
+  private func insertCoupon(onBottomButton: Observable<Bool>, subject: Subject) -> Observable<Void> {
     return onBottomButton
       .filter { !$0 }
       .withLatestFrom(self.merchantDetail(subject: subject))
       .withLatestFrom(Me.instance.rx.userID) { merchantDetail, id in
         return (merchantDetail, id)
       }
-      .flatMapLatest { merchantDetail, id -> Observable<Bool> in
+      .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.insertUserCoupon(
           userId: id,
           merchantId: merchantDetail.merchant.merchantId
         )
         .asObservable()
-        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
+        .suppressAndFeedError(into: subject.error)
+        .map { _ in }
       }
       .share()
   }
 
   private func isUserCoupon(
-    checkUser: Observable<Bool>,
-    insertCoupon: Observable<Bool>,
-    deleteCoupon: Observable<Bool>
+    checkUser: Observable<Void>,
+    insertCoupon: Observable<Void>,
+    deleteCoupon: Observable<Void>
   ) -> Observable<Bool> {
 
+    let isUserCouponFromCheck = checkUser
+      .map { true }
+
     let isUserCouponFromInsert = insertCoupon
-      .map { $0 }
+      .map { true }
 
     let isUserCouponFromDelete = deleteCoupon
-      .map { !$0 }
+      .map { false }
 
     return Observable.merge(
-      checkUser,
+      isUserCouponFromCheck,
       isUserCouponFromInsert,
       isUserCouponFromDelete
     )
   }
 
   private func showCustomPopup(
-    insertCoupon: Observable<Bool>,
-    deleteCoupon: Observable<Bool>
+    insertCoupon: Observable<Void>,
+    deleteCoupon: Observable<Void>,
+    error: Observable<Error>
   ) -> Observable<CustomPopup> {
 
     let popupFromInsertSuccess = insertCoupon
-      .filter { $0 }
       .map { _ in
          CustomPopup(
           title: Text.insertCouponSuccessTitle.localized,
@@ -209,8 +217,12 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          )
       }
 
-    let popupFromInsertFail = insertCoupon
-      .filter { !$0 }
+    let popupFromInsertFail = error
+      .filter { (error: Error) in
+        guard let defaultError = error as? DefaultError,
+              case .insertError = defaultError else { return false }
+        return true
+      }
       .map { _ in
          CustomPopup(
           title: Text.insertCouponFailTitle.localized,
@@ -220,7 +232,6 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       }
 
     let popupFromDeleteSuccess = deleteCoupon
-      .filter { $0 }
       .map { _ in
          CustomPopup(
           title: Text.deleteCouponSuccessTitle.localized,
@@ -229,8 +240,12 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
          )
       }
 
-    let popupFromDeleteFail = deleteCoupon
-      .filter { !$0 }
+    let popupFromDeleteFail = error
+      .filter { (error: Error) in
+        guard let defaultError = error as? DefaultError,
+              case .deleteError = defaultError else { return false }
+        return true
+      }
       .map { _ in
          CustomPopup(
           title: Text.deleteCouponFailTitle.localized,

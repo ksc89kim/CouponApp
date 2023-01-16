@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias RepositoryCompletion = (RepositoryResponse) -> Void
+typealias RepositoryCompletion = (Result<RepositoryResponse, Error>) -> Void
 
 protocol RepositoryType {
   /// 회원가입 하기
@@ -30,14 +30,3 @@ protocol RepositoryType {
   /// 유저 쿠폰 카운트 업데이트 하기.
   func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion)
 }
-
-
-extension RepositoryType {
-
-  // MARK: - Method
-
-  func fail(complete: @escaping RepositoryCompletion) {
-    complete(.init(isSuccessed: false, data: nil))
-  }
-}
-

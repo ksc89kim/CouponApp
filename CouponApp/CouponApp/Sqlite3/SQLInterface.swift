@@ -62,15 +62,10 @@ final class SQLInterface {
   //MARK: - Method
 
   /// 회원가입
-  func insertUser(phoneNumber: String, password: String, name: String, complete: @escaping RepositoryCompletion) throws {
+  func insertUser(phoneNumber: String, password: String, name: String) throws -> Bool {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "insert into user (phone_number,user_pwd,name) values ('\(phoneNumber)','\(password)','\(name)')"
-    let result = contactDb.executeUpdate(query, withArgumentsIn: [])
-    if result {
-      complete(.init(isSuccessed: true, data: nil))
-    } else {
-      complete(.init(isSuccessed: false, data: nil))
-    }
+    return contactDb.executeUpdate(query, withArgumentsIn: [])
   }
 
   /// 회원 데이터 가져 오기
@@ -128,40 +123,24 @@ final class SQLInterface {
   }
 
   /// 회원 쿠폰 횟수 업데이트
-  func updateCouponCount(_  userId: Int, _ merchantId: Int, _ couponCount: Int, complete: @escaping RepositoryCompletion) throws {
+  func updateCouponCount(_  userId: Int, _ merchantId: Int, _ couponCount: Int) throws -> Bool {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "update coupon set coupon_count = \(couponCount)  where user_idx = \(userId) and merchant_idx = \(merchantId)"
-    let result = contactDb.executeUpdate(query, withArgumentsIn: [])
-    if result {
-      complete(.init(isSuccessed: true, data: nil))
-    } else {
-      complete(.init(isSuccessed: false, data: nil))
-    }
+    return contactDb.executeUpdate(query, withArgumentsIn: [])
   }
 
   /// 회원 쿠폰 삭제
-  func deleteCounpon(_  userId: Int, _ merchantId: Int, complete: @escaping RepositoryCompletion) throws {
+  func deleteCounpon(_  userId: Int, _ merchantId: Int) throws -> Bool {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "delete from coupon where user_idx = \(userId) and merchant_idx = \(merchantId)"
-    let result = contactDb.executeUpdate(query, withArgumentsIn: [])
-    if result {
-      complete(.init(isSuccessed: true, data: nil))
-    } else {
-      complete(.init(isSuccessed: false, data: nil))
-    }
+    return contactDb.executeUpdate(query, withArgumentsIn: [])
   }
 
   /// 회원 쿠폰 등록
-  func insertCoupon(_  userId: Int, _ merchantId: Int, complete: @escaping RepositoryCompletion) throws {
+  func insertCoupon(_  userId: Int, _ merchantId: Int) throws -> Bool {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "insert into coupon (merchant_idx, user_idx, coupon_count) values (\(merchantId),\(userId),0)"
-    let result = contactDb.executeUpdate(query, withArgumentsIn: [])
-
-    if result {
-      complete(.init(isSuccessed: true, data: nil))
-    } else {
-      complete(.init(isSuccessed: false, data: nil))
-    }
+    return contactDb.executeUpdate(query, withArgumentsIn: [])
   }
 
   /// 회원 쿠폰 여부

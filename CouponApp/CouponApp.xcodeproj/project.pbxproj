@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		273B8B302966AF8300C86502 /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 273B8B2F2966AF8300C86502 /* Me.swift */; };
+		275FCDC1297001B300848AED /* DefaultError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FCDC0297001B300848AED /* DefaultError.swift */; };
+		275FCDC329700E0900848AED /* RxOperatorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275FCDC229700E0900848AED /* RxOperatorExtensions.swift */; };
 		2760F65A296FA37D001990A6 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760F659296FA37D001990A6 /* Phone.swift */; };
 		2776F64E2966BEEC00165550 /* RepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776F64D2966BEEC00165550 /* RepositoryResponse.swift */; };
 		278EC51A296BD1FF0075344A /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */; };
@@ -211,6 +213,8 @@
 
 /* Begin PBXFileReference section */
 		273B8B2F2966AF8300C86502 /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		275FCDC0297001B300848AED /* DefaultError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultError.swift; sourceTree = "<group>"; };
+		275FCDC229700E0900848AED /* RxOperatorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperatorExtensions.swift; sourceTree = "<group>"; };
 		2760F659296FA37D001990A6 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		2776F64D2966BEEC00165550 /* RepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResponse.swift; sourceTree = "<group>"; };
 		27EECA4A2967A17100067AAD /* MerchantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantController.swift; sourceTree = "<group>"; };
@@ -400,6 +404,14 @@
 				273B8B2F2966AF8300C86502 /* Me.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		275FCDBF2970019800848AED /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				275FCDC0297001B300848AED /* DefaultError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		2760F657296FA364001990A6 /* Phone */ = {
@@ -788,6 +800,7 @@
 		594A011120A825020007503D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				275FCDBF2970019800848AED /* Error */,
 				594A011320A825700007503D /* CouponNetwork.swift */,
 				59BE1D1A21184C0B0082F04E /* CouponRepository.swift */,
 				59BE1D1821184BF40082F04E /* CouponSqlite.swift */,
@@ -896,6 +909,7 @@
 				A40398E0230004B800C052FC /* NSLayoutContraintExtensions.swift */,
 				A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */,
 				A4AD39DF28255EF50083E5C4 /* UINibExtensions.swift */,
+				275FCDC229700E0900848AED /* RxOperatorExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1235,6 +1249,7 @@
 				59978E072109BB8E001F3A8D /* UIImageViewExtensions.swift in Sources */,
 				A42A329626C3F9F00062B7CB /* UserMerchantInputs.swift in Sources */,
 				A4FB5B5B254EA863006C861D /* BaseViewController.swift in Sources */,
+				275FCDC1297001B300848AED /* DefaultError.swift in Sources */,
 				CC09A4FA200D96B600B512C0 /* RoundedButton.swift in Sources */,
 				A492268B281E772000CB5218 /* MerchantAnimatedLabel.swift in Sources */,
 				59978E052109BB1E001F3A8D /* UIColorExtensions.swift in Sources */,
@@ -1247,6 +1262,7 @@
 				A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */,
 				A4B7748826C16BA1000954B9 /* LoginInputs.swift in Sources */,
 				A4AFCE3D25456C6200E92B92 /* RxCouponRepository.swift in Sources */,
+				275FCDC329700E0900848AED /* RxOperatorExtensions.swift in Sources */,
 				A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */,
 				CC09A4FC200DBF5100B512C0 /* SignupViewController.swift in Sources */,
 				2776F64E2966BEEC00165550 /* RepositoryResponse.swift in Sources */,

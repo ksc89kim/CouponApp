@@ -18,6 +18,7 @@ final class CouponListViewModel: CouponListViewModelType {
     let loadCoupon = PublishSubject<CouponInfo>()
     let onAddCoupon = PublishSubject<Void>()
     let onUseCoupon = PublishSubject<Void>()
+    let error = PublishSubject<Error>()
   }
 
   private enum Text {
@@ -35,6 +36,7 @@ final class CouponListViewModel: CouponListViewModelType {
     let couponInfoWhenActionAfter: Observable<CouponInfo>
     let couponCount: Observable<Int>
     let isAvailableRequest: Observable<Bool>
+    let errorObserver: AnyObserver<Error>
   }
 
   private struct CustomPopupParameter {
@@ -42,6 +44,7 @@ final class CouponListViewModel: CouponListViewModelType {
     let isAvailableUseCoupon: Observable<Bool>
     let responseAddCoupon: Observable<CouponInfo>
     let responseUseCoupon: Observable<CouponInfo>
+    let error: Observable<Error>
   }
 
   // MARK: - Property
@@ -77,7 +80,8 @@ final class CouponListViewModel: CouponListViewModelType {
       parameter: .init(
         couponInfoWhenActionAfter: couponInfoWhenOnAdd,
         couponCount: couponInfo.map { $0.userCoupon.couponCount + 1 },
-        isAvailableRequest: isAvailableAddCoupon
+        isAvailableRequest: isAvailableAddCoupon,
+        errorObserver: subject.error.asObserver()
       )
     )
 
@@ -94,7 +98,8 @@ final class CouponListViewModel: CouponListViewModelType {
       parameter: .init(
         couponInfoWhenActionAfter: couponInfoWhenOnUse,
         couponCount: .just(0),
-        isAvailableRequest: isAvailableUseCoupon
+        isAvailableRequest: isAvailableUseCoupon,
+        errorObserver: subject.error.asObserver()
       )
     )
 
@@ -109,11 +114,12 @@ final class CouponListViewModel: CouponListViewModelType {
     )
 
     let showCustomPopup = self.customPopup(
-      paramter: .init(
+      parameter: .init(
         isAvailableAddCoupon: isAvailableAddCoupon,
         isAvailableUseCoupon: isAvailableUseCoupon,
         responseAddCoupon: responseAddCoupon,
-        responseUseCoupon: responseUseCoupon
+        responseUseCoupon: responseUseCoupon,
+        error: subject.error
       )
     )
 
@@ -137,14 +143,12 @@ final class CouponListViewModel: CouponListViewModelType {
   // MARK: - Request Network
 
   private func requestCouponNetwork(parameter: CouponParameter) -> Observable<CouponInfo> {
-    let responseAddCoupon = self.reqeusetUpdateCoupon(
+    let responseCoupon = self.reqeusetUpdateCoupon(
       parameter: parameter
     )
 
-    return responseAddCoupon
-      .withLatestFrom(parameter.couponInfoWhenActionAfter) { (isSuccess: Bool, couponInfo: CouponInfo) -> CouponInfo in
-        return .init(couponInfo: couponInfo, isNetworkSuccess: isSuccess)
-      }
+    return responseCoupon
+      .withLatestFrom(parameter.couponInfoWhenActionAfter)
       .share()
   }
 
@@ -154,7 +158,7 @@ final class CouponListViewModel: CouponListViewModelType {
       .share()
   }
 
-  private func reqeusetUpdateCoupon(parameter: CouponParameter) -> Observable<Bool> {
+  private func reqeusetUpdateCoupon(parameter: CouponParameter) -> Observable<RepositoryResponse> {
     return parameter.couponInfoWhenActionAfter
       .withLatestFrom(parameter.isAvailableRequest) { (couponInfo: $0, isAvailableRequest: $1) }
       .filter { $0.isAvailableRequest }
@@ -165,14 +169,14 @@ final class CouponListViewModel: CouponListViewModelType {
       .withLatestFrom(Me.instance.rx.userID) { value, id in
         return (couponInfo: value.couponInfo, couponCount: value.couponCount, userID: id)
       }
-      .flatMapLatest { couponInfo, couponCount, id -> Observable<Bool> in
+      .flatMapLatest { couponInfo, couponCount, id -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.updateUesrCoupon(
           userId: id,
           merchantId: couponInfo.merchant.merchantId,
           couponCount: couponCount
         )
-        .map { (response: RepositoryResponse) -> Bool in response.isSuccessed }
         .asObservable()
+        .suppressAndFeedError(into: parameter.errorObserver)
       }
       .share()
   }
@@ -185,7 +189,6 @@ final class CouponListViewModel: CouponListViewModelType {
       .map { $0.userCoupon.couponCount }
 
     let selectIndexWhenResponseAdd = responseAddCoupon
-      .filter { $0.isNetworkSuccess }
       .do(onNext: { $0.userCoupon.addCouponCount() })
       .map { $0.userCoupon.couponCount - 1 }
 
@@ -209,13 +212,11 @@ final class CouponListViewModel: CouponListViewModelType {
 
   private func reloadFromAddCoupon(responseAddCoupon: Observable<CouponInfo>) -> Observable<Void> {
     return responseAddCoupon
-      .filter { $0.isNetworkSuccess }
       .map { _ in }
   }
 
   private func reloadFromUseCoupon(responseUseCoupon: Observable<CouponInfo>) -> Observable<Void> {
     return responseUseCoupon
-      .filter { $0.isNetworkSuccess }
       .do(onNext: { couponInfo in
         couponInfo.userCoupon.clearCouponCount()
       })
@@ -225,13 +226,13 @@ final class CouponListViewModel: CouponListViewModelType {
   // MARK: - Custom Popup
 
   private func customPopup(
-    paramter: CustomPopupParameter
+    parameter: CustomPopupParameter
   ) -> Observable<CustomPopup> {
 
-    let customPopupWhenFullCoupon = self.customPopupWhenFullCoupon(paramter: paramter)
-    let customPopupWhenLackCoupon = self.customPopupWhenLackCoupon(paramter: paramter)
-    let customPopupWhenFailAddCoupon = self.customPopupWhenFailAddCoupon(paramter: paramter)
-    let customPopupWhenUseCoupon = self.customPopupWhenUseCoupon(paramter: paramter)
+    let customPopupWhenFullCoupon = self.customPopupWhenFullCoupon(parameter: parameter)
+    let customPopupWhenLackCoupon = self.customPopupWhenLackCoupon(parameter: parameter)
+    let customPopupWhenFailAddCoupon = self.customPopupWhenFailCoupon(parameter: parameter)
+    let customPopupWhenUseCoupon = self.customPopupWhenUseCoupon(parameter: parameter)
 
     return Observable.merge(
       customPopupWhenFailAddCoupon,
@@ -241,9 +242,8 @@ final class CouponListViewModel: CouponListViewModelType {
     )
   }
 
-  private func customPopupWhenFailAddCoupon(paramter: CustomPopupParameter) -> Observable<CustomPopup> {
-    return paramter.responseAddCoupon
-      .filter { !$0.isNetworkSuccess }
+  private func customPopupWhenFailCoupon(parameter: CustomPopupParameter) -> Observable<CustomPopup> {
+    return parameter.error
       .map { _ in
         CustomPopup(
           title: Text.requestFailCouponTitle.localized,
@@ -253,8 +253,8 @@ final class CouponListViewModel: CouponListViewModelType {
       }
   }
 
-  private func customPopupWhenFullCoupon(paramter: CustomPopupParameter) -> Observable<CustomPopup> {
-    return paramter.isAvailableAddCoupon
+  private func customPopupWhenFullCoupon(parameter: CustomPopupParameter) -> Observable<CustomPopup> {
+    return parameter.isAvailableAddCoupon
       .filter { !$0 }
       .map { _ in
         CustomPopup(
@@ -265,8 +265,8 @@ final class CouponListViewModel: CouponListViewModelType {
       }
   }
 
-  private func customPopupWhenLackCoupon(paramter: CustomPopupParameter) -> Observable<CustomPopup> {
-    return paramter.isAvailableUseCoupon
+  private func customPopupWhenLackCoupon(parameter: CustomPopupParameter) -> Observable<CustomPopup> {
+    return parameter.isAvailableUseCoupon
       .filter { !$0 }
       .map { _ in
         CustomPopup(
@@ -277,19 +277,12 @@ final class CouponListViewModel: CouponListViewModelType {
       }
   }
 
-  private func customPopupWhenUseCoupon(paramter: CustomPopupParameter) -> Observable<CustomPopup> {
-    return paramter.responseUseCoupon
+  private func customPopupWhenUseCoupon(parameter: CustomPopupParameter) -> Observable<CustomPopup> {
+    return parameter.responseUseCoupon
       .map { couponInfo -> CustomPopup in
-        if couponInfo.isNetworkSuccess {
-          return CustomPopup(
-            title: Text.successUseCouponTitle.localized,
-            message: Text.successUseCouponContent.localized,
-            completion: nil
-          )
-        }
         return CustomPopup(
-          title: Text.requestFailCouponTitle.localized,
-          message: Text.requestFailCouponContent.localized,
+          title: Text.successUseCouponTitle.localized,
+          message: Text.successUseCouponContent.localized,
           completion: nil
         )
       }

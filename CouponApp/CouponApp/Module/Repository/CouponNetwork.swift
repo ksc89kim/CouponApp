@@ -30,7 +30,12 @@ final class CouponNetwork : RepositoryType {
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .get, parameters: parameter)
     request.responseDecodable(of: ResponseCode.self) { (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      complete(.init(isSuccessed: CouponNetwork.checkResponseData(response), data: nil))
+      let isSuccessed = CouponNetwork.checkResponseData(response)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.networkError))
+      }
     }
   }
 
@@ -46,13 +51,15 @@ final class CouponNetwork : RepositoryType {
     request.responseDecodable(of: ResponseCode.self) { (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
       guard CouponNetwork.checkResponseData(response), let responseData = response.data else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
+
       do {
-        complete(.init(isSuccessed: true, data: try JSONDecoder().decode(User.self, from: responseData)))
+        let data = try JSONDecoder().decode(User.self, from: responseData)
+        complete(.success(.init(data: data)))
       } catch {
-        self.fail(complete: complete)
+        complete(.failure(error))
       }
     }
   }
@@ -70,13 +77,15 @@ final class CouponNetwork : RepositoryType {
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
       guard CouponNetwork.checkResponseData(response), let responseData = response.data else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
+
       do {
-        complete(.init(isSuccessed: true, data: try JSONDecoder().decode(User.self, from: responseData)))
+        let data = try JSONDecoder().decode(User.self, from: responseData)
+        complete(.success(.init(data: data)))
       } catch {
-        self.fail(complete: complete)
+        complete(.failure(error))
       }
     }
   }
@@ -89,15 +98,15 @@ final class CouponNetwork : RepositoryType {
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
       guard CouponNetwork.checkResponseData(response), let responseData = response.data else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
       do {
         let merchantList = try JSONDecoder().decode(MerchantList.self, from: responseData)
-        complete(.init(isSuccessed: true, data: merchantList))
+        complete(.success(.init(data: merchantList)))
       } catch {
+        complete(.failure(error))
         print("error \(error)")
-        self.fail(complete: complete)
       }
     }
   }
@@ -114,7 +123,12 @@ final class CouponNetwork : RepositoryType {
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      complete(.init(isSuccessed: CouponNetwork.checkResponseData(response), data: nil))
+      let isSuccessed = CouponNetwork.checkResponseData(response)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.insertError))
+      }
     }
   }
 
@@ -131,15 +145,19 @@ final class CouponNetwork : RepositoryType {
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
       guard CouponNetwork.checkResponseData(response), let responseData = response.data else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
 
       do {
         let checkCouponData = try JSONDecoder().decode(ExistenceCoupon.self, from: responseData)
-        complete(.init(isSuccessed: checkCouponData.isCouponData, data: checkCouponData))
+        if checkCouponData.isCouponData {
+          complete(.success(.init(data: checkCouponData)))
+        } else {
+          complete(.failure(DefaultError.noCouponError))
+        }
       } catch {
-        self.fail(complete: complete)
+        complete(.failure(error))
       }
     }
   }
@@ -156,7 +174,12 @@ final class CouponNetwork : RepositoryType {
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      complete(.init(isSuccessed: CouponNetwork.checkResponseData(response), data: nil))
+      let isSuccessed = CouponNetwork.checkResponseData(response)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.deleteError))
+      }
     }
   }
 
@@ -171,15 +194,15 @@ final class CouponNetwork : RepositoryType {
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
       guard CouponNetwork.checkResponseData(response), let responseData = response.data else {
-        self.fail(complete: complete)
+        complete(.failure(DefaultError.networkError))
         return
       }
 
       do {
         let userCouponList = try JSONDecoder().decode(UserCouponList.self, from: responseData)
-        complete(.init(isSuccessed: true, data: userCouponList))
+        complete(.success(.init(data: userCouponList)))
       } catch {
-        self.fail(complete: complete)
+        complete(.failure(error))
       }
     }
   }
@@ -197,7 +220,12 @@ final class CouponNetwork : RepositoryType {
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
     request.responseDecodable(of: ResponseCode.self) {  (response: AFDataResponse<ResponseCode>) in
       CouponNetwork.closeProgress()
-      complete(.init(isSuccessed: CouponNetwork.checkResponseData(response), data: nil))
+      let isSuccessed = CouponNetwork.checkResponseData(response)
+      if isSuccessed {
+        complete(.success(.init(data: nil)))
+      } else {
+        complete(.failure(DefaultError.networkError))
+      }
     }
   }
 
