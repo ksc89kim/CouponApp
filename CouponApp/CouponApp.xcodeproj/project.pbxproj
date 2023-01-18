@@ -13,8 +13,8 @@
 		2760F65A296FA37D001990A6 /* Phone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760F659296FA37D001990A6 /* Phone.swift */; };
 		2776F64E2966BEEC00165550 /* RepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2776F64D2966BEEC00165550 /* RepositoryResponse.swift */; };
 		278EC51A296BD1FF0075344A /* CouponInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */; };
+		27CE5B852977B7D200CDE1C3 /* MerchantTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE5B842977B7D200CDE1C3 /* MerchantTabBarController.swift */; };
 		27E88109296CF2D90096AE76 /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
-		27EECA4B2967A17100067AAD /* MerchantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EECA4A2967A17100067AAD /* MerchantController.swift */; };
 		27EECA4D2967A1C400067AAD /* Merchant+FMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */; };
 		592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */; };
 		594A011420A825700007503D /* CouponNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594A011320A825700007503D /* CouponNetwork.swift */; };
@@ -217,7 +217,7 @@
 		275FCDC229700E0900848AED /* RxOperatorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperatorExtensions.swift; sourceTree = "<group>"; };
 		2760F659296FA37D001990A6 /* Phone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Phone.swift; sourceTree = "<group>"; };
 		2776F64D2966BEEC00165550 /* RepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryResponse.swift; sourceTree = "<group>"; };
-		27EECA4A2967A17100067AAD /* MerchantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantController.swift; sourceTree = "<group>"; };
+		27CE5B842977B7D200CDE1C3 /* MerchantTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantTabBarController.swift; sourceTree = "<group>"; };
 		27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Merchant+FMDB.swift"; sourceTree = "<group>"; };
 		592FE2151FCAD9FB00C07C84 /* CouponDrawView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponDrawView.swift; sourceTree = "<group>"; };
 		594A011320A825700007503D /* CouponNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouponNetwork.swift; sourceTree = "<group>"; };
@@ -649,7 +649,6 @@
 				59BE1D1E21197E140082F04E /* MerchantType.swift */,
 				594A563B1FD814EC005EAA9C /* Merchant.swift */,
 				27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */,
-				27EECA4A2967A17100067AAD /* MerchantController.swift */,
 				59BE1D22211986650082F04E /* MerchantList.swift */,
 			);
 			path = Model;
@@ -674,6 +673,7 @@
 				A49C686327ED648200BB97AF /* MerchantTableViewController.swift */,
 				A415623422DB1B7B00A0551E /* MerchantViewController.swift */,
 				A415623E22DB367100A0551E /* UserMerchantTableViewController.swift */,
+				27CE5B842977B7D200CDE1C3 /* MerchantTabBarController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1181,6 +1181,7 @@
 				CCB5C7A6202BE0EF00CBBEB5 /* User.swift in Sources */,
 				A4453B0326BCDD48000CBB3D /* IntroViewModelType.swift in Sources */,
 				59A43FA22123FC7A0099581D /* ResponseCode.swift in Sources */,
+				27CE5B852977B7D200CDE1C3 /* MerchantTabBarController.swift in Sources */,
 				A4DB78852206CE4400EE23D2 /* UIViewExtensions.swift in Sources */,
 				273B8B302966AF8300C86502 /* Me.swift in Sources */,
 				B323BBC1257CC9E00060E7BF /* CustomPopupViewModel.swift in Sources */,
@@ -1242,7 +1243,6 @@
 				A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */,
 				59BE1D1F21197E140082F04E /* MerchantType.swift in Sources */,
 				A4A0BB8725610F0A006F616D /* Alert.swift in Sources */,
-				27EECA4B2967A17100067AAD /* MerchantController.swift in Sources */,
 				A4AFCE3B254568AB00E92B92 /* IntroViewModel.swift in Sources */,
 				A4936FA427E0B69800A62AC4 /* MerchantDetailTransition.swift in Sources */,
 				59BE1D1D21184C930082F04E /* RepositoryType.swift in Sources */,

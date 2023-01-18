@@ -18,6 +18,7 @@ final class IntroViewModel: IntroViewModelType {
   private struct Subject {
     let loadMertchant = PublishSubject<Void>()
     let error = PublishSubject<Error>()
+    let loadedMertchant = PublishSubject<MerchantList>()
   }
 
   // MARK: - Property
@@ -39,16 +40,16 @@ final class IntroViewModel: IntroViewModelType {
 
     let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber, errorObserver: subject.error.asObserver())
 
-    let addLoginViewController = Observable.merge(
+    let addLoginViewController = Observable<MerchantList>.merge(
       subject.error
-        .map { _ in },
+        .withLatestFrom(subject.loadedMertchant),
       loadedPhoneNumber
         .filter { $0 == nil }
-        .map { _ in }
+        .withLatestFrom(subject.loadedMertchant)
     )
 
     let addMainViewController = loadedUserData
-      .map { _ in }
+      .withLatestFrom(subject.loadedMertchant)
 
     self.outputs = IntroOutputs(
       addLoginViewController: addLoginViewController,
@@ -58,20 +59,21 @@ final class IntroViewModel: IntroViewModelType {
 
   // MARK: - Method
 
-  private func loadMerchant(subject: Subject) -> Observable<RepositoryResponse> {
+  private func loadMerchant(subject: Subject) -> Observable<MerchantList> {
     return subject.loadMertchant
       .flatMapLatest { _ -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
           .suppressAndFeedError(into: subject.error)
-          .do(onNext: { (response: RepositoryResponse) in
-            MerchantController.instance.merchantList = response.data as? MerchantList
-          })
     }
+    .compactMap { (response: RepositoryResponse) -> MerchantList? in response.data as? MerchantList }
+    .do(onNext: { (list: MerchantList) in
+      subject.loadedMertchant.onNext(list)
+    })
     .share()
   }
 
-  private func loadPhoneNumber(merchant: Observable<RepositoryResponse>) -> Observable<String?> {
+  private func loadPhoneNumber(merchant: Observable<MerchantList>) -> Observable<String?> {
     return merchant
        .map { _ -> String? in
          return Phone().loadNumber()

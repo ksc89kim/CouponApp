@@ -17,12 +17,6 @@ final class GloabalMerchantTableViewController: MerchantTableViewController {
     static let contentInset: UIEdgeInsets = .init(top: 15, left: 0, bottom: 10, right: 0)
   }
 
-  // MARK: - Property
-
-  var merchantList: MerchantList? {
-    return MerchantController.instance.merchantList
-  }
-
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
@@ -46,8 +40,7 @@ final class GloabalMerchantTableViewController: MerchantTableViewController {
   // MARK: - TableView DataSource
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete implementation, return the number of rows
-    guard let merchantArray = merchantList else {
+    guard let merchantArray = self.merchantList else {
       return 0
     }
     return merchantArray.list.count
@@ -55,7 +48,7 @@ final class GloabalMerchantTableViewController: MerchantTableViewController {
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue, for: indexPath) as! MerchantTableViewCell
-    cell.setMerchant(merchantList?[indexPath.row])
+    cell.setMerchant(self.merchantList?[indexPath.row])
     return cell
   }
 

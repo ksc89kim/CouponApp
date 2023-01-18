@@ -84,7 +84,7 @@ final class AroundMerchantTableViewController: MerchantTableViewController  {
 
 extension AroundMerchantTableViewController: CLLocationManagerDelegate {
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    guard let merchantList = MerchantController.instance.merchantList else {
+    guard let merchantList = self.merchantList else {
       print("merchantList nil")
       return
     }

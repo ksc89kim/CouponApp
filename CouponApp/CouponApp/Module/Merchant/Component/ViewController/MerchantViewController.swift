@@ -56,6 +56,7 @@ final class MerchantViewController: UIViewController {
 
   private var tabController: TabController?
 
+
   //MARK: - Life Cycle
 
   override func viewDidLoad() {
@@ -89,6 +90,16 @@ final class MerchantViewController: UIViewController {
     self.tabController?.callback = { [weak self] (button: UIButton) in
       self?.animationMoveTabView(button: button)
       self?.selectPageViewController(button: button)
+    }
+  }
+
+  func setMerchantList(_ merchantList: MerchantList) {
+    let viewControllers = self.viewControllerArray.compactMap { (viewController: UIViewController) in
+      return viewController as? MerchantTableViewController
+    }
+
+    viewControllers.forEach { (tableViewController: MerchantTableViewController) in
+      tableViewController.merchantList = merchantList
     }
   }
 

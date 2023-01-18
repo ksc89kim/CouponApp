@@ -76,7 +76,7 @@ final class IntroViewController: BaseViewController {
 
   // MARK: - Show ViewController
 
-  fileprivate func addLoginViewController() {
+  fileprivate func addLoginViewController(merchantList: MerchantList) {
     guard let bringSubView = self.backgroundView else {
       print("showLoginViewController - backgorundView nil")
       return
@@ -88,29 +88,29 @@ final class IntroViewController: BaseViewController {
     )
 
     let baseViewController = loginNavigationController.children.first { (viewController: UIViewController) -> Bool in
-      return viewController is BaseViewController
+      return viewController is LoginViewController
     }
 
-    if let loginViewController = baseViewController as? BaseViewController {
+    if let loginViewController = baseViewController as? LoginViewController {
       loginViewController.viewModel = LoginViewModel()
+      loginViewController.merchantList = merchantList
     }
 
     self.addViewController(viewController: loginNavigationController, bringSubView: bringSubView)
   }
 
-  fileprivate func addMainViewController() {
+  fileprivate func addMainViewController(merchantList: MerchantList) {
     guard let bringSubView = self.backgroundView else {
       print("showMainViewController - backgorundView nil")
       return
     }
 
     let mainViewController = self.createViewController(storyboardType: .main)
-    mainViewController.children.forEach { (viewController: UIViewController) in
-      viewController.children.forEach { (viewController: UIViewController) in
-        if let userMerchantViewController = viewController as?  UserMerchantTableViewController {
-          userMerchantViewController.viewModel = UserMerchantViewModel()
-        }
-      }
+    if let merchantTabBarController = mainViewController as? MerchantTabBarController {
+      let userMerchantViewController = merchantTabBarController.usermerchant
+      userMerchantViewController?.viewModel = UserMerchantViewModel()
+      userMerchantViewController?.merchantList = merchantList
+      merchantTabBarController.merchant?.setMerchantList(merchantList)
     }
     self.addViewController(viewController: mainViewController, bringSubView: bringSubView)
   }
@@ -118,15 +118,15 @@ final class IntroViewController: BaseViewController {
 
 
 extension Reactive where Base: IntroViewController {
-  var addLoginViewController: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.addLoginViewController()
+  var addLoginViewController: Binder<MerchantList> {
+    return Binder(self.base) { view, merchantList in
+      view.addLoginViewController(merchantList: merchantList)
     }
   }
 
-  var addMainViewController: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.addMainViewController()
+  var addMainViewController: Binder<MerchantList> {
+    return Binder(self.base) { view, merchantList in
+      view.addMainViewController(merchantList: merchantList)
     }
   }
 }

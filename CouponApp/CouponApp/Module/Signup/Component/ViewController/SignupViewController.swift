@@ -43,6 +43,7 @@ final class SignupViewController: BaseViewController {
   private var signupViewModel: SignupViewModelType? {
     return self.viewModel as? SignupViewModelType
   }
+  var merchantList: MerchantList?
 
   // MARK: - Life Cycle
 
@@ -119,6 +120,7 @@ final class SignupViewController: BaseViewController {
       .disposed(by: self.disposeBag)
 
     self.signupViewModel?.outputs?.showMainViewController
+      .compactMap { [weak self] _ -> MerchantList? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)

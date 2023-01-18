@@ -11,12 +11,12 @@ import RxSwift
 import RxCocoa
 
 protocol IntroOutputType: OutputType {
-  var addLoginViewController: Observable<Void> { get }
-  var addMainViewController: Observable<Void> { get }
+  var addLoginViewController: Observable<MerchantList> { get }
+  var addMainViewController: Observable<MerchantList> { get }
 }
 
 
 struct IntroOutputs: IntroOutputType {
-  let addLoginViewController: Observable<Void>
-  let addMainViewController: Observable<Void>
+  let addLoginViewController: Observable<MerchantList>
+  let addMainViewController: Observable<MerchantList>
 }

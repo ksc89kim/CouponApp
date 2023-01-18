@@ -46,15 +46,14 @@ open class BaseViewController: UIViewController, Bindable {
 
   // MARK: - Etc Method
 
-  fileprivate func showMainViewController() {
+  fileprivate func showMainViewController(merchantList: MerchantList) {
     let mainViewController = self.createViewController(storyboardType: .main)
     mainViewController.modalPresentationStyle = .fullScreen
-    mainViewController.children.forEach { (viewController: UIViewController) in
-      viewController.children.forEach { (viewController: UIViewController) in
-        if let userMerchantViewController = viewController as?  UserMerchantTableViewController {
-          userMerchantViewController.viewModel = UserMerchantViewModel()
-        }
-      }
+    if let merchantTabBarController = mainViewController as? MerchantTabBarController {
+      let userMerchantViewController = merchantTabBarController.usermerchant
+      userMerchantViewController?.viewModel = UserMerchantViewModel()
+      userMerchantViewController?.merchantList = merchantList
+      merchantTabBarController.merchant?.setMerchantList(merchantList)
     }
     self.present(mainViewController, animated: true, completion: nil)
   }
@@ -63,9 +62,9 @@ open class BaseViewController: UIViewController, Bindable {
 
 extension Reactive where Base: BaseViewController {
 
-  var showMainViewController: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.showMainViewController()
+  var showMainViewController: Binder<MerchantList> {
+    return Binder(self.base) { view, merchantList in
+      view.showMainViewController(merchantList: merchantList)
     }
   }
 }

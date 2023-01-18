@@ -41,6 +41,7 @@ final class LoginViewController: BaseViewController {
   private var loginViewModel: LoginViewModelType? {
     return self.viewModel as? LoginViewModelType
   }
+  var merchantList: MerchantList?
 
   // MARK: - Life Cycle
 
@@ -120,6 +121,7 @@ final class LoginViewController: BaseViewController {
       .disposed(by: self.disposeBag)
 
     self.loginViewModel?.outputs?.showMainViewController
+      .compactMap { [weak self] _ -> MerchantList? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)
@@ -163,6 +165,7 @@ final class LoginViewController: BaseViewController {
     if segue.identifier == CouponIdentifier.showSignupViewController.rawValue,
        let signupViewController = segue.destination as? SignupViewController {
       signupViewController.viewModel = SignupViewModel()
+      signupViewController.merchantList = self.merchantList
     }
   }
 }

@@ -9,7 +9,11 @@
 import UIKit
 
 class MerchantTableViewController: UITableViewController {
-  
+
+  // MARK: - Property
+
+  var merchantList: MerchantList?
+
   // MARK: - Method
 
   func showMerchantDetail(selectedCell: MerchantTableViewCell) {
