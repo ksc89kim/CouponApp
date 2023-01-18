@@ -82,14 +82,20 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let loginViewController = self.createBaseViewController(
+    let loginNavigationController = self.createViewController(
       storyboardType: .start,
       identifierType: .loginNavigationController
     )
-    loginViewController?.viewModel = LoginViewModel()
-    if let viewController = loginViewController {
-      self.addViewController(viewController: viewController, bringSubView: bringSubView)
+
+    let baseViewController = loginNavigationController.children.first { (viewController: UIViewController) -> Bool in
+      return viewController is BaseViewController
     }
+
+    if let loginViewController = baseViewController as? BaseViewController {
+      loginViewController.viewModel = LoginViewModel()
+    }
+
+    self.addViewController(viewController: loginNavigationController, bringSubView: bringSubView)
   }
 
   fileprivate func addMainViewController() {

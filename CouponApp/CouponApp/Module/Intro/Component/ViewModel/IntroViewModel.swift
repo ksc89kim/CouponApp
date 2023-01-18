@@ -63,10 +63,10 @@ final class IntroViewModel: IntroViewModelType {
       .flatMapLatest { _ -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
+          .suppressAndFeedError(into: subject.error)
           .do(onNext: { (response: RepositoryResponse) in
             MerchantController.instance.merchantList = response.data as? MerchantList
           })
-          .suppressAndFeedError(into: subject.error)
     }
     .share()
   }
@@ -85,11 +85,11 @@ final class IntroViewModel: IntroViewModelType {
       .flatMapLatest { phoneNumber -> Observable<RepositoryResponse> in
         return  CouponRepository.instance.rx.loadUserData(phoneNumber: phoneNumber)
           .asObservable()
+          .suppressAndFeedError(into: errorObserver)
           .do(onNext: { (response: RepositoryResponse) in
             guard let user = response.data as? User else { return }
             Me.instance.update(user: user)
           })
-          .suppressAndFeedError(into: errorObserver)
       }
   }
 }
