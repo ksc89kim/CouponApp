@@ -57,7 +57,6 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   // MARK: - Bind
 
   func bindInputs() {
-    
   }
 
   func bindOutputs() {

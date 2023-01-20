@@ -156,7 +156,7 @@ extension MerchantViewController: UIPageViewControllerDataSource {
       return nil
     }
     let previousIndex = vcIndex - 1
-    guard previousIndex > -1 else { return nil }
+    guard self.viewControllerArray.indices ~= previousIndex else { return nil }
     return self.viewControllerArray[previousIndex]
   }
 
@@ -166,7 +166,7 @@ extension MerchantViewController: UIPageViewControllerDataSource {
   ) -> UIViewController? {
     guard let vcIndex = self.viewControllerArray.index(of: viewController) else { return nil }
     let nextIndex = vcIndex + 1
-    guard self.viewControllerArray.count > nextIndex else { return nil }
+    guard self.viewControllerArray.indices ~= nextIndex else { return nil }
     return self.viewControllerArray[nextIndex]
   }
 }

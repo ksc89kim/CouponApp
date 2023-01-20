@@ -426,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				A4AD39DD28255BE20083E5C4 /* CouponInfo.swift */,
+				59BE1D20211980570082F04E /* CouponUIType.swift */,
 				CC88E7432008450E00F48B1C /* DrawCoupon.swift */,
 				CC047F81200C66170070CC5D /* ImageCoupon.swift */,
 			);
@@ -966,7 +967,6 @@
 			isa = PBXGroup;
 			children = (
 				A4AFCE372545656600E92B92 /* ViewModelType.swift */,
-				59BE1D20211980570082F04E /* CouponUIType.swift */,
 				59A43FA92124062F0099581D /* Listable.swift */,
 				A4308903258F442B00689866 /* Bindable.swift */,
 			);
