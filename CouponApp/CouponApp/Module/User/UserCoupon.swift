@@ -24,6 +24,10 @@ final class UserCoupon: Codable, MerchantType {
   var couponCount: Int
   /// 가맹점 ID
   var merchantId: Int
+  /// 선택된 쿠폰 인덱스
+  var isSelectedIndex: Int {
+    return self.couponCount - 1
+  }
 
   // MARK: - Init
 

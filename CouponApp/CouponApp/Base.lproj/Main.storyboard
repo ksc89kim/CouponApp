@@ -220,10 +220,6 @@
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
-                                        <connections>
-                                            <outlet property="dataSource" destination="zt0-fb-j4a" id="Gg4-cH-zH8"/>
-                                            <outlet property="delegate" destination="zt0-fb-j4a" id="nxr-ui-qFD"/>
-                                        </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZ1-0Q-ilC">
                                         <rect key="frame" x="10" y="538" width="335" height="40"/>

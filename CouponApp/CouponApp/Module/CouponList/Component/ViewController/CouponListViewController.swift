@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import RxDataSources
 
 /// 쿠폰 리스트 뷰 컨트롤러
 /// - 현재 가지고 있는 쿠폰 갯수와, 채울 수 있는 최대 쿠폰 갯수를 보여주는 뷰 컨트롤러
@@ -27,6 +28,10 @@ final class CouponListViewController: BaseViewController {
     static let backgroundViewCornerRadius: CGFloat = 10.0
     static let holeViewBorder: CGFloat = 1.0
     static let lineWidth: CGFloat = 2.0
+  }
+
+  private enum Identifier {
+    static let cell = "CouponCell"
   }
 
   // MARK: - UI Component
@@ -55,10 +60,17 @@ final class CouponListViewController: BaseViewController {
   private var couponListViewModel: CouponListViewModelType? {
     return self.viewModel as? CouponListViewModelType
   }
-  private var selectedCouponIndex: Int = 0
   private let dashLineLayer = CAShapeLayer()
-  var userCoupon: UserCoupon?
-  var merchant: Merchant?
+  private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<CouponSection>(
+    configureCell: { _, collectionView, indexPath, item -> UICollectionViewCell in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cell, for: indexPath)
+      if let couponCell = cell as? CouponCollectionViewCell {
+        couponCell.configure(coupon: item)
+      }
+      return cell
+    }
+  )
+
 
   // MARK: - Deinit
 
@@ -70,10 +82,6 @@ final class CouponListViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    if let userCoupon = self.userCoupon, let merchant = self.merchant {
-      self.couponListViewModel?.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
-    }
     self.setUI()
   }
 
@@ -113,15 +121,9 @@ final class CouponListViewController: BaseViewController {
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.couponListViewModel?.outputs?.reload
+    self.couponListViewModel?.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
-      .drive(self.rx.reload)
-      .disposed(by: self.disposeBag)
-
-    self.couponListViewModel?.outputs?.selectedCouponIndex
-      .subscribe(onNext: { [weak self] (index: Int) in
-        self?.selectedCouponIndex = index
-      })
+      .drive(self.myCollectionView.rx.items(dataSource: self.dataSource))
       .disposed(by: self.disposeBag)
   }
 
@@ -155,7 +157,6 @@ final class CouponListViewController: BaseViewController {
 
   private func setCollectionView() {
     self.myCollectionView.setCollectionViewLayout(self.flowLayout, animated: true)
-    self.myCollectionView.reloadData()
   }
 
   // MARK: - Add Method
@@ -184,48 +185,6 @@ final class CouponListViewController: BaseViewController {
   ) {
     if keyPath == "bounds" {
       self.dotLineView.updateDashLineSize(dashLayer: dashLineLayer)
-    }
-  }
-}
-
-
-extension CouponListViewController: UICollectionViewDataSource {
-  func collectionView(
-    _ collectionView: UICollectionView,
-    numberOfItemsInSection section: Int
-  ) -> Int {
-    guard let merchant = self.merchant else {
-      print("collectionView - merchantData error")
-      return 0
-    }
-    return merchant.couponCount()
-  }
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath
-  ) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CouponCell", for: indexPath) as! CouponCollectionViewCell
-
-    guard let merchant = self.merchant, let couponCount = self.userCoupon?.couponCount else  {
-      print("collectionView - merchantData error,  couponCount error")
-      return cell
-    }
-
-    var coupon: CouponUIType = merchant.index(indexPath.row)
-    coupon.isUseCoupon = (indexPath.row < couponCount)
-    coupon.isAnimation = (indexPath.row == self.selectedCouponIndex)
-    cell.updateUI(coupon: coupon)
-
-    return cell
-  }
-}
-
-
-extension Reactive where Base: CouponListViewController {
-  var reload: Binder<Void> {
-    return Binder(self.base) { view, _ in
-      view.myCollectionView.reloadData()
     }
   }
 }

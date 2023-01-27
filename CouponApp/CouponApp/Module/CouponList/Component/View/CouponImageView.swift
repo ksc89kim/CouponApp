@@ -34,7 +34,7 @@ final class CouponImageView: UIView , CouponViewType {
 
   func updateUI() {
     if let imageCoupon = uiData as? ImageCoupon {
-      let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage:imageCoupon.normalImage
+      let imagePath = imageCoupon.isUseCoupon ? imageCoupon.selectImage : imageCoupon.normalImage
       self.couponImage.image = UIImage(named: imagePath)
     }
   }

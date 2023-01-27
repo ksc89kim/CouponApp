@@ -9,8 +9,17 @@
 import Foundation
 
 struct CouponInfo {
+
+  // MARK: - Property
+
   let userCoupon: UserCoupon
   let merchant: Merchant
+  var isAvailableAddCoupon: Bool {
+    return self.userCoupon.couponCount < self.merchant.couponCount()
+  }
+  var isAvailableUseCoupon: Bool {
+    return self.userCoupon.couponCount >= self.merchant.couponCount()
+  }
 
   init(userCoupon: UserCoupon, merchant: Merchant) {
     self.userCoupon = userCoupon
@@ -20,13 +29,5 @@ struct CouponInfo {
   init(couponInfo: CouponInfo) {
     self.userCoupon = couponInfo.userCoupon
     self.merchant = couponInfo.merchant
-  }
-
-  func isAvailableAddCoupon() -> Bool {
-    return self.userCoupon.couponCount < self.merchant.couponCount()
-  }
-
-  func isAvailableUseCoupon() -> Bool {
-    return self.userCoupon.couponCount >= self.merchant.couponCount()
   }
 }

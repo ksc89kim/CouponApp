@@ -129,11 +129,12 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
     if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
        let couponListView = segue.destination as? CouponListViewController,
        let indexPath = sender as? IndexPath {
-      couponListView.viewModel = CouponListViewModel()
-      couponListView.userCoupon = self.userCouponList?[indexPath.row]
-      couponListView.merchant = self.merchantList?.index(
-        merchantId: couponListView.userCoupon?.merchantId
-      )
+      let viewModel = CouponListViewModel()
+      couponListView.viewModel = viewModel
+      if let userCoupon = self.userCouponList?[indexPath.row],
+         let merchant = self.merchantList?.index(merchantId: userCoupon.merchantId) {
+        viewModel.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
+      }
     }
   }
 
