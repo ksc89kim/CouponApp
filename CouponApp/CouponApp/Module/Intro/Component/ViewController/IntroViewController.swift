@@ -82,7 +82,7 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let loginNavigationController = self.createViewController(
+    let loginNavigationController = ViewControllerFactory.createViewController(
       storyboardType: .start,
       identifierType: .loginNavigationController
     )
@@ -105,7 +105,7 @@ final class IntroViewController: BaseViewController {
       return
     }
 
-    let mainViewController = self.createViewController(storyboardType: .main)
+    let mainViewController = ViewControllerFactory.createViewController(storyboardType: .main)
     if let merchantTabBarController = mainViewController as? MerchantTabBarController {
       let userMerchantViewController = merchantTabBarController.usermerchant
       userMerchantViewController?.viewModel = UserMerchantViewModel()

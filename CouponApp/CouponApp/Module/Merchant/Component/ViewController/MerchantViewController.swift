@@ -12,7 +12,7 @@ import UIKit
 /// - 주변 가맹점, 전체 가맹점 찾는 뷰 컨트롤러
 final class MerchantViewController: UIViewController {
 
-  //MARK: - UI Component
+  // MARK: - UI Component
 
   @IBOutlet var tabButtonArray: [UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
   @IBOutlet weak var topView: UIView!
@@ -25,7 +25,7 @@ final class MerchantViewController: UIViewController {
       options: nil
     )
 
-    if let firstViewController = self.viewControllerArray.first {
+    if let firstViewController = self.viewControllers.first {
       pageController.setViewControllers(
         [firstViewController],
         direction: .forward,
@@ -40,27 +40,36 @@ final class MerchantViewController: UIViewController {
     return pageController
   }()
 
-  lazy var viewControllerArray:[UIViewController] = {
-    let globalMerchantTableViewController = self.createViewController(
-      storyboardType: .merchant,
-      identifierType: .globalMerchantTableViewController
-    )
-    let aroundMerchantTableViewController = self.createViewController(
+  private var viewControllers: [MerchantListViewController] = {
+    var viewControllers: [MerchantListViewController] = []
+    if let aroundMerchantTableViewController = ViewControllerFactory.createViewController(
       storyboardType: .merchant,
       identifierType: .aroundMerchantTableViewController
-    )
-    return [aroundMerchantTableViewController, globalMerchantTableViewController]
+    ) as? AroundMerchantListViewController {
+      aroundMerchantTableViewController.viewModel = AroundMerchantListViewModel()
+      viewControllers.append(aroundMerchantTableViewController)
+    }
+
+    if let globalMerchantTableViewController = ViewControllerFactory.createViewController(
+      storyboardType: .merchant,
+      identifierType: .globalMerchantTableViewController
+    ) as? GloabalMerchantListViewController {
+      globalMerchantTableViewController.viewModel = MerchantListViewModel()
+      viewControllers.append(globalMerchantTableViewController)
+    }
+
+    return viewControllers
   }()
 
-  //MARK: - Property
+  // MARK: - Property
 
   private var tabController: TabController?
 
-
-  //MARK: - Life Cycle
+  // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.setPageViewController()
     self.setTabController()
   }
@@ -70,7 +79,7 @@ final class MerchantViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
-  //MARK: - Set Method
+  // MARK: - Set Method
 
   private func setPageViewController() {
     let pageView = self.pageController.view
@@ -94,16 +103,12 @@ final class MerchantViewController: UIViewController {
   }
 
   func setMerchantList(_ merchantList: MerchantList) {
-    let viewControllers = self.viewControllerArray.compactMap { (viewController: UIViewController) in
-      return viewController as? MerchantTableViewController
-    }
-
-    viewControllers.forEach { (tableViewController: MerchantTableViewController) in
-      tableViewController.merchantList = merchantList
+    self.viewControllers.forEach { (tableViewController: MerchantListViewController) in
+      tableViewController.viewModel?.inputs.merchantList.onNext(merchantList)
     }
   }
 
-  //MARK: - TabView Move Animation
+  // MARK: - TabView Move Animation
 
   private func animationMoveTabView(button: UIButton){
     self.selectLeadingLayout.constant = button.frame.origin.x
@@ -112,12 +117,12 @@ final class MerchantViewController: UIViewController {
     })
   }
 
-  //MARK: - Selct Method
+  // MARK: - Selct Method
 
   private func selectPageViewController(button: UIButton) {
     let direction: UIPageViewController.NavigationDirection = (button.tag == 0) ? .reverse : .forward
     self.pageController.setViewControllers(
-      [self.viewControllerArray[button.tag]],
+      [self.viewControllers[button.tag]],
       direction: direction,
       animated: true,
       completion: nil
@@ -133,16 +138,14 @@ extension MerchantViewController: UIPageViewControllerDelegate {
     previousViewControllers: [UIViewController],
     transitionCompleted completed: Bool
   ) {
-    if finished {
-      guard let vcIndex = self.viewControllerArray.index(
-        of: (pageViewController.viewControllers?.first)!
-      )
-      else {
-        return
-      }
-      self.tabController?.selectTab(index: vcIndex)
-      self.animationMoveTabView(button: self.tabButtonArray[vcIndex])
+    guard finished,
+          let firstViewController = pageViewController.viewControllers?.first as? MerchantListViewController,
+          let index = self.viewControllers.index(of: firstViewController) else {
+      return
     }
+
+    self.tabController?.selectTab(index: index)
+    self.animationMoveTabView(button: self.tabButtonArray[index])
   }
 }
 
@@ -152,21 +155,25 @@ extension MerchantViewController: UIPageViewControllerDataSource {
     _ pageViewController: UIPageViewController,
     viewControllerBefore viewController: UIViewController
   ) -> UIViewController? {
-    guard let vcIndex = self.viewControllerArray.index(of: viewController) else {
+    guard let merchantListViewController = viewController as? MerchantListViewController,
+          let index = self.viewControllers.index(of: merchantListViewController) else {
       return nil
     }
-    let previousIndex = vcIndex - 1
-    guard self.viewControllerArray.indices ~= previousIndex else { return nil }
-    return self.viewControllerArray[previousIndex]
+    let previousIndex = index - 1
+    guard self.viewControllers.indices ~= previousIndex else { return nil }
+    return self.viewControllers[previousIndex]
   }
 
   func pageViewController(
     _ pageViewController: UIPageViewController,
     viewControllerAfter viewController: UIViewController
   ) -> UIViewController? {
-    guard let vcIndex = self.viewControllerArray.index(of: viewController) else { return nil }
-    let nextIndex = vcIndex + 1
-    guard self.viewControllerArray.indices ~= nextIndex else { return nil }
-    return self.viewControllerArray[nextIndex]
+    guard let merchantListViewController = viewController as? MerchantListViewController,
+          let index = self.viewControllers.index(of: merchantListViewController) else {
+      return nil
+    }
+    let nextIndex = index + 1
+    guard self.viewControllers.indices ~= nextIndex else { return nil }
+    return self.viewControllers[nextIndex]
   }
 }

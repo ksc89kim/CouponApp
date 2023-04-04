@@ -11,26 +11,6 @@ import RxSwift
 import RxCocoa
 
 extension UIViewController {
-
-  func createBaseViewController(storyboardType: CouponStoryBoardName, identifierType: CouponIdentifier? = nil) -> BaseViewController? {
-    return self.createViewController(storyboardType: storyboardType, identifierType: identifierType) as? BaseViewController
-  }
-
-  func createViewController(storyboardType: CouponStoryBoardName, identifierType: CouponIdentifier? = nil) -> UIViewController {
-    return self.createViewController(storyboardName: storyboardType.rawValue, withIdentifier: identifierType?.rawValue)
-  }
-
-  func createViewController(storyboardName: String, withIdentifier: String? = nil) -> UIViewController {
-    let storyBoard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-    let viewController: UIViewController
-    if let identifier = withIdentifier {
-      viewController = storyBoard.instantiateViewController(withIdentifier: identifier)
-    } else {
-      viewController = storyBoard.instantiateInitialViewController() ?? .init()
-    }
-    return viewController
-  }
-
   func addViewController(viewController: UIViewController, bringSubView: UIView) {
     self.addChild(viewController)
     self.view.addSubview(viewController.view)
@@ -52,10 +32,10 @@ extension UIViewController {
 
   fileprivate func showCustomPopup(data: CustomPopup){
     DispatchQueue.main.async {
-      let viewModel: CustomPopupViewModelType = CustomPopupViewModel()
-      let customPopupViewController = CustomPopupViewController()
-      customPopupViewController.viewModel = viewModel
-      viewModel.inputs.configure.onNext(data)
+      let customPopupViewController = ViewControllerFactory.createCustomPopupViewController()
+      if let viewModel = customPopupViewController.viewModel as? CustomPopupViewModel {
+        viewModel.inputs.configure.onNext(data)
+      }
       self.present(customPopupViewController, animated: true, completion: nil)
     }
   }

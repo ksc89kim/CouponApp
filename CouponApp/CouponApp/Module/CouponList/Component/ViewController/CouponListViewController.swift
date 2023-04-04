@@ -30,10 +30,6 @@ final class CouponListViewController: BaseViewController {
     static let lineWidth: CGFloat = 2.0
   }
 
-  private enum Identifier {
-    static let cell = "CouponCell"
-  }
-
   // MARK: - UI Component
 
   private lazy var flowLayout: UICollectionViewFlowLayout = {
@@ -63,7 +59,7 @@ final class CouponListViewController: BaseViewController {
   private let dashLineLayer = CAShapeLayer()
   private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<CouponSection>(
     configureCell: { _, collectionView, indexPath, item -> UICollectionViewCell in
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identifier.cell, for: indexPath)
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CouponIdentifier.couponListCell.rawValue, for: indexPath)
       if let couponCell = cell as? CouponCollectionViewCell {
         couponCell.configure(coupon: item)
       }

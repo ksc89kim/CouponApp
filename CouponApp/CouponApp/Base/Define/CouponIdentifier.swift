@@ -29,4 +29,5 @@ enum CouponIdentifier: String {
   // MARK: - Cell identifier
 
   case merchantTableViewCell = "MerchantTableViewCell"
+  case couponListCell = "CouponCell"
 }

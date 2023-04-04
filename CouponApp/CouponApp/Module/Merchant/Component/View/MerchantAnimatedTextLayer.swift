@@ -22,7 +22,7 @@ final class MerchantAnimatedTextLayer: CATextLayer {
   var text: String? {
     didSet {
       string = self.text
-      let size:CGSize = self.text?.size(OfFont: self.uifont!) ?? .zero
+      let size: CGSize = self.text?.size(OfFont: self.uifont!) ?? .zero
       if size != .zero {
         frame.size = size
       }

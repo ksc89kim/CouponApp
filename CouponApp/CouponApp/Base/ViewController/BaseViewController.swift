@@ -47,7 +47,7 @@ open class BaseViewController: UIViewController, Bindable {
   // MARK: - Etc Method
 
   fileprivate func showMainViewController(merchantList: MerchantList) {
-    let mainViewController = self.createViewController(storyboardType: .main)
+    let mainViewController = ViewControllerFactory.createViewController(storyboardType: .main)
     mainViewController.modalPresentationStyle = .fullScreen
     if let merchantTabBarController = mainViewController as? MerchantTabBarController {
       let userMerchantViewController = merchantTabBarController.usermerchant
