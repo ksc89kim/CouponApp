@@ -111,12 +111,12 @@ final class CouponNetwork : RepositoryType {
     }
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
+  func insertUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = [
       "mode": "InsertCouponData",
-      "user_id": userId,
-      "merchant_id": merchantId
+      "user_id": userID,
+      "merchant_id": merchantID
     ] as [String : Any]
 
     CouponNetwork.showProgress()
@@ -132,12 +132,12 @@ final class CouponNetwork : RepositoryType {
     }
   }
 
-  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
+  func checkUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = [
       "mode": "CheckCouponData",
-      "user_id":userId,
-      "merchant_id": merchantId
+      "user_id":userID,
+      "merchant_id": merchantID
     ] as [String : Any]
 
     CouponNetwork.showProgress()
@@ -162,12 +162,12 @@ final class CouponNetwork : RepositoryType {
     }
   }
 
-  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
+  func deleteUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = [
       "mode":"DeleteCouponData",
-      "user_id":userId,
-      "merchant_id":merchantId
+      "user_id":userID,
+      "merchant_id":merchantID
     ] as [String : Any]
 
     CouponNetwork.showProgress()
@@ -183,11 +183,11 @@ final class CouponNetwork : RepositoryType {
     }
   }
 
-  func getUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
+  func getUserCouponData(userID: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = [
       "mode": "GetCouponData",
-      "user_id": userId
+      "user_id": userID
     ] as [String : Any]
 
     let request = AF.request(URL(fileURLWithPath: fullUrl), method: .post, parameters: parameter)
@@ -207,12 +207,12 @@ final class CouponNetwork : RepositoryType {
     }
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
+  func updateUesrCoupon(userID: Int, merchantID: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     let fullUrl = "\(self.mainUrl)coupon_data"
     let parameter = [
       "mode": "UpdateCouponData",
-      "user_id": userId,
-      "merchant_id": merchantId,
+      "user_id": userID,
+      "merchant_id": merchantID,
       "coupon_count": couponCount
     ] as [String : Any]
     

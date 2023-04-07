@@ -108,8 +108,9 @@ final class IntroViewController: BaseViewController {
     let mainViewController = ViewControllerFactory.createViewController(storyboardType: .main)
     if let merchantTabBarController = mainViewController as? MerchantTabBarController {
       let userMerchantViewController = merchantTabBarController.usermerchant
-      userMerchantViewController?.viewModel = UserMerchantViewModel()
-      userMerchantViewController?.merchantList = merchantList
+      let viewModel = UserMerchantViewModel()
+      viewModel.inputs.merchantList.onNext(merchantList)
+      userMerchantViewController?.viewModel = viewModel
       merchantTabBarController.merchant?.setMerchantList(merchantList)
     }
     self.addViewController(viewController: mainViewController, bringSubView: bringSubView)

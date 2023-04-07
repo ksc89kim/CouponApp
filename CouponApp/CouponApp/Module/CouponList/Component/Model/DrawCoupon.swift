@@ -10,13 +10,13 @@ import UIKit
 import FMDB
 
 /// 쿠폰 그리기 UI 데이터
-final class DrawCoupon:Codable, MerchantType, CouponUIType {
+final class DrawCoupon: Codable, MerchantType, CouponUIType {
 
   // MARK: - Define
 
   private enum DrawCouponKeys: String, CodingKey {
     case couponId = "coupon_id"
-    case merchantId = "merchant_id"
+    case merchantID = "merchant_id"
     case circleColor = "circle_color"
     case ringColor = "ring_color"
     case ringThickness = "ring_thickness"
@@ -40,7 +40,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
   // MARK: - Merchant Property
 
   /// 가맹점 ID
-  var merchantId: Int
+  var merchantID: Int
 
   // MARK: - Draw Property
 
@@ -61,7 +61,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
 
   init(
     couponId: Int,
-    merchantId: Int,
+    merchantID: Int,
     circleColor: String,
     ringColor: String,
     ringThickness: CGFloat,
@@ -71,7 +71,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
     isEvent: Bool
   ) {
     self.couponId = couponId
-    self.merchantId = merchantId
+    self.merchantID = merchantID
     self.circleColor = circleColor
     self.ringColor = ringColor
     self.ringThickness = ringThickness
@@ -84,7 +84,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
   }
 
   convenience init(resultSet: FMResultSet) {
-    let merchantIdx: Int32 = resultSet.int(forColumnIndex: 0)
+    let merchantIDx: Int32 = resultSet.int(forColumnIndex: 0)
     let couponIdx: Int32 = resultSet.int(forColumnIndex: 1)
     let circleColor: String =  resultSet.string(forColumnIndex: 2) ?? ""
     let ringColor: String = resultSet.string(forColumnIndex: 3) ?? ""
@@ -96,7 +96,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
 
     self.init(
       couponId: Int(couponIdx),
-      merchantId: Int(merchantIdx),
+      merchantID: Int(merchantIDx),
       circleColor: circleColor,
       ringColor: ringColor,
       ringThickness: ringThickness,
@@ -110,7 +110,7 @@ final class DrawCoupon:Codable, MerchantType, CouponUIType {
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: DrawCouponKeys.self)
     self.couponId = try container.decode(Int.self, forKey: .couponId)
-    self.merchantId = try container.decode(Int.self, forKey: .merchantId)
+    self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.isEvent = try container.decode(Bool.self, forKey: .isEvent)
     self.isRing = try container.decode(Bool.self, forKey: .isRing)
     self.ringThickness = try container.decode(CGFloat.self, forKey: .ringThickness)

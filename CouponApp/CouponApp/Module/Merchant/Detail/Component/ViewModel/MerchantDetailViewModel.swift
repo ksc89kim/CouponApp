@@ -126,8 +126,8 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       }
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.checkUserCoupon(
-          userId: id,
-          merchantId: merchantDetail.merchant.merchantId
+          userID: id,
+          merchantID: merchantDetail.merchant.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)
@@ -151,8 +151,8 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       }
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.deleteUserCoupon(
-          userId: id,
-          merchantId: merchantDetail.merchant.merchantId
+          userID: id,
+          merchantID: merchantDetail.merchant.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)
@@ -170,8 +170,8 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       }
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.insertUserCoupon(
-          userId: id,
-          merchantId: merchantDetail.merchant.merchantId
+          userID: id,
+          merchantID: merchantDetail.merchant.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)

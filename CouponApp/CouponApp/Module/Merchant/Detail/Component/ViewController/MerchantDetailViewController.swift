@@ -109,9 +109,7 @@ final class MerchantDetailViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let merchantDetailViewModel = self.merchantDetailViewModel else {
-      return
-    }
+    guard let merchantDetailViewModel = self.merchantDetailViewModel else { return }
 
     self.actionButton.rx.tap
       .bind(to: merchantDetailViewModel.inputs.actionFromBottom)

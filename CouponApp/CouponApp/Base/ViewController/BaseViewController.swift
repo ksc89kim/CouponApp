@@ -51,8 +51,9 @@ open class BaseViewController: UIViewController, Bindable {
     mainViewController.modalPresentationStyle = .fullScreen
     if let merchantTabBarController = mainViewController as? MerchantTabBarController {
       let userMerchantViewController = merchantTabBarController.usermerchant
-      userMerchantViewController?.viewModel = UserMerchantViewModel()
-      userMerchantViewController?.merchantList = merchantList
+      let viewModel = UserMerchantViewModel()
+      viewModel.inputs.merchantList.onNext(merchantList)
+      userMerchantViewController?.viewModel = viewModel
       merchantTabBarController.merchant?.setMerchantList(merchantList)
     }
     self.present(mainViewController, animated: true, completion: nil)

@@ -21,6 +21,8 @@ struct CouponInfo {
     return self.userCoupon.couponCount >= self.merchant.couponCount()
   }
 
+  // MARK: - Init
+
   init(userCoupon: UserCoupon, merchant: Merchant) {
     self.userCoupon = userCoupon
     self.merchant = merchant

@@ -11,12 +11,16 @@ import RxSwift
 import RxCocoa
 
 protocol UserMerchantInputType: InputType {
+  var merchantList: AnyObserver<MerchantList?> { get }
   var loadData: AnyObserver<Void> { get }
-  var deleteCoupon: AnyObserver<(merchantId: Int, indexPath: IndexPath)> { get }
+  var showCouponListViewController: AnyObserver<Merchant> { get }
+  var deleteCoupon: AnyObserver<IndexPath> { get }
 }
 
 
 struct UserMerchantInputs: UserMerchantInputType {
+  let merchantList: AnyObserver<MerchantList?>
   let loadData: AnyObserver<Void>
-  let deleteCoupon: AnyObserver<(merchantId: Int, indexPath: IndexPath)>
+  let showCouponListViewController: AnyObserver<Merchant>
+  let deleteCoupon: AnyObserver<IndexPath>
 }

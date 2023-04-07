@@ -33,9 +33,9 @@ struct MerchantList: Codable, Listable {
 
   //MARK: - Method
 
-  func index(merchantId: Int?) -> Merchant? {
+  func index(merchantID: Int?) -> Merchant? {
     return self.list.first { (merchant: Merchant) in
-      return merchant.merchantId == merchantId
+      return merchant.merchantID == merchantID
     }
   }
 }

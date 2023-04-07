@@ -10,6 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Kingfisher
+import RxDataSources
+
 
 /// 회원 가맹점(쿠폰) 테이블 뷰
 /// - 현재 회원이 등록한 가맹점(쿠폰)을 보여주는 테이블 뷰 컨트롤러
@@ -28,17 +30,30 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   /// 회원 쿠폰 정보
   private var userCouponList: UserCouponList?
   var disposeBag = DisposeBag()
+  private let dataSource = RxTableViewSectionedReloadDataSource<UserMerchantSection>(
+    configureCell: { _, tableView, indexPath, item -> UITableViewCell in
+      let cell = tableView.dequeueReusableCell(
+        withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue,
+        for: indexPath
+      ) as! MerchantTableViewCell
+
+      cell.setMerchant(item)
+      return cell
+    }
+  )
 
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     self.setUI()
     self.bind()
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+
     self.viewModel?.inputs.loadData.onNext(())
   }
 
@@ -58,20 +73,29 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   // MARK: - Bind
 
   func bindInputs() {
+    guard let inputs = self.viewModel?.inputs else { return }
+    
+    self.tableView.rx.modelSelected(Merchant.self)
+      .subscribe(inputs.showCouponListViewController)
+      .disposed(by: self.disposeBag)
+
+    self.tableView.rx.itemDeleted
+      .subscribe(inputs.deleteCoupon)
+      .disposed(by: self.disposeBag)
   }
 
   func bindOutputs() {
-    self.viewModel?.outputs?.reload
+    self.tableView.dataSource = nil
+
+    self.viewModel?.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
-      .drive(onNext: { [weak self] list in
-        self?.userCouponList = list
-        self?.tableView.reloadData()
-      })
+      .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .disposed(by: self.disposeBag)
 
-    self.viewModel?.outputs?.delete
+    self.viewModel?.outputs?.updateCouponToDelete
       .asDriver(onErrorDriveWith: .empty())
-      .drive(onNext: { [weak self] indexPath in
+      .drive(onNext: { [weak self] sections, indexPath in
+        self?.dataSource.setSections(sections)
         self?.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
       })
       .disposed(by: self.disposeBag)
@@ -80,46 +104,13 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
-  }
 
-  // MARK: - TableView Delegate & DataSource
-
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let couponList = self.userCouponList else {
-      return 0
-    }
-    return couponList.count
-  }
-
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(
-      withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue,
-      for: indexPath
-    ) as! MerchantTableViewCell
-
-    let userCoupon = self.userCouponList?[indexPath.row]
-    cell.setMerchant(self.merchantList?.index(merchantId: userCoupon?.merchantId))
-
-    return cell
-  }
-
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    self.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: indexPath)
-  }
-
-  override func tableView(
-    _ tableView:UITableView,
-    commit editingStyle :UITableViewCell.EditingStyle,
-    forRowAt indexPath:IndexPath
-  ) {
-    if editingStyle == UITableViewCell.EditingStyle.delete,
-       let merchant = self.userCouponList?[indexPath.row] {
-      self.viewModel?.inputs.deleteCoupon.onNext((merchantId: merchant.merchantId, indexPath: indexPath))
-    }
+    self.viewModel?.outputs?.showCouponListViewController
+      .asDriver(onErrorDriveWith: .empty())
+      .drive(onNext: { [weak self] couponInfo in
+        self?.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: couponInfo)
+      })
+      .disposed(by: self.disposeBag)
   }
 
   // MARK: - Navigation
@@ -129,13 +120,10 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
     // CouponListViewController -> 데이터 전달
     if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
        let couponListView = segue.destination as? CouponListViewController,
-       let indexPath = sender as? IndexPath {
+       let couponInfo = sender as? CouponInfo {
       let viewModel = CouponListViewModel()
       couponListView.viewModel = viewModel
-      if let userCoupon = self.userCouponList?[indexPath.row],
-         let merchant = self.merchantList?.index(merchantId: userCoupon.merchantId) {
-        viewModel.inputs.loadCoupon.onNext(.init(userCoupon: userCoupon, merchant: merchant))
-      }
+      viewModel.inputs.loadCoupon.onNext(couponInfo)
     }
   }
 

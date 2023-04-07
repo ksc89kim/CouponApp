@@ -230,8 +230,8 @@ final class CouponListViewModel: CouponListViewModelType {
       }
       .flatMapLatest { couponInfo, couponCount, id -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.updateUesrCoupon(
-          userId: id,
-          merchantId: couponInfo.merchant.merchantId,
+          userID: id,
+          merchantID: couponInfo.merchant.merchantID,
           couponCount: couponCount
         )
         .asObservable()

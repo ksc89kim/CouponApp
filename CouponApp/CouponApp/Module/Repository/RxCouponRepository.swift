@@ -48,45 +48,45 @@ extension Reactive where Base: CouponRepository {
     }
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int) -> Single<RepositoryResponse> {
+  func insertUserCoupon(userID: Int, merchantID: Int) -> Single<RepositoryResponse> {
     return Single.create { [weak base] single in
-      base?.insertUserCoupon(userId: userId, merchantId: merchantId) { (result: Result<RepositoryResponse, Error>) in
+      base?.insertUserCoupon(userID: userID, merchantID: merchantID) { (result: Result<RepositoryResponse, Error>) in
         single(result)
       }
       return Disposables.create()
     }
   }
 
-  func checkUserCoupon(userId: Int, merchantId: Int) -> Single<RepositoryResponse> {
+  func checkUserCoupon(userID: Int, merchantID: Int) -> Single<RepositoryResponse> {
     return Single.create { [weak base] single in
-      base?.checkUserCoupon(userId: userId, merchantId: merchantId) { (result: Result<RepositoryResponse, Error>) in
+      base?.checkUserCoupon(userID: userID, merchantID: merchantID) { (result: Result<RepositoryResponse, Error>) in
         single(result)
       }
       return Disposables.create()
     }
   }
 
-  func deleteUserCoupon(userId: Int, merchantId: Int) -> Single<RepositoryResponse> {
+  func deleteUserCoupon(userID: Int, merchantID: Int) -> Single<RepositoryResponse> {
     return Single.create { [weak base] single in
-      base?.deleteUserCoupon(userId: userId, merchantId: merchantId) { (result: Result<RepositoryResponse, Error>) in
+      base?.deleteUserCoupon(userID: userID, merchantID: merchantID) { (result: Result<RepositoryResponse, Error>) in
         single(result)
       }
       return Disposables.create()
     }
   }
 
-  func loadUserCouponData(userId: Int) -> Single<RepositoryResponse> {
+  func loadUserCouponData(userID: Int) -> Single<RepositoryResponse> {
     return Single.create { [weak base] single in
-      base?.loadUserCouponData(userId: userId) { (result: Result<RepositoryResponse, Error>) in
+      base?.loadUserCouponData(userID: userID) { (result: Result<RepositoryResponse, Error>) in
         single(result)
       }
       return Disposables.create()
     }
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int) -> Single<RepositoryResponse> {
+  func updateUesrCoupon(userID: Int, merchantID: Int, couponCount: Int) -> Single<RepositoryResponse> {
     return Single.create { [weak base] single in
-      base?.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount) { (result: Result<RepositoryResponse, Error>) in
+      base?.updateUesrCoupon(userID: userID, merchantID: merchantID, couponCount: couponCount) { (result: Result<RepositoryResponse, Error>) in
         single(result)
       }
       return Disposables.create()

@@ -92,6 +92,7 @@
 		A4453B0726BCDFE5000CBB3D /* IntroInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0626BCDFE5000CBB3D /* IntroInputs.swift */; };
 		A4453B0926BCDFEE000CBB3D /* IntroOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4453B0826BCDFEE000CBB3D /* IntroOutputs.swift */; };
 		A45FCF7F29DC53DE00F2B9E0 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45FCF7E29DC53DE00F2B9E0 /* ViewControllerFactory.swift */; };
+		A45FCF8E29DD948D00F2B9E0 /* UserMerchantSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45FCF8D29DD948D00F2B9E0 /* UserMerchantSection.swift */; };
 		A46A574425A9C05C001251EE /* MerchantDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46A574325A9C05C001251EE /* MerchantDetailViewModel.swift */; };
 		A46CD74D230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */; };
 		A48829D82864A47E0029B3E0 /* AnimatedTextInput.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4B6727E28649F5A00E03EFC /* AnimatedTextInput.framework */; platformFilter = ios; };
@@ -308,6 +309,7 @@
 		A4453B0626BCDFE5000CBB3D /* IntroInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroInputs.swift; sourceTree = "<group>"; };
 		A4453B0826BCDFEE000CBB3D /* IntroOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroOutputs.swift; sourceTree = "<group>"; };
 		A45FCF7E29DC53DE00F2B9E0 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		A45FCF8D29DD948D00F2B9E0 /* UserMerchantSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMerchantSection.swift; sourceTree = "<group>"; };
 		A46A574325A9C05C001251EE /* MerchantDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetailViewModel.swift; sourceTree = "<group>"; };
 		A46CD74C230C177C0093ED36 /* UIPanGestureRecognizerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExtensions.swift; sourceTree = "<group>"; };
 		A492268A281E772000CB5218 /* MerchantAnimatedLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedLabel.swift; sourceTree = "<group>"; };
@@ -563,8 +565,9 @@
 		27D719B3298C8A500087F82F /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				A45FCF8C29DD947A00F2B9E0 /* Model */,
 				27D719B4298C8A500087F82F /* ViewModel */,
-				27D719B9298C8A500087F82F /* View */,
+				27D719B9298C8A500087F82F /* ViewController */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -580,12 +583,12 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		27D719B9298C8A500087F82F /* View */ = {
+		27D719B9298C8A500087F82F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				27D719BA298C8A500087F82F /* UserMerchantTableViewController.swift */,
 			);
-			path = View;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		27D719C0298C8A5D0087F82F /* List */ = {
@@ -1062,6 +1065,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		A45FCF8C29DD947A00F2B9E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A45FCF8D29DD948D00F2B9E0 /* UserMerchantSection.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A4B6727928649F5A00E03EFC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1318,6 +1329,7 @@
 				596303771F431411000E2701 /* AppDelegate.swift in Sources */,
 				A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */,
 				A49C686427ED648200BB97AF /* MerchantListViewController.swift in Sources */,
+				A45FCF8E29DD948D00F2B9E0 /* UserMerchantSection.swift in Sources */,
 				A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */,
 				A46A574425A9C05C001251EE /* MerchantDetailViewModel.swift in Sources */,
 				A4A61F9726C2415500809A44 /* CustomPopupOutputs.swift in Sources */,

@@ -14,7 +14,7 @@ final class UserCoupon: Codable, MerchantType {
   // MARK: - Define
 
   private enum UserCouponKeys: String, CodingKey {
-    case merchantId = "merchant_id"
+    case merchantID = "merchant_id"
     case couponCount = "coupon_count"
   }
 
@@ -23,7 +23,7 @@ final class UserCoupon: Codable, MerchantType {
   /// 적립된 쿠폰 갯수
   var couponCount: Int
   /// 가맹점 ID
-  var merchantId: Int
+  var merchantID: Int
   /// 선택된 쿠폰 인덱스
   var isSelectedIndex: Int {
     return self.couponCount - 1
@@ -33,12 +33,12 @@ final class UserCoupon: Codable, MerchantType {
 
   init() {
     self.couponCount = 0
-    self.merchantId = 0
+    self.merchantID = 0
   }
 
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: UserCouponKeys.self)
-    self.merchantId = try container.decode(Int.self, forKey: .merchantId)
+    self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.couponCount = try container.decode(Int.self, forKey: .couponCount)
   }
 

@@ -20,13 +20,13 @@ protocol RepositoryType {
   /// 가맹점 데이터 가져오기
   func getMerchantData(complete: @escaping RepositoryCompletion)
   /// 유저 쿠폰 추가하기
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion)
+  func insertUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion)
   /// 유저 쿠폰 확인하기
-  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion)
+  func checkUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion)
   /// 유저 쿠폰 삭제하기
-  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion)
+  func deleteUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion)
   /// 유저 쿠폰 데이터 요청하기
-  func getUserCouponData(userId: Int, complete: @escaping RepositoryCompletion)
+  func getUserCouponData(userID: Int, complete: @escaping RepositoryCompletion)
   /// 유저 쿠폰 카운트 업데이트 하기.
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion)
+  func updateUesrCoupon(userID: Int, merchantID: Int, couponCount: Int, complete: @escaping RepositoryCompletion)
 }

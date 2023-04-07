@@ -42,23 +42,23 @@ final class CouponRepository {
     self.repository.getMerchantData(complete: complete)
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
-    self.repository.insertUserCoupon(userId: userId, merchantId: merchantId, complete: complete)
+  func insertUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
+    self.repository.insertUserCoupon(userID: userID, merchantID: merchantID, complete: complete)
   }
 
-  func checkUserCoupon(userId:Int, merchantId:Int, complete: @escaping RepositoryCompletion){
-    self.repository.checkUserCoupon(userId: userId, merchantId: merchantId, complete: complete)
+  func checkUserCoupon(userID:Int, merchantID:Int, complete: @escaping RepositoryCompletion){
+    self.repository.checkUserCoupon(userID: userID, merchantID: merchantID, complete: complete)
   }
 
-  func deleteUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion){
-    self.repository.deleteUserCoupon(userId: userId, merchantId: merchantId, complete: complete)
+  func deleteUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion){
+    self.repository.deleteUserCoupon(userID: userID, merchantID: merchantID, complete: complete)
   }
 
-  func loadUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
-    self.repository.getUserCouponData(userId: userId, complete: complete)
+  func loadUserCouponData(userID: Int, complete: @escaping RepositoryCompletion) {
+    self.repository.getUserCouponData(userID: userID, complete: complete)
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion){
-    self.repository.updateUesrCoupon(userId: userId, merchantId: merchantId, couponCount: couponCount, complete: complete)
+  func updateUesrCoupon(userID: Int, merchantID: Int, couponCount: Int, complete: @escaping RepositoryCompletion){
+    self.repository.updateUesrCoupon(userID: userID, merchantID: merchantID, couponCount: couponCount, complete: complete)
   }
 }

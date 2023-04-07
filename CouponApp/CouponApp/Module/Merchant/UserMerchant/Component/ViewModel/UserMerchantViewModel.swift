@@ -14,10 +14,14 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
 
   // MARK: - Define
 
+  typealias DeleteCoupon = (userCouponList: UserCouponList, indexPath: IndexPath)
+
   private struct Subject {
+    let merchantList = BehaviorSubject<MerchantList?>(value: nil)
     let loadData = PublishSubject<Void>()
-    let deleteCoupon = PublishSubject<(merchantId: Int, indexPath: IndexPath)>()
+    let deleteCoupon = PublishSubject<IndexPath>()
     let error = PublishSubject<Error>()
+    let showCouponListViewController = PublishSubject<Merchant>()
   }
 
   enum Text {
@@ -36,36 +40,40 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
     let subject = Subject()
 
     self.inputs = UserMerchantInputs(
+      merchantList: subject.merchantList.asObserver(),
       loadData: subject.loadData.asObserver(),
+      showCouponListViewController: subject.showCouponListViewController.asObserver() ,
       deleteCoupon: subject.deleteCoupon.asObserver()
     )
 
-    let loadedData = self.loadData(subject: subject)
-
-    let deleteCoupon = self.deleteCoupon(subject: subject)
-    let delete = self.delete(
-      loadedData: loadedData,
-      deleteCoupon: deleteCoupon
-    )
-
-    let showCustomPopup = self.showCustomPopup(
-      error: subject.error.asObservable()
-    )
+    let userCouponList = self.loadUserCouponList(subject: subject)
 
     self.outputs = UserMerchantOutputs(
-      reload: loadedData,
-      delete: delete,
-      showCustomPopup: showCustomPopup
+      reloadSections: self.createSections(
+        subject: subject,
+        userCouponList: userCouponList
+      ),
+      updateCouponToDelete: self.updateCouponToDelete(
+        subject: subject,
+        userCouponList: userCouponList
+      ),
+      showCustomPopup: self.showCustomPopup(
+        error: subject.error.asObservable()
+      ),
+      showCouponListViewController: self.showCouponListViewController(
+        subject: subject,
+        userCouponList: userCouponList
+      )
     )
   }
 
   // MARK: - Method
 
-  private func loadData(subject: Subject) -> Observable<UserCouponList> {
+  private func loadUserCouponList(subject: Subject) -> Observable<UserCouponList> {
     return subject.loadData
       .withLatestFrom(Me.instance.rx.userID)
       .flatMapLatest { id -> Observable<UserCouponList> in
-        return CouponRepository.instance.rx.loadUserCouponData(userId: id)
+        return CouponRepository.instance.rx.loadUserCouponData(userID: id)
           .asObservable()
           .suppressAndFeedError(into: subject.error)
           .compactMap { $0.data as? UserCouponList }
@@ -73,31 +81,63 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
       .share()
   }
 
-  private func deleteCoupon(subject: Subject) -> Observable<IndexPath> {
-    return subject.deleteCoupon
-      .withLatestFrom(Me.instance.rx.userID) { value, id in
-        return (value.merchantId, value.indexPath, id)
+  private func createSections(subject: Subject, userCouponList: Observable<UserCouponList>) -> Observable<[UserMerchantSection]> {
+    return userCouponList.withLatestFrom(subject.merchantList.filterNil()) { userCouponlist, merchantList -> [Merchant] in
+      return userCouponlist.list.compactMap { userCoupon -> Merchant? in
+        return merchantList.index(merchantID: userCoupon.merchantID)
       }
-      .flatMapLatest { merchantId, indexPath, id -> Observable<IndexPath> in
-         return CouponRepository.instance.rx.deleteUserCoupon(userId: id, merchantId: merchantId)
-        .asObservable()
-        .suppressAndFeedError(into: subject.error)
-        .map { _ in indexPath }
-      }
-      .share()
+    }
+    .map { merchants -> [UserMerchantSection] in
+      return [UserMerchantSection(items: merchants)]
+    }
   }
 
-  private func delete(
-    loadedData: Observable<UserCouponList>,
-    deleteCoupon: Observable<IndexPath>
-  ) -> Observable<IndexPath> {
-    return deleteCoupon
-      .withLatestFrom(loadedData) { (list: $1, indexPath: $0) }
-      .do(onNext: { list, indexPath in
-        var list = list
-        list.remove(indexPath.row)
-      })
-      .map { $0.indexPath }
+  private func updateCouponToDelete(
+    subject: Subject,
+    userCouponList: Observable<UserCouponList>
+  ) -> Observable<([UserMerchantSection], IndexPath)> {
+
+    let deletedCoupon = self.deleteCoupon(subject: subject, userCouponList: userCouponList)
+    let sections = self.createSections(
+      subject: subject,
+      userCouponList: deletedCoupon.map { userCouponList, indexPath in userCouponList }
+    )
+
+    return sections.withLatestFrom(deletedCoupon) { sections, deletedCoupon -> ([UserMerchantSection], IndexPath) in
+      return (sections, deletedCoupon.indexPath)
+    }
+  }
+
+  private func deleteCoupon(subject: Subject, userCouponList: Observable<UserCouponList>) -> Observable<DeleteCoupon> {
+    let source = Observable.combineLatest(
+      Me.instance.rx.userID,
+      userCouponList
+    )
+    return subject.deleteCoupon
+      .withLatestFrom(source) { indexPath, source in
+        let userID = source.0
+        let userCouponList = source.1
+        return (userCouponList, indexPath, userID)
+      }
+      .flatMapLatest { (
+        userCouponList: UserCouponList,
+        indexPath: IndexPath,
+        userID: Int
+      ) -> Observable<DeleteCoupon> in
+        guard let merchantID = userCouponList[indexPath.item]?.merchantID else { return .empty() }
+         return CouponRepository.instance.rx.deleteUserCoupon(userID: userID, merchantID: merchantID)
+        .asObservable()
+        .suppressAndFeedError(into: subject.error)
+        .compactMap { [weak userCouponList = userCouponList] _ in
+          guard let userCouponList = userCouponList else { return nil }
+          return (userCouponList, indexPath)
+        }
+        .do(onNext: { userCouponList, indexPath in
+          var list = userCouponList
+          list.remove(indexPath.row)
+        })
+      }
+      .share()
   }
 
   private func showCustomPopup(error: Observable<Error>) -> Observable<CustomPopup> {
@@ -109,5 +149,19 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
           completion: nil
         )
       }
+  }
+
+  private func showCouponListViewController(
+    subject: Subject,
+    userCouponList: Observable<UserCouponList>
+  ) -> Observable<CouponInfo> {
+    return subject.showCouponListViewController.withLatestFrom(userCouponList) { merchant, userCouponList -> CouponInfo? in
+      let userCoupon = userCouponList.list.first { userCoupon in
+        return userCoupon.merchantID == merchant.merchantID
+      }
+      guard let userCoupon = userCoupon else { return nil }
+      return .init(userCoupon: userCoupon, merchant: merchant)
+    }
+    .filterNil()
   }
 }

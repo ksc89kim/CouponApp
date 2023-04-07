@@ -56,9 +56,7 @@ final class CustomPopupViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let customPopupViewModel = self.customPopupViewModel else {
-      return
-    }
+    guard let customPopupViewModel = self.customPopupViewModel else { return }
 
     self.okButton.rx.tap
       .bind(to: customPopupViewModel.inputs.onOk)

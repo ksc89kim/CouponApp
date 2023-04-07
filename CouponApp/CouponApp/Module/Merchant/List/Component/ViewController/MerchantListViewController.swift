@@ -17,7 +17,7 @@ class MerchantListViewController: UITableViewController, Bindable {
 
   var viewModel: MerchantListViewModelType?
   var disposeBag: DisposeBag = .init()
-  private lazy var dataSource = RxTableViewSectionedReloadDataSource<MerchantListSection>(
+  private let dataSource = RxTableViewSectionedReloadDataSource<MerchantListSection>(
     configureCell: { _, tableView, indexPath, item -> UITableViewCell in
       let cell = tableView.dequeueReusableCell(
         withIdentifier: CouponIdentifier.merchantTableViewCell.rawValue,
@@ -42,9 +42,7 @@ class MerchantListViewController: UITableViewController, Bindable {
   // MARK: - Bind
 
   func bindInputs() {
-    guard let inputs = self.viewModel?.inputs else {
-      return
-    }
+    guard let inputs = self.viewModel?.inputs else { return }
 
     self.tableView.rx.itemSelected
       .compactMap { [weak self] (indexPath: IndexPath) -> MerchantSelect? in

@@ -16,7 +16,7 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
 
   private enum ImageCouponKeys: String, CodingKey {
     case couponId = "coupon_id"
-    case merchantId = "merchant_id"
+    case merchantID = "merchant_id"
     case isEvent = "isEvent"
     case normalImage = "normal_image"
     case selectImage = "select_image"
@@ -36,7 +36,7 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   // MARK: - Merchant Property
 
   /// 가맹점 ID
-  var merchantId: Int
+  var merchantID: Int
 
   // MARK: - Property
 
@@ -47,9 +47,9 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
 
   // MARK: - Init
 
-  init(couponId: Int,merchantId: Int,isEvent: Bool, normalImage: String, selectImage: String) {
+  init(couponId: Int,merchantID: Int,isEvent: Bool, normalImage: String, selectImage: String) {
     self.couponId = couponId
-    self.merchantId = merchantId
+    self.merchantID = merchantID
     self.isEvent = isEvent
     self.normalImage = normalImage
     self.selectImage = selectImage
@@ -58,7 +58,7 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   }
 
   convenience init(resultSet: FMResultSet) {
-    let merchantIdx: Int32 = resultSet.int(forColumnIndex: 0)
+    let merchantIDx: Int32 = resultSet.int(forColumnIndex: 0)
     let couponIdx: Int32 = resultSet.int(forColumnIndex: 1)
     let normalImage: String = resultSet.string(forColumnIndex: 2) ?? ""
     let selectImage: String = resultSet.string(forColumnIndex: 3) ?? ""
@@ -66,7 +66,7 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
 
     self.init(
       couponId: Int(couponIdx),
-      merchantId: Int(merchantIdx),
+      merchantID: Int(merchantIDx),
       isEvent: isEvent,
       normalImage: normalImage,
       selectImage: selectImage
@@ -76,7 +76,7 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: ImageCouponKeys.self)
     self.couponId = try container.decode(Int.self, forKey: .couponId)
-    self.merchantId = try container.decode(Int.self, forKey: .merchantId)
+    self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.isEvent = try container.decode(Bool.self, forKey: .isEvent)
     self.normalImage = try container.decode(String.self, forKey: .normalImage)
     self.selectImage = try container.decode(String.self, forKey: .selectImage)

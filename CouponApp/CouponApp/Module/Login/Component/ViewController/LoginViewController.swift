@@ -89,9 +89,7 @@ final class LoginViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let loginViewModel = self.loginViewModel else {
-      return
-    }
+    guard let loginViewModel = self.loginViewModel else { return }
 
     self.phoneNumberTextInput.rx.text
       .bind(to: loginViewModel.inputs.userPhoneNumber)

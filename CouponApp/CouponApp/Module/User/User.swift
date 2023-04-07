@@ -16,7 +16,7 @@ struct User: Codable {
   private enum UserKeys: String, CodingKey {
     case phoneNumber
     case name
-    case id = "userId"
+    case id = "userID"
   }
 
   // MARK: - Property

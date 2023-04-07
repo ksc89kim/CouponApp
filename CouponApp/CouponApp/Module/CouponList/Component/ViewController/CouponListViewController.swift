@@ -91,9 +91,7 @@ final class CouponListViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let couponListViewModel = self.couponListViewModel else {
-      return
-    }
+    guard let couponListViewModel = self.couponListViewModel else { return }
 
     self.requestButton.rx.tap
       .bind(to: couponListViewModel.inputs.onAddCoupon)

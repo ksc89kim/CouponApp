@@ -11,14 +11,16 @@ import RxSwift
 import RxCocoa
 
 protocol UserMerchantOutputType: OutputType {
-  var reload: Observable<UserCouponList> { get }
-  var delete: Observable<IndexPath> { get }
+  var reloadSections: Observable<[UserMerchantSection]> { get }
+  var updateCouponToDelete: Observable<([UserMerchantSection], IndexPath)> { get }
   var showCustomPopup: Observable<CustomPopup> { get }
+  var showCouponListViewController: Observable<CouponInfo> { get }
 }
 
 
 struct UserMerchantOutputs: UserMerchantOutputType {
-  let reload: Observable<UserCouponList>
-  let delete: Observable<IndexPath>
+  let reloadSections: Observable<[UserMerchantSection]>
+  let updateCouponToDelete: Observable<([UserMerchantSection], IndexPath)>
   let showCustomPopup: Observable<CustomPopup>
+  let showCouponListViewController: Observable<CouponInfo>
 }

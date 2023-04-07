@@ -89,9 +89,7 @@ final class SignupViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let signupViewModel = self.signupViewModel else {
-      return
-    }
+    guard let signupViewModel = self.signupViewModel else { return }
 
     self.nameTextInput.rx.text
       .bind(to: signupViewModel.inputs.userName)

@@ -24,8 +24,8 @@ struct CouponSqlite: RepositoryType {
 
   func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     do {
-      let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-      let user = User(id: userId)
+      let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
+      let user = User(id: userID)
       if user.isVaildID {
         complete(.success(.init(data: user)))
       } else {
@@ -38,8 +38,8 @@ struct CouponSqlite: RepositoryType {
 
   func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     do {
-      let userId = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
-      let user = User(id: userId)
+      let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
+      let user = User(id: userID)
       if user.isVaildID {
         complete(.success(.init(data: user)))
       } else {
@@ -62,9 +62,9 @@ struct CouponSqlite: RepositoryType {
           return
         }
         if merchant.isCouponImage {
-          merchant.imageCouponList = try SQLInterface().selectImageCouponData(merchantId: merchant.merchantId)
+          merchant.imageCouponList = try SQLInterface().selectImageCouponData(merchantID: merchant.merchantID)
         } else {
-          merchant.drawCouponList = try SQLInterface().selectDrawCouponData(merchantId: merchant.merchantId)
+          merchant.drawCouponList = try SQLInterface().selectDrawCouponData(merchantID: merchant.merchantID)
         }
         merchantList[i] = merchant
       }
@@ -75,9 +75,9 @@ struct CouponSqlite: RepositoryType {
     }
   }
 
-  func insertUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
+  func insertUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
     do {
-      let isSuccessed = try SQLInterface().insertCoupon(userId, merchantId)
+      let isSuccessed = try SQLInterface().insertCoupon(userID, merchantID)
       if isSuccessed {
         complete(.success(.init(data: nil)))
       } else {
@@ -88,9 +88,9 @@ struct CouponSqlite: RepositoryType {
     }
   }
 
-  func checkUserCoupon(userId: Int, merchantId: Int, complete: @escaping RepositoryCompletion) {
+  func checkUserCoupon(userID: Int, merchantID: Int, complete: @escaping RepositoryCompletion) {
     do {
-      let isUserCoupon = try SQLInterface().isUserCoupon(userId, merchantId)
+      let isUserCoupon = try SQLInterface().isUserCoupon(userID, merchantID)
       if isUserCoupon {
         complete(.success(.init(data: nil)))
       } else {
@@ -101,9 +101,9 @@ struct CouponSqlite: RepositoryType {
     }
   }
 
-  func deleteUserCoupon(userId:Int, merchantId:Int, complete: @escaping RepositoryCompletion) {
+  func deleteUserCoupon(userID:Int, merchantID:Int, complete: @escaping RepositoryCompletion) {
     do{
-      let isSuccessed = try SQLInterface().deleteCounpon(userId, merchantId)
+      let isSuccessed = try SQLInterface().deleteCounpon(userID, merchantID)
       if isSuccessed {
         complete(.success(.init(data: nil)))
       } else {
@@ -114,18 +114,18 @@ struct CouponSqlite: RepositoryType {
     }
   }
   
-  func getUserCouponData(userId: Int, complete: @escaping RepositoryCompletion) {
+  func getUserCouponData(userID: Int, complete: @escaping RepositoryCompletion) {
     do {
-      let data = try SQLInterface().selectUserCouponData(userId)
+      let data = try SQLInterface().selectUserCouponData(userID)
       complete(.success(.init(data: data)))
     } catch {
       complete(.failure(error))
     }
   }
 
-  func updateUesrCoupon(userId: Int, merchantId: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
+  func updateUesrCoupon(userID: Int, merchantID: Int, couponCount: Int, complete: @escaping RepositoryCompletion) {
     do {
-      let isSuccessed = try SQLInterface().updateCouponCount(userId, merchantId, couponCount)
+      let isSuccessed = try SQLInterface().updateCouponCount(userID, merchantID, couponCount)
       if isSuccessed {
         complete(.success(.init(data: nil)))
       } else {

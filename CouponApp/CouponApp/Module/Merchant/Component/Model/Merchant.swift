@@ -14,7 +14,7 @@ struct Merchant: Codable, MerchantType {
   //MARK: - Define
 
   private enum MerchantImplKeys: String, CodingKey {
-    case merchantId = "id"
+    case merchantID = "id"
     case name
     case content
     case logoImageUrl = "imageUrl"
@@ -28,7 +28,7 @@ struct Merchant: Codable, MerchantType {
   //MARK: - Property
 
   /// 가맹점 ID
-  var merchantId: Int
+  var merchantID: Int
   /// 가맹점 이름
   let name: String
   /// 가맹점 소개 내용
@@ -51,7 +51,7 @@ struct Merchant: Codable, MerchantType {
   //MARK: - Init
 
   init(
-    merchantId: Int,
+    merchantID: Int,
     name: String,
     content: String,
     logoImageUrl: String,
@@ -60,7 +60,7 @@ struct Merchant: Codable, MerchantType {
     isCouponImage: Bool,
     cardBackground: String
   ) {
-    self.merchantId = merchantId
+    self.merchantID = merchantID
     self.name = name
     self.content = content
     self.logoImageUrl = URL(string: logoImageUrl) 
@@ -74,7 +74,7 @@ struct Merchant: Codable, MerchantType {
 
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: MerchantImplKeys.self)
-    self.merchantId = try container.decode(Int.self, forKey: .merchantId)
+    self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.name = try container.decode(String.self, forKey: .name)
     self.content = try container.decode(String.self, forKey: .content)
     self.logoImageUrl = try container.decode(URL.self, forKey: .logoImageUrl)
