@@ -11,10 +11,15 @@ import RxSwift
 import RxCocoa
 
 protocol CustomPopupOutputType: OutputType {
+  /// 화면 나타날때 보여주는 FadeIn 애니메이션
   var showAnimation: Observable<Void> { get }
+  /// 팝업 닫기
   var close: Observable<CustomPopup> { get }
+  /// 팝업 제목
   var title: Observable<String> { get }
+  /// 팝업 내용
   var content: Observable<String> { get }
+  /// 팝업 뷰 투명도
   var popupViewAlpha: Observable<CGFloat> { get }
 }
 

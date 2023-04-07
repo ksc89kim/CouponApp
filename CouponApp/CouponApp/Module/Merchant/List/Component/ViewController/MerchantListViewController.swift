@@ -69,6 +69,7 @@ class MerchantListViewController: UITableViewController, Bindable {
 
   func bindOutputs() {
     self.tableView.dataSource = nil
+    
     self.viewModel?.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.tableView.rx.items(dataSource: self.dataSource))

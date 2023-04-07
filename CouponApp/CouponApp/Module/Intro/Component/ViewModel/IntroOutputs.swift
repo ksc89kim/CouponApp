@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol IntroOutputType: OutputType {
+  /// 로그인 뷰컨트롤러 자식 뷰 컨트롤러로 추가
   var addLoginViewController: Observable<MerchantList> { get }
+  /// 메인 뷰컨트롤러 자식 뷰 컨트롤러로 추가
   var addMainViewController: Observable<MerchantList> { get }
 }
 

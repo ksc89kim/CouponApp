@@ -11,9 +11,13 @@ import RxSwift
 import RxCocoa
 
 protocol SignupInputType: InputType {
+  /// 가입하기
   var onSingup: AnyObserver<Void> { get }
+  /// 유저 이름
   var userName: AnyObserver<String?> { get }
+  /// 유저 전화번호
   var userPhoneNumber: AnyObserver<String?> { get }
+  /// 유저 비밀번호
   var userPassword: AnyObserver<String?> { get }
 }
 

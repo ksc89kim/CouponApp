@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol IntroInputType: InputType {
+  /// 전체 가맹점  정보 요청
   var loadMerchantData: AnyObserver<Void> { get }
 }
 

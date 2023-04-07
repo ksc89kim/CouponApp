@@ -11,9 +11,13 @@ import RxSwift
 import RxCocoa
 
 protocol UserMerchantOutputType: OutputType {
+  /// 쿠폰 테이블 화면 업데이트
   var reloadSections: Observable<[UserMerchantSection]> { get }
+  /// 삭제된 쿠폰  테이블 업데이트
   var updateCouponToDelete: Observable<([UserMerchantSection], IndexPath)> { get }
+  /// 알럿 팝업 보여주기
   var showCustomPopup: Observable<CustomPopup> { get }
+  /// 유저 쿠폰 리스트 보여주기
   var showCouponListViewController: Observable<CouponInfo> { get }
 }
 

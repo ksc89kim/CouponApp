@@ -14,7 +14,8 @@ final class MerchantViewController: UIViewController {
 
   // MARK: - UI Component
 
-  @IBOutlet var tabButtonArray: [UIButton] = [] //상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
+  /// 상단 탭바 버튼  (주변 가맹점, 전체 가맹점)
+  @IBOutlet var tabButtonArray: [UIButton] = []
   @IBOutlet weak var topView: UIView!
   @IBOutlet weak var selectLeadingLayout: NSLayoutConstraint!
 

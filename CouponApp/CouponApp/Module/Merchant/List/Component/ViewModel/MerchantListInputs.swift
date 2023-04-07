@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol MerchantListInputType: InputType {
+  /// 가맹점 선택
   var selecItem: AnyObserver<MerchantSelect> { get }
+  /// 전체 가맹점 정보
   var merchantList: AnyObserver<MerchantList?> { get }
 }
 

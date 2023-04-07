@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol MerchantListOutputType: OutputType {
+  /// 주변 가맹점 테이블뷰 리로드
   var reloadSections: Observable<[MerchantListSection]> { get }
+  /// 가맹점 상세로 이동
   var presentDetail: Observable<MerchantDetail> { get }
 }
 

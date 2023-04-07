@@ -13,12 +13,8 @@ struct MerchantSelect {
   // MARK: - Property
 
   let cellTopViewFrame: CGRect
-
   let cellFrame: CGRect
-
   let contentOffset: CGPoint
-
   let cornerRadius: CGFloat
-
   let item: Merchant
 }

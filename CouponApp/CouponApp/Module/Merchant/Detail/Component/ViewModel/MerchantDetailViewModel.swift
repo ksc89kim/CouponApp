@@ -17,7 +17,6 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   private struct Subject {
     let merchantDetail = BehaviorSubject<MerchantDetail?>(value: nil)
     let actionFromBottom = PublishSubject<Void>()
-    let headerViewSize = PublishSubject<CGSize>()
     let error = PublishSubject<Error>()
   }
 
@@ -48,8 +47,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
 
     self.inputs = MerchantDetailInputs(
       merchantDetail: subject.merchantDetail.asObserver(),
-      actionFromBottom: subject.actionFromBottom.asObserver(),
-      headerViewSize: subject.headerViewSize.asObserver()
+      actionFromBottom: subject.actionFromBottom.asObserver()
     )
 
     let checkUser = self.checkUser(subject: subject)
