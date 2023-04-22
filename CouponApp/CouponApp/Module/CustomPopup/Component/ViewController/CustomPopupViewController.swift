@@ -43,7 +43,8 @@ final class CustomPopupViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.customPopupViewModel?.inputs.viewDidLoad.onNext(())
+    
+    self.customPopupViewModel?.inputs.showPopup.onNext(())
   }
 
   override func didReceiveMemoryWarning() {

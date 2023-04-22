@@ -17,7 +17,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
   private struct Subject {
     let configure = BehaviorSubject<CustomPopup?>(value: nil)
     let onOk = PublishSubject<Void>()
-    let viewDidLoad = PublishSubject<Void>()
+    let showPopup = PublishSubject<Void>()
   }
 
   // MARK: - Property
@@ -34,7 +34,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
     self.inputs = CustomPopupInputs(
       configure: subject.configure.asObserver(),
       onOk: subject.onOk.asObserver(),
-      viewDidLoad: subject.viewDidLoad.asObserver()
+      showPopup: subject.showPopup.asObserver()
     )
 
     let showAnimation = self.delayShowAnimation(subject: subject)
@@ -63,12 +63,12 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
   }
 
   private func delayShowAnimation(subject: Subject) -> Observable<Void> {
-    return subject.viewDidLoad
+    return subject.showPopup
       .delay(.milliseconds(100), scheduler: MainScheduler.instance)
   }
 
   private func configre(subject: Subject) -> Observable<CustomPopup> {
-    return subject.viewDidLoad
+    return subject.showPopup
       .withLatestFrom(subject.configure)
       .filterNil()
       .share()

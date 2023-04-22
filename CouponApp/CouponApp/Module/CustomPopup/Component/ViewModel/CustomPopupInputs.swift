@@ -15,13 +15,13 @@ protocol CustomPopupInputType: InputType {
   var configure: AnyObserver<CustomPopup?> { get }
   /// 커스텀 팝업 확인 버튼 액션
   var onOk: AnyObserver<Void> { get }
-  /// 커스텀 팝업 viewDidLoad
-  var viewDidLoad: AnyObserver<Void> { get }
+  /// 커스텀 팝업 보여주기
+  var showPopup: AnyObserver<Void> { get }
 }
 
 
 struct CustomPopupInputs: CustomPopupInputType {
   let configure: AnyObserver<CustomPopup?>
   let onOk: AnyObserver<Void>
-  let viewDidLoad: AnyObserver<Void>
+  let showPopup: AnyObserver<Void>
 }
