@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol CouponListViewModelType: ViewModelType {
+enum CouponListViewModelKey: InjectionKey {
+  typealias Value = CouponListViewModelType
+}
+
+
+protocol CouponListViewModelType: ViewModelType, Injectable {
   var inputs: CouponListInputType { get }
   var outputs: CouponListOutputType? { get }
 }

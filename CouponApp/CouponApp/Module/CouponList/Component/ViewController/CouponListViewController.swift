@@ -53,9 +53,9 @@ final class CouponListViewController: BaseViewController {
 
   // MARK: - Property
 
-  private var couponListViewModel: CouponListViewModelType? {
-    return self.viewModel as? CouponListViewModelType
-  }
+
+  @Inject(CouponListViewModelKey.self)
+  var couponListViewModel: CouponListViewModelType
   private let dashLineLayer = CAShapeLayer()
   private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<CouponSection>(
     configureCell: { _, collectionView, indexPath, item -> UICollectionViewCell in
@@ -67,13 +67,6 @@ final class CouponListViewController: BaseViewController {
     }
   )
 
-
-  // MARK: - Deinit
-
-  deinit {
-    self.dotLineView.layer.removeObserver(self, forKeyPath:"bounds")
-  }
-
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
@@ -81,17 +74,10 @@ final class CouponListViewController: BaseViewController {
     self.setUI()
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
   // MARK: - Bind
 
   override func bindInputs() {
     super.bindInputs()
-
-    guard let couponListViewModel = self.couponListViewModel else { return }
 
     self.requestButton.rx.tap
       .bind(to: couponListViewModel.inputs.onAddCoupon)
@@ -105,17 +91,17 @@ final class CouponListViewController: BaseViewController {
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.couponListViewModel?.outputs?.navigationTitle
+    self.couponListViewModel.outputs?.navigationTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.navigationItem.rx.title)
       .disposed(by: self.disposeBag)
     
-    self.couponListViewModel?.outputs?.showCustomPopup
+    self.couponListViewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.couponListViewModel?.outputs?.reloadSections
+    self.couponListViewModel.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.myCollectionView.rx.items(dataSource: self.dataSource))
       .disposed(by: self.disposeBag)
@@ -180,5 +166,11 @@ final class CouponListViewController: BaseViewController {
     if keyPath == "bounds" {
       self.dotLineView.updateDashLineSize(dashLayer: dashLineLayer)
     }
+  }
+
+  // MARK: - Deinit
+
+  deinit {
+    self.dotLineView.layer.removeObserver(self, forKeyPath:"bounds")
   }
 }

@@ -8,14 +8,10 @@
 
 import Foundation
 
-// MARK: - CouponInfoKey
-
 enum CouponInfoKey: InjectionKey {
   typealias Value = CouponInfoType
 }
 
-
-// MARK: - CouponInfoType
 
 protocol CouponInfoType: Injectable {
   var userCoupon: UserCoupon? { get set }
@@ -28,8 +24,6 @@ protocol CouponInfoType: Injectable {
   mutating func setCouponInfo(_ couponInfo: CouponInfoType)
 }
 
-
-// MARK: - CouponInfo
 
 struct CouponInfo: CouponInfoType {
 
