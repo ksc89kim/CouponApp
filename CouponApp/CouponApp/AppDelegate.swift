@@ -16,10 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
 
-    let container = DIContainer {
+    DIContainer.register {
       InjectItem(CouponInfoKey.self) { CouponInfo() }
     }
-    container.build()
 
     if let introViewController = self.window?.rootViewController as? IntroViewController {
       introViewController.viewModel = IntroViewModel()

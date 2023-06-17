@@ -15,20 +15,6 @@ final class DIContainer {
   static var instance: DIContainer = .init()
   private var items: [String: InjectItem] = [:]
 
-  // MARK: - Init
-
-  convenience init(@InjectItemBuilder _ items: () -> [InjectItem]) {
-    self.init()
-    items().forEach { (item: InjectItem) in
-      self.add(item)
-    }
-  }
-
-  convenience init(@InjectItemBuilder _ item: () -> InjectItem) {
-    self.init()
-    self.add(item())
-  }
-
   // MARK: - Method
   
   static func resolve<T>(for type: Any.Type?) -> T {
@@ -42,11 +28,17 @@ final class DIContainer {
     return injectable
   }
 
-  func add(_ item: InjectItem) {
-    self.items[item.name] = item
+  static func register(@InjectItemBuilder _ items: () -> [InjectItem]) {
+    items().forEach { (item: InjectItem) in
+      self.instance.add(item)
+    }
   }
 
-  func build() {
-    Self.instance = self
+  static func register(@InjectItemBuilder _ item: () -> InjectItem) {
+    self.instance.add(item())
+  }
+
+  func add(_ item: InjectItem) {
+    self.items[item.name] = item
   }
 }
