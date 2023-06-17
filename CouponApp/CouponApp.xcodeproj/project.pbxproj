@@ -70,6 +70,12 @@
 		A405815022E9E4D90022A48C /* MerchantAnimatedTextLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405814F22E9E4D90022A48C /* MerchantAnimatedTextLayer.swift */; };
 		A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DB2286A890009403EB /* IntroViewController.swift */; };
 		A405C9DE2286AC40009403EB /* IntroStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A405C9DD2286AC40009403EB /* IntroStampView.swift */; };
+		A406CB702A3DB90C00F59E8E /* InjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB6F2A3DB90C00F59E8E /* InjectItem.swift */; };
+		A406CB722A3DB96700F59E8E /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB712A3DB96700F59E8E /* DIContainer.swift */; };
+		A406CB762A3DC09100F59E8E /* Injectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB752A3DC09100F59E8E /* Injectable.swift */; };
+		A406CB782A3DC0A500F59E8E /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB772A3DC0A500F59E8E /* InjectionKey.swift */; };
+		A406CB7A2A3DC11400F59E8E /* InjectItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB792A3DC11400F59E8E /* InjectItemBuilder.swift */; };
+		A406CB7C2A3DC93200F59E8E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB7B2A3DC93200F59E8E /* Inject.swift */; };
 		A407E56A22801FD7007B7C18 /* MerchantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantDetail.swift */; };
 		A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
 		A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415623422DB1B7B00A0551E /* MerchantViewController.swift */; };
@@ -293,6 +299,12 @@
 		A405814F22E9E4D90022A48C /* MerchantAnimatedTextLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantAnimatedTextLayer.swift; sourceTree = "<group>"; };
 		A405C9DB2286A890009403EB /* IntroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		A405C9DD2286AC40009403EB /* IntroStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroStampView.swift; sourceTree = "<group>"; };
+		A406CB6F2A3DB90C00F59E8E /* InjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectItem.swift; sourceTree = "<group>"; };
+		A406CB712A3DB96700F59E8E /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		A406CB752A3DC09100F59E8E /* Injectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injectable.swift; sourceTree = "<group>"; };
+		A406CB772A3DC0A500F59E8E /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
+		A406CB792A3DC11400F59E8E /* InjectItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectItemBuilder.swift; sourceTree = "<group>"; };
+		A406CB7B2A3DC93200F59E8E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
 		A407E56922801FD7007B7C18 /* MerchantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetail.swift; sourceTree = "<group>"; };
 		A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputStyle.swift; sourceTree = "<group>"; };
 		A415623422DB1B7B00A0551E /* MerchantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +430,7 @@
 		273B8B2C2966AEBB00C86502 /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				A406CB6D2A3DB8DD00F59E8E /* DI */,
 				271BB39D29A8ADDF0008925A /* Location */,
 				27EECA652967FD9000067AAD /* CouponList */,
 				27E88113296CF4A00096AE76 /* CustomPopup */,
@@ -1057,6 +1070,19 @@
 			path = Sqlite3;
 			sourceTree = "<group>";
 		};
+		A406CB6D2A3DB8DD00F59E8E /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				A406CB6F2A3DB90C00F59E8E /* InjectItem.swift */,
+				A406CB712A3DB96700F59E8E /* DIContainer.swift */,
+				A406CB752A3DC09100F59E8E /* Injectable.swift */,
+				A406CB772A3DC0A500F59E8E /* InjectionKey.swift */,
+				A406CB792A3DC11400F59E8E /* InjectItemBuilder.swift */,
+				A406CB7B2A3DC93200F59E8E /* Inject.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		A425C9EC22D9E2C300093D8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1330,6 +1356,7 @@
 				A425C9E522D9CF3C00093D8E /* CouponIdentifier.swift in Sources */,
 				A49C686427ED648200BB97AF /* MerchantListViewController.swift in Sources */,
 				A45FCF8E29DD948D00F2B9E0 /* UserMerchantSection.swift in Sources */,
+				A406CB762A3DC09100F59E8E /* Injectable.swift in Sources */,
 				A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */,
 				A46A574425A9C05C001251EE /* MerchantDetailViewModel.swift in Sources */,
 				A4A61F9726C2415500809A44 /* CustomPopupOutputs.swift in Sources */,
@@ -1358,7 +1385,9 @@
 				271BB39C29A88E600008925A /* MerchantSelect.swift in Sources */,
 				A4A61FA026C24ABE00809A44 /* MerchantDetailViewModelType.swift in Sources */,
 				A425C9E322D9CCFF00093D8E /* CouponStoryBoardName.swift in Sources */,
+				A406CB722A3DB96700F59E8E /* DIContainer.swift in Sources */,
 				27D324C92990BD2A00A74126 /* AroundMerchantListViewModel.swift in Sources */,
+				A406CB7C2A3DC93200F59E8E /* Inject.swift in Sources */,
 				CC88E7442008450E00F48B1C /* DrawCoupon.swift in Sources */,
 				A4AD39E028255EF50083E5C4 /* UINibExtensions.swift in Sources */,
 				A4A61F9926C2418100809A44 /* CustomPopupViewModelType.swift in Sources */,
@@ -1367,8 +1396,10 @@
 				59E54C03212AAB7F00D31BD8 /* UIViewControllerExtensions.swift in Sources */,
 				594A011420A825700007503D /* CouponNetwork.swift in Sources */,
 				A4B7749126C16EBD000954B9 /* CouponListOutputs.swift in Sources */,
+				A406CB782A3DC0A500F59E8E /* InjectionKey.swift in Sources */,
 				59A43FBD212540E80099581D /* CouponCollectionViewCell.swift in Sources */,
 				59BE1D1921184BF40082F04E /* CouponSqlite.swift in Sources */,
+				A406CB702A3DB90C00F59E8E /* InjectItem.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
 				A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */,
 				A4453B0926BCDFEE000CBB3D /* IntroOutputs.swift in Sources */,
@@ -1405,6 +1436,7 @@
 				A405C9DC2286A890009403EB /* IntroViewController.swift in Sources */,
 				27D719BC298C8A500087F82F /* UserMerchantViewModelType.swift in Sources */,
 				A4B7748826C16BA1000954B9 /* LoginInputs.swift in Sources */,
+				A406CB7A2A3DC11400F59E8E /* InjectItemBuilder.swift in Sources */,
 				A4AFCE3D25456C6200E92B92 /* RxCouponRepository.swift in Sources */,
 				275FCDC329700E0900848AED /* RxOperatorExtensions.swift in Sources */,
 				A4EFCE16246922B3003385D9 /* IntroStampDrawPath.swift in Sources */,
