@@ -18,7 +18,7 @@ protocol UserMerchantOutputType: OutputType {
   /// 알럿 팝업 보여주기
   var showCustomPopup: Observable<CustomPopup> { get }
   /// 유저 쿠폰 리스트 보여주기
-  var showCouponListViewController: Observable<CouponInfo> { get }
+  var showCouponListViewController: Observable<CouponInfoType> { get }
 }
 
 
@@ -26,5 +26,5 @@ struct UserMerchantOutputs: UserMerchantOutputType {
   let reloadSections: Observable<[UserMerchantSection]>
   let updateCouponToDelete: Observable<([UserMerchantSection], IndexPath)>
   let showCustomPopup: Observable<CustomPopup>
-  let showCouponListViewController: Observable<CouponInfo>
+  let showCouponListViewController: Observable<CouponInfoType>
 }

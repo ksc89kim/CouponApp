@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol CouponListInputType: InputType {
   /// 쿠폰 정보 요청
-  var loadCoupon: AnyObserver<CouponInfo?> { get }
+  var loadCoupon: AnyObserver<CouponInfoType?> { get }
   /// 쿠폰 추가
   var onAddCoupon: AnyObserver<Void> { get }
   /// 쿠폰 사용
@@ -21,7 +21,7 @@ protocol CouponListInputType: InputType {
 
 
 struct CouponListInputs: CouponListInputType {
-  let loadCoupon: AnyObserver<CouponInfo?>
+  let loadCoupon: AnyObserver<CouponInfoType?>
   let onAddCoupon: AnyObserver<Void>
   let onUseCoupon: AnyObserver<Void>
 }

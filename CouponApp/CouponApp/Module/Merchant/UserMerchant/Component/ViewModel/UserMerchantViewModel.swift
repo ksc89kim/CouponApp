@@ -154,13 +154,16 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   private func showCouponListViewController(
     subject: Subject,
     userCouponList: Observable<UserCouponList>
-  ) -> Observable<CouponInfo> {
-    return subject.showCouponListViewController.withLatestFrom(userCouponList) { merchant, userCouponList -> CouponInfo? in
+  ) -> Observable<CouponInfoType> {
+    return subject.showCouponListViewController.withLatestFrom(userCouponList) { merchant, userCouponList -> CouponInfoType? in
       let userCoupon = userCouponList.list.first { userCoupon in
         return userCoupon.merchantID == merchant.merchantID
       }
       guard let userCoupon = userCoupon else { return nil }
-      return .init(userCoupon: userCoupon, merchant: merchant)
+      var info: CouponInfoType = DIContainer.resolve(for: CouponInfoKey.self)
+      info.userCoupon = userCoupon
+      info.merchant = merchant
+      return info
     }
     .filterNil()
   }

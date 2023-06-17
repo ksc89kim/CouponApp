@@ -15,7 +15,7 @@ final class CouponListViewModel: CouponListViewModelType {
   // MARK: - Define
 
   private struct Subject {
-    let loadCoupon = BehaviorSubject<CouponInfo?>(value: nil)
+    let loadCoupon = BehaviorSubject<CouponInfoType?>(value: nil)
     let userCouponCount = BehaviorSubject<Int>(value: 0)
     let onAddCoupon = PublishSubject<Void>()
     let onUseCoupon = PublishSubject<Void>()
@@ -35,7 +35,7 @@ final class CouponListViewModel: CouponListViewModelType {
   }
 
   private struct CouponRequest {
-    let couponInfoWhenActionAfter: Observable<CouponInfo>
+    let couponInfoWhenActionAfter: Observable<CouponInfoType>
     let couponCount: Observable<Int>
     let isAvailableRequest: Observable<Bool>
     let errorObserver: AnyObserver<Error>
@@ -78,15 +78,15 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - CouponInfo
 
-  private func couponInfo(subject: Subject) -> Observable<CouponInfo> {
+  private func couponInfo(subject: Subject) -> Observable<CouponInfoType> {
     return subject.loadCoupon
       .filterNil()
-      .do(onNext: { (couponInfo: CouponInfo) in
-        subject.userCouponCount.onNext(couponInfo.userCoupon.couponCount)
+      .do(onNext: { (couponInfo: CouponInfoType) in
+        subject.userCouponCount.onNext(couponInfo.userCouponCount)
       })
   }
 
-  private func couponInfoWhenActionAfter(onAction: Observable<Void>, couponInfo: Observable<CouponInfo>) -> Observable<CouponInfo> {
+  private func couponInfoWhenActionAfter(onAction: Observable<Void>, couponInfo: Observable<CouponInfoType>) -> Observable<CouponInfoType> {
     return onAction
       .withLatestFrom(couponInfo)
       .share()
@@ -94,7 +94,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - ADD Methods
 
-  private func addCoupon(couponInfo: Observable<CouponInfo>, subject: Subject) -> Observable<CouponInfo> {
+  private func addCoupon(couponInfo: Observable<CouponInfoType>, subject: Subject) -> Observable<CouponInfoType> {
     let couponInfoWhenOnAdd = self.couponInfoWhenActionAfter(
       onAction: subject.onAddCoupon.asObservable(),
       couponInfo: couponInfo
@@ -113,18 +113,18 @@ final class CouponListViewModel: CouponListViewModelType {
         errorObserver: subject.error.asObserver()
       )
     )
-    .do(onNext: { (couponInfo: CouponInfo) in
-      couponInfo.userCoupon.addCouponCount()
+    .do(onNext: { (couponInfo: CouponInfoType) in
+      couponInfo.userCoupon?.addCouponCount()
     })
-    .do(onNext: { (couponInfo: CouponInfo) in
-      subject.userCouponCount.onNext(couponInfo.userCoupon.couponCount)
+    .do(onNext: { (couponInfo: CouponInfoType) in
+      subject.userCouponCount.onNext(couponInfo.userCouponCount)
     })
 
     return responseAddCoupon
   }
 
   private func isAvailableAddCoupon(
-    couponInfoWhenOnAdd: Observable<CouponInfo>,
+    couponInfoWhenOnAdd: Observable<CouponInfoType>,
     customPopup: AnyObserver<CustomPopup>
   ) -> Observable<Bool> {
     return couponInfoWhenOnAdd
@@ -143,7 +143,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - Use Methods
 
-  private func useCoupon(couponInfo: Observable<CouponInfo>, subject: Subject) -> Observable<CouponInfo> {
+  private func useCoupon(couponInfo: Observable<CouponInfoType>, subject: Subject) -> Observable<CouponInfoType> {
     let couponInfoWhenOnUse = self.couponInfoWhenActionAfter(
       onAction: subject.onUseCoupon.asObservable(),
       couponInfo: couponInfo
@@ -162,13 +162,13 @@ final class CouponListViewModel: CouponListViewModelType {
         errorObserver: subject.error.asObserver()
       )
     )
-    .do(onNext: { (couponInfo: CouponInfo) in
-      couponInfo.userCoupon.clearCouponCount()
+    .do(onNext: { (couponInfo: CouponInfoType) in
+      couponInfo.userCoupon?.clearCouponCount()
     })
-    .do(onNext: { (couponInfo: CouponInfo) in
-      subject.userCouponCount.onNext(couponInfo.userCoupon.couponCount)
+    .do(onNext: { (couponInfo: CouponInfoType) in
+      subject.userCouponCount.onNext(couponInfo.userCouponCount)
     })
-    .do(onNext: { (couponInfo: CouponInfo) in
+    .do(onNext: { (couponInfo: CouponInfoType) in
       guard couponInfo.isAvailableUseCoupon else { return }
       subject.customPopup.onNext(
         .init(
@@ -183,7 +183,7 @@ final class CouponListViewModel: CouponListViewModelType {
   }
 
   private func isAvailableUseCoupon(
-    couponInfoWhenOnUse: Observable<CouponInfo>,
+    couponInfoWhenOnUse: Observable<CouponInfoType>,
     customPopup: AnyObserver<CustomPopup>
   ) -> Observable<Bool> {
     return couponInfoWhenOnUse
@@ -202,13 +202,18 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - Reload
 
-  private func reloadSections(loadSections: Observable<CouponInfo>) -> Observable<[CouponSection]> {
+  private func reloadSections(loadSections: Observable<CouponInfoType>) -> Observable<[CouponSection]> {
     return loadSections
-      .map { (couponInfo: CouponInfo) -> [CouponSection] in
-        let items: [CouponUIType] = (0 ..< couponInfo.merchant.couponCount()).map { (index: Int) -> CouponUIType in
-          var item = couponInfo.merchant.index(index)
-          item.isUseCoupon = (index < couponInfo.userCoupon.couponCount)
-          item.isAnimation = (index == couponInfo.userCoupon.isSelectedIndex)
+      .map { (couponInfo: CouponInfoType) -> [CouponSection] in
+        guard let merchant = couponInfo.merchant,
+              let userCoupon = couponInfo.userCoupon else {
+          return []
+        }
+
+        let items: [CouponUIType] = (0 ..< merchant.couponCount()).map { (index: Int) -> CouponUIType in
+          var item = merchant.index(index)
+          item.isUseCoupon = (index < userCoupon.couponCount)
+          item.isAnimation = (index == userCoupon.isSelectedIndex)
           return item
         }
         return [.init(items: items)]
@@ -217,7 +222,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - Request Network
 
-  private func reqeusetUpdateCoupon(request: CouponRequest) -> Observable<CouponInfo> {
+  private func reqeusetUpdateCoupon(request: CouponRequest) -> Observable<CouponInfoType> {
     return request.couponInfoWhenActionAfter
       .withLatestFrom(request.isAvailableRequest) { (couponInfo: $0, isAvailableRequest: $1) }
       .filter { $0.isAvailableRequest }
@@ -229,9 +234,10 @@ final class CouponListViewModel: CouponListViewModelType {
         return (couponInfo: value.couponInfo, couponCount: value.couponCount, userID: id)
       }
       .flatMapLatest { couponInfo, couponCount, id -> Observable<RepositoryResponse> in
+        guard let merchant = couponInfo.merchant else { return .empty() }
         return CouponRepository.instance.rx.updateUesrCoupon(
           userID: id,
-          merchantID: couponInfo.merchant.merchantID,
+          merchantID: merchant.merchantID,
           couponCount: couponCount
         )
         .asObservable()
@@ -245,7 +251,7 @@ final class CouponListViewModel: CouponListViewModelType {
 
   private func navigationTitle(subject: Subject) -> Observable<String> {
     return subject.loadCoupon
-      .compactMap { $0?.merchant.name }
+      .compactMap { $0?.merchant?.name }
   }
 
   // MARK: - Custom Popup

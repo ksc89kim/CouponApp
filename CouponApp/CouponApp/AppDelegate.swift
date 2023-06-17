@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
 
     let container = DIContainer {
+      InjectItem(CouponInfoKey.self) { CouponInfo() }
     }
     container.build()
 
