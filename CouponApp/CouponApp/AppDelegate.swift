@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(CouponListViewModelKey.self) { CouponListViewModel() }
       InjectItem(CustomPopupConfigurationKey.self) { CustomPopupConfiguration() }
       InjectItem(CustomPopupViewModelKey.self) { CustomPopupViewModel() }
+      InjectItem(CustomPopupViewControllerKey.self) { CustomPopupViewController() }
     }
 
     if let introViewController = self.window?.rootViewController as? IntroViewController {

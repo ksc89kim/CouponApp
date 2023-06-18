@@ -31,9 +31,4 @@ extension ViewControllerFactory {
     }
     return viewController
   }
-
-  static func createCustomPopupViewController() -> CustomPopupViewController  {
-    let customPopupViewController = CustomPopupViewController()
-    return customPopupViewController
-  }
 }

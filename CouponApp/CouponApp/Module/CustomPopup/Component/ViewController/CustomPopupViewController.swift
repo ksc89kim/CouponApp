@@ -10,7 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class CustomPopupViewController: BaseViewController {
+enum CustomPopupViewControllerKey: InjectionKey {
+  typealias Value = CustomPopupViewController
+}
+
+
+final class CustomPopupViewController: BaseViewController, Injectable {
 
   // MARK: - UI Component
 
