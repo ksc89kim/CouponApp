@@ -12,13 +12,13 @@ struct MerchantList: Codable, Listable {
 
   //MARK: - Define
 
-  private enum MerchantListKeys: String, CodingKey {
+  private enum Keys: String, CodingKey {
     case list = "MerchantList"
   }
 
   //MARK: - Property
 
-  var list: [Merchant]
+  var list: [MerchantType]
 
   //MARK: - Init
 
@@ -27,15 +27,21 @@ struct MerchantList: Codable, Listable {
   }
 
   init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: MerchantListKeys.self)
+    let container = try decoder.container(keyedBy: Keys.self)
     self.list = try container.decode([Merchant].self, forKey: .list)
   }
 
   //MARK: - Method
 
-  func index(merchantID: Int?) -> Merchant? {
-    return self.list.first { (merchant: Merchant) in
+  func index(merchantID: Int?) -> MerchantType? {
+    return self.list.first { (merchant: MerchantType) in
       return merchant.merchantID == merchantID
     }
+  }
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: Keys.self)
+    let list = self.list.compactMap { $0 as? Merchant }
+    try container.encode(list, forKey: .list)
   }
 }

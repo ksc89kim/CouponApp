@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
+import FMDB
 
-/// 가맹점 데이터
 struct Merchant: Codable, MerchantType {
 
   //MARK: - Define
 
-  private enum MerchantImplKeys: String, CodingKey {
+  private enum Keys: String, CodingKey {
     case merchantID = "id"
     case name
     case content
@@ -27,53 +28,44 @@ struct Merchant: Codable, MerchantType {
 
   //MARK: - Property
 
-  /// 가맹점 ID
   var merchantID: Int
-  /// 가맹점 이름
-  let name: String
-  /// 가맹점 소개 내용
-  let content: String
-  /// 로고 이미지 url
-  let logoImageUrl: URL?
+  var name: String
+  var content: String
+  var logoImageUrl: URL?
   /// 위도
-  let latitude: Double
+  private var latitude: Double
   /// 경도
-  let longitude: Double
-  /// 쿠폰 이미지 여부
-  let isCouponImage: Bool
-  /// 쿠폰 이미지 데이터
+  private var longitude: Double
+  var isCouponImage: Bool
   var imageCouponList: [ImageCoupon]
-  /// 쿠폰 그리기 데이터
   var drawCouponList: [DrawCoupon]
-  /// 카드 백그라운드
   var cardBackGround: String = "000000"
+  var couponCount: Int {
+    return self.isCouponImage ? self.imageCouponList.count : self.drawCouponList.count
+  }
+  var location: CLLocation {
+    return .init(
+      latitude: self.latitude,
+      longitude: self.longitude
+    )
+  }
 
   //MARK: - Init
 
-  init(
-    merchantID: Int,
-    name: String,
-    content: String,
-    logoImageUrl: String,
-    latitude: Double,
-    longitude: Double,
-    isCouponImage: Bool,
-    cardBackground: String
-  ) {
-    self.merchantID = merchantID
-    self.name = name
-    self.content = content
-    self.logoImageUrl = URL(string: logoImageUrl) 
-    self.latitude = latitude
-    self.longitude = longitude
-    self.isCouponImage = isCouponImage
+  init() {
+    self.merchantID = -1
+    self.name = ""
+    self.content = ""
+    self.logoImageUrl = nil
+    self.latitude = 0
+    self.longitude = 0
+    self.isCouponImage = false
     self.imageCouponList = []
     self.drawCouponList = []
-    self.cardBackGround = cardBackground
   }
-
+  
   init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: MerchantImplKeys.self)
+    let container = try decoder.container(keyedBy: Keys.self)
     self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.name = try container.decode(String.self, forKey: .name)
     self.content = try container.decode(String.self, forKey: .content)
@@ -91,7 +83,25 @@ struct Merchant: Codable, MerchantType {
     return self.isCouponImage ? self.imageCouponList[index] : self.drawCouponList[index]
   }
 
-  func couponCount() -> Int {
-    return self.isCouponImage ? self.imageCouponList.count : self.drawCouponList.count
+  mutating func setResult(resultSet: FMResultSet) {
+    let merchantID: Int32 = resultSet.int(forColumnIndex: 0)
+    let name = resultSet.string(forColumnIndex: 1) ?? ""
+    let content = resultSet.string(forColumnIndex: 2) ?? ""
+    let imageUrl = resultSet.string(forColumnIndex: 3) ?? ""
+    let latitude = resultSet.double(forColumnIndex: 4)
+    let longitude = resultSet.double(forColumnIndex: 5)
+    let isCouponImage = resultSet.bool(forColumnIndex: 6)
+    let cardBackground = resultSet.string(forColumnIndex: 7) ?? ""
+
+    self.merchantID = Int(merchantID)
+    self.name = name
+    self.content = content
+    self.logoImageUrl = URL(string: imageUrl)
+    self.latitude = latitude
+    self.longitude = longitude
+    self.isCouponImage = isCouponImage
+    self.imageCouponList = []
+    self.drawCouponList = []
+    self.cardBackGround = cardBackground
   }
 }

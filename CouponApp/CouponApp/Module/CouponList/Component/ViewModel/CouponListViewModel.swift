@@ -202,7 +202,7 @@ final class CouponListViewModel: CouponListViewModelType {
           return []
         }
 
-        let items: [CouponUIType] = (0 ..< merchant.couponCount()).map { (index: Int) -> CouponUIType in
+        let items: [CouponUIType] = (0 ..< merchant.couponCount).map { (index: Int) -> CouponUIType in
           var item = merchant.index(index)
           item.isUseCoupon = (index < userCoupon.couponCount)
           item.isAnimation = (index == userCoupon.isSelectedIndex)

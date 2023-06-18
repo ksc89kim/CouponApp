@@ -55,9 +55,8 @@ final class AroundMerchantListViewModel: MerchantListViewModel {
       ) -> [MerchantListSection]? in
         guard let coor = manager.location?.coordinate else { return nil }
         let location = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-        let merchants = list.list.filter { (merchant: Merchant) -> Bool in
-          let merchantLocation = CLLocation(latitude: merchant.latitude, longitude: merchant.longitude)
-          let diffDistance = location.distance(from: merchantLocation)
+        let merchants = list.list.filter { (merchant: MerchantType) -> Bool in
+          let diffDistance = location.distance(from: merchant.location)
           return diffDistance < Constant.maxDistance
         }
         guard merchants.isNotEmpty else { return nil }

@@ -33,7 +33,7 @@ final class MerchantTableViewCell: UITableViewCell {
   // MARK: - Property
 
   private let dashLineLayer = CAShapeLayer()
-  var merchant: Merchant?
+  var merchant: MerchantType?
 
   // MARK: - Deinit
 
@@ -76,7 +76,7 @@ final class MerchantTableViewCell: UITableViewCell {
     self.lineView.layer.addObserver(self, forKeyPath: "bounds", options: .new, context: nil)
   }
 
-  func setMerchant(_ Merchant: Merchant?) {
+  func setMerchant(_ Merchant: MerchantType?) {
     guard let merchant = Merchant else {
       print("merchantModel nil")
       return

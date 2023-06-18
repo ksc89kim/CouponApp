@@ -16,5 +16,5 @@ struct MerchantSelect {
   let cellFrame: CGRect
   let contentOffset: CGPoint
   let cornerRadius: CGFloat
-  let item: Merchant
+  let item: MerchantType
 }

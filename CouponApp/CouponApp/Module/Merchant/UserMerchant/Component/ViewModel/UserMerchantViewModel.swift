@@ -21,7 +21,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
     let loadData = PublishSubject<Void>()
     let deleteCoupon = PublishSubject<IndexPath>()
     let error = PublishSubject<Error>()
-    let showCouponListViewController = PublishSubject<Merchant>()
+    let showCouponListViewController = PublishSubject<MerchantType>()
   }
 
   enum Text {
@@ -82,8 +82,8 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   }
 
   private func createSections(subject: Subject, userCouponList: Observable<UserCouponList>) -> Observable<[UserMerchantSection]> {
-    return userCouponList.withLatestFrom(subject.merchantList.filterNil()) { userCouponlist, merchantList -> [Merchant] in
-      return userCouponlist.list.compactMap { userCoupon -> Merchant? in
+    return userCouponList.withLatestFrom(subject.merchantList.filterNil()) { userCouponlist, merchantList -> [MerchantType] in
+      return userCouponlist.list.compactMap { userCoupon -> MerchantType? in
         return merchantList.index(merchantID: userCoupon.merchantID)
       }
     }

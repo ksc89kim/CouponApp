@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(IntroStampDrawPathKey.self) { IntroStampDrawPath() }
       InjectItem(IntroViewModelKey.self) { IntroViewModel() }
       InjectItem(LoginViewModelKey.self) { LoginViewModel() }
+      InjectItem(MerchantKey.self) { Merchant() }
     }
 
     return true

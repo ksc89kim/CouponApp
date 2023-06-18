@@ -75,7 +75,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   func bindInputs() {
     guard let inputs = self.viewModel?.inputs else { return }
     
-    self.tableView.rx.modelSelected(Merchant.self)
+    self.tableView.rx.modelSelected(MerchantType.self)
       .subscribe(inputs.showCouponListViewController)
       .disposed(by: self.disposeBag)
 

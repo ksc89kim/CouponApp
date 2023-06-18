@@ -170,7 +170,8 @@ final class SQLInterface {
       let result = try contactDb.executeQuery(query, values: [])
       var merchatList: MerchantList? = MerchantList()
       while result.next() {
-        let merchant: Merchant = Merchant(resultSet: result)
+        var merchant: MerchantType = DIContainer.resolve(for: MerchantKey.self)
+        merchant.setResult(resultSet: result)
         merchatList?.list.append(merchant)
       }
       return merchatList

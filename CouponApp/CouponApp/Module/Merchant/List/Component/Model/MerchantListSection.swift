@@ -15,15 +15,15 @@ struct MerchantListSection: SectionModelType {
 
   // MARK: - Property
 
-  var items: [Merchant]
+  var items: [MerchantType]
 
   // MARK: - Init
 
-  init(items: [Merchant]) {
+  init(items: [MerchantType]) {
     self.items = items
   }
 
-  init(original: MerchantListSection, items: [Merchant]) {
+  init(original: MerchantListSection, items: [MerchantType]) {
     self = original
     self.items = items
   }
