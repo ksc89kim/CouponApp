@@ -10,7 +10,7 @@ import Foundation
 import FMDB
 
 /// 쿠폰 이미지 UI 데이터
-final class ImageCoupon: Codable, MerchantType, CouponUIType {
+final class ImageCoupon: Codable, CouponUIType {
 
   // MARK: - Define
 
@@ -33,11 +33,6 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   /// 애니메이션 사용여부
   var isAnimation: Bool
 
-  // MARK: - Merchant Property
-
-  /// 가맹점 ID
-  var merchantID: Int
-
   // MARK: - Property
 
   /// 평소 이미지
@@ -47,9 +42,13 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
 
   // MARK: - Init
 
-  init(couponId: Int,merchantID: Int,isEvent: Bool, normalImage: String, selectImage: String) {
+  init(
+    couponId: Int,
+    isEvent: Bool,
+    normalImage: String,
+    selectImage: String
+  ) {
     self.couponId = couponId
-    self.merchantID = merchantID
     self.isEvent = isEvent
     self.normalImage = normalImage
     self.selectImage = selectImage
@@ -58,7 +57,6 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   }
 
   convenience init(resultSet: FMResultSet) {
-    let merchantIDx: Int32 = resultSet.int(forColumnIndex: 0)
     let couponIdx: Int32 = resultSet.int(forColumnIndex: 1)
     let normalImage: String = resultSet.string(forColumnIndex: 2) ?? ""
     let selectImage: String = resultSet.string(forColumnIndex: 3) ?? ""
@@ -66,7 +64,6 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
 
     self.init(
       couponId: Int(couponIdx),
-      merchantID: Int(merchantIDx),
       isEvent: isEvent,
       normalImage: normalImage,
       selectImage: selectImage
@@ -76,7 +73,6 @@ final class ImageCoupon: Codable, MerchantType, CouponUIType {
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: ImageCouponKeys.self)
     self.couponId = try container.decode(Int.self, forKey: .couponId)
-    self.merchantID = try container.decode(Int.self, forKey: .merchantID)
     self.isEvent = try container.decode(Bool.self, forKey: .isEvent)
     self.normalImage = try container.decode(String.self, forKey: .normalImage)
     self.selectImage = try container.decode(String.self, forKey: .selectImage)

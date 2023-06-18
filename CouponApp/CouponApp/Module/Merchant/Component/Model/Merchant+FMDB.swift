@@ -11,7 +11,7 @@ import FMDB
 
 extension Merchant {
   init(resultSet: FMResultSet) {
-    let merchantIDx:Int32 = resultSet.int(forColumnIndex: 0)
+    let merchantIDx: Int32 = resultSet.int(forColumnIndex: 0)
     let name = resultSet.string(forColumnIndex: 1) ?? ""
     let content = resultSet.string(forColumnIndex: 2) ?? ""
     let imageUrl = resultSet.string(forColumnIndex: 3) ?? ""

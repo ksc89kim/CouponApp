@@ -805,10 +805,10 @@
 		27EECA4629679E5C00067AAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				59BE1D1E21197E140082F04E /* MerchantType.swift */,
 				594A563B1FD814EC005EAA9C /* Merchant.swift */,
 				27EECA4C2967A1C400067AAD /* Merchant+FMDB.swift */,
 				59BE1D22211986650082F04E /* MerchantList.swift */,
-				59BE1D1E21197E140082F04E /* MerchantType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
