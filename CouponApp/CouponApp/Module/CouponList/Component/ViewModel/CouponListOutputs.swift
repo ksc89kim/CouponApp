@@ -14,7 +14,7 @@ protocol CouponListOutputType: OutputType {
   /// 네비게이션 제목
   var navigationTitle: Observable<String> { get }
   /// 커스텀 팝업 보여주기
-  var showCustomPopup: Observable<CustomPopup> { get }
+  var showCustomPopup: Observable<CustomPopupConfigurable> { get }
   /// 쿠폰 리스트 리로드
   var reloadSections: Observable<[CouponSection]> { get }
 }
@@ -22,6 +22,6 @@ protocol CouponListOutputType: OutputType {
 
 struct CouponListOutputs: CouponListOutputType {
   let navigationTitle: Observable<String>
-  let showCustomPopup: Observable<CustomPopup>
+  let showCustomPopup: Observable<CustomPopupConfigurable>
   let reloadSections: Observable<[CouponSection]>
 }

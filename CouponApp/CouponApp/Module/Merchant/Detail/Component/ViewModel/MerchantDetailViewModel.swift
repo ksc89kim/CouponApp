@@ -204,15 +204,14 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
     insertCoupon: Observable<Void>,
     deleteCoupon: Observable<Void>,
     error: Observable<Error>
-  ) -> Observable<CustomPopup> {
+  ) -> Observable<CustomPopupConfigurable> {
 
     let popupFromInsertSuccess = insertCoupon
       .map { _ in
-         CustomPopup(
-          title: Text.insertCouponSuccessTitle.localized,
-          message: Text.insertCouponSuccessContent.localized,
-          completion: nil
-         )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.insertCouponSuccessTitle.localized
+        configuration.message = Text.insertCouponSuccessContent.localized
+        return configuration
       }
 
     let popupFromInsertFail = error
@@ -222,20 +221,18 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
         return true
       }
       .map { _ in
-         CustomPopup(
-          title: Text.insertCouponFailTitle.localized,
-          message: Text.insertCouponFailContent.localized,
-          completion: nil
-         )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.insertCouponFailTitle.localized
+        configuration.message = Text.insertCouponFailContent.localized
+        return configuration
       }
 
     let popupFromDeleteSuccess = deleteCoupon
       .map { _ in
-         CustomPopup(
-          title: Text.deleteCouponSuccessTitle.localized,
-          message: Text.deleteCouponSuccessContent.localized,
-          completion: nil
-         )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.deleteCouponSuccessTitle.localized
+        configuration.message = Text.deleteCouponSuccessContent.localized
+        return configuration
       }
 
     let popupFromDeleteFail = error
@@ -245,11 +242,10 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
         return true
       }
       .map { _ in
-         CustomPopup(
-          title: Text.deleteCouponFailTitle.localized,
-          message: Text.deleteCouponFailContent.localized,
-          completion: nil
-         )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.deleteCouponFailTitle.localized
+        configuration.message = Text.deleteCouponFailContent.localized
+        return configuration
       }
 
     return Observable.merge(

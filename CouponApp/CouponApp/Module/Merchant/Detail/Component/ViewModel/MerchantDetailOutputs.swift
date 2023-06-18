@@ -27,7 +27,7 @@ protocol MerchantDetailOutputType: OutputType {
   /// 가맹점 Icon URL
   var headerImageURL: Observable<URL?> { get }
   /// 커스첨 알럿 보여주기
-  var showCustomPopup: Observable<CustomPopup> { get }
+  var showCustomPopup: Observable<CustomPopupConfigurable> { get }
 }
 
 
@@ -39,5 +39,5 @@ struct MerchantDetailOutputs: MerchantDetailOutputType {
   let introduce: Observable<String>
   let headerBackgroundColor: Observable<UIColor?>
   let headerImageURL: Observable<URL?>
-  let showCustomPopup: Observable<CustomPopup>
+  let showCustomPopup: Observable<CustomPopupConfigurable>
 }

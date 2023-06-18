@@ -109,7 +109,7 @@ final class CustomPopupViewController: BaseViewController {
 
   // MARK: - Close
 
-  fileprivate func close(configure: CustomPopup) {
+  fileprivate func close(configure: CustomPopupConfigurable) {
     self.dismiss(animated: true) {
       configure.completion?.onNext(())
     }
@@ -118,7 +118,7 @@ final class CustomPopupViewController: BaseViewController {
 
 
 private extension Reactive where Base: CustomPopupViewController {
-  var close: Binder<CustomPopup> {
+  var close: Binder<CustomPopupConfigurable> {
     return Binder(self.base) { view, configure in
       view.close(configure: configure)
     }

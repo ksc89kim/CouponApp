@@ -15,7 +15,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
   // MARK: - Define
 
   private struct Subject {
-    let configure = BehaviorSubject<CustomPopup?>(value: nil)
+    let configure = BehaviorSubject<CustomPopupConfigurable?>(value: nil)
     let onOk = PublishSubject<Void>()
     let showPopup = PublishSubject<Void>()
   }
@@ -57,7 +57,7 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
 
   // MARK: - Method
 
-  private func close(subject: Subject, configure: Observable<CustomPopup>) -> Observable<CustomPopup> {
+  private func close(subject: Subject, configure: Observable<CustomPopupConfigurable>) -> Observable<CustomPopupConfigurable> {
     return subject.onOk
       .withLatestFrom(configure)
   }
@@ -67,22 +67,22 @@ final class CustomPopupViewModel: CustomPopupViewModelType {
       .delay(.milliseconds(100), scheduler: MainScheduler.instance)
   }
 
-  private func configre(subject: Subject) -> Observable<CustomPopup> {
+  private func configre(subject: Subject) -> Observable<CustomPopupConfigurable> {
     return subject.showPopup
       .withLatestFrom(subject.configure)
       .filterNil()
       .share()
   }
 
-  private func title(configure: Observable<CustomPopup>) -> Observable<String> {
+  private func title(configure: Observable<CustomPopupConfigurable>) -> Observable<String> {
     return configure.map { $0.title }
   }
 
-  private func content(configure: Observable<CustomPopup>) -> Observable<String> {
+  private func content(configure: Observable<CustomPopupConfigurable>) -> Observable<String> {
     return configure.map { $0.message }
   }
 
-  private func popupViewAlpha(configure: Observable<CustomPopup>) -> Observable<CGFloat> {
+  private func popupViewAlpha(configure: Observable<CustomPopupConfigurable>) -> Observable<CGFloat> {
     return configure.map { _ in 0 }
   }
 }

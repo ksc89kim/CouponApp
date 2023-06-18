@@ -30,7 +30,7 @@ extension UIViewController {
     }
   }
 
-  fileprivate func showCustomPopup(data: CustomPopup){
+  fileprivate func showCustomPopup(data: CustomPopupConfigurable){
     DispatchQueue.main.async {
       let customPopupViewController = ViewControllerFactory.createCustomPopupViewController()
       if let viewModel = customPopupViewController.viewModel as? CustomPopupViewModel {
@@ -54,7 +54,7 @@ extension UIViewController {
 
 
 extension Reactive where Base: UIViewController {
-  var showCustomPopup: Binder<CustomPopup> {
+  var showCustomPopup: Binder<CustomPopupConfigurable> {
     return Binder(self.base) { view, data in
       view.showCustomPopup(data: data)
     }

@@ -140,14 +140,13 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
       .share()
   }
 
-  private func showCustomPopup(error: Observable<Error>) -> Observable<CustomPopup> {
+  private func showCustomPopup(error: Observable<Error>) -> Observable<CustomPopupConfigurable> {
     return error
       .map { _ in
-        return CustomPopup(
-          title: Text.deleteCouponFailTitle,
-          message: Text.deleteCouponFailContent,
-          completion: nil
-        )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.deleteCouponFailTitle
+        configuration.message = Text.deleteCouponFailContent
+        return configuration
       }
   }
 

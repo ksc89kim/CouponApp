@@ -116,7 +116,7 @@
 		A48C130827ABECFF00C03E8D /* DrawCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC88E7432008450E00F48B1C /* DrawCoupon.swift */; };
 		A48C130927ABED0200C03E8D /* ImageCoupon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC047F81200C66170070CC5D /* ImageCoupon.swift */; };
 		A48C130B27ABED0900C03E8D /* IntroStampDrawPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EFCE15246922B3003385D9 /* IntroStampDrawPath.swift */; };
-		A48C130C27ABED0C00C03E8D /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopup.swift */; };
+		A48C130C27ABED0C00C03E8D /* CustomPopupConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopupConfiguration.swift */; };
 		A48C130D27ABED0E00C03E8D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8625610F0A006F616D /* Alert.swift */; };
 		A48C130F27ABED3B00C03E8D /* CouponUIType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BE1D20211980570082F04E /* CouponUIType.swift */; };
 		A48C131027ABED4400C03E8D /* Listable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A43FA92124062F0099581D /* Listable.swift */; };
@@ -135,7 +135,7 @@
 		A4942E3322632D2800083359 /* UImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E3222632D2800083359 /* UImageExtensions.swift */; };
 		A4942E35226347E000083359 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4942E34226347E000083359 /* UILabelExtensions.swift */; };
 		A49C686427ED648200BB97AF /* MerchantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49C686327ED648200BB97AF /* MerchantListViewController.swift */; };
-		A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopup.swift */; };
+		A4A0BB8525610C78006F616D /* CustomPopupConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8425610C78006F616D /* CustomPopupConfiguration.swift */; };
 		A4A0BB8725610F0A006F616D /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A0BB8625610F0A006F616D /* Alert.swift */; };
 		A4A614EE256905BC004BF936 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A614ED256905BC004BF936 /* LoginViewModel.swift */; };
 		A4A61F9526C2410B00809A44 /* CustomPopupInputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A61F9426C2410B00809A44 /* CustomPopupInputs.swift */; };
@@ -329,7 +329,7 @@
 		A4942E3222632D2800083359 /* UImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UImageExtensions.swift; sourceTree = "<group>"; };
 		A4942E34226347E000083359 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		A49C686327ED648200BB97AF /* MerchantListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantListViewController.swift; sourceTree = "<group>"; };
-		A4A0BB8425610C78006F616D /* CustomPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopup.swift; sourceTree = "<group>"; };
+		A4A0BB8425610C78006F616D /* CustomPopupConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupConfiguration.swift; sourceTree = "<group>"; };
 		A4A0BB8625610F0A006F616D /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A4A614ED256905BC004BF936 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		A4A61F9426C2410B00809A44 /* CustomPopupInputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopupInputs.swift; sourceTree = "<group>"; };
@@ -776,7 +776,7 @@
 		27E88117296CF52E0096AE76 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A4A0BB8425610C78006F616D /* CustomPopup.swift */,
+				A4A0BB8425610C78006F616D /* CustomPopupConfiguration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1401,7 +1401,7 @@
 				59BE1D1921184BF40082F04E /* CouponSqlite.swift in Sources */,
 				A406CB702A3DB90C00F59E8E /* InjectItem.swift in Sources */,
 				592FE2161FCAD9FB00C07C84 /* CouponDrawView.swift in Sources */,
-				A4A0BB8525610C78006F616D /* CustomPopup.swift in Sources */,
+				A4A0BB8525610C78006F616D /* CustomPopupConfiguration.swift in Sources */,
 				A4453B0926BCDFEE000CBB3D /* IntroOutputs.swift in Sources */,
 				A4A9FEFE26BD55790074FC93 /* SignupInputs.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
@@ -1470,7 +1470,7 @@
 				A490B82627ABFCED003DA962 /* UIImageViewExtensions.swift in Sources */,
 				A48C130D27ABED0E00C03E8D /* Alert.swift in Sources */,
 				A48C130627ABECF800C03E8D /* UserCoupon.swift in Sources */,
-				A48C130C27ABED0C00C03E8D /* CustomPopup.swift in Sources */,
+				A48C130C27ABED0C00C03E8D /* CustomPopupConfiguration.swift in Sources */,
 				A48C130B27ABED0900C03E8D /* IntroStampDrawPath.swift in Sources */,
 				A490B82B27ABFCFE003DA962 /* UIButtonExtensions.swift in Sources */,
 				A48C12FC27ABEC3200C03E8D /* RepositoryType.swift in Sources */,

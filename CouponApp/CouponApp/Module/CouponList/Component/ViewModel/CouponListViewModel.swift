@@ -20,7 +20,7 @@ final class CouponListViewModel: CouponListViewModelType {
     let onAddCoupon = PublishSubject<Void>()
     let onUseCoupon = PublishSubject<Void>()
     let error = PublishSubject<Error>()
-    let customPopup = PublishSubject<CustomPopup>()
+    let customPopup = PublishSubject<CustomPopupConfigurable>()
   }
 
   private enum Text {
@@ -125,19 +125,17 @@ final class CouponListViewModel: CouponListViewModelType {
 
   private func isAvailableAddCoupon(
     couponInfoWhenOnAdd: Observable<CouponInfoType>,
-    customPopup: AnyObserver<CustomPopup>
+    customPopup: AnyObserver<CustomPopupConfigurable>
   ) -> Observable<Bool> {
     return couponInfoWhenOnAdd
       .map { $0.isAvailableAddCoupon }
       .do(onNext: { (isAvailableAddCoupon: Bool) in
         guard !isAvailableAddCoupon else { return  }
-        customPopup.onNext(
-          .init(
-            title: Text.maxCouponTitle.localized,
-            message: Text.maxCouponContent.localized,
-            completion: nil
-          )
-        )
+
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.maxCouponTitle.localized
+        configuration.message = Text.maxCouponContent.localized
+        customPopup.onNext(configuration)
       })
   }
 
@@ -170,13 +168,10 @@ final class CouponListViewModel: CouponListViewModelType {
     })
     .do(onNext: { (couponInfo: CouponInfoType) in
       guard couponInfo.isAvailableUseCoupon else { return }
-      subject.customPopup.onNext(
-        .init(
-          title: Text.successUseCouponTitle.localized,
-          message: Text.successUseCouponContent.localized,
-          completion: nil
-        )
-      )
+      var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+      configuration.title = Text.successUseCouponTitle.localized
+      configuration.message = Text.successUseCouponContent.localized
+      subject.customPopup.onNext(configuration)
     })
 
     return responseUseCoupon
@@ -184,19 +179,16 @@ final class CouponListViewModel: CouponListViewModelType {
 
   private func isAvailableUseCoupon(
     couponInfoWhenOnUse: Observable<CouponInfoType>,
-    customPopup: AnyObserver<CustomPopup>
+    customPopup: AnyObserver<CustomPopupConfigurable>
   ) -> Observable<Bool> {
     return couponInfoWhenOnUse
       .map { $0.isAvailableUseCoupon }
       .do(onNext: { (isAvailableUseCoupon: Bool) in
         guard !isAvailableUseCoupon else { return  }
-        customPopup.onNext(
-          .init(
-            title: Text.lackCouponTitle.localized,
-            message: Text.lackCouponContent.localized,
-            completion: nil
-          )
-        )
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.lackCouponTitle.localized
+        configuration.message = Text.lackCouponContent.localized
+        customPopup.onNext(configuration)
       })
   }
 
@@ -256,14 +248,13 @@ final class CouponListViewModel: CouponListViewModelType {
 
   // MARK: - Custom Popup
 
-  private func customPopup(subject: Subject) -> Observable<CustomPopup> {
+  private func customPopup(subject: Subject) -> Observable<CustomPopupConfigurable> {
    let customPopupWhenUpdateFail =  subject.error
-      .map { _ -> CustomPopup in
-        return .init(
-          title: Text.requestFailCouponTitle.localized,
-          message: Text.requestFailCouponContent.localized,
-          completion: nil
-        )
+      .map { _ -> CustomPopupConfigurable in
+        var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+        configuration.title = Text.requestFailCouponTitle.localized
+        configuration.message = Text.requestFailCouponContent.localized
+        return configuration
       }
 
     return Observable.merge(

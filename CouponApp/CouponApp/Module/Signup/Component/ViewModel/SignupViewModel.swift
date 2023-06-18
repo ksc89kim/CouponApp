@@ -98,18 +98,17 @@ final class SignupViewModel: SignupViewModelType {
   private func showCustomPopup(
     textInput: TextInput,
     error: Observable<Error>
-  ) -> Observable<CustomPopup> {
+  ) -> Observable<CustomPopupConfigurable> {
 
     return Observable.merge(
       self.inputFaileMessage(textInput: textInput),
       self.networkFailMessage(error: error)
     )
     .map { message in
-      .init(
-        title: Text.signupFailTitle.localized,
-        message: message,
-        completion: nil
-      )
+      var configuration: CustomPopupConfigurable = DIContainer.resolve(for: CustomPopupConfigurationKey.self)
+      configuration.title = Text.signupFailTitle.localized
+      configuration.message = message
+      return configuration
     }
   }
 

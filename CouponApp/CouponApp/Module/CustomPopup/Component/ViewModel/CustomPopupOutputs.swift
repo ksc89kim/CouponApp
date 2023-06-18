@@ -14,7 +14,7 @@ protocol CustomPopupOutputType: OutputType {
   /// 화면 나타날때 보여주는 FadeIn 애니메이션
   var showAnimation: Observable<Void> { get }
   /// 팝업 닫기
-  var close: Observable<CustomPopup> { get }
+  var close: Observable<CustomPopupConfigurable> { get }
   /// 팝업 제목
   var title: Observable<String> { get }
   /// 팝업 내용
@@ -27,7 +27,7 @@ protocol CustomPopupOutputType: OutputType {
 struct CustomPopupOutputs: CustomPopupOutputType {
   let content: Observable<String>
   let showAnimation: Observable<Void>
-  let close: Observable<CustomPopup>
+  let close: Observable<CustomPopupConfigurable>
   let title: Observable<String>
   let popupViewAlpha: Observable<CGFloat>
 }

@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol CustomPopupInputType: InputType {
   /// 커스텀 팝업 정보 설정
-  var configure: AnyObserver<CustomPopup?> { get }
+  var configure: AnyObserver<CustomPopupConfigurable?> { get }
   /// 커스텀 팝업 확인 버튼 액션
   var onOk: AnyObserver<Void> { get }
   /// 커스텀 팝업 보여주기
@@ -21,7 +21,7 @@ protocol CustomPopupInputType: InputType {
 
 
 struct CustomPopupInputs: CustomPopupInputType {
-  let configure: AnyObserver<CustomPopup?>
+  let configure: AnyObserver<CustomPopupConfigurable?>
   let onOk: AnyObserver<Void>
   let showPopup: AnyObserver<Void>
 }
