@@ -10,7 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol IntroViewModelType: ViewModelType {
+enum IntroViewModelKey: InjectionKey {
+  typealias Value = IntroViewModelType
+}
+
+
+protocol IntroViewModelType: ViewModelType, Injectable {
   var inputs: IntroInputType { get }
   var outputs: IntroOutputType? { get }
 }

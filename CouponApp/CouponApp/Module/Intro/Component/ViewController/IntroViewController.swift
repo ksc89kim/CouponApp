@@ -18,9 +18,10 @@ final class IntroViewController: BaseViewController {
   @IBOutlet weak var stampView: IntroStampView!
   @IBOutlet weak var backgroundView: UIView!
 
-  private var introViewModel: IntroViewModelType? {
-    return self.viewModel as? IntroViewModelType
-  }
+  // MARK: - Property
+
+  @Inject(IntroViewModelKey.self)
+  private var introViewModel: IntroViewModelType
 
   // MARK: - Life Cycle
 
@@ -28,7 +29,7 @@ final class IntroViewController: BaseViewController {
     super.viewDidLoad()
 
 
-    self.introViewModel?.inputs.loadMerchantData.onNext(())
+    self.introViewModel.inputs.loadMerchantData.onNext(())
 
     self.stampView.completion = { [weak self] in
       self?.fadeAnimation()
@@ -44,13 +45,13 @@ final class IntroViewController: BaseViewController {
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.introViewModel?.outputs?
+    self.introViewModel.outputs?
       .addLoginViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    self.introViewModel?.outputs?
+    self.introViewModel.outputs?
       .addMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addMainViewController)
