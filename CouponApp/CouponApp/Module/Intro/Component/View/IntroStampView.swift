@@ -8,15 +8,18 @@
 
 import UIKit
 
-typealias InstroStampCallBack = () -> Void
-
 final class IntroStampView: UIView {
 
   // MARK: - Define
 
   private enum Metric {
-    static let stampPathSize = CGSize(width: 160.08163265306, height: 169.222222222223)
+    static let stampPathSize = CGSize(
+      width: 160.08163265306,
+      height: 169.222222222223
+    )
   }
+
+  typealias Completion = () -> Void
 
   private enum AnimationKey {
     static let line = "line"
@@ -26,33 +29,49 @@ final class IntroStampView: UIView {
   // MARK: - UI Component
 
   private var drawLayer = CAShapeLayer()
-  private var introPath = IntroStampDrawPath(
-    drawRect: CGRect(
-      origin: CGPoint.zero,
-      size: Metric.stampPathSize
-    ),
-    parentRect: CGRect.zero
-  )
+  @Inject(IntroStampDrawPathKey.self)
+  private var introPath: IntroStampDrawPathable
 
   // MARK: - Property
 
-  var completion:InstroStampCallBack?
+  var completion: Completion?
+
+  // MARK: - Init
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    self.setup()
+  }
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+    self.setup()
+  }
 
   // MARK: - Life Cycle
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    self.layer.addSublayer(self.drawLayer)
-  }
 
   override func draw(_ rect: CGRect) {
     self.introPath.setRate(parentRect: rect)
     self.introPath.draw()
     self.setDrawLayer()
-    self.drawLayer.add(self.getStrokeAnimation(), forKey: AnimationKey.line)
+    self.drawLayer.add(
+      self.getStrokeAnimation(),
+      forKey: AnimationKey.line
+    )
   }
 
   // MARK: - Set Method
+
+  private func setup() {
+    self.layer.addSublayer(self.drawLayer)
+    self.introPath.configure(
+      drawRect: CGRect(
+        origin: CGPoint.zero,
+        size: Metric.stampPathSize
+      ),
+      parentRect: CGRect.zero
+    )
+  }
 
   private func setDrawLayer() {
     self.drawLayer.path = self.introPath.getCGPath()

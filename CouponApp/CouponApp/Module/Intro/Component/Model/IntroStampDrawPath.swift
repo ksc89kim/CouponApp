@@ -8,28 +8,39 @@
 
 import UIKit
 
-struct IntroStampDrawPath {
+enum IntroStampDrawPathKey: InjectionKey {
+  typealias Value = IntroStampDrawPathable
+}
+
+
+protocol IntroStampDrawPathable: Injectable {
+  func getCGPath() -> CGPath
+  func draw()
+  mutating func configure(drawRect: CGRect, parentRect: CGRect)
+  mutating func setRate(parentRect: CGRect)
+}
+
+
+struct IntroStampDrawPath: IntroStampDrawPathable {
 
   // MARK: - Property
 
-  private let width: CGFloat
-  private let height: CGFloat
-  private var rateX: CGFloat
-  private var rateY: CGFloat
+  private var width: CGFloat = 0
+  private var height: CGFloat = 0
+  private var rateX: CGFloat = 0
+  private var rateY: CGFloat = 0
   private let path = UIBezierPath()
 
-  // MARK: - Init
+  // MARK: - Method
 
-  init(drawRect:CGRect, parentRect:CGRect) {
+  mutating func configure(drawRect: CGRect, parentRect: CGRect) {
     self.width = drawRect.size.width
     self.height = drawRect.size.height
     self.rateX = parentRect.size.width/drawRect.size.width
     self.rateY = parentRect.size.height/drawRect.size.height
   }
 
-  // MARK: - Method
-
-  mutating func setRate(parentRect:CGRect) {
+  mutating func setRate(parentRect: CGRect) {
     self.rateX = parentRect.size.width/self.width
     self.rateY = parentRect.size.height/self.height
   }

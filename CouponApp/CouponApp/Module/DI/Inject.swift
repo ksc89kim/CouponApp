@@ -17,11 +17,16 @@ final class Inject<Value> {
   private var storage: Value?
 
   var wrappedValue: Value {
-    self.storage ?? {
-      let value: Value = lazyValue()
-      self.storage = value
-      return value
-    }()
+    get {
+      self.storage ?? {
+        let value: Value = lazyValue()
+        self.storage = value
+        return value
+      }()
+    }
+    set {
+      self.storage = newValue
+    }
   }
 
   // MARK: - Init

@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(CustomPopupConfigurationKey.self) { CustomPopupConfiguration() }
       InjectItem(CustomPopupViewModelKey.self) { CustomPopupViewModel() }
       InjectItem(CustomPopupViewControllerKey.self) { CustomPopupViewController() }
+      InjectItem(IntroStampDrawPathKey.self) { IntroStampDrawPath() }
     }
 
     if let introViewController = self.window?.rootViewController as? IntroViewController {

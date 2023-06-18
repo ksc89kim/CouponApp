@@ -32,7 +32,7 @@ final class IntroViewController: BaseViewController {
 
     self.stampView.completion = { [weak self] in
       self?.fadeAnimation()
-    };
+    }
   }
 
   // MARK: - Bind
