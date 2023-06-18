@@ -33,9 +33,7 @@ extension UIViewController {
   fileprivate func showCustomPopup(data: CustomPopupConfigurable){
     DispatchQueue.main.async {
       let customPopupViewController = ViewControllerFactory.createCustomPopupViewController()
-      if let viewModel = customPopupViewController.viewModel as? CustomPopupViewModel {
-        viewModel.inputs.configure.onNext(data)
-      }
+      customPopupViewController.customPopupViewModel.inputs.configure.onNext(data)
       self.present(customPopupViewController, animated: true, completion: nil)
     }
   }

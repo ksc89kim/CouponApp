@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol CustomPopupViewModelType: ViewModelType {
+enum CustomPopupViewModelKey: InjectionKey {
+  typealias Value = CustomPopupViewModelType
+}
+
+
+protocol CustomPopupViewModelType: ViewModelType, Injectable {
   var inputs: CustomPopupInputType { get }
   var outputs: CustomPopupOutputType? { get }
 }

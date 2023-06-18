@@ -22,9 +22,8 @@ final class CustomPopupViewController: BaseViewController {
 
   // MARK: - Property
 
-  private var customPopupViewModel: CustomPopupViewModelType? {
-    return self.viewModel as? CustomPopupViewModelType
-  }
+  @Inject(CustomPopupViewModelKey.self)
+  var customPopupViewModel: CustomPopupViewModelType
 
   // MARK: - Init
 
@@ -44,7 +43,7 @@ final class CustomPopupViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.customPopupViewModel?.inputs.showPopup.onNext(())
+    self.customPopupViewModel.inputs.showPopup.onNext(())
   }
 
   override func didReceiveMemoryWarning() {
@@ -57,37 +56,35 @@ final class CustomPopupViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let customPopupViewModel = self.customPopupViewModel else { return }
-
     self.okButton.rx.tap
-      .bind(to: customPopupViewModel.inputs.onOk)
+      .bind(to: self.customPopupViewModel.inputs.onOk)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.customPopupViewModel?.outputs?.close
+    self.customPopupViewModel.outputs?.close
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.close)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel?.outputs?.showAnimation
+    self.customPopupViewModel.outputs?.showAnimation
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showAnimation)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel?.outputs?.title
+    self.customPopupViewModel.outputs?.title
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.titleLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel?.outputs?.content
+    self.customPopupViewModel.outputs?.content
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.contentLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel?.outputs?.popupViewAlpha
+    self.customPopupViewModel.outputs?.popupViewAlpha
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.popupView.rx.alpha)
       .disposed(by: self.disposeBag)

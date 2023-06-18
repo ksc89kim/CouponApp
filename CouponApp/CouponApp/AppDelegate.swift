@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     DIContainer.register {
       InjectItem(CouponInfoKey.self) { CouponInfo() }
       InjectItem(CouponListViewModelKey.self) { CouponListViewModel() }
-      InjectItem(CustomPopupConfigurationKey.self) { CustomPopupConfiguration() } 
+      InjectItem(CustomPopupConfigurationKey.self) { CustomPopupConfiguration() }
+      InjectItem(CustomPopupViewModelKey.self) { CustomPopupViewModel() }
     }
 
     if let introViewController = self.window?.rootViewController as? IntroViewController {
