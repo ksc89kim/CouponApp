@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol LoginViewModelType: ViewModelType {
+enum LoginViewModelKey: InjectionKey {
+  typealias Value = LoginViewModelType
+}
+
+
+protocol LoginViewModelType: ViewModelType, Injectable {
   var inputs: LoginInputType { get }
   var outputs: LoginOutputType? { get }
 }

@@ -93,7 +93,6 @@ final class IntroViewController: BaseViewController {
     }
 
     if let loginViewController = baseViewController as? LoginViewController {
-      loginViewController.viewModel = LoginViewModel()
       loginViewController.merchantList = merchantList
     }
 

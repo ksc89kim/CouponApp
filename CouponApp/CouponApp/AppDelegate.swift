@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(CustomPopupViewControllerKey.self) { CustomPopupViewController() }
       InjectItem(IntroStampDrawPathKey.self) { IntroStampDrawPath() }
       InjectItem(IntroViewModelKey.self) { IntroViewModel() }
+      InjectItem(LoginViewModelKey.self) { LoginViewModel() }
     }
 
     return true

@@ -38,9 +38,8 @@ final class LoginViewController: BaseViewController {
 
   // MARK: - Property
 
-  private var loginViewModel: LoginViewModelType? {
-    return self.viewModel as? LoginViewModelType
-  }
+  @Inject(LoginViewModelKey.self)
+  private var loginViewModel: LoginViewModelType
   var merchantList: MerchantList?
 
   // MARK: - Life Cycle
@@ -69,7 +68,6 @@ final class LoginViewController: BaseViewController {
     self.phoneNumberTextInput.delegate = self
     self.phoneNumberTextInput.style = CustomTextInputStyle()
   }
-
   
   private func setPasswordTextInput() {
     self.passwordTextInput.placeHolderText = Text.passwordPlaceHolder
@@ -89,42 +87,40 @@ final class LoginViewController: BaseViewController {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let loginViewModel = self.loginViewModel else { return }
-
     self.phoneNumberTextInput.rx.text
-      .bind(to: loginViewModel.inputs.userPhoneNumber)
+      .bind(to: self.loginViewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: loginViewModel.inputs.userPassword)
+      .bind(to: self.loginViewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.loginButton.rx.tap
       .asObservable()
-      .bind(to: loginViewModel.inputs.onLogin)
+      .bind(to: self.loginViewModel.inputs.onLogin)
       .disposed(by: self.disposeBag)
 
     self.signupButton.rx.tap
       .asObservable()
-      .bind(to: loginViewModel.inputs.onSingup)
+      .bind(to: self.loginViewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.loginViewModel?.outputs?.showCustomPopup
+    self.loginViewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.loginViewModel?.outputs?.showMainViewController
+    self.loginViewModel.outputs?.showMainViewController
       .compactMap { [weak self] _ -> MerchantList? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)
 
-    self.loginViewModel?.outputs?.showSignupViewController
+    self.loginViewModel.outputs?.showSignupViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showSignupViewController)
       .disposed(by: self.disposeBag)
