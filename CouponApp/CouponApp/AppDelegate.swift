@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(MerchantListKey.self) { MerchantList() }
       InjectItem(MerchantDetailConfigurationKey.self) { MerchantDetailConfiguration() }
       InjectItem(MerchantDetailViewModelKey.self) { MerchantDetailViewModel() }
+      InjectItem(MerchantDetailViewControllerKey.self) { MerchantDetailViewController() }
     }
 
     return true

@@ -10,7 +10,12 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-final class MerchantDetailViewController: BaseViewController {
+enum MerchantDetailViewControllerKey: InjectionKey {
+  typealias Value = MerchantDetailViewController
+}
+
+
+final class MerchantDetailViewController: BaseViewController, Injectable {
 
   //MARK: - Define
 
