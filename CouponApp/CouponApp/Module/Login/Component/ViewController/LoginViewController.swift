@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 
 ///  로그인 뷰컨트롤러
-final class LoginViewController: BaseViewController {
+final class LoginViewController: BaseViewController, MainPresent {
 
   // MARK: - Define
 

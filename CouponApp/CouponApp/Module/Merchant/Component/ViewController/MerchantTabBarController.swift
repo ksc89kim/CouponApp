@@ -8,7 +8,13 @@
 
 import UIKit
 
-final class MerchantTabBarController: UITabBarController {
+protocol MerchantTabBarType {
+  var usermerchant: UserMerchantTableViewController? { get }
+  var merchant: MerchantViewController? { get }
+}
+
+
+final class MerchantTabBarController: UITabBarController, MerchantTabBarType {
 
   var usermerchant: UserMerchantTableViewController? {
     return self.children.compactMap { (viewController: UIViewController) -> UserMerchantTableViewController? in

@@ -11,7 +11,7 @@ import RxSwift
 import UIKit
 
 /// 가입 뷰컨트롤러
-final class SignupViewController: BaseViewController {
+final class SignupViewController: BaseViewController, MainPresent {
 
   // MARK: - Define
 

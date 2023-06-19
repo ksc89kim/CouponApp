@@ -160,6 +160,7 @@
 		A4B7749126C16EBD000954B9 /* CouponListOutputs.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7749026C16EBD000954B9 /* CouponListOutputs.swift */; };
 		A4B7749326C16EFD000954B9 /* CouponListViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B7749226C16EFD000954B9 /* CouponListViewModelType.swift */; };
 		A4C567672A400E2F00739674 /* MerchantListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C567662A400E2F00739674 /* MerchantListable.swift */; };
+		A4C567692A401E3300739674 /* MainPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C567682A401E3300739674 /* MainPresent.swift */; };
 		A4DB78852206CE4400EE23D2 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB78842206CE4400EE23D2 /* UIViewExtensions.swift */; };
 		A4DB7887220EB0C800EE23D2 /* MerchantTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4DB7886220EB0C800EE23D2 /* MerchantTableViewCell.xib */; };
 		A4DB7889220EB0DD00EE23D2 /* MerchantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4DB7888220EB0DD00EE23D2 /* MerchantTableViewCell.swift */; };
@@ -355,6 +356,7 @@
 		A4B7749026C16EBD000954B9 /* CouponListOutputs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListOutputs.swift; sourceTree = "<group>"; };
 		A4B7749226C16EFD000954B9 /* CouponListViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponListViewModelType.swift; sourceTree = "<group>"; };
 		A4C567662A400E2F00739674 /* MerchantListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantListable.swift; sourceTree = "<group>"; };
+		A4C567682A401E3300739674 /* MainPresent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresent.swift; sourceTree = "<group>"; };
 		A4DB78842206CE4400EE23D2 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		A4DB7886220EB0C800EE23D2 /* MerchantTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MerchantTableViewCell.xib; sourceTree = "<group>"; };
 		A4DB7888220EB0DD00EE23D2 /* MerchantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantTableViewCell.swift; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 				A4AFCE372545656600E92B92 /* ViewModelType.swift */,
 				59A43FA92124062F0099581D /* Listable.swift */,
 				A4308903258F442B00689866 /* Bindable.swift */,
+				A4C567682A401E3300739674 /* MainPresent.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1406,6 +1409,7 @@
 				A4A9FEFE26BD55790074FC93 /* SignupInputs.swift in Sources */,
 				59D9ABA11FCAD79600A1F78E /* SQLInterface.swift in Sources */,
 				A4942E3322632D2800083359 /* UImageExtensions.swift in Sources */,
+				A4C567692A401E3300739674 /* MainPresent.swift in Sources */,
 				59A43FA6212402760099581D /* UserCouponList.swift in Sources */,
 				A4A9FF0026BD55880074FC93 /* SignupOutputs.swift in Sources */,
 				A4349515224FBB6C00B236C6 /* MerchantDetailViewController.swift in Sources */,

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 /// 인트로 관련 뷰 컨트롤러
-final class IntroViewController: BaseViewController {
+final class IntroViewController: BaseViewController, MainPresent {
 
   // MARK: - UI Component
 
@@ -27,7 +27,6 @@ final class IntroViewController: BaseViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
 
     self.introViewModel.inputs.loadMerchantData.onNext(())
 
@@ -104,15 +103,7 @@ final class IntroViewController: BaseViewController {
       print("showMainViewController - backgorundView nil")
       return
     }
-
-    let mainViewController = ViewControllerFactory.createViewController(storyboardType: .main)
-    if let merchantTabBarController = mainViewController as? MerchantTabBarController {
-      let userMerchantViewController = merchantTabBarController.usermerchant
-      let viewModel = UserMerchantViewModel()
-      viewModel.inputs.merchantList.onNext(merchantList)
-      userMerchantViewController?.viewModel = viewModel
-      merchantTabBarController.merchant?.setMerchantList(merchantList)
-    }
+    let mainViewController = self.createMainViewController(merchantList: merchantList)
     self.addViewController(viewController: mainViewController, bringSubView: bringSubView)
   }
 }
