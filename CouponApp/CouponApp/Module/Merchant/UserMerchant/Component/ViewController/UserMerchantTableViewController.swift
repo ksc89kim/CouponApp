@@ -25,7 +25,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
 
   // MARK: - Property
 
-  var merchantList: MerchantList?
+  var merchantList: (any MerchantListable)?
   var viewModel: UserMerchantViewModelType?
   /// 회원 쿠폰 정보
   private var userCouponList: UserCouponList?

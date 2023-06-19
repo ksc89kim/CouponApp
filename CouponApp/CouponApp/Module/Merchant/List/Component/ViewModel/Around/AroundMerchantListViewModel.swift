@@ -17,7 +17,7 @@ final class AroundMerchantListViewModel: MerchantListViewModel {
   // MARK: - Define
 
   struct Subject {
-    let merchantList = BehaviorSubject<MerchantList?>(value: nil)
+    let merchantList = BehaviorSubject<(any MerchantListable)?>(value: nil)
     let selectItem = PublishSubject<MerchantSelect>()
     let didUpdateLocation = PublishSubject<CLLocationManager>()
   }
@@ -51,11 +51,11 @@ final class AroundMerchantListViewModel: MerchantListViewModel {
     return subject.didUpdateLocation
       .withLatestFrom(subject.merchantList.filterNil()) { (
         manager: CLLocationManager,
-        list: MerchantList
+        list: MerchantListable
       ) -> [MerchantListSection]? in
         guard let coor = manager.location?.coordinate else { return nil }
         let location = CLLocation(latitude: coor.latitude, longitude: coor.longitude)
-        let merchants = list.list.filter { (merchant: MerchantType) -> Bool in
+        let merchants = list.filter { (merchant: MerchantType) -> Bool in
           let diffDistance = location.distance(from: merchant.location)
           return diffDistance < Constant.maxDistance
         }

@@ -14,11 +14,11 @@ protocol MerchantListInputType: InputType {
   /// 가맹점 선택
   var selecItem: AnyObserver<MerchantSelect> { get }
   /// 전체 가맹점 정보
-  var merchantList: AnyObserver<MerchantList?> { get }
+  var merchantList: AnyObserver<(any MerchantListable)?> { get }
 }
 
 
 struct MerchantListInputs: MerchantListInputType {
   let selecItem: AnyObserver<MerchantSelect>
-  let merchantList: AnyObserver<MerchantList?>
+  let merchantList: AnyObserver<(any MerchantListable)?>
 }

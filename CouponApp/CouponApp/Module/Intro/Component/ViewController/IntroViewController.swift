@@ -77,7 +77,7 @@ final class IntroViewController: BaseViewController {
 
   // MARK: - Show ViewController
 
-  fileprivate func addLoginViewController(merchantList: MerchantList) {
+  fileprivate func addLoginViewController(merchantList: any MerchantListable) {
     guard let bringSubView = self.backgroundView else {
       print("showLoginViewController - backgorundView nil")
       return
@@ -99,7 +99,7 @@ final class IntroViewController: BaseViewController {
     self.addViewController(viewController: loginNavigationController, bringSubView: bringSubView)
   }
 
-  fileprivate func addMainViewController(merchantList: MerchantList) {
+  fileprivate func addMainViewController(merchantList: any MerchantListable) {
     guard let bringSubView = self.backgroundView else {
       print("showMainViewController - backgorundView nil")
       return
@@ -119,13 +119,13 @@ final class IntroViewController: BaseViewController {
 
 
 extension Reactive where Base: IntroViewController {
-  var addLoginViewController: Binder<MerchantList> {
+  var addLoginViewController: Binder<any MerchantListable> {
     return Binder(self.base) { view, merchantList in
       view.addLoginViewController(merchantList: merchantList)
     }
   }
 
-  var addMainViewController: Binder<MerchantList> {
+  var addMainViewController: Binder<any MerchantListable> {
     return Binder(self.base) { view, merchantList in
       view.addMainViewController(merchantList: merchantList)
     }

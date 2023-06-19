@@ -40,7 +40,7 @@ final class LoginViewController: BaseViewController {
 
   @Inject(LoginViewModelKey.self)
   private var loginViewModel: LoginViewModelType
-  var merchantList: MerchantList?
+  var merchantList: (any MerchantListable)?
 
   // MARK: - Life Cycle
 
@@ -115,7 +115,7 @@ final class LoginViewController: BaseViewController {
       .disposed(by: self.disposeBag)
 
     self.loginViewModel.outputs?.showMainViewController
-      .compactMap { [weak self] _ -> MerchantList? in self?.merchantList }
+      .compactMap { [weak self] _ -> (any MerchantListable)? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)

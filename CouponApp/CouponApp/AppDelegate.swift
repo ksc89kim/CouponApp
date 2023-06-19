@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(IntroViewModelKey.self) { IntroViewModel() }
       InjectItem(LoginViewModelKey.self) { LoginViewModel() }
       InjectItem(MerchantKey.self) { Merchant() }
+      InjectItem(MerchantListKey.self) { MerchantList() }
     }
 
     return true

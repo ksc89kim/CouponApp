@@ -46,7 +46,7 @@ open class BaseViewController: UIViewController, Bindable {
 
   // MARK: - Etc Method
 
-  fileprivate func showMainViewController(merchantList: MerchantList) {
+  fileprivate func showMainViewController(merchantList: any MerchantListable) {
     let mainViewController = ViewControllerFactory.createViewController(storyboardType: .main)
     mainViewController.modalPresentationStyle = .fullScreen
     if let merchantTabBarController = mainViewController as? MerchantTabBarController {
@@ -63,7 +63,7 @@ open class BaseViewController: UIViewController, Bindable {
 
 extension Reactive where Base: BaseViewController {
 
-  var showMainViewController: Binder<MerchantList> {
+  var showMainViewController: Binder<any MerchantListable> {
     return Binder(self.base) { view, merchantList in
       view.showMainViewController(merchantList: merchantList)
     }

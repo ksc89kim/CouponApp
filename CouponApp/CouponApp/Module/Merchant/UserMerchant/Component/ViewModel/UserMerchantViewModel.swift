@@ -17,7 +17,7 @@ final class UserMerchantViewModel: UserMerchantViewModelType {
   typealias DeleteCoupon = (userCouponList: UserCouponList, indexPath: IndexPath)
 
   private struct Subject {
-    let merchantList = BehaviorSubject<MerchantList?>(value: nil)
+    let merchantList = BehaviorSubject<(any MerchantListable)?>(value: nil)
     let loadData = PublishSubject<Void>()
     let deleteCoupon = PublishSubject<IndexPath>()
     let error = PublishSubject<Error>()

@@ -12,7 +12,7 @@ import CoreLocation
 
 struct AroundMerchantListInputs: MerchantListInputType {
   let selecItem: AnyObserver<MerchantSelect>
-  let merchantList: AnyObserver<MerchantList?>
+  let merchantList: AnyObserver<(any MerchantListable)?>
   /// 업데이트 된 지역 정보
   let didUpdateLocation: AnyObserver<CLLocationManager>
 }

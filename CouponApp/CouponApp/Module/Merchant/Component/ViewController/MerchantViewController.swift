@@ -103,7 +103,7 @@ final class MerchantViewController: UIViewController {
     }
   }
 
-  func setMerchantList(_ merchantList: MerchantList) {
+  func setMerchantList(_ merchantList: any MerchantListable) {
     self.viewControllers.forEach { (tableViewController: MerchantListViewController) in
       tableViewController.viewModel?.inputs.merchantList.onNext(merchantList)
     }

@@ -68,8 +68,11 @@ struct CouponSqlite: RepositoryType {
         }
         merchantList[i] = merchant
       }
-
-      complete(.success(.init(data: merchantList)))
+      if let merchantList = merchantList as? Codable {
+        complete(.success(.init(data: merchantList)))
+      } else {
+        complete(.failure(DefaultError.networkError))
+      }
     } catch {
       complete(.failure(error))
     }

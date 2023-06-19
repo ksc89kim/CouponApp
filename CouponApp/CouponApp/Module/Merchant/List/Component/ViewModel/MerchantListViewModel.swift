@@ -16,7 +16,7 @@ class MerchantListViewModel: MerchantListViewModelType {
   // MARK: - Define
 
   struct Subject {
-    let merchantList = BehaviorSubject<MerchantList?>(value: nil)
+    let merchantList = BehaviorSubject<(any MerchantListable)?>(value: nil)
     let selectItem = PublishSubject<MerchantSelect>()
   }
 
@@ -43,8 +43,8 @@ class MerchantListViewModel: MerchantListViewModelType {
 
   // MARK: - Methods
 
-  func reloadSections(merchantList: Observable<MerchantList?>) -> Observable<[MerchantListSection]> {
-    return merchantList.compactMap { (merchatList: MerchantList?) -> [MerchantListSection]? in
+  func reloadSections(merchantList: Observable<(any MerchantListable)?>) -> Observable<[MerchantListSection]> {
+    return merchantList.compactMap { (merchatList: MerchantListable?) -> [MerchantListSection]? in
       guard let merchatList = merchatList else { return nil }
       return [.init(items: merchatList.list)]
     }

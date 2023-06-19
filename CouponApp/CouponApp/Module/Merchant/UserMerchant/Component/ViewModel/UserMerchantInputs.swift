@@ -12,7 +12,7 @@ import RxCocoa
 
 protocol UserMerchantInputType: InputType {
   /// 가맹점 정보
-  var merchantList: AnyObserver<MerchantList?> { get }
+  var merchantList: AnyObserver<(any MerchantListable)?> { get }
   /// 유저 가맹점 데이터 요청
   var loadData: AnyObserver<Void> { get }
   /// 유저 쿠폰 리스트 뷰컨트롤러 이동
@@ -23,7 +23,7 @@ protocol UserMerchantInputType: InputType {
 
 
 struct UserMerchantInputs: UserMerchantInputType {
-  let merchantList: AnyObserver<MerchantList?>
+  let merchantList: AnyObserver<(any MerchantListable)?>
   let loadData: AnyObserver<Void>
   let showCouponListViewController: AnyObserver<MerchantType>
   let deleteCoupon: AnyObserver<IndexPath>

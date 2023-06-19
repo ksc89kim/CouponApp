@@ -18,7 +18,7 @@ final class IntroViewModel: IntroViewModelType {
   private struct Subject {
     let loadMertchant = PublishSubject<Void>()
     let error = PublishSubject<Error>()
-    let loadedMertchant = PublishSubject<MerchantList>()
+    let loadedMertchant = PublishSubject<any MerchantListable>()
   }
 
   // MARK: - Property
@@ -40,7 +40,7 @@ final class IntroViewModel: IntroViewModelType {
 
     let loadedUserData = self.loadUserData(phoneNumber: loadedPhoneNumber, errorObserver: subject.error.asObserver())
 
-    let addLoginViewController = Observable<MerchantList>.merge(
+    let addLoginViewController = Observable<any MerchantListable>.merge(
       subject.error
         .withLatestFrom(subject.loadedMertchant),
       loadedPhoneNumber
@@ -59,21 +59,21 @@ final class IntroViewModel: IntroViewModelType {
 
   // MARK: - Method
 
-  private func loadMerchant(subject: Subject) -> Observable<MerchantList> {
+  private func loadMerchant(subject: Subject) -> Observable<any MerchantListable> {
     return subject.loadMertchant
       .flatMapLatest { _ -> Observable<RepositoryResponse> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
           .suppressAndFeedError(into: subject.error)
     }
-    .compactMap { (response: RepositoryResponse) -> MerchantList? in response.data as? MerchantList }
-    .do(onNext: { (list: MerchantList) in
+    .compactMap { (response: RepositoryResponse) -> (any MerchantListable)? in response.data as? (any MerchantListable) }
+    .do(onNext: { (list: MerchantListable) in
       subject.loadedMertchant.onNext(list)
     })
     .share()
   }
 
-  private func loadPhoneNumber(merchant: Observable<MerchantList>) -> Observable<String?> {
+  private func loadPhoneNumber(merchant: Observable<any MerchantListable>) -> Observable<String?> {
     return merchant
        .map { _ -> String? in
          return Phone().loadNumber()
