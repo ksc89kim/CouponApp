@@ -84,8 +84,8 @@ class MerchantListViewController: UITableViewController, Bindable {
 
 
 extension Reactive where Base: MerchantListViewController {
-  var presentMerchantDetail: Binder<MerchantDetail> {
-    return Binder(self.base) { (viewController: MerchantListViewController, detail: MerchantDetail) in
+  var presentMerchantDetail: Binder<MerchantDetailConfigurable> {
+    return Binder(self.base) { (viewController: MerchantListViewController, detail: MerchantDetailConfigurable) in
       let viewModel = MerchantDetailViewModel()
       let detailViewController = MerchantDetailViewController()
       detailViewController.viewModel = viewModel

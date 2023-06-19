@@ -11,5 +11,5 @@ import RxSwift
 
 struct AroundMerchantListOutputs: MerchantListOutputType {
   let reloadSections: Observable<[MerchantListSection]>
-  let presentDetail: Observable<MerchantDetail>
+  let presentDetail: Observable<MerchantDetailConfigurable>
 }

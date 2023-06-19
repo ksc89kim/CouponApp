@@ -50,16 +50,16 @@ class MerchantListViewModel: MerchantListViewModelType {
     }
   }
 
-  func presentDetail(selectItem: Observable<MerchantSelect>) -> Observable<MerchantDetail> {
-    return selectItem.map { (select: MerchantSelect) -> MerchantDetail in
+  func presentDetail(selectItem: Observable<MerchantSelect>) -> Observable<MerchantDetailConfigurable> {
+    return selectItem.map { (select: MerchantSelect) -> MerchantDetailConfigurable in
       let positionY = select.cellFrame.origin.y - select.contentOffset.y + MerchantTableViewCell.Metric.headerTopHeight
       var frame = select.cellTopViewFrame
       frame.origin.y = positionY
-      return .init(
-        cellCornerRadius: select.cornerRadius,
-        cellTopViewFrame: frame,
-        merchant: select.item
-      )
+      var configure: MerchantDetailConfigurable = DIContainer.resolve(for: MerchantDetailConfigurationKey.self)
+      configure.cellCornerRadius = select.cornerRadius
+      configure.cellTopViewFrame = frame
+      configure.merchant = select.item
+      return configure
     }
   }
 }

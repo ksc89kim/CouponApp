@@ -12,13 +12,13 @@ import RxCocoa
 
 protocol MerchantDetailInputType: InputType {
   /// 가맹점 상세 정보
-  var merchantDetail: AnyObserver<MerchantDetail?> { get }
+  var merchantDetail: AnyObserver<MerchantDetailConfigurable?> { get }
   /// 하단 버튼 액션 (추가하기/삭제하기)
   var actionFromBottom: AnyObserver<Void> { get }
 }
 
 
 struct MerchantDetailInputs: MerchantDetailInputType {
-  let merchantDetail: AnyObserver<MerchantDetail?>
+  let merchantDetail: AnyObserver<MerchantDetailConfigurable?>
   let actionFromBottom: AnyObserver<Void>
 }

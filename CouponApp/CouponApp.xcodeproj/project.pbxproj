@@ -75,7 +75,7 @@
 		A406CB782A3DC0A500F59E8E /* InjectionKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB772A3DC0A500F59E8E /* InjectionKey.swift */; };
 		A406CB7A2A3DC11400F59E8E /* InjectItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB792A3DC11400F59E8E /* InjectItemBuilder.swift */; };
 		A406CB7C2A3DC93200F59E8E /* Inject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A406CB7B2A3DC93200F59E8E /* Inject.swift */; };
-		A407E56A22801FD7007B7C18 /* MerchantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantDetail.swift */; };
+		A407E56A22801FD7007B7C18 /* MerchantDetailConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A407E56922801FD7007B7C18 /* MerchantDetailConfiguration.swift */; };
 		A4128E24229C1BD6004B526C /* CustomTextInputStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */; };
 		A415623722DB1B7B00A0551E /* MerchantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415623422DB1B7B00A0551E /* MerchantViewController.swift */; };
 		A415623822DB1B7B00A0551E /* AroundMerchantListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A415623522DB1B7B00A0551E /* AroundMerchantListViewController.swift */; };
@@ -305,7 +305,7 @@
 		A406CB772A3DC0A500F59E8E /* InjectionKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectionKey.swift; sourceTree = "<group>"; };
 		A406CB792A3DC11400F59E8E /* InjectItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectItemBuilder.swift; sourceTree = "<group>"; };
 		A406CB7B2A3DC93200F59E8E /* Inject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inject.swift; sourceTree = "<group>"; };
-		A407E56922801FD7007B7C18 /* MerchantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetail.swift; sourceTree = "<group>"; };
+		A407E56922801FD7007B7C18 /* MerchantDetailConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchantDetailConfiguration.swift; sourceTree = "<group>"; };
 		A4128E23229C1BD6004B526C /* CustomTextInputStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextInputStyle.swift; sourceTree = "<group>"; };
 		A415623422DB1B7B00A0551E /* MerchantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MerchantViewController.swift; sourceTree = "<group>"; };
 		A415623522DB1B7B00A0551E /* AroundMerchantListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AroundMerchantListViewController.swift; sourceTree = "<group>"; };
@@ -854,7 +854,7 @@
 		27EECA602967FBB500067AAD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A407E56922801FD7007B7C18 /* MerchantDetail.swift */,
+				A407E56922801FD7007B7C18 /* MerchantDetailConfiguration.swift */,
 				A4B4C8F627DF38BC00C3B058 /* MerchantDetailPresentationController.swift */,
 				A4936FA327E0B69800A62AC4 /* MerchantDetailTransition.swift */,
 			);
@@ -1381,7 +1381,7 @@
 				A45FCF7F29DC53DE00F2B9E0 /* ViewControllerFactory.swift in Sources */,
 				A4C567672A400E2F00739674 /* MerchantListable.swift in Sources */,
 				27D719BB298C8A500087F82F /* UserMerchantOutputs.swift in Sources */,
-				A407E56A22801FD7007B7C18 /* MerchantDetail.swift in Sources */,
+				A407E56A22801FD7007B7C18 /* MerchantDetailConfiguration.swift in Sources */,
 				59BE1D1B21184C0B0082F04E /* CouponRepository.swift in Sources */,
 				59A43FA4212400D70099581D /* ExistenceCoupon.swift in Sources */,
 				CC047F86200C8A290070CC5D /* LoginViewController.swift in Sources */,

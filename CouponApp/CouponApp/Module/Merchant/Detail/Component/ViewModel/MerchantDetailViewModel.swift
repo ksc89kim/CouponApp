@@ -15,7 +15,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   // MARK: - Define
 
   private struct Subject {
-    let merchantDetail = BehaviorSubject<MerchantDetail?>(value: nil)
+    let merchantDetail = BehaviorSubject<MerchantDetailConfigurable?>(value: nil)
     let actionFromBottom = PublishSubject<Void>()
     let error = PublishSubject<Error>()
   }
@@ -85,7 +85,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
 
   // MARK: - Method
 
-  private func merchantDetail(subject: Subject) -> Observable<MerchantDetail> {
+  private func merchantDetail(subject: Subject) -> Observable<MerchantDetailConfigurable> {
     return subject.merchantDetail.filterNil()
   }
 
@@ -98,19 +98,19 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
   }
 
   private func title(subject: Subject) -> Observable<String> {
-    return self.merchantDetail(subject: subject).map { $0.merchant.name }
+    return self.merchantDetail(subject: subject).compactMap { $0.merchant?.name }
   }
 
   private func introduce(subject: Subject) -> Observable<String> {
-    return self.merchantDetail(subject: subject).map { $0.merchant.content }
+    return self.merchantDetail(subject: subject).compactMap { $0.merchant?.content }
   }
 
   private func headerBackgroundColor(subject: Subject) -> Observable<UIColor?> {
-    return self.merchantDetail(subject: subject).map { UIColor.hexStringToUIColor(hex: $0.merchant.cardBackGround) }
+    return self.merchantDetail(subject: subject).map { UIColor.hexStringToUIColor(hex: $0.merchant?.cardBackGround ?? "") }
   }
 
   private func headerImageURL(subject: Subject) -> Observable<URL?> {
-    return self.merchantDetail(subject: subject).map { $0.merchant.logoImageUrl }
+    return self.merchantDetail(subject: subject).compactMap { $0.merchant?.logoImageUrl }
   }
 
   private func buttonTitle(subject: Subject) -> Observable<String> {
@@ -125,7 +125,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.checkUserCoupon(
           userID: id,
-          merchantID: merchantDetail.merchant.merchantID
+          merchantID: merchantDetail.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)
@@ -150,7 +150,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.deleteUserCoupon(
           userID: id,
-          merchantID: merchantDetail.merchant.merchantID
+          merchantID: merchantDetail.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)
@@ -169,7 +169,7 @@ final class MerchantDetailViewModel: MerchantDetailViewModelType {
       .flatMapLatest { merchantDetail, id -> Observable<Void> in
         return CouponRepository.instance.rx.insertUserCoupon(
           userID: id,
-          merchantID: merchantDetail.merchant.merchantID
+          merchantID: merchantDetail.merchantID
         )
         .asObservable()
         .suppressAndFeedError(into: subject.error)
