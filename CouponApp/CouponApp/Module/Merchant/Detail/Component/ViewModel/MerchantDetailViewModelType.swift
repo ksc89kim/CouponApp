@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol MerchantDetailViewModelType: ViewModelType {
+enum MerchantDetailViewModelKey: InjectionKey {
+  typealias Value = MerchantDetailViewModelType
+}
+
+
+protocol MerchantDetailViewModelType: ViewModelType, Injectable {
   var inputs: MerchantDetailInputType { get }
   var outputs: MerchantDetailOutputType? { get }
 }

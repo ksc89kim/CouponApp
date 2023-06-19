@@ -35,12 +35,6 @@ final class MerchantTableViewCell: UITableViewCell {
   private let dashLineLayer = CAShapeLayer()
   var merchant: MerchantType?
 
-  // MARK: - Deinit
-
-  deinit {
-    self.lineView.layer.removeObserver(self, forKeyPath: "bounds")
-  }
-
   // MARK: - Life Cycle
 
   override func awakeFromNib() {
@@ -99,5 +93,11 @@ final class MerchantTableViewCell: UITableViewCell {
     if keyPath == "bounds" {
       self.lineView.updateDashLineSize(dashLayer: self.dashLineLayer)
     }
+  }
+
+  // MARK: - Deinit
+
+  deinit {
+    self.lineView.layer.removeObserver(self, forKeyPath: "bounds")
   }
 }
