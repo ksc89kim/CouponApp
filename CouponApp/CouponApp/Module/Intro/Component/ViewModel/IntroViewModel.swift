@@ -76,7 +76,8 @@ final class IntroViewModel: IntroViewModelType {
   private func loadPhoneNumber(merchant: Observable<any MerchantListable>) -> Observable<String?> {
     return merchant
        .map { _ -> String? in
-         return Phone().loadNumber()
+         let phone: PhoneType = DIContainer.resolve(for: PhoneKey.self)
+         return phone.loadNumber()
      }
     .share()
   }

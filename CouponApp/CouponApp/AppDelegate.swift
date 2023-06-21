@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(MerchantListViewModelKey.self) { MerchantListViewModel() }
       InjectItem(AroundMerchantListViewModelKey.self) { AroundMerchantListViewModel() }
       InjectItem(UserMerchantViewModelKey.self) { UserMerchantViewModel() }
+      InjectItem(PhoneKey.self) { Phone() }
     }
 
     return true

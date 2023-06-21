@@ -8,7 +8,18 @@
 
 import Foundation
 
-final class Phone {
+enum PhoneKey: InjectionKey {
+  typealias Value = PhoneType
+}
+
+
+protocol PhoneType: Injectable {
+  func saveNumber(_ number: String)
+  func loadNumber() -> String?
+}
+
+
+final class Phone: PhoneType {
 
   func saveNumber(_ number: String) {
     UserDefaults.standard.set(number, forKey: DefaultKey.phoneNumber.rawValue)

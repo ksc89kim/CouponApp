@@ -158,7 +158,8 @@ final class LoginViewModel: LoginViewModelType {
         .map { _ in phoneNumber }
     }
     .do(onNext: { (phoneNumber: String) in
-      Phone().saveNumber(phoneNumber)
+      let phone: PhoneType = DIContainer.resolve(for: PhoneKey.self)
+      phone.saveNumber(phoneNumber)
     })
     .share()
   }
