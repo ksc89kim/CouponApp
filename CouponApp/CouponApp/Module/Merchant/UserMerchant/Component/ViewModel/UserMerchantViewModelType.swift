@@ -10,7 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol UserMerchantViewModelType: ViewModelType {
+enum UserMerchantViewModelKey: InjectionKey {
+  typealias Value = UserMerchantViewModelType
+}
+
+
+protocol UserMerchantViewModelType: ViewModelType, Injectable {
   var inputs: UserMerchantInputType { get }
   var outputs: UserMerchantOutputType? { get }
 }

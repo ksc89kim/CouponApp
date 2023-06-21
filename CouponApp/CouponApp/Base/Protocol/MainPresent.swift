@@ -21,9 +21,7 @@ extension MainPresent {
     mainViewController.modalPresentationStyle = .fullScreen
     if let merchantTabBarController = mainViewController as? MerchantTabBarType {
       let userMerchantViewController = merchantTabBarController.usermerchant
-      let viewModel = UserMerchantViewModel()
-      viewModel.inputs.merchantList.onNext(merchantList)
-      userMerchantViewController?.viewModel = viewModel
+      userMerchantViewController?.viewModel.inputs.merchantList.onNext(merchantList)
       merchantTabBarController.merchant?.setMerchantList(merchantList)
     }
     return mainViewController

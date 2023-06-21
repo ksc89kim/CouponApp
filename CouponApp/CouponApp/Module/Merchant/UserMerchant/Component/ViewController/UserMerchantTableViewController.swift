@@ -26,7 +26,8 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   // MARK: - Property
 
   var merchantList: (any MerchantListable)?
-  var viewModel: UserMerchantViewModelType?
+  @Inject(UserMerchantViewModelKey.self)
+  var viewModel: UserMerchantViewModelType
   /// 회원 쿠폰 정보
   private var userCouponList: UserCouponList?
   var disposeBag = DisposeBag()
@@ -54,7 +55,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
-    self.viewModel?.inputs.loadData.onNext(())
+    self.viewModel.inputs.loadData.onNext(())
   }
 
   override func didReceiveMemoryWarning() {
@@ -73,26 +74,24 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   // MARK: - Bind
 
   func bindInputs() {
-    guard let inputs = self.viewModel?.inputs else { return }
-    
     self.tableView.rx.modelSelected(MerchantType.self)
-      .subscribe(inputs.showCouponListViewController)
+      .subscribe(self.viewModel.inputs.showCouponListViewController)
       .disposed(by: self.disposeBag)
 
     self.tableView.rx.itemDeleted
-      .subscribe(inputs.deleteCoupon)
+      .subscribe(self.viewModel.inputs.deleteCoupon)
       .disposed(by: self.disposeBag)
   }
 
   func bindOutputs() {
     self.tableView.dataSource = nil
 
-    self.viewModel?.outputs?.reloadSections
+    self.viewModel.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.tableView.rx.items(dataSource: self.dataSource))
       .disposed(by: self.disposeBag)
 
-    self.viewModel?.outputs?.updateCouponToDelete
+    self.viewModel.outputs?.updateCouponToDelete
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] sections, indexPath in
         self?.dataSource.setSections(sections)
@@ -100,12 +99,12 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
       })
       .disposed(by: self.disposeBag)
 
-    self.viewModel?.outputs?.showCustomPopup
+    self.viewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.viewModel?.outputs?.showCouponListViewController
+    self.viewModel.outputs?.showCouponListViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(onNext: { [weak self] couponInfo in
         self?.performSegue(withIdentifier: CouponIdentifier.showCouponListView.rawValue, sender: couponInfo)
