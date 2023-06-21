@@ -225,7 +225,7 @@ final class CouponListViewModel: CouponListViewModelType {
       .withLatestFrom(Me.instance.rx.userID) { value, id in
         return (couponInfo: value.couponInfo, couponCount: value.couponCount, userID: id)
       }
-      .flatMapLatest { couponInfo, couponCount, id -> Observable<RepositoryResponse> in
+      .flatMapLatest { couponInfo, couponCount, id -> Observable<ResponseType> in
         guard let merchant = couponInfo.merchant else { return .empty() }
         return CouponRepository.instance.rx.updateUesrCoupon(
           userID: id,

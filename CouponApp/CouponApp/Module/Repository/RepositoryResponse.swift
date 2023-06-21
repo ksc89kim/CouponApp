@@ -8,9 +8,19 @@
 
 import Foundation
 
-struct RepositoryResponse {
+enum ResponseKey: InjectionKey {
+  typealias Value = ResponseType
+}
+
+
+protocol ResponseType: Injectable {
+  var data: Codable? { get set }
+}
+
+
+struct RepositoryResponse: ResponseType {
 
   // MARK: - Property
 
-  let data: Codable?
+  var data: Codable?
 }

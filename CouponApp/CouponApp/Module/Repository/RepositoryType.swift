@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias RepositoryCompletion = (Result<RepositoryResponse, Error>) -> Void
+typealias RepositoryCompletion = (Result<ResponseType, Error>) -> Void
 
 protocol RepositoryType {
   /// 회원가입 하기

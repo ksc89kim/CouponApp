@@ -181,7 +181,7 @@ final class SignupViewModel: SignupViewModelType {
       .flatMapLatest { phoneNumber -> Observable<String> in
         return CouponRepository.instance.rx.loadUserData(phoneNumber: phoneNumber)
           .asObservable()
-          .do(onNext: { (response: RepositoryResponse) in
+          .do(onNext: { (response: ResponseType) in
             guard let user = response.data as? User else { return }
             Me.instance.update(user: user)
           })

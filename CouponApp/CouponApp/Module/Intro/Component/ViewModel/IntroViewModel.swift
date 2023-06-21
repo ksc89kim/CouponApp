@@ -61,12 +61,12 @@ final class IntroViewModel: IntroViewModelType {
 
   private func loadMerchant(subject: Subject) -> Observable<any MerchantListable> {
     return subject.loadMertchant
-      .flatMapLatest { _ -> Observable<RepositoryResponse> in
+      .flatMapLatest { _ -> Observable<ResponseType> in
         return CouponRepository.instance.rx.loadMerchantData()
           .asObservable()
           .suppressAndFeedError(into: subject.error)
     }
-    .compactMap { (response: RepositoryResponse) -> (any MerchantListable)? in response.data as? (any MerchantListable) }
+    .compactMap { (response: ResponseType) -> (any MerchantListable)? in response.data as? (any MerchantListable) }
     .do(onNext: { (list: MerchantListable) in
       subject.loadedMertchant.onNext(list)
     })
@@ -82,14 +82,14 @@ final class IntroViewModel: IntroViewModelType {
     .share()
   }
 
-  private func loadUserData(phoneNumber: Observable<String?>, errorObserver: AnyObserver<Error>) -> Observable<RepositoryResponse> {
+  private func loadUserData(phoneNumber: Observable<String?>, errorObserver: AnyObserver<Error>) -> Observable<ResponseType> {
     return phoneNumber
       .filterNil()
-      .flatMapLatest { phoneNumber -> Observable<RepositoryResponse> in
+      .flatMapLatest { phoneNumber -> Observable<ResponseType> in
         return  CouponRepository.instance.rx.loadUserData(phoneNumber: phoneNumber)
           .asObservable()
           .suppressAndFeedError(into: errorObserver)
-          .do(onNext: { (response: RepositoryResponse) in
+          .do(onNext: { (response: ResponseType) in
             guard let user = response.data as? User else { return }
             Me.instance.update(user: user)
           })

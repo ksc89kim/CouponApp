@@ -32,7 +32,8 @@ final class CouponNetwork : RepositoryType {
       CouponNetwork.closeProgress()
       let isSuccessed = CouponNetwork.checkResponseData(response)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.networkError))
       }
@@ -57,7 +58,9 @@ final class CouponNetwork : RepositoryType {
 
       do {
         let data = try JSONDecoder().decode(User.self, from: responseData)
-        complete(.success(.init(data: data)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = data
+        complete(.success(response))
       } catch {
         complete(.failure(error))
       }
@@ -83,7 +86,9 @@ final class CouponNetwork : RepositoryType {
 
       do {
         let data = try JSONDecoder().decode(User.self, from: responseData)
-        complete(.success(.init(data: data)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = data
+        complete(.success(response))
       } catch {
         complete(.failure(error))
       }
@@ -103,7 +108,9 @@ final class CouponNetwork : RepositoryType {
       }
       do {
         let merchantList = try JSONDecoder().decode(MerchantList.self, from: responseData)
-        complete(.success(.init(data: merchantList)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = merchantList
+        complete(.success(response))
       } catch {
         complete(.failure(error))
         print("error \(error)")
@@ -125,7 +132,8 @@ final class CouponNetwork : RepositoryType {
       CouponNetwork.closeProgress()
       let isSuccessed = CouponNetwork.checkResponseData(response)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.insertError))
       }
@@ -152,7 +160,9 @@ final class CouponNetwork : RepositoryType {
       do {
         let checkCouponData = try JSONDecoder().decode(ExistenceCoupon.self, from: responseData)
         if checkCouponData.isCouponData {
-          complete(.success(.init(data: checkCouponData)))
+          var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+          response.data = checkCouponData
+          complete(.success(response))
         } else {
           complete(.failure(DefaultError.noCouponError))
         }
@@ -176,7 +186,8 @@ final class CouponNetwork : RepositoryType {
       CouponNetwork.closeProgress()
       let isSuccessed = CouponNetwork.checkResponseData(response)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.deleteError))
       }
@@ -200,7 +211,9 @@ final class CouponNetwork : RepositoryType {
 
       do {
         let userCouponList = try JSONDecoder().decode(UserCouponList.self, from: responseData)
-        complete(.success(.init(data: userCouponList)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = userCouponList
+        complete(.success(response))
       } catch {
         complete(.failure(error))
       }
@@ -222,7 +235,8 @@ final class CouponNetwork : RepositoryType {
       CouponNetwork.closeProgress()
       let isSuccessed = CouponNetwork.checkResponseData(response)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.networkError))
       }

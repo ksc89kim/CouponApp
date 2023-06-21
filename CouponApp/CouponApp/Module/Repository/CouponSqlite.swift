@@ -13,7 +13,8 @@ struct CouponSqlite: RepositoryType {
     do {
       let isSuccessed = try SQLInterface().insertUser(phoneNumber: phoneNumber, password: password, name: name)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.networkError))
       }
@@ -27,7 +28,9 @@ struct CouponSqlite: RepositoryType {
       let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
       let user = User(id: userID)
       if user.isVaildID {
-        complete(.success(.init(data: user)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = user
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.notVaildUser))
       }
@@ -41,7 +44,9 @@ struct CouponSqlite: RepositoryType {
       let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
       let user = User(id: userID)
       if user.isVaildID {
-        complete(.success(.init(data: user)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = user
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.notVaildUser))
       }
@@ -69,7 +74,9 @@ struct CouponSqlite: RepositoryType {
         merchantList[i] = merchant
       }
       if let merchantList = merchantList as? Codable {
-        complete(.success(.init(data: merchantList)))
+        var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        response.data = merchantList
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.networkError))
       }
@@ -82,7 +89,8 @@ struct CouponSqlite: RepositoryType {
     do {
       let isSuccessed = try SQLInterface().insertCoupon(userID, merchantID)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.insertError))
       }
@@ -95,7 +103,8 @@ struct CouponSqlite: RepositoryType {
     do {
       let isUserCoupon = try SQLInterface().isUserCoupon(userID, merchantID)
       if isUserCoupon {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.noCouponError))
       }
@@ -108,7 +117,8 @@ struct CouponSqlite: RepositoryType {
     do{
       let isSuccessed = try SQLInterface().deleteCounpon(userID, merchantID)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.deleteError))
       }
@@ -120,7 +130,9 @@ struct CouponSqlite: RepositoryType {
   func getUserCouponData(userID: Int, complete: @escaping RepositoryCompletion) {
     do {
       let data = try SQLInterface().selectUserCouponData(userID)
-      complete(.success(.init(data: data)))
+      var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+      response.data = data
+      complete(.success(response))
     } catch {
       complete(.failure(error))
     }
@@ -130,7 +142,8 @@ struct CouponSqlite: RepositoryType {
     do {
       let isSuccessed = try SQLInterface().updateCouponCount(userID, merchantID, couponCount)
       if isSuccessed {
-        complete(.success(.init(data: nil)))
+        let response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
+        complete(.success(response))
       } else {
         complete(.failure(DefaultError.networkError))
       }
