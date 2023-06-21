@@ -25,7 +25,6 @@ final class AroundMerchantListViewController: MerchantListViewController {
 
   private var locationManager: CLLocationManager?
 
-
   // MARK: - Life Cycle
 
   override func viewDidLoad() {

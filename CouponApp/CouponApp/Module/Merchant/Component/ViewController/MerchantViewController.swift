@@ -47,7 +47,7 @@ final class MerchantViewController: UIViewController {
       storyboardType: .merchant,
       identifierType: .aroundMerchantTableViewController
     ) as? AroundMerchantListViewController {
-      aroundMerchantTableViewController.viewModel = AroundMerchantListViewModel()
+      aroundMerchantTableViewController.viewModel = DIContainer.resolve(for: AroundMerchantListViewModelKey.self)
       viewControllers.append(aroundMerchantTableViewController)
     }
 
@@ -55,7 +55,7 @@ final class MerchantViewController: UIViewController {
       storyboardType: .merchant,
       identifierType: .globalMerchantTableViewController
     ) as? GloabalMerchantListViewController {
-      globalMerchantTableViewController.viewModel = MerchantListViewModel()
+      globalMerchantTableViewController.viewModel = DIContainer.resolve(for: MerchantListViewModelKey.self)
       viewControllers.append(globalMerchantTableViewController)
     }
 

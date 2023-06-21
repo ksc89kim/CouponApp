@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum MerchantListViewModelKey: InjectionKey {
+  typealias Value = MerchantListViewModelType
+}
+
+
 protocol MerchantListViewModelType: ViewModelType {
   var inputs: MerchantListInputType { get }
   var outputs: MerchantListOutputType? { get }

@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxOptional
 
-class MerchantListViewModel: MerchantListViewModelType {
+class MerchantListViewModel: MerchantListViewModelType, Injectable {
 
   // MARK: - Define
 

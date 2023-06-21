@@ -12,6 +12,10 @@ import RxCocoa
 import RxOptional
 import CoreLocation
 
+enum AroundMerchantListViewModelKey: InjectionKey {
+  typealias Value = MerchantListViewModelType
+}
+
 final class AroundMerchantListViewModel: MerchantListViewModel {
 
   // MARK: - Define
