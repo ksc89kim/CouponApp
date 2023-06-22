@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum AlertKey: InjectionKey {
+  typealias Value = Alert
+}
+
+
 struct Alert {
 
   // MARK: - Property

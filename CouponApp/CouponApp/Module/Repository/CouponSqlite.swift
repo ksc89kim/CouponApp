@@ -26,7 +26,8 @@ struct CouponSqlite: RepositoryType {
   func getUserData(phoneNumber: String, complete: @escaping RepositoryCompletion) {
     do {
       let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber)
-      let user = User(id: userID)
+      var user: User = DIContainer.resolve(for: UserKey.self)
+      user.id = userID
       if user.isVaildID {
         var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
         response.data = user
@@ -42,7 +43,8 @@ struct CouponSqlite: RepositoryType {
   func checkPassword(phoneNumber: String, password: String, complete: @escaping RepositoryCompletion) {
     do {
       let userID = try SQLInterface().selectUserData(phoneNumber: phoneNumber, password: password)
-      let user = User(id: userID)
+      var user: User = DIContainer.resolve(for: UserKey.self)
+      user.id = userID
       if user.isVaildID {
         var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
         response.data = user

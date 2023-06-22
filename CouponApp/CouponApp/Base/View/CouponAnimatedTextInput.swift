@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import AnimatedTextInput
 
-protocol CouponAnimatedTextInputDelegate: class {
+protocol CouponAnimatedTextInputDelegate: AnyObject {
    func animatedTextInput(
      animatedTextInput: CouponAnimatedTextInput,
      shouldChangeCharactersInRange range: NSRange,
