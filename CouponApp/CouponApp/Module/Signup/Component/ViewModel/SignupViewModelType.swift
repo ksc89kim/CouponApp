@@ -8,7 +8,12 @@
 
 import Foundation
 
-protocol SignupViewModelType: ViewModelType {
+enum SignupViewModelKey: InjectionKey {
+  typealias Value = SignupViewModelType
+}
+
+
+protocol SignupViewModelType: ViewModelType, Injectable {
   var inputs: SignupInputType { get }
   var outputs: SignupOutputType? { get }
 }

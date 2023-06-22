@@ -158,7 +158,6 @@ final class LoginViewController: BaseViewController, MainPresent {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == CouponIdentifier.showSignupViewController.rawValue,
        let signupViewController = segue.destination as? SignupViewController {
-      signupViewController.viewModel = SignupViewModel()
       signupViewController.merchantList = self.merchantList
     }
   }

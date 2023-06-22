@@ -40,9 +40,8 @@ final class SignupViewController: BaseViewController, MainPresent {
 
   // MARK: - Property
 
-  private var signupViewModel: SignupViewModelType? {
-    return self.viewModel as? SignupViewModelType
-  }
+  @Inject(SignupViewModelKey.self)
+  private var signupViewModel: SignupViewModelType
   var merchantList: (any MerchantListable)?
 
   // MARK: - Life Cycle
@@ -89,35 +88,34 @@ final class SignupViewController: BaseViewController, MainPresent {
   override func bindInputs() {
     super.bindInputs()
 
-    guard let signupViewModel = self.signupViewModel else { return }
 
     self.nameTextInput.rx.text
-      .bind(to: signupViewModel.inputs.userName)
+      .bind(to: self.signupViewModel.inputs.userName)
       .disposed(by: self.disposeBag)
 
     self.phoneNumberTextInput.rx.text
-      .bind(to: signupViewModel.inputs.userPhoneNumber)
+      .bind(to: self.signupViewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: signupViewModel.inputs.userPassword)
+      .bind(to: self.signupViewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.continueButton.rx.tap
       .asObservable()
-      .bind(to: signupViewModel.inputs.onSingup)
+      .bind(to: self.signupViewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.signupViewModel?.outputs?.showCustomPopup
+    self.signupViewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.signupViewModel?.outputs?.showMainViewController
+    self.signupViewModel.outputs?.showMainViewController
       .compactMap { [weak self] _ -> (any MerchantListable)? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
