@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(UserCouponKey.self) { UserCoupon() }
       InjectItem(UserCouponListKey.self) { UserCouponList() }
       InjectItem(UserKey.self) { User() }
+      InjectItem(AlertKey.self) { Alert() }
     }
 
     return true

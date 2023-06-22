@@ -13,10 +13,15 @@ enum AlertKey: InjectionKey {
 }
 
 
-struct Alert {
+struct Alert: Injectable {
 
   // MARK: - Property
 
-  let title: String
-  let message: String
+  var title: String
+  var message: String
+
+  init() {
+    self.title = ""
+    self.message = ""
+  }
 }
