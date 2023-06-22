@@ -9,7 +9,12 @@
 import UIKit
 import AnimatedTextInput
 
-struct CustomTextInputStyle: AnimatedTextInputStyle {
+enum TextInputStyleKey: InjectionKey {
+  typealias Value = AnimatedTextInputStyle
+}
+
+
+struct CustomTextInputStyle: AnimatedTextInputStyle, Injectable {
   let placeholderInactiveColor = UIColor.gray
   let activeColor = UIColor.couponPinkColor
   let inactiveColor = UIColor.gray.withAlphaComponent(0.3)

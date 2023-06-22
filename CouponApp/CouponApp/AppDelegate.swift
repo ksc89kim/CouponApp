@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(UserCouponListKey.self) { UserCouponList() }
       InjectItem(UserKey.self) { User() }
       InjectItem(AlertKey.self) { Alert() }
+      InjectItem(TextInputStyleKey.self) { CustomTextInputStyle() }
     }
 
     return true

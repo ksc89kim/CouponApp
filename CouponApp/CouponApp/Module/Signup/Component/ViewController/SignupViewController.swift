@@ -67,20 +67,20 @@ final class SignupViewController: BaseViewController, MainPresent {
 
   private func setNameTextInput() {
     self.nameTextInput.placeHolderText = Text.namePlaceHolder
-    self.nameTextInput.style = CustomTextInputStyle()
+    self.nameTextInput.style = DIContainer.resolve(for: TextInputStyleKey.self)
   }
 
   private func setPhoneNumberTextInput() {
     self.phoneNumberTextInput.placeHolderText = Text.phoneNumberPlaceHolder
     self.phoneNumberTextInput.type = .phone;
     self.phoneNumberTextInput.delegate = self
-    self.phoneNumberTextInput.style = CustomTextInputStyle()
+    self.phoneNumberTextInput.style = DIContainer.resolve(for: TextInputStyleKey.self)
   }
 
   private func setPasswordTextInput() {
     self.passwordTextInput.placeHolderText = Text.passwordPlaceHolder
     self.passwordTextInput.type = .password(toggleable: true)
-    self.passwordTextInput.style = CustomTextInputStyle()
+    self.passwordTextInput.style = DIContainer.resolve(for: TextInputStyleKey.self)
   }
 
   // MARK: - Bind
