@@ -110,7 +110,7 @@ final class SQLInterface {
       while result.next() {
         let merchantIDx: Int32 = result.int(forColumnIndex: 1)
         let couponCount: Int32 = result.int(forColumnIndex: 2)
-        let userCoupon: UserCoupon = UserCoupon()
+        var userCoupon: UserCouponType = DIContainer.resolve(for: UserCouponKey.self)
         userCoupon.merchantID = Int(merchantIDx)
         userCoupon.couponCount = Int(couponCount)
         userCouponList?.append(userCoupon)

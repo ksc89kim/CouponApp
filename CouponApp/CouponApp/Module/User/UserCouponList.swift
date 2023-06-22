@@ -12,13 +12,13 @@ final class UserCouponList: Codable, Listable {
 
   // MARK: - Define
 
-  private enum UserCouponListKeys: String, CodingKey {
+  private enum Keys: String, CodingKey {
     case list = "couponInfoArray"
   }
 
   // MARK: - Property
 
-  var list: [UserCoupon]
+  var list: [UserCouponType]
 
   // MARK: - Init
 
@@ -27,7 +27,15 @@ final class UserCouponList: Codable, Listable {
   }
 
   required init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: UserCouponListKeys.self)
+    let container = try decoder.container(keyedBy: Keys.self)
     self.list = try container.decode([UserCoupon].self, forKey: .list)
+  }
+
+  // MARK: - Encode
+
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: Keys.self)
+    let list = self.list.compactMap { $0 as? UserCoupon }
+    try container.encode(list, forKey: .list)
   }
 }

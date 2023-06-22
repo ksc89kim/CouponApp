@@ -14,7 +14,7 @@ enum CouponInfoKey: InjectionKey {
 
 
 protocol CouponInfoType: Injectable {
-  var userCoupon: UserCoupon? { get set }
+  var userCoupon: UserCouponType? { get set }
   var merchant: MerchantType? { get set }
   var userCouponCount: Int { get }
   var merchantCouponCount: Int { get }
@@ -29,7 +29,7 @@ struct CouponInfo: CouponInfoType {
 
   // MARK: - Property
 
-  var userCoupon: UserCoupon?
+  var userCoupon: UserCouponType?
   var merchant: MerchantType?
 
   var userCouponCount: Int {
