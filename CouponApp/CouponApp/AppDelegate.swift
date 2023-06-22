@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       InjectItem(ResponseKey.self) { RepositoryResponse() }
       InjectItem(SignupViewModelKey.self) { SignupViewModel() }
       InjectItem(UserCouponKey.self) { UserCoupon() }
+      InjectItem(UserCouponListKey.self) { UserCouponList() }
     }
 
     return true

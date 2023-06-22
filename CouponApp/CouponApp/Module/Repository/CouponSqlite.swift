@@ -131,7 +131,7 @@ struct CouponSqlite: RepositoryType {
     do {
       let data = try SQLInterface().selectUserCouponData(userID)
       var response: ResponseType = DIContainer.resolve(for: ResponseKey.self)
-      response.data = data
+      response.data = data as? any Codable
       complete(.success(response))
     } catch {
       complete(.failure(error))

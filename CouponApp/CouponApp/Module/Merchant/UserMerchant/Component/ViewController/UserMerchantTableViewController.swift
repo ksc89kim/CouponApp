@@ -29,7 +29,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
   @Inject(UserMerchantViewModelKey.self)
   var viewModel: UserMerchantViewModelType
   /// 회원 쿠폰 정보
-  private var userCouponList: UserCouponList?
+  private var userCouponList: (any UserCouponListable)?
   var disposeBag = DisposeBag()
   private let dataSource = RxTableViewSectionedReloadDataSource<UserMerchantSection>(
     configureCell: { _, tableView, indexPath, item -> UITableViewCell in

@@ -101,19 +101,19 @@ final class SQLInterface {
   }
 
   /// 회원 쿠폰 데이터 가져오기
-  func selectUserCouponData(_ userID: Int) throws -> UserCouponList?  {
+  func selectUserCouponData(_ userID: Int) throws -> (any UserCouponListable)?  {
     guard let contactDb = db else { throw SQLError.connectionError }
     let query = "select idx,merchant_idx,coupon_count from coupon where user_idx = \(userID)"
     do {
       let result = try contactDb.executeQuery(query, values: [])
-      var userCouponList: UserCouponList? = UserCouponList()
+      var userCouponList: any UserCouponListable = DIContainer.resolve(for: UserCouponListKey.self)
       while result.next() {
         let merchantIDx: Int32 = result.int(forColumnIndex: 1)
         let couponCount: Int32 = result.int(forColumnIndex: 2)
         var userCoupon: UserCouponType = DIContainer.resolve(for: UserCouponKey.self)
         userCoupon.merchantID = Int(merchantIDx)
         userCoupon.couponCount = Int(couponCount)
-        userCouponList?.append(userCoupon)
+        userCouponList.append(userCoupon)
       }
       return userCouponList
     } catch {
