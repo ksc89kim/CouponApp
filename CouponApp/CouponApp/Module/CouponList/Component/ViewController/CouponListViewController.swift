@@ -55,7 +55,7 @@ final class CouponListViewController: BaseViewController {
 
 
   @Inject(CouponListViewModelKey.self)
-  var couponListViewModel: CouponListViewModelType
+  var viewModel: CouponListViewModelType
   private let dashLineLayer = CAShapeLayer()
   private lazy var dataSource = RxCollectionViewSectionedReloadDataSource<CouponSection>(
     configureCell: { _, collectionView, indexPath, item -> UICollectionViewCell in
@@ -80,28 +80,28 @@ final class CouponListViewController: BaseViewController {
     super.bindInputs()
 
     self.requestButton.rx.tap
-      .bind(to: couponListViewModel.inputs.onAddCoupon)
+      .bind(to: self.viewModel.inputs.onAddCoupon)
       .disposed(by: self.disposeBag)
 
     self.useButton.rx.tap
-      .bind(to: couponListViewModel.inputs.onUseCoupon)
+      .bind(to: self.viewModel.inputs.onUseCoupon)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.couponListViewModel.outputs?.navigationTitle
+    self.viewModel.outputs?.navigationTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.navigationItem.rx.title)
       .disposed(by: self.disposeBag)
     
-    self.couponListViewModel.outputs?.showCustomPopup
+    self.viewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.couponListViewModel.outputs?.reloadSections
+    self.viewModel.outputs?.reloadSections
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.myCollectionView.rx.items(dataSource: self.dataSource))
       .disposed(by: self.disposeBag)

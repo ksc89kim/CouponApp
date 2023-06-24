@@ -39,7 +39,7 @@ final class LoginViewController: BaseViewController, MainPresent {
   // MARK: - Property
 
   @Inject(LoginViewModelKey.self)
-  private var loginViewModel: LoginViewModelType
+  private var viewModel: LoginViewModelType
   var merchantList: (any MerchantListable)?
 
   // MARK: - Life Cycle
@@ -88,39 +88,39 @@ final class LoginViewController: BaseViewController, MainPresent {
     super.bindInputs()
 
     self.phoneNumberTextInput.rx.text
-      .bind(to: self.loginViewModel.inputs.userPhoneNumber)
+      .bind(to: self.viewModel.inputs.userPhoneNumber)
       .disposed(by: self.disposeBag)
 
     self.passwordTextInput.rx.text
-      .bind(to: self.loginViewModel.inputs.userPassword)
+      .bind(to: self.viewModel.inputs.userPassword)
       .disposed(by: self.disposeBag)
 
     self.loginButton.rx.tap
       .asObservable()
-      .bind(to: self.loginViewModel.inputs.onLogin)
+      .bind(to: self.viewModel.inputs.onLogin)
       .disposed(by: self.disposeBag)
 
     self.signupButton.rx.tap
       .asObservable()
-      .bind(to: self.loginViewModel.inputs.onSingup)
+      .bind(to: self.viewModel.inputs.onSingup)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.loginViewModel.outputs?.showCustomPopup
+    self.viewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)
 
-    self.loginViewModel.outputs?.showMainViewController
+    self.viewModel.outputs?.showMainViewController
       .compactMap { [weak self] _ -> (any MerchantListable)? in self?.merchantList }
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showMainViewController)
       .disposed(by: self.disposeBag)
 
-    self.loginViewModel.outputs?.showSignupViewController
+    self.viewModel.outputs?.showSignupViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showSignupViewController)
       .disposed(by: self.disposeBag)

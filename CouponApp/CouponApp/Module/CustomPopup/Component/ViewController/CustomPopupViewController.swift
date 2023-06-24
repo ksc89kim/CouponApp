@@ -28,7 +28,7 @@ final class CustomPopupViewController: BaseViewController, Injectable {
   // MARK: - Property
 
   @Inject(CustomPopupViewModelKey.self)
-  var customPopupViewModel: CustomPopupViewModelType
+  var viewModel: CustomPopupViewModelType
 
   // MARK: - Init
 
@@ -48,7 +48,7 @@ final class CustomPopupViewController: BaseViewController, Injectable {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.customPopupViewModel.inputs.showPopup.onNext(())
+    self.viewModel.inputs.showPopup.onNext(())
   }
 
   override func didReceiveMemoryWarning() {
@@ -62,34 +62,34 @@ final class CustomPopupViewController: BaseViewController, Injectable {
     super.bindInputs()
 
     self.okButton.rx.tap
-      .bind(to: self.customPopupViewModel.inputs.onOk)
+      .bind(to: self.viewModel.inputs.onOk)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.customPopupViewModel.outputs?.close
+    self.viewModel.outputs?.close
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.close)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel.outputs?.showAnimation
+    self.viewModel.outputs?.showAnimation
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showAnimation)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel.outputs?.title
+    self.viewModel.outputs?.title
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.titleLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel.outputs?.content
+    self.viewModel.outputs?.content
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.contentLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.customPopupViewModel.outputs?.popupViewAlpha
+    self.viewModel.outputs?.popupViewAlpha
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.popupView.rx.alpha)
       .disposed(by: self.disposeBag)

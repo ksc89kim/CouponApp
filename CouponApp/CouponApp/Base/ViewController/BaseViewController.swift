@@ -16,9 +16,6 @@ open class BaseViewController: UIViewController, Bindable {
 
   let disposeBag = DisposeBag()
 
-  var viewModel: ViewModelType?
-
-
   // MARK: - Init
 
   init(nibType: CouponNibName) {

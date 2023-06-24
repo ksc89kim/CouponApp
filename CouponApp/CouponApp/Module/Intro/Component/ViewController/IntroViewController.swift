@@ -21,14 +21,14 @@ final class IntroViewController: BaseViewController, MainPresent {
   // MARK: - Property
 
   @Inject(IntroViewModelKey.self)
-  private var introViewModel: IntroViewModelType
+  private var viewModel: IntroViewModelType
 
   // MARK: - Life Cycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    self.introViewModel.inputs.loadMerchantData.onNext(())
+    self.viewModel.inputs.loadMerchantData.onNext(())
 
     self.stampView.completion = { [weak self] in
       self?.fadeAnimation()
@@ -44,13 +44,13 @@ final class IntroViewController: BaseViewController, MainPresent {
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.introViewModel.outputs?
+    self.viewModel.outputs?
       .addLoginViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addLoginViewController)
       .disposed(by: self.disposeBag)
 
-    self.introViewModel.outputs?
+    self.viewModel.outputs?
       .addMainViewController
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.addMainViewController)

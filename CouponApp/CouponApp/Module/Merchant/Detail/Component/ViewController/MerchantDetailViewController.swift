@@ -86,7 +86,7 @@ final class MerchantDetailViewController: BaseViewController, Injectable {
   }
 
   @Inject(MerchantDetailViewModelKey.self)
-  var merchantDetailViewModel: MerchantDetailViewModelType
+  var viewModel: MerchantDetailViewModelType
 
   //MARK: - Init
 
@@ -116,49 +116,49 @@ final class MerchantDetailViewController: BaseViewController, Injectable {
 
 
     self.actionButton.rx.tap
-      .bind(to: self.merchantDetailViewModel.inputs.actionFromBottom)
+      .bind(to: self.viewModel.inputs.actionFromBottom)
       .disposed(by: self.disposeBag)
   }
 
   override func bindOutputs() {
     super.bindOutputs()
 
-    self.merchantDetailViewModel.outputs?.cellTopViewFrame
+    self.viewModel.outputs?.cellTopViewFrame
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.cellTopViewFrame)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.cellCornerRadius
+    self.viewModel.outputs?.cellCornerRadius
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.cellCornerRadius)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.title
+    self.viewModel.outputs?.title
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.title)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.buttonTitle
+    self.viewModel.outputs?.buttonTitle
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.actionButton.rx.title(for: .normal))
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.introduce
+    self.viewModel.outputs?.introduce
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.introduceLabel.rx.text)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.headerBackgroundColor
+    self.viewModel.outputs?.headerBackgroundColor
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.headerView.rx.backgroundColor)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.headerImageURL
+    self.viewModel.outputs?.headerImageURL
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.headerImageURL)
       .disposed(by: self.disposeBag)
 
-    self.merchantDetailViewModel.outputs?.showCustomPopup
+    self.viewModel.outputs?.showCustomPopup
       .asDriver(onErrorDriveWith: .empty())
       .drive(self.rx.showCustomPopup)
       .disposed(by: self.disposeBag)

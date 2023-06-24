@@ -120,7 +120,7 @@ final class UserMerchantTableViewController : UITableViewController, Bindable {
     if segue.identifier == CouponIdentifier.showCouponListView.rawValue,
        let viewController = segue.destination as? CouponListViewController,
        let couponInfo = sender as? CouponInfoType {
-      viewController.couponListViewModel.inputs.loadCoupon.onNext(couponInfo)
+      viewController.viewModel.inputs.loadCoupon.onNext(couponInfo)
     }
   }
 
