@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "IntroViewController.addMainViewController(merchantList:):IntroViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "merchantTabBarController.merchant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "MerchantViewController.setMerchantList(_:):MerchantViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.viewControllers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "AroundMerchantListViewController.setLocationManager():AroundMerchantListViewController.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
